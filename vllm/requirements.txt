@@ -1,0 +1,13 @@
+vllm==0.10.2
+descript-audiotools==0.7.2
+matplotlib==3.8.2
+omegaconf
+sentencepiece
+librosa
+gradio
+ninja
+modelscope
+munch==4.0.0
+
+WeTextProcessing; platform_machine != "Darwin"
+wetext; platform_system == "Darwin"
