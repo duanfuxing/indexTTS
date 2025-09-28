@@ -1,0 +1,260 @@
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 22, in <module>
+    from indextts.infer_vllm import IndexTTS
+  File "/root/autodl-tmp/index-tts-vllm/indextts/infer_vllm.py", line 22, in <module>
+    from indextts.gpt.model_vllm import UnifiedVoice
+  File "/root/autodl-tmp/index-tts-vllm/indextts/gpt/model_vllm.py", line 4, in <module>
+    import patch_vllm  # ⚠️ Monkey Patch, do not delete this line
+    ^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/index-tts-vllm/patch_vllm.py", line 6, in <module>
+    vllm_version = version.parse(importlib.import_module("vllm").__version__)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'vllm'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 22, in <module>
+    from indextts.infer_vllm import IndexTTS
+  File "/root/autodl-tmp/index-tts-vllm/indextts/infer_vllm.py", line 22, in <module>
+    from indextts.gpt.model_vllm import UnifiedVoice
+  File "/root/autodl-tmp/index-tts-vllm/indextts/gpt/model_vllm.py", line 4, in <module>
+    import patch_vllm  # ⚠️ Monkey Patch, do not delete this line
+    ^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/index-tts-vllm/patch_vllm.py", line 6, in <module>
+    vllm_version = version.parse(importlib.import_module("vllm").__version__)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'vllm'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 22, in <module>
+    from indextts.infer_vllm import IndexTTS
+  File "/root/autodl-tmp/index-tts-vllm/indextts/infer_vllm.py", line 22, in <module>
+    from indextts.gpt.model_vllm import UnifiedVoice
+  File "/root/autodl-tmp/index-tts-vllm/indextts/gpt/model_vllm.py", line 4, in <module>
+    import patch_vllm  # ⚠️ Monkey Patch, do not delete this line
+    ^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/index-tts-vllm/patch_vllm.py", line 6, in <module>
+    vllm_version = version.parse(importlib.import_module("vllm").__version__)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'vllm'
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 22, in <module>
+    from indextts.infer_vllm import IndexTTS
+  File "/root/autodl-tmp/index-tts-vllm/indextts/infer_vllm.py", line 22, in <module>
+    from indextts.gpt.model_vllm import UnifiedVoice
+  File "/root/autodl-tmp/index-tts-vllm/indextts/gpt/model_vllm.py", line 4, in <module>
+    import patch_vllm  # ⚠️ Monkey Patch, do not delete this line
+    ^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/index-tts-vllm/patch_vllm.py", line 6, in <module>
+    vllm_version = version.parse(importlib.import_module("vllm").__version__)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/miniconda3/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'vllm'
+INFO 09-26 15:48:51 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 23, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-26 15:49:02 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 23, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-26 15:49:14 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 23, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-26 15:49:25 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 23, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-26 15:49:36 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 23, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-26 15:49:47 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 23, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-26 15:50:00 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 23, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-26 15:51:11 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 24, in <module>
+    from server.cache.redis_manager import RedisManager
+  File "/root/autodl-tmp/index-tts-vllm/server/cache/redis_manager.py", line 2, in <module>
+    import aioredis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/__init__.py", line 1, in <module>
+    from aioredis.client import Redis, StrictRedis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/client.py", line 32, in <module>
+    from aioredis.connection import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/connection.py", line 33, in <module>
+    from .exceptions import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/exceptions.py", line 14, in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+TypeError: duplicate base class TimeoutError
+INFO 09-26 15:51:22 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 24, in <module>
+    from server.cache.redis_manager import RedisManager
+  File "/root/autodl-tmp/index-tts-vllm/server/cache/redis_manager.py", line 2, in <module>
+    import aioredis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/__init__.py", line 1, in <module>
+    from aioredis.client import Redis, StrictRedis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/client.py", line 32, in <module>
+    from aioredis.connection import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/connection.py", line 33, in <module>
+    from .exceptions import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/exceptions.py", line 14, in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+TypeError: duplicate base class TimeoutError
+INFO 09-26 15:51:33 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 24, in <module>
+    from server.cache.redis_manager import RedisManager
+  File "/root/autodl-tmp/index-tts-vllm/server/cache/redis_manager.py", line 2, in <module>
+    import aioredis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/__init__.py", line 1, in <module>
+    from aioredis.client import Redis, StrictRedis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/client.py", line 32, in <module>
+    from aioredis.connection import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/connection.py", line 33, in <module>
+    from .exceptions import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/exceptions.py", line 14, in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+TypeError: duplicate base class TimeoutError
+INFO 09-26 15:51:45 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 24, in <module>
+    from server.cache.redis_manager import RedisManager
+  File "/root/autodl-tmp/index-tts-vllm/server/cache/redis_manager.py", line 2, in <module>
+    import aioredis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/__init__.py", line 1, in <module>
+    from aioredis.client import Redis, StrictRedis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/client.py", line 32, in <module>
+    from aioredis.connection import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/connection.py", line 33, in <module>
+    from .exceptions import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/exceptions.py", line 14, in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+TypeError: duplicate base class TimeoutError
+INFO 09-26 15:51:56 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 24, in <module>
+    from server.cache.redis_manager import RedisManager
+  File "/root/autodl-tmp/index-tts-vllm/server/cache/redis_manager.py", line 2, in <module>
+    import aioredis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/__init__.py", line 1, in <module>
+    from aioredis.client import Redis, StrictRedis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/client.py", line 32, in <module>
+    from aioredis.connection import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/connection.py", line 33, in <module>
+    from .exceptions import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/exceptions.py", line 14, in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+TypeError: duplicate base class TimeoutError
+INFO 09-26 15:52:07 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 24, in <module>
+    from server.cache.redis_manager import RedisManager
+  File "/root/autodl-tmp/index-tts-vllm/server/cache/redis_manager.py", line 2, in <module>
+    import aioredis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/__init__.py", line 1, in <module>
+    from aioredis.client import Redis, StrictRedis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/client.py", line 32, in <module>
+    from aioredis.connection import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/connection.py", line 33, in <module>
+    from .exceptions import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/exceptions.py", line 14, in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+TypeError: duplicate base class TimeoutError
+INFO 09-26 15:52:18 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 24, in <module>
+    from server.cache.redis_manager import RedisManager
+  File "/root/autodl-tmp/index-tts-vllm/server/cache/redis_manager.py", line 2, in <module>
+    import aioredis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/__init__.py", line 1, in <module>
+    from aioredis.client import Redis, StrictRedis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/client.py", line 32, in <module>
+    from aioredis.connection import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/connection.py", line 33, in <module>
+    from .exceptions import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/exceptions.py", line 14, in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+TypeError: duplicate base class TimeoutError
+INFO 09-26 15:52:31 [__init__.py:243] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  SamplingParams._verify_args Patched
+✅  ModelInputForGPUBuilder._compute_lens Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/index-tts-vllm/server/api_server.py", line 24, in <module>
+    from server.cache.redis_manager import RedisManager
+  File "/root/autodl-tmp/index-tts-vllm/server/cache/redis_manager.py", line 2, in <module>
+    import aioredis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/__init__.py", line 1, in <module>
+    from aioredis.client import Redis, StrictRedis
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/client.py", line 32, in <module>
+    from aioredis.connection import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/connection.py", line 33, in <module>
+    from .exceptions import (
+  File "/root/autodl-tmp/conda_envs/index-tts-vllm/lib/python3.12/site-packages/aioredis/exceptions.py", line 14, in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+TypeError: duplicate base class TimeoutError

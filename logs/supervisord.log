@@ -1,0 +1,105 @@
+2025-09-26 14:38:37,838 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-09-26 14:38:37,838 WARN For [program:tts-api-server], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-09-26 14:38:37,838 WARN For [program:tts-task-worker], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-09-26 14:38:37,841 INFO RPC interface 'supervisor' initialized
+2025-09-26 14:38:37,841 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-09-26 14:38:37,843 INFO daemonizing the supervisord process
+2025-09-26 14:38:37,844 INFO supervisord started with pid 222388
+2025-09-26 14:38:38,847 INFO spawned: 'tts-api-server' with pid 222450
+2025-09-26 14:38:38,849 INFO spawned: 'tts-task-worker' with pid 222451
+2025-09-26 14:38:42,126 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 14:38:42,127 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 14:38:43,130 INFO spawned: 'tts-api-server' with pid 222591
+2025-09-26 14:38:43,133 INFO spawned: 'tts-task-worker' with pid 222592
+2025-09-26 14:38:45,939 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 14:38:46,941 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 14:38:48,259 INFO spawned: 'tts-task-worker' with pid 222926
+2025-09-26 14:38:49,262 INFO spawned: 'tts-api-server' with pid 222971
+2025-09-26 14:38:51,669 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 14:38:53,490 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 14:38:55,150 INFO spawned: 'tts-task-worker' with pid 223199
+2025-09-26 14:38:57,275 INFO spawned: 'tts-api-server' with pid 223348
+2025-09-26 14:38:58,870 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 14:38:59,755 INFO gave up: tts-task-worker entered FATAL state, too many start retries too quickly
+2025-09-26 14:39:01,240 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 14:39:02,241 INFO gave up: tts-api-server entered FATAL state, too many start retries too quickly
+2025-09-26 15:47:15,598 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+2025-09-26 15:47:15,598 WARN For [program:tts-api-server], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-09-26 15:47:15,598 WARN For [program:tts-task-worker], redirect_stderr=true but stderr_logfile has also been set to a filename, the filename has been ignored
+2025-09-26 15:47:15,602 INFO RPC interface 'supervisor' initialized
+2025-09-26 15:47:15,602 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2025-09-26 15:47:15,603 INFO daemonizing the supervisord process
+2025-09-26 15:47:15,604 INFO supervisord started with pid 269230
+2025-09-26 15:47:16,606 INFO spawnerr: can't find command '/root/miniconda3/envs/conda_envs/index-tts-vllm/bin/python'
+2025-09-26 15:47:16,607 INFO spawnerr: can't find command '/root/miniconda3/envs/conda_envs/index-tts-vllm/bin/python'
+2025-09-26 15:47:17,608 INFO spawnerr: can't find command '/root/miniconda3/envs/conda_envs/index-tts-vllm/bin/python'
+2025-09-26 15:47:17,608 INFO spawnerr: can't find command '/root/miniconda3/envs/conda_envs/index-tts-vllm/bin/python'
+2025-09-26 15:47:19,611 INFO spawnerr: can't find command '/root/miniconda3/envs/conda_envs/index-tts-vllm/bin/python'
+2025-09-26 15:47:19,612 INFO spawnerr: can't find command '/root/miniconda3/envs/conda_envs/index-tts-vllm/bin/python'
+2025-09-26 15:47:22,616 INFO spawnerr: can't find command '/root/miniconda3/envs/conda_envs/index-tts-vllm/bin/python'
+2025-09-26 15:47:22,616 INFO gave up: tts-api-server entered FATAL state, too many start retries too quickly
+2025-09-26 15:47:22,617 INFO spawnerr: can't find command '/root/miniconda3/envs/conda_envs/index-tts-vllm/bin/python'
+2025-09-26 15:47:22,617 INFO gave up: tts-task-worker entered FATAL state, too many start retries too quickly
+2025-09-26 15:48:46,257 INFO spawned: 'tts-api-server' with pid 271856
+2025-09-26 15:48:46,258 INFO spawned: 'tts-task-worker' with pid 271857
+2025-09-26 15:48:55,998 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:48:57,000 INFO success: tts-api-server entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2025-09-26 15:48:57,003 INFO spawned: 'tts-task-worker' with pid 272481
+2025-09-26 15:48:57,003 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:48:58,007 INFO spawned: 'tts-api-server' with pid 272525
+2025-09-26 15:49:06,737 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:49:07,896 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:49:08,900 INFO spawned: 'tts-api-server' with pid 273000
+2025-09-26 15:49:08,901 INFO spawned: 'tts-task-worker' with pid 273001
+2025-09-26 15:49:18,715 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:49:19,717 INFO success: tts-api-server entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2025-09-26 15:49:19,718 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:49:20,721 INFO spawned: 'tts-api-server' with pid 273487
+2025-09-26 15:49:21,724 INFO spawned: 'tts-task-worker' with pid 273540
+2025-09-26 15:49:30,239 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:49:31,243 INFO spawned: 'tts-api-server' with pid 273811
+2025-09-26 15:49:32,525 INFO success: tts-task-worker entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2025-09-26 15:49:32,525 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:49:33,529 INFO spawned: 'tts-task-worker' with pid 273881
+2025-09-26 15:49:40,818 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:49:43,065 INFO spawned: 'tts-api-server' with pid 274152
+2025-09-26 15:49:43,066 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:49:44,876 INFO spawned: 'tts-task-worker' with pid 274263
+2025-09-26 15:49:52,443 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:49:54,833 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:49:55,837 INFO spawned: 'tts-api-server' with pid 274730
+2025-09-26 15:49:56,841 INFO spawned: 'tts-task-worker' with pid 274774
+2025-09-26 15:50:04,735 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:50:04,736 INFO gave up: tts-api-server entered FATAL state, too many start retries too quickly
+2025-09-26 15:50:07,054 INFO success: tts-task-worker entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2025-09-26 15:50:07,054 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:50:08,058 INFO spawned: 'tts-task-worker' with pid 275076
+2025-09-26 15:50:17,720 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:50:18,724 INFO spawned: 'tts-task-worker' with pid 275336
+2025-09-26 15:50:28,256 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:50:30,266 INFO spawned: 'tts-task-worker' with pid 275650
+2025-09-26 15:50:39,997 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:50:43,003 INFO spawned: 'tts-task-worker' with pid 276051
+2025-09-26 15:50:52,758 WARN exited: tts-task-worker (exit status 1; not expected)
+2025-09-26 15:50:53,760 INFO gave up: tts-task-worker entered FATAL state, too many start retries too quickly
+2025-09-26 15:51:06,462 INFO spawned: 'tts-api-server' with pid 276677
+2025-09-26 15:51:16,191 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:51:17,196 INFO spawned: 'tts-api-server' with pid 277023
+2025-09-26 15:51:27,574 INFO success: tts-api-server entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2025-09-26 15:51:27,574 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:51:28,578 INFO spawned: 'tts-api-server' with pid 277579
+2025-09-26 15:51:39,338 INFO success: tts-api-server entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2025-09-26 15:51:39,338 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:51:40,341 INFO spawned: 'tts-api-server' with pid 278175
+2025-09-26 15:51:50,903 INFO success: tts-api-server entered RUNNING state, process has stayed up for > than 10 seconds (startsecs)
+2025-09-26 15:51:50,903 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:51:51,906 INFO spawned: 'tts-api-server' with pid 278296
+2025-09-26 15:52:01,566 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:52:02,569 INFO spawned: 'tts-api-server' with pid 278334
+2025-09-26 15:52:12,341 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:52:14,347 INFO spawned: 'tts-api-server' with pid 278376
+2025-09-26 15:52:24,148 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:52:27,153 INFO spawned: 'tts-api-server' with pid 278418
+2025-09-26 15:52:36,818 WARN exited: tts-api-server (exit status 1; not expected)
+2025-09-26 15:52:37,819 INFO gave up: tts-api-server entered FATAL state, too many start retries too quickly
+2025-09-26 17:12:53,946 WARN received SIGTERM indicating exit request
