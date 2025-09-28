@@ -146,3 +146,219 @@ Traceback (most recent call last):
   File "/root/autodl-tmp/index-tts-vllm/server/task_worker.py", line 29, in <module>
     from .database.db_manager import DatabaseManager
 ImportError: attempted relative import with no known parent package
+INFO 09-28 15:59:16 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-28 15:59:26 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-28 15:59:37 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-28 15:59:47 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from .database.db_manager import DatabaseManager
+ImportError: attempted relative import with no known parent package
+INFO 09-28 15:59:58 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ImportError: attempted relative import with no known parent package
+INFO 09-28 16:00:08 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:00:20 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:00:44 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:00:54 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:01:04 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:01:15 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:01:28 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:01:41 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:01:52 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:02:03 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:02:14 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:02:25 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:02:36 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:02:47 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:02:59 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:03:10 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:03:20 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:03:30 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:03:43 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package
+INFO 09-28 16:03:56 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/server/task_worker.py", line 38, in <module>
+    from database.db_manager import DatabaseManager
+  File "/root/autodl-tmp/indexTTS/server/database/db_manager.py", line 11, in <module>
+    from ..utils.file_manager import TaskFileManager
+ImportError: attempted relative import beyond top-level package

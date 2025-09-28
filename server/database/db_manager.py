@@ -16,7 +16,7 @@ class DatabaseManager:
     def __init__(self, database_url: str = None):
         from ..config import config
         self.config = config
-        self.database_url = database_url or config.DATABASE_URL
+        self.database_url = database_url or config.database_url
         self.pool = None
         self.logger = logging.getLogger(__name__)
         # 初始化文件管理器

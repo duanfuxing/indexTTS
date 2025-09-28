@@ -1,5 +1,5 @@
 import asyncio
-import aioredis
+import redis.asyncio as redis
 import json
 import logging
 from typing import Optional, Dict, Any, List
@@ -17,12 +17,14 @@ class RedisManager:
     async def initialize(self):
         """初始化Redis连接"""
         try:
-            self.redis = await aioredis.from_url(
-                self.config.REDIS_URL,
+            self.redis = redis.from_url(
+                self.config.redis_url,
                 encoding='utf-8',
                 decode_responses=True,
                 max_connections=20
             )
+
+            print(f"Redis连接URL: {self.config.redis_url}")
             
             # 测试连接
             await self.redis.ping()
@@ -42,6 +44,7 @@ class RedisManager:
     async def push_task_to_queue(self, task_type: str, task_data: Dict[str, Any], priority: int = 0) -> bool:
         """将任务推送到队列"""
         try:
+            from ..config import config
             queue_key = f"{config.REDIS_QUEUE_PREFIX}:{task_type}"
             task_json = json.dumps(task_data)
             
@@ -59,6 +62,7 @@ class RedisManager:
     async def pop_task_from_queue(self, task_type: str) -> Optional[Dict[str, Any]]:
         """从队列中弹出任务"""
         try:
+            from ..config import config
             queue_key = f"{config.REDIS_QUEUE_PREFIX}:{task_type}"
             
             # 获取优先级最高的任务
@@ -80,6 +84,7 @@ class RedisManager:
     async def get_queue_length(self, task_type: str) -> int:
         """获取队列长度"""
         try:
+            from ..config import config
             queue_key = f"{config.REDIS_QUEUE_PREFIX}:{task_type}"
             return await self.redis.zcard(queue_key)
         except Exception as e:

@@ -2,7 +2,7 @@ __pycache__/
 .vscode
 outputs/
 .env
-./checkpoints/*
+checkpoints/*
 ./logs/
 ./.trae/
 # 忽略生成的配置文件（保留模板文件）

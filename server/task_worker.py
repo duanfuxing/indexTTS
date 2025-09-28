@@ -35,10 +35,10 @@ from indextts.infer_vllm import IndexTTS
 # 添加项目根目录到Python路径
 sys.path.append(str(Path(__file__).parent.parent))
 
-from .database.db_manager import DatabaseManager
-from .cache.redis_manager import RedisManager
-from .config import config
-from .tos_uploader import TOSUploader
+from database.db_manager import DatabaseManager
+from cache.redis_manager import RedisManager
+from config import config
+from tos_uploader import TOSUploader
 
 # 配置日志
 logging.basicConfig(

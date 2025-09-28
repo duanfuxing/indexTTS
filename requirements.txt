@@ -1,31 +1,37 @@
+# TTS相关依赖
+soundfile
+requests
+numpy
+
+# 数据库相关
+aiomysql
+
+# Redis相关
+redis
+
+# 对象存储相关
+tos
+
+# FastAPI相关
+fastapi
+uvicorn
+pydantic
+
+# 其他依赖
+python-multipart
+python-dotenv
+
+# vllm相关依赖
 vllm==0.10.2
 descript-audiotools==0.7.2
 matplotlib==3.8.2
-gradio
-modelscope
-munch==4.0.0
-cn2an==0.5.22
-ffmpeg-python==0.2.0
-Cython==3.0.7
-g2p-en==2.1.0
-jieba==0.42.1
-keras==2.9.0
-vocos==0.1.0
 omegaconf
 sentencepiece
 librosa
 gradio
 ninja
-fastapi>=0.104.0
-uvicorn[standard]>=0.24.0
-pydantic>=2.5.0
-aiomysql>=0.2.0
-PyMySQL>=1.1.0
-sqlalchemy>=2.0.0
-redis>=5.0.0
-aioredis>=2.0.0
-soundfile>=0.12.1
-requests>=2.31.0
-WeTextProcessing
-supervisor>=4.2.0
-flashinfer-python
+modelscope
+munch==4.0.0
+
+WeTextProcessing; platform_machine != "Darwin"
+wetext; platform_system == "Darwin"

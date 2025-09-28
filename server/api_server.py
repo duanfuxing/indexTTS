@@ -29,9 +29,9 @@ import json
 
 from pydantic import BaseModel, Field
 from indextts.infer_vllm import IndexTTS
-from server.database.db_manager import DatabaseManager
-from server.cache.redis_manager import RedisManager
-from server.tos_uploader import TOSUploader
+from database.db_manager import DatabaseManager
+from cache.redis_manager import RedisManager
+from tos_uploader import TOSUploader
 
 # 配置日志
 logging.basicConfig(level=logging.INFO)
@@ -129,13 +129,11 @@ async def lifespan(app: FastAPI):
             tts.registry_speaker(speaker, audio_paths_)
     
     # 初始化数据库
-    database_url = os.getenv('DATABASE_URL', 'mysql://user:password@localhost:3306/tts_db')
-    db_manager = DatabaseManager(database_url)
+    db_manager = DatabaseManager()
     await db_manager.initialize()
     
     # 初始化Redis缓存
-    redis_url = os.getenv('REDIS_URL', 'redis://localhost:6379/0')
-    redis_manager = RedisManager(redis_url)
+    redis_manager = RedisManager()
     await redis_manager.initialize()
     
     # 初始化TOS上传器
@@ -444,8 +442,8 @@ if __name__ == "__main__":
     # 从环境变量读取配置参数
     host = os.getenv("API_HOST", "0.0.0.0")
     port = int(os.getenv("API_PORT", "6006"))
-    model_dir = os.getenv("MODEL_DIR", "/path/to/IndexTeam/Index-TTS")
-    gpu_memory_utilization = float(os.getenv("GPU_MEMORY_UTILIZATION", "0.25"))
+    model_dir = os.getenv("MODEL_DIR", "checkpoints/Index-TTS-1.5-vLLM")
+    gpu_memory_utilization = float(os.getenv("GPU_MEMORY_UTILIZATION", "0.40"))
     
     # 创建args对象以保持兼容性
     class Args:

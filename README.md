@@ -28,9 +28,6 @@ conda activate conda_envs/indexTTS
 ```bash
 # 使用清华源加速安装
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
-
-# 安装特定版本的 transformers（如果需要） TODO 待验证是否需要删除
-# pip install transformers==4.51.1
 ```
 
 #### 5. 下载模型
