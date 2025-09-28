@@ -1,15 +1,13 @@
 __pycache__/
 .vscode
-
 outputs/
-temp.py
-
-# assets/
-
-temp_gpt2.py    
-
-smoothquart.py
-
 .env
-
-assets/checkpoints/
+./checkpoints/*
+./logs/
+./.trae/
+# 忽略生成的配置文件（保留模板文件）
+./data/mysql/mysql.cnf
+./data/redis/redis.conf
+# 忽略数据库数据目录
+./data/mysql/data/
+./data/redis/data/

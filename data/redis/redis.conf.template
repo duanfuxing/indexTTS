@@ -3,7 +3,7 @@
 ################################## 网络配置 ##################################
 
 # 监听端口
-port 6379
+port ${REDIS_PORT:-6379}
 
 # 绑定地址，默认只允许本地连接
 bind 127.0.0.1
@@ -23,13 +23,13 @@ tcp-keepalive 300
 daemonize no
 
 # 进程文件
-pidfile /root/autodl-tmp/indexTTS/data/redis/redis.pid
+pidfile ${REDIS_DATA_DIR}/redis.pid
 
 # 日志级别：debug, verbose, notice, warning
 loglevel notice
 
 # 日志文件
-logfile /root/autodl-tmp/indexTTS/data/redis/redis.log
+logfile ${REDIS_DATA_DIR}/redis.log
 
 # 数据库数量
 databases 16
@@ -54,7 +54,7 @@ rdbchecksum yes
 dbfilename dump.rdb
 
 # 数据目录
-dir /root/autodl-tmp/indexTTS/data/redis
+dir ${REDIS_DATA_DIR}
 
 ################################## 复制配置 ##################################
 
@@ -77,7 +77,7 @@ repl-backlog-ttl 3600
 ################################## 安全配置 ##################################
 
 # 访问密码
-requirepass x5qnDpTHiMtN4RdqYiQq
+requirepass ${REDIS_PASSWORD:-}
 
 # 重命名危险命令
 # rename-command FLUSHDB ""

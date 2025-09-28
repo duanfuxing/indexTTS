@@ -13,13 +13,15 @@ BLUE='\033[0;34m'
 NC='\033[0m' # 无颜色
 
 # 配置
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 SERVER_DIR="$PROJECT_ROOT/server"
 DATA_DIR="$PROJECT_ROOT/data"
 MYSQL_DATA_DIR="$DATA_DIR/mysql"
 REDIS_DATA_DIR="$DATA_DIR/redis"
+MYSQL_CONFIG_TEMPLATE="$DATA_DIR/mysql/mysql.cnf.template"
 MYSQL_CONFIG_FILE="$DATA_DIR/mysql/mysql.cnf"
+REDIS_CONFIG_TEMPLATE="$DATA_DIR/redis/redis.conf.template"
 REDIS_CONFIG_FILE="$DATA_DIR/redis/redis.conf"
 
 # 打印彩色输出的函数
@@ -53,26 +55,20 @@ create_configs() {
     mkdir -p "$(dirname "$MYSQL_CONFIG_FILE")" "$(dirname "$REDIS_CONFIG_FILE")"
     mkdir -p "$MYSQL_DATA_DIR" "$REDIS_DATA_DIR"
     
-    # 检查配置文件是否存在
-    if [ ! -f "$MYSQL_CONFIG_FILE" ]; then
-        log_error "MySQL配置文件不存在: $MYSQL_CONFIG_FILE"
+    # 检查模板文件是否存在
+    if [ ! -f "$MYSQL_CONFIG_TEMPLATE" ]; then
+        log_error "MySQL配置模板文件不存在: $MYSQL_CONFIG_TEMPLATE"
         exit 1
     fi
     
-    if [ ! -f "$REDIS_CONFIG_FILE" ]; then
-        log_error "Redis配置文件不存在: $REDIS_CONFIG_FILE"
+    if [ ! -f "$REDIS_CONFIG_TEMPLATE" ]; then
+        log_error "Redis配置模板文件不存在: $REDIS_CONFIG_TEMPLATE"
         exit 1
     fi
     
-    # 创建临时配置文件，处理环境变量替换
-    MYSQL_TEMP_CONFIG="/tmp/mysql_$(date +%s).cnf"
-    REDIS_TEMP_CONFIG="/tmp/redis_$(date +%s).conf"
-    
-    # 使用bash的参数扩展来处理环境变量替换
-    # 这样可以正确处理 ${VAR:-default} 语法
     log_info "处理MySQL配置文件中的环境变量..."
     
-    # 读取MySQL配置文件并进行环境变量替换
+    # 读取MySQL模板文件并进行环境变量替换，生成实际配置文件
     while IFS= read -r line || [[ -n "$line" ]]; do
         # 使用eval来处理环境变量替换，但要小心安全性
         if [[ "$line" =~ \$\{[^}]+\} ]]; then
@@ -81,11 +77,11 @@ create_configs() {
         else
             echo "$line"
         fi
-    done < "$MYSQL_CONFIG_FILE" > "$MYSQL_TEMP_CONFIG"
+    done < "$MYSQL_CONFIG_TEMPLATE" > "$MYSQL_CONFIG_FILE"
     
     log_info "处理Redis配置文件中的环境变量..."
     
-    # 读取Redis配置文件并进行环境变量替换
+    # 读取Redis模板文件并进行环境变量替换，生成实际配置文件
     while IFS= read -r line || [[ -n "$line" ]]; do
         # 使用eval来处理环境变量替换，但要小心安全性
         if [[ "$line" =~ \$\{[^}]+\} ]]; then
@@ -94,22 +90,22 @@ create_configs() {
         else
             echo "$line"
         fi
-    done < "$REDIS_CONFIG_FILE" > "$REDIS_TEMP_CONFIG"
+    done < "$REDIS_CONFIG_TEMPLATE" > "$REDIS_CONFIG_FILE"
     
     # 验证配置文件格式
-    if [ -s "$MYSQL_TEMP_CONFIG" ] && [ -s "$REDIS_TEMP_CONFIG" ]; then
+    if [ -s "$MYSQL_CONFIG_FILE" ] && [ -s "$REDIS_CONFIG_FILE" ]; then
         log_info "配置文件处理完成"
-        log_info "MySQL临时配置: $MYSQL_TEMP_CONFIG"
-        log_info "Redis临时配置: $REDIS_TEMP_CONFIG"
+        log_info "MySQL配置文件: $MYSQL_CONFIG_FILE"
+        log_info "Redis配置文件: $REDIS_CONFIG_FILE"
         
         # 显示处理后的配置文件大小
-        local mysql_size=$(wc -l < "$MYSQL_TEMP_CONFIG")
-        local redis_size=$(wc -l < "$REDIS_TEMP_CONFIG")
+        local mysql_size=$(wc -l < "$MYSQL_CONFIG_FILE")
+        local redis_size=$(wc -l < "$REDIS_CONFIG_FILE")
         log_info "MySQL配置文件: $mysql_size 行"
         log_info "Redis配置文件: $redis_size 行"
     else
         log_error "配置文件处理失败"
-        rm -f "$MYSQL_TEMP_CONFIG" "$REDIS_TEMP_CONFIG"
+        rm -f "$MYSQL_CONFIG_FILE" "$REDIS_CONFIG_FILE"
         exit 1
     fi
 }
@@ -294,9 +290,9 @@ start_services() {
                         MYSQL_SERVER_OUT=$(mysql.server start 2>&1 || true)
                         if ! pgrep -x "mysqld" > /dev/null; then
                             log_warn "mysql.server 启动MySQL失败或未生效: $MYSQL_SERVER_OUT"
-                            if command -v mysqld &> /dev/null && [ -f "$MYSQL_TEMP_CONFIG" ]; then
-                                log_info "尝试使用临时配置文件直接启动 mysqld..."
-                                nohup mysqld --defaults-file="$MYSQL_TEMP_CONFIG" >/dev/null 2>&1 &
+                            if command -v mysqld &> /dev/null && [ -f "$MYSQL_CONFIG_FILE" ]; then
+                                log_info "尝试使用配置文件直接启动 mysqld..."
+                                nohup mysqld --defaults-file="$MYSQL_CONFIG_FILE" >/dev/null 2>&1 &
                                 sleep 3
                             else
                                 log_warn "未找到 mysqld 可执行文件或配置文件，可能仅安装了客户端"
@@ -304,22 +300,20 @@ start_services() {
                         fi
                     else
                         # 没有 mysql.server 时，直接尝试 mysqld
-                        if command -v mysqld &> /dev/null && [ -f "$MYSQL_TEMP_CONFIG" ]; then
-                            log_info "尝试使用临时配置文件直接启动 mysqld..."
-                            nohup mysqld --defaults-file="$MYSQL_TEMP_CONFIG" >/dev/null 2>&1 &
+                        if command -v mysqld &> /dev/null && [ -f "$MYSQL_CONFIG_FILE" ]; then
+                            log_info "尝试使用配置文件直接启动 mysqld..."
+                            nohup mysqld --defaults-file="$MYSQL_CONFIG_FILE" >/dev/null 2>&1 &
                             sleep 3
                         fi
                     fi
                 fi
             elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-                # Linux 环境：systemctl 不可用或未启用时，尝试其他方式
-                if command -v systemctl &> /dev/null; then
+                # Linux 环境：检测是否支持 systemd
+                if command -v systemctl &> /dev/null && systemctl is-system-running &> /dev/null; then
                     MYSQL_START_OUT=$(systemctl start mysql 2>&1 || systemctl start mysqld 2>&1 || true)
                     if ! pgrep -x "mysqld" > /dev/null; then
                         log_warn "systemctl 启动MySQL失败或未生效: $MYSQL_START_OUT"
-                        if echo "$MYSQL_START_OUT" | grep -qi 'System has not been booted with systemd'; then
-                            log_warn "当前环境未使用systemd，改用其他方式启动MySQL"
-                        fi
+                        # 回退到 service 命令
                         if command -v service &> /dev/null; then
                             SERVICE_OUT=$(service mysql start 2>&1 || service mysqld start 2>&1 || true)
                             if ! pgrep -x "mysqld" > /dev/null; then
@@ -328,6 +322,8 @@ start_services() {
                         fi
                     fi
                 elif command -v service &> /dev/null; then
+                    # 直接使用 service 命令，避免 systemd 警告
+                    log_info "使用 service 命令启动MySQL..."
                     SERVICE_OUT=$(service mysql start 2>&1 || service mysqld start 2>&1 || true)
                     if ! pgrep -x "mysqld" > /dev/null; then
                         log_warn "service 启动MySQL失败或未生效: $SERVICE_OUT"
@@ -336,9 +332,9 @@ start_services() {
                 
                 # 直接启动 mysqld 作为兜底
                 if ! pgrep -x "mysqld" > /dev/null; then
-                    if command -v mysqld &> /dev/null && [ -f "$MYSQL_TEMP_CONFIG" ]; then
-                        log_info "尝试使用临时配置文件直接启动 mysqld..."
-                        nohup mysqld --defaults-file="$MYSQL_TEMP_CONFIG" >/dev/null 2>&1 &
+                    if command -v mysqld &> /dev/null && [ -f "$MYSQL_CONFIG_FILE" ]; then
+                        log_info "尝试使用配置文件直接启动 mysqld..."
+                        nohup mysqld --defaults-file="$MYSQL_CONFIG_FILE" >/dev/null 2>&1 &
                         sleep 3
                     else
                         log_warn "未找到 mysqld 可执行文件或配置文件，可能仅安装了客户端"
@@ -373,22 +369,21 @@ start_services() {
                 REDIS_BREW_OUT=$(brew services start redis 2>&1 || true)
                 if ! pgrep -x "redis-server" > /dev/null; then
                     log_warn "brew services 启动Redis失败或未生效: $REDIS_BREW_OUT"
-                    if command -v redis-server &> /dev/null && [ -f "$REDIS_TEMP_CONFIG" ]; then
-                        log_info "尝试使用临时配置文件直接启动 redis-server..."
-                        nohup redis-server "$REDIS_TEMP_CONFIG" >/dev/null 2>&1 &
+                    if command -v redis-server &> /dev/null && [ -f "$REDIS_CONFIG_FILE" ]; then
+                        log_info "尝试使用配置文件直接启动 redis-server..."
+                        nohup redis-server "$REDIS_CONFIG_FILE" >/dev/null 2>&1 &
                         sleep 2
                     else
                         log_warn "未找到 redis-server 可执行文件或配置文件"
                     fi
                 fi
             elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-                if command -v systemctl &> /dev/null; then
+                # Linux 环境：检测是否支持 systemd
+                if command -v systemctl &> /dev/null && systemctl is-system-running &> /dev/null; then
                     REDIS_START_OUT=$(systemctl start redis 2>&1 || systemctl start redis-server 2>&1 || true)
                     if ! pgrep -x "redis-server" > /dev/null; then
                         log_warn "systemctl 启动Redis失败或未生效: $REDIS_START_OUT"
-                        if echo "$REDIS_START_OUT" | grep -qi 'System has not been booted with systemd'; then
-                            log_warn "当前环境未使用systemd，改用其他方式启动Redis"
-                        fi
+                        # 回退到 service 命令
                         if command -v service &> /dev/null; then
                             REDIS_SERVICE_OUT=$(service redis-server start 2>&1 || service redis start 2>&1 || true)
                             if ! pgrep -x "redis-server" > /dev/null; then
@@ -397,6 +392,8 @@ start_services() {
                         fi
                     fi
                 elif command -v service &> /dev/null; then
+                    # 直接使用 service 命令，避免 systemd 警告
+                    log_info "使用 service 命令启动Redis..."
                     REDIS_SERVICE_OUT=$(service redis-server start 2>&1 || service redis start 2>&1 || true)
                     if ! pgrep -x "redis-server" > /dev/null; then
                         log_warn "service 启动Redis失败或未生效: $REDIS_SERVICE_OUT"
@@ -405,9 +402,9 @@ start_services() {
                 
                 # 兜底：直接启动 redis-server
                 if ! pgrep -x "redis-server" > /dev/null; then
-                    if command -v redis-server &> /dev/null && [ -f "$REDIS_TEMP_CONFIG" ]; then
-                        log_info "尝试使用临时配置文件直接启动 redis-server..."
-                        nohup redis-server "$REDIS_TEMP_CONFIG" >/dev/null 2>&1 &
+                    if command -v redis-server &> /dev/null && [ -f "$REDIS_CONFIG_FILE" ]; then
+                        log_info "尝试使用配置文件直接启动 redis-server..."
+                        nohup redis-server "$REDIS_CONFIG_FILE" >/dev/null 2>&1 &
                         sleep 2
                     else
                         log_warn "未找到 redis-server 可执行文件或配置文件"
@@ -432,14 +429,6 @@ start_services() {
         fi
     else
         log_warn "Redis未安装，无法启动"
-    fi
-    
-    # 清理临时配置文件
-    if [ -f "$MYSQL_TEMP_CONFIG" ]; then
-        rm -f "$MYSQL_TEMP_CONFIG"
-    fi
-    if [ -f "$REDIS_TEMP_CONFIG" ]; then
-        rm -f "$REDIS_TEMP_CONFIG"
     fi
 }
 
@@ -563,15 +552,15 @@ stop_services() {
             fi
             
             if ! $redis_stopped && command -v service &> /dev/null; then
-                if service redis-server stop 2>/dev/null || service redis stop 2>/dev/null; then
-                    # 等待一下再检查进程是否真的停止了
-                    sleep 2
-                    if ! pgrep -x "redis-server" > /dev/null; then
-                        redis_stopped=true
-                        log_info "Redis服务已通过service停止"
-                    else
-                        log_warn "service命令执行成功但Redis进程仍在运行"
-                    fi
+                SERVICE_RESULT=$(service redis-server stop 2>&1 || service redis stop 2>&1 || true)
+                # 等待服务停止
+                sleep 3
+                if ! pgrep -x "redis-server" > /dev/null; then
+                    redis_stopped=true
+                    log_info "Redis服务已通过service停止"
+                else
+                    # 某些情况下 service 命令返回成功但进程仍在运行，这是正常的
+                    log_info "service 命令执行完成，检查进程状态..."
                 fi
             fi
             
@@ -937,31 +926,31 @@ check_status() {
 
 # 显示帮助信息
 show_help() {
-    echo "MySQL和Redis管理脚本"
-    echo "用法: $0 [选项]"
-    echo ""
-    echo "选项:"
-    echo "  install          安装MySQL和Redis"
-    echo "  config           处理配置文件（替换环境变量）"
-    echo "  init             初始化数据库（创建数据库、用户、导入SQL）"
-    echo "  start            启动服务"
-    echo "  stop             停止服务"
-    echo "  restart          重启服务"
-    echo "  status           检查服务状态"
-    echo "  help             显示此帮助信息"
-    echo ""
-    echo "使用示例:"
-    echo "  $0 install       # 安装MySQL和Redis"
-    echo "  $0 start         # 启动所有服务"
-    echo "  $0 init          # 初始化数据库"
-    echo "  $0 status        # 查看服务状态"
-    echo "  $0 restart       # 重启所有服务"
-    echo ""
-    echo "注意事项:"
-    echo "  - 请确保.env文件存在并配置正确"
-    echo "  - 首次使用请先运行 install 安装服务"
-    echo "  - 数据库初始化需要MySQL服务正在运行"
-    echo "  - 配置文件位于 data/mysql/mysql.cnf 和 data/redis/redis.conf"
+    printf "${BLUE}=== MySQL和Redis管理脚本 ===${NC}\n"
+    printf "${GREEN}用法:${NC} $0 [选项]\n"
+    printf "\n"
+    printf "${YELLOW}选项:${NC}\n"
+    printf "  ${GREEN}install${NC}          安装MySQL和Redis\n"
+    printf "  ${GREEN}config${NC}           处理配置文件（替换环境变量）\n"
+    printf "  ${GREEN}init${NC}             初始化数据库（创建数据库、用户、导入SQL）\n"
+    printf "  ${GREEN}start${NC}            启动服务\n"
+    printf "  ${GREEN}stop${NC}             停止服务\n"
+    printf "  ${GREEN}restart${NC}          重启服务\n"
+    printf "  ${GREEN}status${NC}           检查服务状态\n"
+    printf "  ${GREEN}help${NC}             显示此帮助信息\n"
+    printf "\n"
+    printf "${YELLOW}使用示例:${NC}\n"
+    printf "  ${BLUE}$0 install${NC}       # 安装MySQL和Redis\n"
+    printf "  ${BLUE}$0 start${NC}         # 启动所有服务\n"
+    printf "  ${BLUE}$0 init${NC}          # 初始化数据库\n"
+    printf "  ${BLUE}$0 status${NC}        # 查看服务状态\n"
+    printf "  ${BLUE}$0 restart${NC}       # 重启所有服务\n"
+    printf "\n"
+    printf "${RED}注意事项:${NC}\n"
+    printf "  - 请确保${YELLOW}.env${NC}文件存在并配置正确\n"
+    printf "  - 首次使用请先运行 ${GREEN}install${NC} 安装服务\n"
+    printf "  - 数据库初始化需要${GREEN}MySQL服务正在运行${NC}\n"
+    printf "  - 配置文件位于 ${BLUE}data/mysql/mysql.cnf${NC} 和 ${BLUE}data/redis/redis.conf${NC}\n"
 }
 
 # 主函数

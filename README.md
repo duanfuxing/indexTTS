@@ -23,3 +23,24 @@ conda create --prefix conda_envs/index-tts-vllm python=3.12
 conda init bash && source /root/.bashrc 
 conda activate conda_envs/indexTTS
 ```
+
+#### 4. 安装依赖
+```bash
+# 使用清华源加速安装
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
+
+# 安装特定版本的 transformers（如果需要） TODO 待验证是否需要删除
+# pip install transformers==4.51.1
+```
+
+#### 5. 下载模型
+```bash
+# Index-TTS
+modelscope download --model kusuriuri/Index-TTS-vLLM --local_dir ./checkpoints/Index-TTS-vLLM
+
+# IndexTTS-1.5
+modelscope download --model kusuriuri/Index-TTS-1.5-vLLM --local_dir ./checkpoints/Index-TTS-1.5-vLLM
+
+# IndexTTS-2
+modelscope download --model kusuriuri/IndexTTS-2-vLLM --local_dir ./checkpoints/IndexTTS-2-vLLM
+```

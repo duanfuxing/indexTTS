@@ -1,4 +1,13 @@
 import os
+# 添加vllm目录到Python路径
+import sys
+vllm_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'vllm')
+if vllm_path not in sys.path:
+    sys.path.insert(0, vllm_path)
+
+# 导入patch_vllm进行monkey patch（必须在其他导入之前）
+import patch_vllm
+
 import asyncio
 import io
 import traceback
@@ -39,8 +48,6 @@ class OnlineTTSRequest(BaseModel):
     text: str = Field(..., max_length=300, description="要合成的文本（最多300字符）")
     voice: str = Field(..., description="音色名称")
     seed: Optional[int] = Field(8, description="随机种子")
-    # SRT字幕文件生成是必须的，不再作为可选参数
-    # return_srt: Optional[bool] = Field(False, description="是否返回字幕文件")
 
 class LongTextTTSRequest(BaseModel):
     text: str = Field(..., max_length=50000, description="要合成的文本（最多50000字符）")
@@ -105,19 +112,20 @@ async def lifespan(app: FastAPI):
     global tts, db_manager, redis_manager, tos_uploader
     
     # 初始化TTS模型
-    cfg_path = os.path.join(args.model_dir, "config.yaml")
-    tts = IndexTTS(model_dir=args.model_dir, cfg_path=cfg_path, gpu_memory_utilization=args.gpu_memory_utilization)
+    tts = IndexTTS(model_dir=args.model_dir, gpu_memory_utilization=args.gpu_memory_utilization)
     
     # 加载音色配置
     current_file_path = os.path.abspath(__file__)
     cur_dir = os.path.dirname(current_file_path)
-    speaker_path = os.path.join(cur_dir, "assets/speaker.json")
+    # 修改speaker.json路径，指向vllm目录下的assets
+    vllm_dir = os.path.join(os.path.dirname(cur_dir), 'vllm')
+    speaker_path = os.path.join(vllm_dir, "assets/speaker.json")
     if os.path.exists(speaker_path):
         speaker_dict = json.load(open(speaker_path, 'r'))
         for speaker, audio_paths in speaker_dict.items():
             audio_paths_ = []
             for audio_path in audio_paths:
-                audio_paths_.append(os.path.join(cur_dir, audio_path))
+                audio_paths_.append(os.path.join(vllm_dir, audio_path))
             tts.registry_speaker(speaker, audio_paths_)
     
     # 初始化数据库
@@ -233,7 +241,9 @@ async def get_voices():
         
         current_file_path = os.path.abspath(__file__)
         cur_dir = os.path.dirname(current_file_path)
-        speaker_path = os.path.join(cur_dir, "assets/speaker.json")
+        # 修改speaker.json路径，指向vllm目录下的assets
+        vllm_dir = os.path.join(os.path.dirname(cur_dir), 'vllm')
+        speaker_path = os.path.join(vllm_dir, "assets/speaker.json")
         
         voice_data = None
         if os.path.exists(speaker_path):
@@ -372,191 +382,6 @@ async def online_tts(request: OnlineTTSRequest):
         
         raise HTTPException(status_code=500, detail=str(ex))
 
-@app.post("/tts/long-text/submit")
-async def submit_long_text_task(request: LongTextTTSRequest):
-    """提交长文本TTS任务端点"""
-    try:
-        global db_manager
-        
-        if not db_manager:
-            raise HTTPException(status_code=503, detail="Database service not available")
-        
-        # 创建长文本任务
-        task_id = await db_manager.create_long_text_task(
-            text=request.text,
-            voice=request.voice,
-            payload={
-                "metadata": request.metadata
-            },
-            callback_url=request.callback_url
-        )
-        
-        # 获取任务数据以添加到Redis队列
-        task_info = await db_manager.get_task(task_id)
-        if not task_info:
-            raise HTTPException(status_code=500, detail="Failed to retrieve created task")
-        
-        # 获取完整文本内容
-        full_text = await db_manager.get_task_text(task_info)
-        
-        task_data = {
-            "task_id": task_id,
-            "text": full_text,
-            "voice": request.voice,
-            "priority": request.priority,
-            "callback_url": request.callback_url,
-            "metadata": request.metadata
-        }
-        
-        # 根据优先级选择队列
-        queue_name = 'high_priority' if request.priority > 0 else 'long_text'
-        await redis_manager.push_task_to_queue(queue_name, task_data)
-        
-        logger.info(f"创建长文本TTS任务: {task_id}，已添加到队列: {queue_name}")
-        
-        return {
-            "task_id": task_id,
-            "status": "pending",
-            "message": "Task submitted successfully",
-            "text_length": len(request.text),
-            "estimated_processing_time": len(request.text) * 0.1  # 粗略估算
-        }
-        
-    except ValueError as ve:
-        raise HTTPException(status_code=400, detail=str(ve))
-    except Exception as ex:
-        logger.error(f"Submit long text task error: {ex}")
-        raise HTTPException(status_code=500, detail=str(ex))
-
-@app.get("/tts/long-text/status/{task_id}", response_model=TaskStatusResponse)
-async def get_long_text_task_status(task_id: str):
-    """查询长文本TTS任务状态端点"""
-    try:
-        global db_manager, redis_manager
-        
-        if not db_manager:
-            raise HTTPException(status_code=503, detail="Database service not available")
-        
-        # 优先从Redis缓存获取任务状态
-        if redis_manager:
-            cached_task = await redis_manager.get_task_status(task_id)
-            if cached_task:
-                return TaskStatusResponse(**cached_task)
-        
-        # 缓存未命中，从数据库获取
-        task_data = await db_manager.get_task_status(task_id)
-        
-        if not task_data:
-            raise HTTPException(status_code=404, detail="Task not found")
-        
-        # 将任务状态缓存到Redis
-        if redis_manager:
-            await redis_manager.set_task_status(task_id, task_data)
-        
-        return TaskStatusResponse(**task_data)
-        
-    except HTTPException:
-        raise
-    except Exception as ex:
-        logger.error(f"Get task status error: {ex}")
-        raise HTTPException(status_code=500, detail=str(ex))
-
-@app.get("/tts/long-text/result/{task_id}")
-async def get_long_text_task_result(task_id: str):
-    """获取长文本TTS任务结果端点（音频文件）"""
-    try:
-        global db_manager
-        
-        if not db_manager:
-            raise HTTPException(status_code=503, detail="Database service not available")
-        
-        task_data = await db_manager.get_task_status(task_id)
-        
-        if not task_data:
-            raise HTTPException(status_code=404, detail="Task not found")
-        
-        if task_data['status'] != 'completed':
-            raise HTTPException(status_code=400, detail=f"Task not completed, current status: {task_data['status']}")
-        
-        # 获取任务文件路径信息
-        file_paths = await db_manager.get_task_file_paths(task_id)
-        
-        if not file_paths or not file_paths.get('audio_file_path'):
-            raise HTTPException(status_code=404, detail="Audio file not found")
-        
-        # 从文件系统读取音频文件
-        try:
-            audio_data = db_manager.file_manager.read_audio_file(task_id)
-            
-            return Response(
-                content=audio_data,
-                media_type="audio/wav",
-                headers={
-                    "X-Task-ID": task_id,
-                    "X-Duration": str(task_data.get('duration', 0)),
-                    "X-File-Size": str(task_data.get('file_size', 0)),
-                    "Content-Disposition": f"attachment; filename={task_id}.wav"
-                }
-            )
-        except FileNotFoundError:
-            raise HTTPException(status_code=404, detail="Audio file not found on disk")
-        except Exception as e:
-            logger.error(f"Error reading audio file for task {task_id}: {e}")
-            raise HTTPException(status_code=500, detail="Error reading audio file")
-        
-    except HTTPException:
-        raise
-    except Exception as ex:
-        logger.error(f"Get task result error: {ex}")
-        raise HTTPException(status_code=500, detail=str(ex))
-
-@app.get("/tts/long-text/srt/{task_id}")
-async def get_long_text_task_srt(task_id: str):
-    """获取长文本TTS任务字幕文件端点"""
-    try:
-        global db_manager
-        
-        if not db_manager:
-            raise HTTPException(status_code=503, detail="Database service not available")
-        
-        task_data = await db_manager.get_task_status(task_id)
-        
-        if not task_data:
-            raise HTTPException(status_code=404, detail="Task not found")
-        
-        if task_data['status'] != 'completed':
-            raise HTTPException(status_code=400, detail=f"Task not completed, current status: {task_data['status']}")
-        
-        # 获取任务文件路径信息
-        file_paths = await db_manager.get_task_file_paths(task_id)
-        
-        if not file_paths or not file_paths.get('srt_file_path'):
-            raise HTTPException(status_code=404, detail="SRT file not found")
-        
-        # 从文件系统读取字幕文件
-        try:
-            srt_data = db_manager.file_manager.read_srt_file(task_id)
-            
-            return Response(
-                content=srt_data,
-                media_type="text/plain",
-                headers={
-                    "X-Task-ID": task_id,
-                    "Content-Disposition": f"attachment; filename={task_id}.srt"
-                }
-            )
-        except FileNotFoundError:
-            raise HTTPException(status_code=404, detail="SRT file not found on disk")
-        except Exception as e:
-            logger.error(f"Error reading SRT file for task {task_id}: {e}")
-            raise HTTPException(status_code=500, detail="Error reading SRT file")
-        
-    except HTTPException:
-        raise
-    except Exception as ex:
-        logger.error(f"Get task SRT error: {ex}")
-        raise HTTPException(status_code=500, detail=str(ex))
-
 # 保持原有的兼容性API
 @app.post("/tts", responses={
     200: {"content": {"application/octet-stream": {}}},
@@ -620,7 +445,7 @@ if __name__ == "__main__":
     host = os.getenv("API_HOST", "0.0.0.0")
     port = int(os.getenv("API_PORT", "6006"))
     model_dir = os.getenv("MODEL_DIR", "/path/to/IndexTeam/Index-TTS")
-    gpu_memory_utilization = float(os.getenv("GPU_MEMORY_UTILIZATION", "0.40"))
+    gpu_memory_utilization = float(os.getenv("GPU_MEMORY_UTILIZATION", "0.25"))
     
     # 创建args对象以保持兼容性
     class Args:

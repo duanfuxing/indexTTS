@@ -21,6 +21,15 @@ from pathlib import Path
 
 import soundfile as sf
 import requests
+
+# 添加vllm目录到Python路径
+vllm_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'vllm')
+if vllm_path not in sys.path:
+    sys.path.insert(0, vllm_path)
+
+# 导入patch_vllm进行monkey patch（必须在其他导入之前）
+import patch_vllm
+
 from indextts.infer_vllm import IndexTTS
 
 # 添加项目根目录到Python路径
@@ -66,23 +75,23 @@ class TTSTaskWorker:
         """初始化TTS模型和数据库连接"""
         try:
             # 初始化TTS模型
-            cfg_path = os.path.join(self.model_dir, "config.yaml")
             self.tts = IndexTTS(
                 model_dir=self.model_dir, 
-                cfg_path=cfg_path, 
                 gpu_memory_utilization=self.gpu_memory_utilization
             )
             
             # 加载音色配置
             current_file_path = os.path.abspath(__file__)
             cur_dir = os.path.dirname(current_file_path)
-            speaker_path = os.path.join(cur_dir, "assets/speaker.json")
+            # 修改speaker.json路径，指向vllm目录下的assets
+            vllm_dir = os.path.join(os.path.dirname(cur_dir), 'vllm')
+            speaker_path = os.path.join(vllm_dir, "assets/speaker.json")
             if os.path.exists(speaker_path):
                 speaker_dict = json.load(open(speaker_path, 'r'))
                 for speaker, audio_paths in speaker_dict.items():
                     audio_paths_ = []
                     for audio_path in audio_paths:
-                        audio_paths_.append(os.path.join(cur_dir, audio_path))
+                        audio_paths_.append(os.path.join(vllm_dir, audio_path))
                     self.tts.registry_speaker(speaker, audio_paths_)
                 logger.info(f"已加载 {len(speaker_dict)} 个音色")
             

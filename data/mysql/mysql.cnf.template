@@ -1,9 +1,9 @@
 [client]
-host=localhost
-port=3306
-user=root
-password=M4FkGoJN6fDB8TeMaK5d
-database=aigc_omni
+host=${MYSQL_HOST:-localhost}
+port=${MYSQL_PORT:-3306}
+user=${MYSQL_USER:-tts_user}
+password=${MYSQL_PASSWORD:-tts_password}
+database=${MYSQL_DATABASE:-tts_db}
 default-character-set=utf8mb4
 
 [mysql]
@@ -11,12 +11,12 @@ default-character-set=utf8mb4
 
 [mysqld]
 # 基本配置
-port=3306
+port=${MYSQL_PORT:-3306}
 bind-address=127.0.0.1
-datadir=/root/autodl-tmp/indexTTS/data/mysql
-socket=/root/autodl-tmp/indexTTS/data/mysql/mysql.sock
-pid-file=/root/autodl-tmp/indexTTS/data/mysql/mysql.pid
-tmpdir=/root/autodl-tmp/indexTTS/data/mysql/tmp
+datadir=${MYSQL_DATA_DIR}
+socket=${MYSQL_DATA_DIR}/mysql.sock
+pid-file=${MYSQL_DATA_DIR}/mysql.pid
+tmpdir=${MYSQL_DATA_DIR}/tmp
 
 # 字符集和时区
 character-set-server=utf8mb4
@@ -61,16 +61,16 @@ innodb_purge_threads=1
 innodb_thread_concurrency=0
 
 # 日志配置
-log_error=/root/autodl-tmp/indexTTS/data/mysql/error.log
+log_error=${MYSQL_DATA_DIR}/error.log
 slow_query_log=1
-slow_query_log_file=/root/autodl-tmp/indexTTS/data/mysql/slow.log
+slow_query_log_file=${MYSQL_DATA_DIR}/slow.log
 long_query_time=2
 log_queries_not_using_indexes=0
 log_slow_admin_statements=0
 log_slow_slave_statements=0
 
 # 二进制日志配置
-log_bin=/root/autodl-tmp/indexTTS/data/mysql/mysql-bin
+log_bin=${MYSQL_DATA_DIR}/mysql-bin
 binlog_format=ROW
 binlog_cache_size=32K
 max_binlog_size=100M
@@ -96,7 +96,7 @@ myisam_repair_threads=1
 
 # 复制配置
 server_id=1
-relay_log=/root/autodl-tmp/indexTTS/data/mysql/relay-bin
+relay_log=${MYSQL_DATA_DIR}/relay-bin
 relay_log_recovery=1
 slave_skip_errors=
 
