@@ -3,7 +3,7 @@ from typing import Optional
 
 class Config:
     # 数据库配置
-    MYSQL_HOST: str = os.getenv("MYSQL_HOST", "localhost")
+    MYSQL_HOST: str = os.getenv("MYSQL_HOST", "127.0.0.1")
     MYSQL_PORT: int = int(os.getenv("MYSQL_PORT", "3306"))
     MYSQL_USER: str = os.getenv("MYSQL_USER", "root")
     MYSQL_PASSWORD: str = os.getenv("MYSQL_PASSWORD", "")
@@ -13,9 +13,6 @@ class Config:
     @property
     def database_url(self) -> str:
         return f"mysql+aiomysql://{self.MYSQL_USER}:{self.MYSQL_PASSWORD}@{self.MYSQL_HOST}:{self.MYSQL_PORT}/{self.MYSQL_DATABASE}"
-    
-    # 如果需要直接设置DATABASE_URL，可以通过环境变量覆盖
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "")
     
     # Redis配置
     REDIS_HOST: str = os.getenv("REDIS_HOST", "localhost")
@@ -29,11 +26,6 @@ class Config:
     # 动态构建REDIS_URL，优先使用环境变量，否则根据其他Redis配置构建
     @property
     def redis_url(self) -> str:
-        # 如果直接设置了REDIS_URL环境变量，优先使用
-        env_redis_url = os.getenv("REDIS_URL")
-        if env_redis_url:
-            return env_redis_url
-        
         # 否则根据其他配置动态构建
         protocol = "rediss" if self.REDIS_SSL else "redis"
         
@@ -59,9 +51,7 @@ class Config:
     PORT: int = int(os.getenv('PORT', '6006'))
     
     # 文件存储配置
-    AUDIO_OUTPUT_DIR: str = os.getenv('AUDIO_OUTPUT_DIR', './storage/audio')
     TEXT_STORAGE_DIR: str = os.getenv('TEXT_STORAGE_DIR', './storage/tasks')
-    SRT_OUTPUT_DIR: str = os.getenv('SRT_OUTPUT_DIR', './storage/srt')
     
     # 文本长度限制
     MAX_ONLINE_TEXT_LENGTH: int = int(os.getenv('MAX_ONLINE_TEXT_LENGTH', '300'))

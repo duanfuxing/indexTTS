@@ -2,11 +2,11 @@ import os
 import tos
 import time
 import threading
-import logging
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from tos import DataTransferType
 from tos.utils import SizeAdapter, MergeProcess
 from dotenv import load_dotenv
+from utils.logger import IndexTTSLogger
 
 # 加载环境变量
 load_dotenv()
@@ -19,7 +19,7 @@ class TOSUploader:
             tos_config (dict): TOS配置字典，包含access_key, secret_key, endpoint, region, bucket等
         """
         # 初始化日志器
-        self.logger = logging.getLogger(__name__)
+        self.logger = IndexTTSLogger.get_module_logger(__file__)
         
         try:
             self.client = tos.TosClientV2(
@@ -71,11 +71,12 @@ class TOSUploader:
         
         return cls(tos_config)
 
-    def upload(self, local_path: str, max_retries: int = 3) -> str:
+    def upload(self, local_path: str, task_id: str = None, max_retries: int = 3) -> str:
         """上传视频到TOS并在上传成功
         
         Args:
             local_path (str): 本地文件路径
+            task_id (str): 任务ID，用于构建目录结构
             max_retries (int): 最大重试次数，默认3次
         
         Returns:
@@ -96,7 +97,7 @@ class TOSUploader:
             try:
                 if attempt > 0:
                     self.logger.info(f"第 {attempt + 1} 次重试上传文件: {local_path}")
-                return self._do_upload(local_path)
+                return self._do_upload(local_path, task_id)
             except Exception as e:
                 last_exception = e
                 if attempt < max_retries - 1:
@@ -108,14 +109,18 @@ class TOSUploader:
         
         raise last_exception
     
-    def _do_upload(self, local_path: str) -> str:
+    def _do_upload(self, local_path: str, task_id: str = None) -> str:
         """执行实际的上传操作"""
         try:
 
             # 获取文件名
             file_name = os.path.basename(local_path)
-            # 生成对象键名：目录/文件名
-            object_key = f"{self.remote_path}/{file_name}"
+            
+            # 生成对象键名：如果有task_id，则使用 remote_path/task_id/file_name 结构
+            if task_id:
+                object_key = f"{self.remote_path}/{task_id}/{file_name}"
+            else:
+                object_key = f"{self.remote_path}/{file_name}"
             
             # 获取文件大小用于进度显示
             total_size = os.path.getsize(local_path)
@@ -177,11 +182,12 @@ class TOSUploader:
             self.logger.error(f"上传过程中发生未知错误: {str(e)}")
             raise
 
-    def multipart_upload(self, local_path: str, part_size: int = 20 * 1024 * 1024, max_workers: int = 8, max_retries: int = 3) -> str:
+    def multipart_upload(self, local_path: str, task_id: str = None, part_size: int = 20 * 1024 * 1024, max_workers: int = 8, max_retries: int = 3) -> str:
         """分片上传视频到TOS并在上传成功
         
         Args:
             local_path (str): 本地文件路径
+            task_id (str): 任务ID，用于构建目录结构
             part_size (int): 分片大小，默认20MB
             max_workers (int): 最大并发线程数，默认8
             max_retries (int): 单个分片最大重试次数，默认3
@@ -204,7 +210,13 @@ class TOSUploader:
 
             # 获取文件信息
             file_name = os.path.basename(local_path)
-            object_key = f"{self.remote_path}/{file_name}"
+            
+            # 生成对象键名：如果有task_id，则使用 remote_path/task_id/file_name 结构
+            if task_id:
+                object_key = f"{self.remote_path}/{task_id}/{file_name}"
+            else:
+                object_key = f"{self.remote_path}/{file_name}"
+                
             total_size = os.path.getsize(local_path)
             
             self.logger.info(f"开始分片上传文件到TOS: {object_key}, 文件大小: {total_size} bytes")

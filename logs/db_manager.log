@@ -1,0 +1,91 @@
+2025-10-10 11:10:40 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:10:40 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:12:03 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:141] - create_online_task() - 已创建在线TTS任务: of6e1IU9
+2025-10-10 11:12:05 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:317] - update_task_files() - 已更新任务 of6e1IU9 的文件路径
+2025-10-10 11:12:05 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:272] - update_task_status() - 已更新任务 of6e1IU9 状态为 completed
+2025-10-10 11:27:36 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-10 11:27:50 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:27:50 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:29:10 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:29:10 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:30:10 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:30:10 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:31:53 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:31:53 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:32:54 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:139] - create_online_task() - 已创建在线TTS任务: f02cf47a7ab846b79de9c5796e9c2117
+2025-10-10 11:33:00 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 f02cf47a7ab846b79de9c5796e9c2117 的文件路径
+2025-10-10 11:33:00 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 f02cf47a7ab846b79de9c5796e9c2117 状态为 completed
+2025-10-10 11:33:27 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:139] - create_online_task() - 已创建在线TTS任务: 59cfbeb5bac2406e87f6c82d62286e94
+2025-10-10 11:33:29 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 59cfbeb5bac2406e87f6c82d62286e94 的文件路径
+2025-10-10 11:33:29 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 59cfbeb5bac2406e87f6c82d62286e94 状态为 completed
+2025-10-10 11:35:34 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-10 11:35:42 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:35:42 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:36:30 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:36:30 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:36:34 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-10 11:37:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:37:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:37:32 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-10 11:38:11 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:38:11 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:39:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-10 11:39:43 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:39:43 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:40:44 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:139] - create_online_task() - 已创建在线TTS任务: 046f85a8ab564747875cc8423a4d1b95
+2025-10-10 11:40:48 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 046f85a8ab564747875cc8423a4d1b95 的文件路径
+2025-10-10 11:40:48 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 046f85a8ab564747875cc8423a4d1b95 状态为 completed
+2025-10-10 11:45:11 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-10 11:45:26 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 11:45:26 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 11:46:26 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:139] - create_online_task() - 已创建在线TTS任务: 551440d25072450e895184d0c2b0383a
+2025-10-10 11:46:29 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 551440d25072450e895184d0c2b0383a 的文件路径
+2025-10-10 11:46:29 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 551440d25072450e895184d0c2b0383a 状态为 completed
+2025-10-10 12:22:10 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 12:22:10 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 12:53:03 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:165] - create_long_text_task() - 已创建长文本TTS任务: fb018b0fbb42406e9cdd67613a6a3211
+2025-10-10 12:53:04 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:165] - create_long_text_task() - 已创建长文本TTS任务: 0d979b2bb4a04545b5896bedccbaaedf
+2025-10-10 12:53:04 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:165] - create_long_text_task() - 已创建长文本TTS任务: 0d15ad87c1a044ba901b3f9bb6e7c09a
+2025-10-10 13:07:46 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 13:07:46 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 13:07:46 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 fb018b0fbb42406e9cdd67613a6a3211 进行处理
+2025-10-10 13:07:46 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 fb018b0fbb42406e9cdd67613a6a3211 状态为 failed
+2025-10-10 13:07:46 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 0d979b2bb4a04545b5896bedccbaaedf 进行处理
+2025-10-10 13:07:46 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 0d979b2bb4a04545b5896bedccbaaedf 状态为 failed
+2025-10-10 13:07:46 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 0d15ad87c1a044ba901b3f9bb6e7c09a 进行处理
+2025-10-10 13:07:46 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 0d15ad87c1a044ba901b3f9bb6e7c09a 状态为 failed
+2025-10-10 13:09:08 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:165] - create_long_text_task() - 已创建长文本TTS任务: d52f4e01d1294ebe9423dcedcf44762c
+2025-10-10 13:09:09 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 d52f4e01d1294ebe9423dcedcf44762c 进行处理
+2025-10-10 13:09:09 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 d52f4e01d1294ebe9423dcedcf44762c 状态为 failed
+2025-10-10 13:09:45 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-10 13:11:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 13:11:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 13:11:25 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:165] - create_long_text_task() - 已创建长文本TTS任务: 9d28ae0652cd4a988fe184a2a304285d
+2025-10-10 13:11:26 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 9d28ae0652cd4a988fe184a2a304285d 进行处理
+2025-10-10 13:11:28 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 9d28ae0652cd4a988fe184a2a304285d 的文件路径
+2025-10-10 13:11:28 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 9d28ae0652cd4a988fe184a2a304285d 状态为 completed
+2025-10-10 13:12:03 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:165] - create_long_text_task() - 已创建长文本TTS任务: 7f685589af244165a16b1398f2d6800c
+2025-10-10 13:12:05 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 7f685589af244165a16b1398f2d6800c 进行处理
+2025-10-10 13:12:05 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 7f685589af244165a16b1398f2d6800c 的文件路径
+2025-10-10 13:12:05 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 7f685589af244165a16b1398f2d6800c 状态为 completed
+2025-10-10 13:36:28 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-10 13:36:45 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 13:36:45 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 13:38:15 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:165] - create_long_text_task() - 已创建长文本TTS任务: 8ef17c469d0e4b0e969251342f838c16
+2025-10-10 13:38:17 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 8ef17c469d0e4b0e969251342f838c16 进行处理
+2025-10-10 13:38:18 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 8ef17c469d0e4b0e969251342f838c16 的文件路径
+2025-10-10 13:38:18 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 8ef17c469d0e4b0e969251342f838c16 状态为 completed
+2025-10-10 13:59:57 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 13:59:57 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 14:00:20 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-10 14:00:20 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-10 14:01:51 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:139] - create_online_task() - 已创建在线TTS任务: 7a5186872526488e95de0bc6f8fe69fe
+2025-10-10 14:01:53 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 7a5186872526488e95de0bc6f8fe69fe 进行处理
+2025-10-10 14:01:53 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 7a5186872526488e95de0bc6f8fe69fe 的文件路径
+2025-10-10 14:01:53 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 7a5186872526488e95de0bc6f8fe69fe 状态为 completed
+2025-10-10 14:01:53 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:165] - create_long_text_task() - 已创建长文本TTS任务: 29889eb0ed1341d68675290d3167cd1e
+2025-10-10 14:01:54 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 7a5186872526488e95de0bc6f8fe69fe 的文件路径
+2025-10-10 14:01:54 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 7a5186872526488e95de0bc6f8fe69fe 状态为 completed
+2025-10-10 14:01:54 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:220] - get_next_task() - 已获取任务 29889eb0ed1341d68675290d3167cd1e 进行处理
+2025-10-10 14:01:56 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 29889eb0ed1341d68675290d3167cd1e 的文件路径
+2025-10-10 14:01:56 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 29889eb0ed1341d68675290d3167cd1e 状态为 completed

@@ -15,6 +15,7 @@ NC='\033[0m' # 无颜色
 # 配置
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+ENV_FILE="${ENV_FILE:-${PROJECT_ROOT}/.env}"
 SERVER_DIR="$PROJECT_ROOT/server"
 DATA_DIR="$PROJECT_ROOT/data"
 MYSQL_DATA_DIR="$DATA_DIR/mysql"
@@ -30,149 +31,367 @@ log_warn() { echo -e "${YELLOW}[警告]${NC} $1"; }
 log_error() { echo -e "${RED}[错误]${NC} $1"; }
 log_step() { echo -e "${BLUE}[步骤]${NC} $1"; }
 
-# 加载环境变量
+# 加载环境变量并验证必需配置
 load_env() {
-    if [ -f "$PROJECT_ROOT/.env" ]; then
-        export $(cat "$PROJECT_ROOT/.env" | grep -v '^#' | grep -v '^$' | xargs)
+    if [ -f "$ENV_FILE" ]; then
+        # 使用source方式加载环境变量，保留空值
+        set -a  # 自动导出所有变量
+        source "$ENV_FILE"
+        set +a  # 关闭自动导出
     else
         log_error ".env文件不存在，请先创建.env文件"
         exit 1
     fi
+    
+    # 验证MySQL必需配置
+    local mysql_missing=()
+    [ -z "$MYSQL_HOST" ] && mysql_missing+=("MYSQL_HOST")
+    [ -z "$MYSQL_PORT" ] && mysql_missing+=("MYSQL_PORT")
+    [ -z "$MYSQL_USER" ] && mysql_missing+=("MYSQL_USER")
+    [ -z "$MYSQL_PASSWORD" ] && mysql_missing+=("MYSQL_PASSWORD")
+    [ -z "$MYSQL_DATABASE" ] && mysql_missing+=("MYSQL_DATABASE")
+    
+    # 验证Redis必需配置
+    local redis_missing=()
+    [ -z "$REDIS_HOST" ] && redis_missing+=("REDIS_HOST")
+    [ -z "$REDIS_PORT" ] && redis_missing+=("REDIS_PORT")
+    [ -z "$REDIS_USER" ] && redis_missing+=("REDIS_USER")
+    [ -z "$REDIS_PASSWORD" ] && redis_missing+=("REDIS_PASSWORD")
+    [ -z "$REDIS_DB" ] && redis_missing+=("REDIS_DB")
+    
+    # 报告缺失的配置
+    local has_error=false
+    if [ ${#mysql_missing[@]} -gt 0 ]; then
+        log_error "MySQL配置缺失以下必需变量:"
+        for var in "${mysql_missing[@]}"; do
+            log_error "  - $var"
+        done
+        has_error=true
+    fi
+    
+    if [ ${#redis_missing[@]} -gt 0 ]; then
+        log_error "Redis配置缺失以下必需变量:"
+        for var in "${redis_missing[@]}"; do
+            log_error "  - $var"
+        done
+        has_error=true
+    fi
+    
+    if [ "$has_error" = true ]; then
+        log_error "请在.env文件中补充所有必需的配置变量"
+        exit 1
+    fi
+    
+    log_info "环境变量验证通过"
 }
 
 # 检查服务是否已安装
 check_mysql_installed() { command -v mysql &> /dev/null; }
 check_redis_installed() { command -v redis-server &> /dev/null; }
 
+# 卸载服务
+uninstall_services() {
+    log_step "卸载MySQL和Redis服务..."
+    
+    local mysql_uninstalled=false
+    local redis_uninstalled=false
+    
+    # 停止服务
+    if pgrep -x "mysqld" > /dev/null || pgrep -x "redis-server" > /dev/null; then
+        log_info "正在停止运行中的服务..."
+        stop_services
+    fi
+    
+    # 卸载MySQL
+    if check_mysql_installed; then
+        log_info "卸载MySQL..."
+        if apt-get remove --purge -y mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*; then
+            log_info "MySQL卸载成功"
+            mysql_uninstalled=true
+        else
+            log_warn "MySQL卸载可能不完整"
+        fi
+        
+        # 清理MySQL数据目录
+        if [ -d "/var/lib/mysql" ]; then
+            log_info "清理MySQL数据目录..."
+            rm -rf /var/lib/mysql
+        fi
+        
+        # 清理MySQL配置文件
+        if [ -d "/etc/mysql" ]; then
+            log_info "清理MySQL配置目录..."
+            rm -rf /etc/mysql
+        fi
+    else
+        log_info "MySQL未安装，跳过卸载"
+        mysql_uninstalled=true
+    fi
+    
+    # 卸载Redis
+    if check_redis_installed; then
+        log_info "卸载Redis..."
+        if apt-get remove --purge -y redis-server redis-tools; then
+            log_info "Redis卸载成功"
+            redis_uninstalled=true
+        else
+            log_warn "Redis卸载可能不完整"
+        fi
+        
+        # 清理Redis数据目录
+        if [ -d "/var/lib/redis" ]; then
+            log_info "清理Redis数据目录..."
+            rm -rf /var/lib/redis
+        fi
+        
+        # 清理Redis配置文件
+        if [ -f "/etc/redis/redis.conf" ]; then
+            log_info "清理Redis配置文件..."
+            rm -f /etc/redis/redis.conf
+        fi
+    else
+        log_info "Redis未安装，跳过卸载"
+        redis_uninstalled=true
+    fi
+    
+    # 清理包缓存
+    apt-get autoremove -y
+    apt-get autoclean
+    
+    if $mysql_uninstalled && $redis_uninstalled; then
+        log_info "MySQL和Redis卸载完成"
+        return 0
+    else
+        log_warn "部分服务卸载失败"
+        return 1
+    fi
+}
+
+# 根据.env配置修改MySQL配置文件
+configure_mysql_from_env() {
+    log_step "配置MySQL..."
+    
+    # 确保.env文件已加载
+    load_env
+    
+    local mysql_config_file="/etc/mysql/mysql.conf.d/mysqld.cnf"
+    
+    if [ ! -f "$mysql_config_file" ]; then
+        log_error "MySQL配置文件不存在: $mysql_config_file"
+        return 1
+    fi
+    
+    # 备份原配置文件
+    cp "$mysql_config_file" "$mysql_config_file.backup.$(date +%Y%m%d_%H%M%S)"
+    log_info "已备份原配置文件"
+    
+    # 修改配置
+    log_info "修改MySQL配置..."
+    
+    # 设置端口
+    if [ -n "$MYSQL_PORT" ]; then
+        if grep -q "^port" "$mysql_config_file"; then
+            sed -i "s/^port.*/port = $MYSQL_PORT/" "$mysql_config_file"
+        else
+            echo "port = $MYSQL_PORT" >> "$mysql_config_file"
+        fi
+        log_info "设置端口: $MYSQL_PORT"
+    fi
+    
+    # 设置绑定地址
+    if [ -n "$MYSQL_HOST" ] && [ "$MYSQL_HOST" != "localhost" ]; then
+        if grep -q "^bind-address" "$mysql_config_file"; then
+            sed -i "s/^bind-address.*/bind-address = $MYSQL_HOST/" "$mysql_config_file"
+        else
+            echo "bind-address = $MYSQL_HOST" >> "$mysql_config_file"
+        fi
+        log_info "设置绑定地址: $MYSQL_HOST"
+    else
+        # 默认绑定到localhost
+        if grep -q "^bind-address" "$mysql_config_file"; then
+            sed -i "s/^bind-address.*/bind-address = 127.0.0.1/" "$mysql_config_file"
+        else
+            echo "bind-address = 127.0.0.1" >> "$mysql_config_file"
+        fi
+        log_info "设置绑定地址: 127.0.0.1"
+    fi
+    
+    # 添加一些基本的性能配置
+    if ! grep -q "max_connections" "$mysql_config_file"; then
+        echo "max_connections = 200" >> "$mysql_config_file"
+    fi
+    
+    if ! grep -q "innodb_buffer_pool_size" "$mysql_config_file"; then
+        echo "innodb_buffer_pool_size = 128M" >> "$mysql_config_file"
+    fi
+    
+    log_info "MySQL配置完成"
+}
+
+# 根据.env配置修改Redis配置文件
+configure_redis_from_env() {
+    log_step "配置Redis..."
+    
+    # 确保.env文件已加载
+    load_env
+    
+    local redis_config_file="/etc/redis/redis.conf"
+    
+    if [ ! -f "$redis_config_file" ]; then
+        log_error "Redis配置文件不存在: $redis_config_file"
+        return 1
+    fi
+    
+    # 备份原配置文件
+    cp "$redis_config_file" "$redis_config_file.backup.$(date +%Y%m%d_%H%M%S)"
+    log_info "已备份原配置文件"
+    
+    # 修改配置
+    log_info "修改Redis配置..."
+    
+    # 设置端口
+    if [ -n "$REDIS_PORT" ]; then
+        if grep -q "^port" "$redis_config_file"; then
+            sed -i "s/^port.*/port $REDIS_PORT/" "$redis_config_file"
+        else
+            echo "port $REDIS_PORT" >> "$redis_config_file"
+        fi
+        log_info "设置端口: $REDIS_PORT"
+    fi
+    
+    # 设置绑定地址
+    if [ -n "$REDIS_HOST" ] && [ "$REDIS_HOST" != "localhost" ]; then
+        if grep -q "^bind" "$redis_config_file"; then
+            sed -i "s/^bind.*/bind $REDIS_HOST/" "$redis_config_file"
+        else
+            echo "bind $REDIS_HOST" >> "$redis_config_file"
+        fi
+        log_info "设置绑定地址: $REDIS_HOST"
+    else
+        # 默认绑定到localhost
+        if grep -q "^bind" "$redis_config_file"; then
+            sed -i "s/^bind.*/bind 127.0.0.1/" "$redis_config_file"
+        else
+            echo "bind 127.0.0.1" >> "$redis_config_file"
+        fi
+        log_info "设置绑定地址: 127.0.0.1"
+    fi
+    
+    # 设置密码
+    if [ -n "$REDIS_PASSWORD" ]; then
+        if grep -q "^requirepass" "$redis_config_file"; then
+            sed -i "s/^requirepass.*/requirepass $REDIS_PASSWORD/" "$redis_config_file"
+        else
+            echo "requirepass $REDIS_PASSWORD" >> "$redis_config_file"
+        fi
+        log_info "设置密码认证"
+    fi
+    
+    # 设置用户配置
+    if [ -n "$REDIS_PASSWORD" ]; then
+        local user_config="user $REDIS_USER on >$REDIS_PASSWORD ~* +@all"
+        if grep -q "^user $REDIS_USER" "$redis_config_file"; then
+            sed -i "/^user $REDIS_USER/c\\$user_config" "$redis_config_file"
+        else
+            echo "$user_config" >> "$redis_config_file"
+        fi
+        log_info "设置用户配置: $REDIS_USER"
+    fi
+    
+    # 设置数据库数量
+    if [ -n "$REDIS_DB" ] && [ "$REDIS_DB" -gt 0 ]; then
+        local databases=$((REDIS_DB + 1))
+        if grep -q "^databases" "$redis_config_file"; then
+            sed -i "s/^databases.*/databases $databases/" "$redis_config_file"
+        else
+            echo "databases $databases" >> "$redis_config_file"
+        fi
+        log_info "设置数据库数量: $databases"
+    fi
+    
+    # 启用持久化
+    if ! grep -q "^save" "$redis_config_file"; then
+        echo "save 900 1" >> "$redis_config_file"
+        echo "save 300 10" >> "$redis_config_file"
+        echo "save 60 10000" >> "$redis_config_file"
+    fi
+    
+    log_info "Redis配置完成"
+}
+
 # 安装服务
 install_services() {
     log_step "安装MySQL和Redis..."
     
-    # 根据操作系统类型安装
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        # macOS
-        if command -v brew &> /dev/null; then
-            log_info "使用Homebrew安装服务..."
-            
-            if ! check_mysql_installed; then
-                log_info "安装MySQL..."
-                if brew install mysql; then
-                    log_info "MySQL安装成功"
-                else
-                    log_error "MySQL安装失败"
-                    exit 1
-                fi
-            else
-                log_info "MySQL已安装"
-            fi
-            
-            if ! check_redis_installed; then
-                log_info "安装Redis..."
-                if brew install redis; then
-                    log_info "Redis安装成功"
-                else
-                    log_error "Redis安装失败"
-                    exit 1
-                fi
-            else
-                log_info "Redis已安装"
-            fi
-        else
-            log_error "未找到Homebrew，请先安装Homebrew: /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+    # 检查是否已安装服务，如果已安装则询问是否卸载
+    local need_uninstall=false
+    if check_mysql_installed || check_redis_installed; then
+        echo ""
+        log_warn "检测到系统中已安装MySQL或Redis服务"
+        if check_mysql_installed; then
+            log_info "已安装的服务: MySQL"
+        fi
+        if check_redis_installed; then
+            log_info "已安装的服务: Redis"
+        fi
+        echo ""
+        log_warn "为了确保配置正确，建议先卸载现有服务再重新安装"
+        echo -n "是否要卸载现有的MySQL和Redis服务？(y/N): "
+        read -r response
+        case "$response" in
+            [yY][eE][sS]|[yY])
+                need_uninstall=true
+                ;;
+            *)
+                log_info "跳过卸载，继续安装过程..."
+                ;;
+        esac
+    fi
+    
+    # 如果用户选择卸载，则先卸载现有服务
+    if $need_uninstall; then
+        uninstall_services
+        if [ $? -ne 0 ]; then
+            log_error "卸载失败，安装过程中止"
             exit 1
         fi
-    elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-        # Linux - Docker环境，只使用service命令
-        if command -v apt-get &> /dev/null; then
-            log_info "使用apt-get安装服务..."
-            
-            # 更新包列表
-            if ! apt-get update; then
-                log_error "更新包列表失败"
+    fi
+    
+    # Ubuntu环境安装
+    if command -v apt-get &> /dev/null; then
+        log_info "使用apt-get安装服务..."
+        
+        # 更新包列表
+        if ! apt-get update; then
+            log_error "更新包列表失败"
+            exit 1
+        fi
+        
+        if ! check_mysql_installed; then
+            log_info "安装MySQL..."
+            if apt-get install -y mysql-server; then
+                log_info "MySQL安装成功"
+            else
+                log_error "MySQL安装失败"
                 exit 1
             fi
-            
-            if ! check_mysql_installed; then
-                log_info "安装MySQL..."
-                if apt-get install -y mysql-server; then
-                    log_info "MySQL安装成功"
-                else
-                    log_error "MySQL安装失败"
-                    exit 1
-                fi
+        else
+            log_info "MySQL已安装"
+        fi
+        
+        if ! check_redis_installed; then
+            log_info "安装Redis..."
+            if apt-get install -y redis-server; then
+                log_info "Redis安装成功"
             else
-                log_info "MySQL已安装"
-            fi
-            
-            if ! check_redis_installed; then
-                log_info "安装Redis..."
-                if apt-get install -y redis-server; then
-                    log_info "Redis安装成功"
-                else
-                    log_error "Redis安装失败"
-                    exit 1
-                fi
-            else
-                log_info "Redis已安装"
-            fi
-        elif command -v yum &> /dev/null; then
-            log_info "使用yum安装服务..."
-            
-            if ! check_mysql_installed; then
-                log_info "安装MySQL..."
-                if yum install -y mysql-server; then
-                    log_info "MySQL安装成功"
-                else
-                    log_error "MySQL安装失败"
-                    exit 1
-                fi
-            else
-                log_info "MySQL已安装"
-            fi
-            
-            if ! check_redis_installed; then
-                log_info "安装Redis..."
-                if yum install -y redis; then
-                    log_info "Redis安装成功"
-                else
-                    log_error "Redis安装失败"
-                    exit 1
-                fi
-            else
-                log_info "Redis已安装"
-            fi
-        elif command -v dnf &> /dev/null; then
-            log_info "使用dnf安装服务..."
-            
-            if ! check_mysql_installed; then
-                log_info "安装MySQL..."
-                if dnf install -y mysql-server; then
-                    log_info "MySQL安装成功"
-                else
-                    log_error "MySQL安装失败"
-                    exit 1
-                fi
-            else
-                log_info "MySQL已安装"
-            fi
-            
-            if ! check_redis_installed; then
-                log_info "安装Redis..."
-                if dnf install -y redis; then
-                    log_info "Redis安装成功"
-                else
-                    log_error "Redis安装失败"
-                    exit 1
-                fi
-            else
-                log_info "Redis已安装"
+                log_error "Redis安装失败"
+                exit 1
             fi
         else
-            log_error "不支持的Linux发行版，请手动安装MySQL和Redis"
-            exit 1
+            log_info "Redis已安装"
         fi
     else
-        log_error "不支持的操作系统: $OSTYPE"
+        log_error "不支持的Linux发行版，请手动安装MySQL和Redis"
         exit 1
     fi
     
@@ -180,24 +399,20 @@ install_services() {
     if check_mysql_installed && check_redis_installed; then
         log_info "MySQL和Redis安装完成"
         
+        # 根据.env配置修改MySQL配置文件
+        configure_mysql_from_env
+        
+        # 根据.env配置修改Redis配置文件
+        configure_redis_from_env
+        
         # 显示配置文件位置提示
         echo ""
         log_step "配置文件位置提示："
         log_info "MySQL配置文件位置："
-        log_info "  - 主配置文件: /etc/mysql/my.cnf"
-        log_info "  - 额外配置目录: /etc/mysql/mysql.conf.d/"
-        log_info "  - 数据目录: /var/lib/mysql/"
+        log_info "  - 主配置文件: /etc/mysql/mysql.conf.d/mysqld.cnf"
         log_info ""
         log_info "Redis配置文件位置："
         log_info "  - 主配置文件: /etc/redis/redis.conf"
-        log_info "  - 数据目录: /var/lib/redis/"
-        log_info ""
-        log_warn "重要提示："
-        log_warn "1. 请根据需要修改MySQL root密码"
-        log_warn "2. 请根据需要修改Redis密码和绑定地址"
-        log_warn "3. 修改配置后需要重启对应服务才能生效"
-        log_warn "4. 使用 'service mysql start/stop/restart' 管理MySQL服务"
-        log_warn "5. 使用 'service redis-server start/stop/restart' 管理Redis服务"
         echo ""
     else
         log_error "安装验证失败，请检查安装过程"
@@ -213,63 +428,12 @@ start_services() {
     if check_mysql_installed; then
         if ! pgrep -x "mysqld" > /dev/null; then
             log_info "启动MySQL服务..."
-            if [[ "$OSTYPE" == "darwin"* ]]; then
-                # macOS 优先使用 brew services，失败时尝试 mysql.server 或直接启动 mysqld
-                BREW_OUT=$(brew services start mysql 2>&1 || true)
-                if ! pgrep -x "mysqld" > /dev/null; then
-                    log_warn "brew services 启动MySQL失败或未生效: $BREW_OUT"
-                    if command -v mysql.server &> /dev/null; then
-                        log_info "尝试使用 mysql.server 启动 MySQL..."
-                        MYSQL_SERVER_OUT=$(mysql.server start 2>&1 || true)
-                        if ! pgrep -x "mysqld" > /dev/null; then
-                            log_warn "mysql.server 启动MySQL失败或未生效: $MYSQL_SERVER_OUT"
-                            if command -v mysqld &> /dev/null; then
-                                log_info "尝试直接启动 mysqld..."
-                                nohup mysqld >/dev/null 2>&1 &
-                                sleep 3
-                            else
-                                log_warn "未找到 mysqld 可执行文件，可能仅安装了客户端"
-                            fi
-                        fi
-                    else
-                        # 没有 mysql.server 时，直接尝试 mysqld
-                        if command -v mysqld &> /dev/null; then
-                            log_info "尝试直接启动 mysqld..."
-                            nohup mysqld >/dev/null 2>&1 &
-                            sleep 3
-                        fi
-                    fi
-                fi
-            elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-                # Linux - Docker环境，只使用service命令
-                log_info "使用service命令启动MySQL..."
-                if command -v service &> /dev/null; then
-                    SERVICE_OUT=$(service mysql start 2>&1 || service mysqld start 2>&1 || true)
-                    if ! pgrep -x "mysqld" > /dev/null; then
-                        log_warn "service命令启动MySQL失败或未生效: $SERVICE_OUT"
-                        log_info "尝试重启MySQL服务..."
-                        SERVICE_RESTART_OUT=$(service mysql restart 2>&1 || service mysqld restart 2>&1 || true)
-                        sleep 3
-                        if ! pgrep -x "mysqld" > /dev/null; then
-                            log_warn "重启MySQL服务失败: $SERVICE_RESTART_OUT"
-                            # 尝试直接启动mysqld
-                            if command -v mysqld &> /dev/null; then
-                                log_info "尝试直接启动 mysqld..."
-                                nohup mysqld >/dev/null 2>&1 &
-                                sleep 3
-                            fi
-                        fi
-                    fi
-                else
-                    log_warn "未找到service命令，尝试直接启动mysqld"
-                    if command -v mysqld &> /dev/null; then
-                        log_info "直接启动 mysqld..."
-                        nohup mysqld >/dev/null 2>&1 &
-                        sleep 3
-                    else
-                        log_error "无法启动MySQL服务"
-                    fi
-                fi
+            if command -v mysqld &> /dev/null; then
+                log_info "直接启动 mysqld..."
+                nohup mysqld --defaults-file=/etc/mysql/my.cnf >/dev/null 2>&1 &
+                sleep 3
+            else
+                log_error "未找到 mysqld 可执行文件"
             fi
             
             # 等待MySQL启动完成
@@ -295,48 +459,12 @@ start_services() {
     if check_redis_installed; then
         if ! pgrep -x "redis-server" > /dev/null; then
             log_info "启动Redis服务..."
-            if [[ "$OSTYPE" == "darwin"* ]]; then
-                REDIS_BREW_OUT=$(brew services start redis 2>&1 || true)
-                if ! pgrep -x "redis-server" > /dev/null; then
-                    log_warn "brew services 启动Redis失败或未生效: $REDIS_BREW_OUT"
-                    if command -v redis-server &> /dev/null; then
-                        log_info "尝试直接启动 redis-server..."
-                        nohup redis-server >/dev/null 2>&1 &
-                        sleep 2
-                    else
-                        log_warn "未找到 redis-server 可执行文件"
-                    fi
-                fi
-            elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-                # Linux - Docker环境，只使用service命令
-                log_info "使用service命令启动Redis..."
-                if command -v service &> /dev/null; then
-                    REDIS_SERVICE_OUT=$(service redis-server start 2>&1 || service redis start 2>&1 || true)
-                    if ! pgrep -x "redis-server" > /dev/null; then
-                        log_warn "service命令启动Redis失败或未生效: $REDIS_SERVICE_OUT"
-                        log_info "尝试重启Redis服务..."
-                        REDIS_RESTART_OUT=$(service redis-server restart 2>&1 || service redis restart 2>&1 || true)
-                        sleep 2
-                        if ! pgrep -x "redis-server" > /dev/null; then
-                            log_warn "重启Redis服务失败: $REDIS_RESTART_OUT"
-                            # 尝试直接启动redis-server
-                            if command -v redis-server &> /dev/null; then
-                                log_info "尝试直接启动 redis-server..."
-                                nohup redis-server >/dev/null 2>&1 &
-                                sleep 2
-                            fi
-                        fi
-                    fi
-                else
-                    log_warn "未找到service命令，尝试直接启动redis-server"
-                    if command -v redis-server &> /dev/null; then
-                        log_info "直接启动 redis-server..."
-                        nohup redis-server >/dev/null 2>&1 &
-                        sleep 2
-                    else
-                        log_error "无法启动Redis服务"
-                    fi
-                fi
+            if command -v redis-server &> /dev/null; then
+                log_info "直接启动 redis-server..."
+                nohup redis-server /etc/redis/redis.conf >/dev/null 2>&1 &
+                sleep 2
+            else
+                log_error "未找到 redis-server 可执行文件"
             fi
             
             # 等待Redis启动完成
@@ -357,6 +485,104 @@ start_services() {
     else
         log_warn "Redis未安装，无法启动"
     fi
+    
+    # 测试服务连接
+    log_step "测试服务连接..."
+    local mysql_test_passed=false
+    local redis_test_passed=false
+    
+    # 测试MySQL连接
+    if check_mysql_installed && pgrep -x "mysqld" > /dev/null; then
+        if test_mysql_connection; then
+            mysql_test_passed=true
+        else
+            log_warn "MySQL服务已启动但连接测试失败"
+        fi
+    elif check_mysql_installed; then
+        log_warn "MySQL已安装但服务未运行，跳过连接测试"
+    else
+        log_info "MySQL未安装，跳过连接测试"
+        mysql_test_passed=true  # 未安装时视为通过
+    fi
+    
+    # 测试Redis连接
+    if check_redis_installed && pgrep -x "redis-server" > /dev/null; then
+        if test_redis_connection; then
+            redis_test_passed=true
+        else
+            log_warn "Redis服务已启动但连接测试失败"
+        fi
+    elif check_redis_installed; then
+        log_warn "Redis已安装但服务未运行，跳过连接测试"
+    else
+        log_info "Redis未安装，跳过连接测试"
+        redis_test_passed=true  # 未安装时视为通过
+    fi
+    
+    # 总结测试结果
+    if $mysql_test_passed && $redis_test_passed; then
+        log_info "所有服务启动并连接测试通过"
+        return 0
+    else
+        log_warn "部分服务连接测试失败，请检查配置"
+        return 1
+    fi
+}
+
+# 测试MySQL连接
+test_mysql_connection() {
+    log_info "测试MySQL连接..."
+    
+    # 确保环境变量已加载
+    load_env
+    
+    # 使用mysql命令测试连接
+    if command -v mysql &> /dev/null; then
+        local test_result
+        if test_result=$(mysql -h"$MYSQL_HOST" -P"$MYSQL_PORT" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" -e "SELECT 1;" 2>&1); then
+            log_info "MySQL连接测试成功"
+            return 0
+        else
+            log_error "MySQL连接测试失败: $test_result"
+            return 1
+        fi
+    else
+        log_error "mysql客户端未安装，无法测试连接"
+        return 1
+    fi
+}
+
+# 测试Redis连接
+test_redis_connection() {
+    log_info "测试Redis连接..."
+    
+    # 确保环境变量已加载
+    load_env
+
+    if ! command -v redis-cli &> /dev/null; then
+        log_error "redis-cli客户端未安装，无法测试连接"
+        return 1
+    fi
+
+    local redis_cmd="redis-cli -u redis://$REDIS_USER:$REDIS_PASSWORD@$REDIS_HOST:$REDIS_PORT"
+    
+    local test_result
+    test_result=$($redis_cmd ping 2>&1)
+    local exit_code=$?
+
+    if [ $exit_code -ne 0 ]; then
+        log_error "Redis连接测试失败: $test_result"
+        return 1
+    fi
+
+    # 只要输出中包含 PONG 就算成功
+    if echo "$test_result" | grep -q "PONG"; then
+        log_info "Redis连接测试成功"
+        return 0
+    else
+        log_error "Redis连接测试失败，响应: $test_result"
+        return 1
+    fi
 }
 
 # 停止服务
@@ -369,57 +595,12 @@ stop_services() {
     # 停止MySQL
     if check_mysql_installed && pgrep -x "mysqld" > /dev/null; then
         log_info "停止MySQL服务..."
-        
-        if [[ "$OSTYPE" == "darwin"* ]]; then
-            # macOS
-            if brew services stop mysql; then
+        log_info "尝试直接终止MySQL进程..."
+        if pkill -TERM mysqld; then
+            sleep 3
+            if ! pgrep -x "mysqld" > /dev/null; then
                 mysql_stopped=true
-                log_info "MySQL服务已通过brew services停止"
-            else
-                log_warn "brew services停止MySQL失败，尝试其他方式"
-                # 尝试使用mysql.server
-                if command -v mysql.server &> /dev/null; then
-                    if mysql.server stop; then
-                        mysql_stopped=true
-                        log_info "MySQL服务已通过mysql.server停止"
-                    fi
-                fi
-                
-                # 如果还没停止，尝试直接杀进程
-                if ! $mysql_stopped && pgrep -x "mysqld" > /dev/null; then
-                    log_info "尝试直接终止MySQL进程..."
-                    if pkill -TERM mysqld; then
-                        sleep 3
-                        if ! pgrep -x "mysqld" > /dev/null; then
-                            mysql_stopped=true
-                            log_info "MySQL进程已终止"
-                        fi
-                    fi
-                fi
-            fi
-        elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-            # Linux - Docker环境，只使用service命令
-            log_info "使用service命令停止MySQL..."
-            if command -v service &> /dev/null; then
-                if service mysql stop 2>/dev/null || service mysqld stop 2>/dev/null; then
-                    sleep 2
-                    if ! pgrep -x "mysqld" > /dev/null; then
-                        mysql_stopped=true
-                        log_info "MySQL服务已通过service停止"
-                    fi
-                fi
-            fi
-            
-            # 如果还没停止，尝试直接杀进程
-            if ! $mysql_stopped && pgrep -x "mysqld" > /dev/null; then
-                log_info "尝试直接终止MySQL进程..."
-                if pkill -TERM mysqld; then
-                    sleep 3
-                    if ! pgrep -x "mysqld" > /dev/null; then
-                        mysql_stopped=true
-                        log_info "MySQL进程已终止"
-                    fi
-                fi
+                log_info "MySQL进程已终止"
             fi
         fi
         
@@ -448,51 +629,12 @@ stop_services() {
     # 停止Redis
     if check_redis_installed && pgrep -x "redis-server" > /dev/null; then
         log_info "停止Redis服务..."
-        if [[ "$OSTYPE" == "darwin"* ]]; then
-            # macOS
-            if brew services stop redis; then
+        log_info "尝试直接终止Redis进程..."
+        if pkill -TERM redis-server; then
+            sleep 2
+            if ! pgrep -x "redis-server" > /dev/null; then
                 redis_stopped=true
-                log_info "Redis服务已通过brew services停止"
-            else
-                log_warn "brew services停止Redis失败，尝试其他方式"
-                # 尝试直接杀进程
-                if pgrep -x "redis-server" > /dev/null; then
-                    log_info "尝试直接终止Redis进程..."
-                    if pkill -TERM redis-server; then
-                        sleep 2
-                        if ! pgrep -x "redis-server" > /dev/null; then
-                            redis_stopped=true
-                            log_info "Redis进程已终止"
-                        fi
-                    fi
-                fi
-            fi
-        elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-            # Linux - Docker环境，只使用service命令
-            log_info "使用service命令停止Redis..."
-            if command -v service &> /dev/null; then
-                SERVICE_RESULT=$(service redis-server stop 2>&1 || service redis stop 2>&1 || true)
-                # 等待服务停止
-                sleep 3
-                if ! pgrep -x "redis-server" > /dev/null; then
-                    redis_stopped=true
-                    log_info "Redis服务已通过service停止"
-                else
-                    # 某些情况下 service 命令返回成功但进程仍在运行，这是正常的
-                    log_info "service 命令执行完成，检查进程状态..."
-                fi
-            fi
-            
-            # 如果还没停止，尝试直接杀进程
-            if ! $redis_stopped && pgrep -x "redis-server" > /dev/null; then
-                log_info "尝试直接终止Redis进程..."
-                if pkill -TERM redis-server; then
-                    sleep 2
-                    if ! pgrep -x "redis-server" > /dev/null; then
-                        redis_stopped=true
-                        log_info "Redis进程已终止"
-                    fi
-                fi
+                log_info "Redis进程已终止"
             fi
         fi
         
@@ -528,385 +670,69 @@ stop_services() {
     fi
 }
 
-# 初始化数据库
-init_database() {
-    log_step "初始化数据库..."
-    
-    # 加载环境变量
-    load_env
-    
-    # 确保MySQL在运行
-    if ! pgrep -x "mysqld" > /dev/null; then
-        log_error "MySQL服务未运行，请先启动MySQL服务"
-        exit 1
-    fi
-    
-    # 等待MySQL完全启动
-    local wait_count=0
-    while [ $wait_count -lt 30 ]; do
-        if mysql -u root -e "SELECT 1" &>/dev/null; then
-            break
-        fi
-        sleep 1
-        ((wait_count++))
-    done
-    
-    if [ $wait_count -eq 30 ]; then
-        log_error "MySQL服务未能正常响应，请检查MySQL状态"
-        exit 1
-    fi
-    
-    log_info "MySQL服务响应正常，开始初始化数据库..."
-    
-    # 检查数据库是否已存在并包含数据
-    local db_exists=false
-    local has_data=false
-    
-    if mysql -u root -e "USE \`${MYSQL_DATABASE:-tts_db}\`;" &>/dev/null; then
-        db_exists=true
-        log_info "数据库 '${MYSQL_DATABASE:-tts_db}' 已存在"
-        
-        # 检查是否有数据表
-        local table_count=$(mysql -u root "${MYSQL_DATABASE:-tts_db}" -e "SHOW TABLES;" 2>/dev/null | wc -l)
-        if [ "$table_count" -gt 1 ]; then  # 大于1是因为第一行是表头
-            has_data=true
-            log_warn "数据库中已存在 $((table_count-1)) 个数据表"
-            
-            # 检查关键表是否有数据
-            local tts_tasks_count=$(mysql -u root "${MYSQL_DATABASE:-tts_db}" -e "SELECT COUNT(*) FROM tts_tasks;" 2>/dev/null | tail -n1 || echo "0")
-            if [ "$tts_tasks_count" -gt 0 ]; then
-                log_warn "tts_tasks表中已有 $tts_tasks_count 条记录"
-            fi
-        fi
-    fi
-    
-    # 如果数据库已存在且有数据，询问用户是否继续
-    if [ "$has_data" = true ]; then
-        log_warn "⚠️  警告：数据库已包含数据，继续初始化可能会影响现有数据！"
-        echo ""
-        echo "请选择操作："
-        echo "1) 跳过初始化（推荐）"
-        echo "2) 仅创建缺失的表结构（安全）"
-        echo "3) 强制重新初始化（危险：可能丢失数据）"
-        echo "4) 退出"
-        echo ""
-        read -p "请输入选择 (1-4): " choice
-        
-        case "$choice" in
-            1)
-                log_info "跳过数据库初始化"
-                return 0
-                ;;
-            2)
-                log_info "仅创建缺失的表结构..."
-                # 继续执行，但跳过用户创建和权限设置
-                ;;
-            3)
-                log_warn "强制重新初始化数据库..."
-                log_warn "这可能会导致数据丢失！"
-                read -p "确认继续？(输入 'YES' 确认): " confirm
-                if [ "$confirm" != "YES" ]; then
-                    log_info "取消初始化"
-                    return 0
-                fi
-                ;;
-            4|*)
-                log_info "退出初始化"
-                return 0
-                ;;
-        esac
-    fi
-    
-    # 创建数据库
-    log_info "创建数据库: ${MYSQL_DATABASE:-tts_db}"
-    if mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE:-tts_db}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"; then
-        log_info "数据库创建成功"
-    else
-        log_error "数据库创建失败"
-        exit 1
-    fi
-    
-    # 只有在选择强制初始化或数据库不存在时才创建用户
-    if [ "$has_data" != true ] || [ "$choice" = "3" ]; then
-        # 创建用户并授权
-        log_info "创建用户: ${MYSQL_USER:-tts_user}"
-        if mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER:-tts_user}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD:-tts_password}';"; then
-            log_info "用户创建成功"
-        else
-            log_error "用户创建失败"
-            exit 1
-        fi
-        
-        # 授权
-        log_info "为用户授权..."
-        if mysql -u root -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE:-tts_db}\`.* TO '${MYSQL_USER:-tts_user}'@'%';"; then
-            log_info "用户授权成功"
-        else
-            log_error "用户授权失败"
-            exit 1
-        fi
-        
-        # 刷新权限
-        if mysql -u root -e "FLUSH PRIVILEGES;"; then
-            log_info "权限刷新成功"
-        else
-            log_error "权限刷新失败"
-            exit 1
-        fi
-    else
-        log_info "跳过用户创建和权限设置（用户已存在）"
-    fi
-    
-    # 导入初始化SQL
-    if [ -f "$SERVER_DIR/database/init.sql" ]; then
-        log_info "导入初始化SQL文件..."
-        
-        # 如果选择了仅创建表结构，先备份现有数据
-        if [ "$choice" = "2" ] && [ "$has_data" = true ]; then
-            log_info "检测到现有数据，SQL文件将安全执行（使用IF NOT EXISTS）"
-        fi
-        
-        if mysql -u root "${MYSQL_DATABASE:-tts_db}" < "$SERVER_DIR/database/init.sql"; then
-            log_info "初始化SQL导入成功"
-        else
-            log_error "初始化SQL导入失败"
-            exit 1
-        fi
-    else
-        log_warn "未找到初始化SQL文件: $SERVER_DIR/database/init.sql"
-    fi
-    
-    # 验证数据库初始化结果
-    log_info "验证数据库初始化结果..."
-    
-    # 检查数据库是否存在
-    if mysql -u root -e "USE \`${MYSQL_DATABASE:-tts_db}\`;" &>/dev/null; then
-        log_info "数据库验证成功"
-    else
-        log_error "数据库验证失败"
-        exit 1
-    fi
-    
-    # 检查用户是否能连接
-    if mysql -u "${MYSQL_USER:-tts_user}" -p"${MYSQL_PASSWORD:-tts_password}" -e "USE \`${MYSQL_DATABASE:-tts_db}\`;" &>/dev/null; then
-        log_info "用户连接验证成功"
-    else
-        log_error "用户连接验证失败"
-        exit 1
-    fi
-    
-    # 检查表是否创建成功
-    if [ -f "$SERVER_DIR/database/init.sql" ]; then
-        local table_count=$(mysql -u "${MYSQL_USER:-tts_user}" -p"${MYSQL_PASSWORD:-tts_password}" "${MYSQL_DATABASE:-tts_db}" -e "SHOW TABLES;" 2>/dev/null | wc -l)
-        if [ "$table_count" -gt 1 ]; then  # 大于1是因为第一行是表头
-            log_info "数据表创建验证成功，共有 $((table_count-1)) 个表"
-        else
-            log_warn "未检测到数据表，可能初始化SQL文件为空或执行失败"
-        fi
-    fi
-    
-    log_info "数据库初始化完成"
-}
-
-# 重启服务
-restart_services() {
-    log_step "重启服务..."
-    
-    # 先停止服务（忽略停止失败的错误）
-    stop_services || log_warn "停止服务时出现错误，继续执行启动流程"
-    
-    # 等待一段时间确保服务完全停止
-    log_info "等待服务完全停止..."
-    sleep 3
-    
-    # 再启动服务
-    start_services
-    
-    log_info "服务重启完成"
-}
-
 # 检查服务状态
-check_status() {
+check_services() {
     log_step "检查服务状态..."
     
-    local mysql_status="未安装"
-    local redis_status="未安装"
-    local mysql_connection="N/A"
-    local redis_connection="N/A"
+    # 加载并验证环境变量
+    load_env
     
-    # 检查MySQL
+    # 检查MySQL状态
     if check_mysql_installed; then
         if pgrep -x "mysqld" > /dev/null; then
-            mysql_status="运行中"
-            
-            # 测试MySQL连接
-            if mysql -u root -e "SELECT 1" &>/dev/null; then
-                mysql_connection="正常"
-            else
-                mysql_connection="连接失败"
-            fi
-            
-            # 获取MySQL版本和端口信息
-            local mysql_version=$(mysql --version 2>/dev/null | head -n1 | cut -d' ' -f3 | cut -d',' -f1 || echo "未知")
-            local mysql_port=$(mysql -u root -e "SHOW VARIABLES LIKE 'port';" 2>/dev/null | grep port | awk '{print $2}' || echo "未知")
-            
-            log_info "MySQL服务正在运行"
-            log_info "  版本: $mysql_version"
-            log_info "  端口: $mysql_port"
-            log_info "  连接状态: $mysql_connection"
-            
-            # 检查数据库是否存在
-            load_env
-            if mysql -u root -e "USE \`${MYSQL_DATABASE:-tts_db}\`;" &>/dev/null; then
-                log_info "  数据库 '${MYSQL_DATABASE:-tts_db}' 存在"
-                
-                # 检查用户是否能连接
-                if mysql -u "${MYSQL_USER:-tts_user}" -p"${MYSQL_PASSWORD:-tts_password}" -e "USE \`${MYSQL_DATABASE:-tts_db}\`;" &>/dev/null; then
-                    log_info "  用户 '${MYSQL_USER:-tts_user}' 连接正常"
-                else
-                    log_warn "  用户 '${MYSQL_USER:-tts_user}' 连接失败"
-                fi
-                
-                # 检查表数量
-                local table_count=$(mysql -u root "${MYSQL_DATABASE:-tts_db}" -e "SHOW TABLES;" 2>/dev/null | wc -l)
-                if [ "$table_count" -gt 1 ]; then
-                    log_info "  数据表数量: $((table_count-1))"
-                else
-                    log_warn "  未检测到数据表"
-                fi
-            else
-                log_warn "  数据库 '${MYSQL_DATABASE:-tts_db}' 不存在"
-            fi
+            log_info "MySQL服务: 运行中"
         else
-            mysql_status="未运行"
-            log_warn "MySQL服务未在运行"
+            log_warn "MySQL服务: 未运行"
         fi
     else
-        log_warn "MySQL未安装"
+        log_warn "MySQL: 未安装"
     fi
     
-    # 检查Redis
+    # 检查Redis状态
     if check_redis_installed; then
         if pgrep -x "redis-server" > /dev/null; then
-            redis_status="运行中"
-            
-            # 测试Redis连接
-            if command -v redis-cli &> /dev/null; then
-                if redis-cli ping &>/dev/null; then
-                    redis_connection="正常"
-                else
-                    redis_connection="连接失败"
-                fi
-                
-                # 获取Redis版本和端口信息
-                local redis_version=$(redis-cli --version 2>/dev/null | cut -d' ' -f2 || echo "未知")
-                local redis_port=$(redis-cli config get port 2>/dev/null | tail -n1 || echo "未知")
-                local redis_memory=$(redis-cli info memory 2>/dev/null | grep used_memory_human | cut -d':' -f2 | tr -d '\r' || echo "未知")
-                
-                log_info "Redis服务正在运行"
-                log_info "  版本: $redis_version"
-                log_info "  端口: $redis_port"
-                log_info "  连接状态: $redis_connection"
-                log_info "  内存使用: $redis_memory"
-                
-                # 检查Redis数据库数量
-                local db_count=$(redis-cli config get databases 2>/dev/null | tail -n1 || echo "未知")
-                log_info "  数据库数量: $db_count"
-            else
-                log_warn "redis-cli未安装，无法获取详细信息"
-                log_info "Redis服务正在运行"
-            fi
+            log_info "Redis服务: 运行中"
         else
-            redis_status="未运行"
-            log_warn "Redis服务未在运行"
+            log_warn "Redis服务: 未运行"
         fi
     else
-        log_warn "Redis未安装"
+        log_warn "Redis: 未安装"
     fi
-    
-    # 输出状态总结
-    echo ""
-    log_step "服务状态总结:"
-    printf "%-15s %-10s %-10s\n" "服务" "状态" "连接"
-    printf "%-15s %-10s %-10s\n" "----" "----" "----"
-    printf "%-15s %-10s %-10s\n" "MySQL" "$mysql_status" "$mysql_connection"
-    printf "%-15s %-10s %-10s\n" "Redis" "$redis_status" "$redis_connection"
-    echo ""
-    
-    # 返回状态码
-    if [[ "$mysql_status" == "运行中" && "$redis_status" == "运行中" ]]; then
-        return 0  # 所有服务正常
-    elif [[ "$mysql_status" == "未安装" && "$redis_status" == "未安装" ]]; then
-        return 2  # 服务未安装
-    else
-        return 1  # 部分服务异常
-    fi
-}
-
-# 显示帮助信息
-show_help() {
-    printf "${BLUE}=== MySQL和Redis管理脚本 ===${NC}\n"
-    printf "${GREEN}用法:${NC} $0 [选项]\n"
-    printf "\n"
-    printf "${YELLOW}选项:${NC}\n"
-    printf "  ${GREEN}install${NC}          安装MySQL和Redis\n"
-    printf "  ${GREEN}init${NC}             初始化数据库（创建数据库、用户、导入SQL）\n"
-    printf "  ${GREEN}start${NC}            启动服务\n"
-    printf "  ${GREEN}stop${NC}             停止服务\n"
-    printf "  ${GREEN}restart${NC}          重启服务\n"
-    printf "  ${GREEN}status${NC}           检查服务状态\n"
-    printf "  ${GREEN}help${NC}             显示此帮助信息\n"
-    printf "\n"
-    printf "${YELLOW}使用示例:${NC}\n"
-    printf "  ${BLUE}$0 install${NC}       # 安装MySQL和Redis\n"
-    printf "  ${BLUE}$0 start${NC}         # 启动所有服务\n"
-    printf "  ${BLUE}$0 init${NC}          # 初始化数据库\n"
-    printf "  ${BLUE}$0 status${NC}        # 查看服务状态\n"
-    printf "  ${BLUE}$0 restart${NC}       # 重启所有服务\n"
-    printf "\n"
-    printf "${RED}注意事项:${NC}\n"
-    printf "  - 请确保${YELLOW}.env${NC}文件存在并配置正确（仅用于数据库初始化）\n"
-    printf "  - 首次使用请先运行 ${GREEN}install${NC} 安装服务\n"
-    printf "  - 数据库初始化需要${GREEN}MySQL服务正在运行${NC}\n"
-    printf "  - 服务使用默认配置文件启动，如需修改请参考安装后的提示信息\n"
 }
 
 # 主函数
 main() {
-    # 如果没有参数，显示帮助信息
-    if [ $# -eq 0 ]; then
-        show_help
-        exit 0
-    fi
-    
-    # 处理命令行参数
-    case "$1" in
-        install)
+    case "${1:-}" in
+        "install")
             install_services
             ;;
-        init)
-            init_database
+        "uninstall")
+            uninstall_services
             ;;
-        start)
+        "start")
             start_services
             ;;
-        stop)
+        "stop")
             stop_services
             ;;
-        restart)
-            restart_services
+        "restart")
+            stop_services
+            sleep 2
+            start_services
             ;;
-        status)
-            check_status
-            exit $?  # 传递状态检查的返回码
-            ;;
-        help)
-            show_help
+        "status")
+            check_services
             ;;
         *)
-            log_error "未知选项: $1"
+            echo "用法: $0 {install|uninstall|start|stop|restart|status}"
             echo ""
-            show_help
+            echo "命令说明:"
+            echo "  install   - 安装MySQL和Redis服务"
+            echo "  uninstall - 卸载MySQL和Redis服务"
+            echo "  start     - 启动服务"
+            echo "  stop      - 停止服务"
+            echo "  restart   - 重启服务"
+            echo "  status    - 检查服务状态"
             exit 1
             ;;
     esac

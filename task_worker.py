@@ -11,65 +11,55 @@ import asyncio
 import io
 import time
 import uuid
-import logging
 import signal
 import sys
 from typing import Optional
 import traceback
 import json
 from pathlib import Path
-
 import soundfile as sf
 import requests
 
-# 添加vllm目录到Python路径
-vllm_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'vllm')
+# 加载环境变量
+from dotenv import load_dotenv
+load_dotenv()
+
+# 添加vllm路径到sys.path
+vllm_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'vllm')
 if vllm_path not in sys.path:
     sys.path.insert(0, vllm_path)
 
-# 导入patch_vllm进行monkey patch（必须在其他导入之前）
+# 导入patch_vllm模块
 import patch_vllm
-
 from indextts.infer_vllm import IndexTTS
 
-# 添加项目根目录到Python路径
-sys.path.append(str(Path(__file__).parent.parent))
+# 添加当前目录到路径
+sys.path.append(str(Path(__file__).parent))
 
-from database.db_manager import DatabaseManager
-from cache.redis_manager import RedisManager
-from config import config
-from tos_uploader import TOSUploader
+from utils.db_manager import DatabaseManager
+from utils.redis_manager import RedisManager
+from utils.config import config
+from utils.tos_uploader import TOSUploader
+from utils.logger import IndexTTSLogger
 
 # 配置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+logger = IndexTTSLogger.get_logger("task_worker")
 
 class TTSTaskWorker:
     """长文本TTS任务处理器"""
     
     def __init__(self, worker_id: str, model_dir: str, database_url: str, 
-                 gpu_memory_utilization: float = 0.25, audio_output_dir: str = "./audio_output"):
+                 gpu_memory_utilization: float = 0.25):
         self.worker_id = worker_id
         self.model_dir = model_dir
         self.database_url = database_url
         self.gpu_memory_utilization = gpu_memory_utilization
-        self.audio_output_dir = audio_output_dir
         
         self.tts = None
         self.db_manager = None
         self.redis_manager = None
         self.running = False
         self.current_task = None
-        
-        # 确保音频输出目录存在
-        os.makedirs(self.audio_output_dir, exist_ok=True)
-        
-        # 设置SRT文件存储目录
-        self.srt_output_dir = config.SRT_OUTPUT_DIR
-        os.makedirs(self.srt_output_dir, exist_ok=True)
     
     async def initialize(self):
         """初始化TTS模型和数据库连接"""
@@ -83,8 +73,8 @@ class TTSTaskWorker:
             # 加载音色配置
             current_file_path = os.path.abspath(__file__)
             cur_dir = os.path.dirname(current_file_path)
-            # 修改speaker.json路径，指向vllm目录下的assets
-            vllm_dir = os.path.join(os.path.dirname(cur_dir), 'vllm')
+            # 修改speaker.json路径，指向当前项目下的vllm目录
+            vllm_dir = os.path.join(cur_dir, 'vllm')
             speaker_path = os.path.join(vllm_dir, "assets/speaker.json")
             if os.path.exists(speaker_path):
                 speaker_dict = json.load(open(speaker_path, 'r'))
@@ -126,20 +116,64 @@ class TTSTaskWorker:
         logger.info(f"处理器 {self.worker_id} 资源清理完成")
     
     def generate_srt_from_text(self, text: str, audio_duration: float) -> str:
-        """根据文本和音频时长生成简单的SRT字幕文件"""
-        # 简单的字幕生成逻辑，将文本按句子分割
-        sentences = text.replace('。', '。\n').replace('！', '！\n').replace('？', '？\n').split('\n')
-        sentences = [s.strip() for s in sentences if s.strip()]
+        """根据文本和音频时长生成SRT字幕文件，支持智能断句"""
+        # 首先按主要标点符号分割
+        primary_sentences = text.replace('。', '。\n').replace('！', '！\n').replace('？', '？\n').split('\n')
+        primary_sentences = [s.strip() for s in primary_sentences if s.strip()]
         
-        if not sentences:
+        if not primary_sentences:
+            return ""
+        
+        # 进一步处理长句，按逗号、分号等次要标点分割
+        final_sentences = []
+        max_chars_per_subtitle = 25  # 每个字幕段最大字符数
+        
+        for sentence in primary_sentences:
+            if len(sentence) <= max_chars_per_subtitle:
+                final_sentences.append(sentence)
+            else:
+                # 长句按逗号、分号分割
+                sub_parts = sentence.replace('，', '，\n').replace('；', '；\n').replace('、', '、\n').split('\n')
+                sub_parts = [s.strip() for s in sub_parts if s.strip()]
+                
+                current_part = ""
+                for part in sub_parts:
+                    # 如果当前部分加上新部分不超过限制，则合并
+                    if len(current_part + part) <= max_chars_per_subtitle:
+                        current_part += part
+                    else:
+                        # 否则先保存当前部分，开始新部分
+                        if current_part:
+                            final_sentences.append(current_part)
+                        current_part = part
+                
+                # 添加最后一部分
+                if current_part:
+                    final_sentences.append(current_part)
+        
+        if not final_sentences:
             return ""
         
         srt_content = []
-        time_per_sentence = audio_duration / len(sentences)
         
-        for i, sentence in enumerate(sentences):
-            start_time = i * time_per_sentence
-            end_time = (i + 1) * time_per_sentence
+        # 计算每个字幕段的时长（基于字符数比例分配）
+        total_chars = sum(len(s) for s in final_sentences)
+        current_time = 0.0
+        
+        for i, sentence in enumerate(final_sentences):
+            # 根据字符数比例分配时间，但设置最小和最大时长
+            char_ratio = len(sentence) / total_chars if total_chars > 0 else 1.0 / len(final_sentences)
+            duration = audio_duration * char_ratio
+            
+            # 设置合理的时长范围：最短1.5秒，最长6秒
+            duration = max(1.5, min(6.0, duration))
+            
+            start_time = current_time
+            end_time = current_time + duration
+            
+            # 确保不超过总时长
+            if end_time > audio_duration:
+                end_time = audio_duration
             
             start_srt = self.format_srt_time(start_time)
             end_srt = self.format_srt_time(end_time)
@@ -148,6 +182,8 @@ class TTSTaskWorker:
             srt_content.append(f"{start_srt} --> {end_srt}")
             srt_content.append(sentence)
             srt_content.append("")
+            
+            current_time = end_time
         
         return "\n".join(srt_content)
     
@@ -215,14 +251,14 @@ class TTSTaskWorker:
                 try:
                     # 上传音频文件
                     audio_object_key = await asyncio.get_event_loop().run_in_executor(
-                        None, self.tos_uploader.upload, audio_file_path
+                        None, self.tos_uploader.upload, audio_file_path, task_id
                     )
                     audio_url = f"https://{self.tos_uploader.bucket}.{self.tos_uploader.client.endpoint.replace('https://', '')}/{audio_object_key}"
                     logger.info(f"音频文件上传成功: {audio_url}")
                     
                     # 上传字幕文件
                     srt_object_key = await asyncio.get_event_loop().run_in_executor(
-                        None, self.tos_uploader.upload, srt_file_path
+                        None, self.tos_uploader.upload, srt_file_path, task_id
                     )
                     srt_url = f"https://{self.tos_uploader.bucket}.{self.tos_uploader.client.endpoint.replace('https://', '')}/{srt_object_key}"
                     logger.info(f"字幕文件上传成功: {srt_url}")
@@ -354,9 +390,8 @@ async def main():
     # 从环境变量读取配置参数
     worker_id = os.getenv("WORKER_ID") or f"worker-{uuid.uuid4().hex[:8]}"
     model_dir = os.getenv("MODEL_DIR", "/path/to/IndexTeam/Index-TTS")
-    database_url = os.getenv("DATABASE_URL", "mysql://user:password@localhost:3306/tts_db")
+    database_url = config.database_url
     gpu_memory_utilization = float(os.getenv("GPU_MEMORY_UTILIZATION", "0.40"))
-    audio_output_dir = os.getenv("AUDIO_OUTPUT_DIR", "./audio_output")
     task_type = os.getenv("TASK_TYPE")  # 可选参数
     poll_interval = float(os.getenv("POLL_INTERVAL", "1.0"))
     
@@ -365,8 +400,7 @@ async def main():
         worker_id=worker_id,
         model_dir=model_dir,
         database_url=database_url,
-        gpu_memory_utilization=gpu_memory_utilization,
-        audio_output_dir=audio_output_dir
+        gpu_memory_utilization=gpu_memory_utilization
     )
     
     # 设置信号处理

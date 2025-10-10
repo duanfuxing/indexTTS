@@ -1,0 +1,121 @@
+2025-10-10 11:36:30 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:99] - initialize() - TOS上传器初始化成功
+2025-10-10 11:36:30 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:104] - initialize() - 处理器 worker-d157610a 初始化成功
+2025-10-10 11:36:30 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:295] - run() - 处理器 worker-d157610a 已启动，处理 所有 类型任务
+2025-10-10 11:36:33 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:362] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 11:36:33 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:339] - stop() - 处理器 worker-d157610a 收到停止请求
+2025-10-10 11:36:34 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:334] - run() - 处理器 worker-d157610a 已停止
+2025-10-10 11:36:34 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:116] - cleanup() - 处理器 worker-d157610a 资源清理完成
+2025-10-10 11:37:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:99] - initialize() - TOS上传器初始化成功
+2025-10-10 11:37:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:104] - initialize() - 处理器 worker-c8b6f81a 初始化成功
+2025-10-10 11:37:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:295] - run() - 处理器 worker-c8b6f81a 已启动，处理 所有 类型任务
+2025-10-10 11:37:31 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:362] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 11:37:31 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:339] - stop() - 处理器 worker-c8b6f81a 收到停止请求
+2025-10-10 11:37:31 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:362] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 11:37:31 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:339] - stop() - 处理器 worker-c8b6f81a 收到停止请求
+2025-10-10 11:37:31 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:362] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 11:37:31 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:339] - stop() - 处理器 worker-c8b6f81a 收到停止请求
+2025-10-10 11:37:32 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:334] - run() - 处理器 worker-c8b6f81a 已停止
+2025-10-10 11:37:32 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:116] - cleanup() - 处理器 worker-c8b6f81a 资源清理完成
+2025-10-10 11:38:04 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:362] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 11:38:04 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:339] - stop() - 处理器 worker-82b74d58 收到停止请求
+2025-10-10 11:38:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:362] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 11:38:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:339] - stop() - 处理器 worker-82b74d58 收到停止请求
+2025-10-10 11:38:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:362] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 11:38:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:339] - stop() - 处理器 worker-82b74d58 收到停止请求
+2025-10-10 11:38:11 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:99] - initialize() - TOS上传器初始化成功
+2025-10-10 11:38:11 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:104] - initialize() - 处理器 worker-82b74d58 初始化成功
+2025-10-10 11:38:11 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:295] - run() - 处理器 worker-82b74d58 已启动，处理 所有 类型任务
+2025-10-10 11:39:13 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:362] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 11:39:13 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:339] - stop() - 处理器 worker-82b74d58 收到停止请求
+2025-10-10 11:39:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:334] - run() - 处理器 worker-82b74d58 已停止
+2025-10-10 11:39:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:116] - cleanup() - 处理器 worker-82b74d58 资源清理完成
+2025-10-10 13:06:40 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:107] - initialize() - 处理器 worker-1dee38ee 初始化失败: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+2025-10-10 13:06:40 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:424] - main() - 处理器错误: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+2025-10-10 13:06:40 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:116] - cleanup() - 处理器 worker-1dee38ee 资源清理完成
+2025-10-10 13:07:46 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:99] - initialize() - TOS上传器初始化成功
+2025-10-10 13:07:46 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:104] - initialize() - 处理器 worker-37bd8388 初始化成功
+2025-10-10 13:07:46 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:341] - run() - 处理器 worker-37bd8388 已启动，处理 所有 类型任务
+2025-10-10 13:07:46 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 fb018b0fbb42406e9cdd67613a6a3211，音色: xiaomeng，文本长度: 140
+2025-10-10 13:07:46 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:317] - process_task() - 任务 fb018b0fbb42406e9cdd67613a6a3211 处理失败: Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/task_worker.py", line 227, in process_task
+    sr, wav_data = await self.tts.infer_with_ref_audio_embed(voice, text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/vllm/indextts/infer_vllm.py", line 303, in infer_with_ref_audio_embed
+    auto_conditioning = self.speaker_dict[speaker]["auto_conditioning"]
+                        ~~~~~~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'xiaomeng'
+
+2025-10-10 13:07:46 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:367] - run() - 处理器 worker-37bd8388 处理任务失败 fb018b0fbb42406e9cdd67613a6a3211
+2025-10-10 13:07:46 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 0d979b2bb4a04545b5896bedccbaaedf，音色: xiaomeng，文本长度: 32
+2025-10-10 13:07:46 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:317] - process_task() - 任务 0d979b2bb4a04545b5896bedccbaaedf 处理失败: Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/task_worker.py", line 227, in process_task
+    sr, wav_data = await self.tts.infer_with_ref_audio_embed(voice, text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/vllm/indextts/infer_vllm.py", line 303, in infer_with_ref_audio_embed
+    auto_conditioning = self.speaker_dict[speaker]["auto_conditioning"]
+                        ~~~~~~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'xiaomeng'
+
+2025-10-10 13:07:46 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:367] - run() - 处理器 worker-37bd8388 处理任务失败 0d979b2bb4a04545b5896bedccbaaedf
+2025-10-10 13:07:46 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 0d15ad87c1a044ba901b3f9bb6e7c09a，音色: xiaomeng，文本长度: 32
+2025-10-10 13:07:46 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:317] - process_task() - 任务 0d15ad87c1a044ba901b3f9bb6e7c09a 处理失败: Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/task_worker.py", line 227, in process_task
+    sr, wav_data = await self.tts.infer_with_ref_audio_embed(voice, text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/vllm/indextts/infer_vllm.py", line 303, in infer_with_ref_audio_embed
+    auto_conditioning = self.speaker_dict[speaker]["auto_conditioning"]
+                        ~~~~~~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'xiaomeng'
+
+2025-10-10 13:07:46 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:367] - run() - 处理器 worker-37bd8388 处理任务失败 0d15ad87c1a044ba901b3f9bb6e7c09a
+2025-10-10 13:09:09 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 d52f4e01d1294ebe9423dcedcf44762c，音色: yunxi，文本长度: 33
+2025-10-10 13:09:09 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:317] - process_task() - 任务 d52f4e01d1294ebe9423dcedcf44762c 处理失败: Traceback (most recent call last):
+  File "/root/autodl-tmp/indexTTS/task_worker.py", line 227, in process_task
+    sr, wav_data = await self.tts.infer_with_ref_audio_embed(voice, text)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/vllm/indextts/infer_vllm.py", line 303, in infer_with_ref_audio_embed
+    auto_conditioning = self.speaker_dict[speaker]["auto_conditioning"]
+                        ~~~~~~~~~~~~~~~~~^^^^^^^^^
+KeyError: 'yunxi'
+
+2025-10-10 13:09:09 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:367] - run() - 处理器 worker-37bd8388 处理任务失败 d52f4e01d1294ebe9423dcedcf44762c
+2025-10-10 13:09:43 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:408] - signal_handler() - 收到信号 15，正在停止处理器...
+2025-10-10 13:09:43 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:385] - stop() - 处理器 worker-37bd8388 收到停止请求
+2025-10-10 13:09:45 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:380] - run() - 处理器 worker-37bd8388 已停止
+2025-10-10 13:09:45 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:116] - cleanup() - 处理器 worker-37bd8388 资源清理完成
+2025-10-10 13:11:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:86] - initialize() - 已加载 2 个音色
+2025-10-10 13:11:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:99] - initialize() - TOS上传器初始化成功
+2025-10-10 13:11:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:104] - initialize() - 处理器 worker-96c2aa47 初始化成功
+2025-10-10 13:11:14 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:341] - run() - 处理器 worker-96c2aa47 已启动，处理 所有 类型任务
+2025-10-10 13:11:26 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 9d28ae0652cd4a988fe184a2a304285d，音色: yunxi，文本长度: 46
+2025-10-10 13:11:28 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:257] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/9d28ae0652cd4a988fe184a2a304285d/9d28ae0652cd4a988fe184a2a304285d.wav
+2025-10-10 13:11:28 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:264] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/9d28ae0652cd4a988fe184a2a304285d/9d28ae0652cd4a988fe184a2a304285d.srt
+2025-10-10 13:11:28 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:296] - process_task() - 任务 9d28ae0652cd4a988fe184a2a304285d 处理成功，耗时 2.08秒
+2025-10-10 13:11:28 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:365] - run() - 处理器 worker-96c2aa47 完成任务 9d28ae0652cd4a988fe184a2a304285d
+2025-10-10 13:12:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 7f685589af244165a16b1398f2d6800c，音色: xiaomeng，文本长度: 34
+2025-10-10 13:12:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:257] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/7f685589af244165a16b1398f2d6800c/7f685589af244165a16b1398f2d6800c.wav
+2025-10-10 13:12:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:264] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/7f685589af244165a16b1398f2d6800c/7f685589af244165a16b1398f2d6800c.srt
+2025-10-10 13:12:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:296] - process_task() - 任务 7f685589af244165a16b1398f2d6800c 处理成功，耗时 0.59秒
+2025-10-10 13:12:05 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:365] - run() - 处理器 worker-96c2aa47 完成任务 7f685589af244165a16b1398f2d6800c
+2025-10-10 13:38:17 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 8ef17c469d0e4b0e969251342f838c16，音色: yunxi，文本长度: 27
+2025-10-10 13:38:18 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:257] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/8ef17c469d0e4b0e969251342f838c16/8ef17c469d0e4b0e969251342f838c16.wav
+2025-10-10 13:38:18 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:264] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/8ef17c469d0e4b0e969251342f838c16/8ef17c469d0e4b0e969251342f838c16.srt
+2025-10-10 13:38:18 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:296] - process_task() - 任务 8ef17c469d0e4b0e969251342f838c16 处理成功，耗时 0.72秒
+2025-10-10 13:38:18 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:365] - run() - 处理器 worker-96c2aa47 完成任务 8ef17c469d0e4b0e969251342f838c16
+2025-10-10 14:01:53 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 7a5186872526488e95de0bc6f8fe69fe，音色: xiaomeng，文本长度: 23
+2025-10-10 14:01:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:257] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.wav
+2025-10-10 14:01:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:264] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.srt
+2025-10-10 14:01:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:296] - process_task() - 任务 7a5186872526488e95de0bc6f8fe69fe 处理成功，耗时 0.52秒
+2025-10-10 14:01:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:365] - run() - 处理器 worker-96c2aa47 完成任务 7a5186872526488e95de0bc6f8fe69fe
+2025-10-10 14:01:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:221] - process_task() - 正在处理任务 29889eb0ed1341d68675290d3167cd1e，音色: yunxi，文本长度: 62
+2025-10-10 14:01:56 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:257] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.wav
+2025-10-10 14:01:56 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:264] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/aigc-omni.tos-cn-guangzhou.volces.com/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.srt
+2025-10-10 14:01:56 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:296] - process_task() - 任务 29889eb0ed1341d68675290d3167cd1e 处理成功，耗时 1.49秒
+2025-10-10 14:01:56 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:365] - run() - 处理器 worker-96c2aa47 完成任务 29889eb0ed1341d68675290d3167cd1e
+2025-10-10 14:17:58 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (1053, 'Server shutdown in progress')
+2025-10-10 14:18:00 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")
+2025-10-10 14:18:02 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")
+2025-10-10 14:18:04 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")
+2025-10-10 14:18:06 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")
+2025-10-10 14:18:08 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")
+2025-10-10 14:18:10 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")

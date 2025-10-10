@@ -1,18 +1,18 @@
 import asyncio
 import redis.asyncio as redis
 import json
-import logging
 from typing import Optional, Dict, Any, List
 from datetime import datetime, timedelta
+from utils.logger import IndexTTSLogger
 
 class RedisManager:
     """Redis缓存和队列管理器"""
     
     def __init__(self):
-        from ..config import config
+        from utils.config import config
         self.config = config
         self.redis = None
-        self.logger = logging.getLogger(__name__)
+        self.logger = IndexTTSLogger.get_module_logger(__file__)
     
     async def initialize(self):
         """初始化Redis连接"""
@@ -40,11 +40,25 @@ class RedisManager:
             await self.redis.close()
             self.logger.info("Redis连接已关闭")
     
-    # 任务队列相关方法
+    async def check_connection(self) -> bool:
+        """测试Redis连接是否正常
+        
+        Returns:
+            bool: 连接正常返回True，否则返回False
+        """
+        try:
+            if self.redis:
+                await self.redis.ping()
+                return True
+            return False
+        except Exception as e:
+            self.logger.error(f"Redis连接测试失败: {e}")
+            return False
+            
     async def push_task_to_queue(self, task_type: str, task_data: Dict[str, Any], priority: int = 0) -> bool:
         """将任务推送到队列"""
         try:
-            from ..config import config
+            from utils.config import config
             queue_key = f"{config.REDIS_QUEUE_PREFIX}:{task_type}"
             task_json = json.dumps(task_data)
             
@@ -62,7 +76,7 @@ class RedisManager:
     async def pop_task_from_queue(self, task_type: str) -> Optional[Dict[str, Any]]:
         """从队列中弹出任务"""
         try:
-            from ..config import config
+            from utils.config import config
             queue_key = f"{config.REDIS_QUEUE_PREFIX}:{task_type}"
             
             # 获取优先级最高的任务
@@ -84,7 +98,7 @@ class RedisManager:
     async def get_queue_length(self, task_type: str) -> int:
         """获取队列长度"""
         try:
-            from ..config import config
+            from config import config
             queue_key = f"{config.REDIS_QUEUE_PREFIX}:{task_type}"
             return await self.redis.zcard(queue_key)
         except Exception as e:
@@ -162,7 +176,7 @@ class RedisManager:
         cache_key = "voice_configs"
         return await self.set_cache(cache_key, voice_configs, expire)
     
-    async def get_voice_configs_cache(self) -> Optional[List[Dict[str, Any]]]:
+    async def get_voice_configs(self) -> Optional[List[Dict[str, Any]]]:
         """获取音色配置缓存"""
         cache_key = "voice_configs"
         return await self.get_cache(cache_key)

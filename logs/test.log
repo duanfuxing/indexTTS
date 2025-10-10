@@ -1,0 +1,3 @@
+2025-10-10 11:09:24 - [34mtest[0m - [32mINFO[0m - [<string>:1] - <module>() - Logger test successful
+2025-10-10 11:09:24 - [34mtest[0m - [33mWARNING[0m - [<string>:1] - <module>() - Warning test
+2025-10-10 11:09:24 - [34mtest[0m - [31mERROR[0m - [<string>:1] - <module>() - Error test

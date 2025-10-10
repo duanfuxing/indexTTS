@@ -1,6 +1,5 @@
 import asyncio
 import aiomysql
-import logging
 from typing import Optional, Dict, Any, List
 from datetime import datetime, timedelta
 import json
@@ -8,17 +7,18 @@ import uuid
 import os
 import hashlib
 from contextlib import asynccontextmanager
-from ..utils.file_manager import TaskFileManager
+from utils.file_manager import TaskFileManager
+from utils.logger import IndexTTSLogger
 
 class DatabaseManager:
     """TTS任务和音色配置的MySQL数据库管理器"""
     
     def __init__(self, database_url: str = None):
-        from ..config import config
+        from utils.config import config
         self.config = config
         self.database_url = database_url or config.database_url
         self.pool = None
-        self.logger = logging.getLogger(__name__)
+        self.logger = IndexTTSLogger.get_module_logger(__file__)
         # 初始化文件管理器
         self.file_manager = TaskFileManager()
     
@@ -83,10 +83,8 @@ class DatabaseManager:
                 }
     
     def _generate_short_id(self) -> str:
-        """生成短ID（8位随机字符串）"""
-        import random
-        import string
-        return ''.join(random.choices(string.ascii_letters + string.digits, k=8))
+        """生成32位UUID hex格式ID（无连接符）"""
+        return uuid.uuid4().hex
     
     async def _save_text_to_file(self, text: str, task_id: str) -> str:
         """将文本保存到文件，返回文件路径"""
@@ -383,6 +381,25 @@ class DatabaseManager:
                 self.logger.info(f"已清理 {deleted_count} 个旧任务")
                 return deleted_count
     
+    async def check_connection(self) -> bool:
+        """检查数据库连接状态
+        
+        Returns:
+            bool: 连接正常返回True，否则返回False
+        """
+        try:
+            if not self.pool:
+                return False
+                
+            async with self.pool.acquire() as conn:
+                async with conn.cursor() as cursor:
+                    await cursor.execute("SELECT 1")
+                    await cursor.fetchone()
+                    return True
+        except Exception as e:
+            self.logger.error(f"数据库连接检查失败: {e}")
+            return False
+
     async def get_voice_configs(self, active_only: bool = True) -> List[Dict[str, Any]]:
         """获取音色配置列表"""
         async with self.get_connection() as conn:

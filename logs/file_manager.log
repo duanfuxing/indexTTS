@@ -1,0 +1,103 @@
+2025-10-10 11:10:40 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:12:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/of6e1IU9
+2025-10-10 11:12:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/of6e1IU9
+2025-10-10 11:12:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/of6e1IU9/of6e1IU9.txt
+2025-10-10 11:12:05 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/of6e1IU9
+2025-10-10 11:12:05 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/of6e1IU9/of6e1IU9.wav
+2025-10-10 11:12:05 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/of6e1IU9
+2025-10-10 11:12:05 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/of6e1IU9/of6e1IU9.srt
+2025-10-10 11:27:50 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:29:10 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:30:10 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:31:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:32:54 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/f02cf47a7ab846b79de9c5796e9c2117
+2025-10-10 11:32:54 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/f02cf47a7ab846b79de9c5796e9c2117
+2025-10-10 11:32:54 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/f02cf47a7ab846b79de9c5796e9c2117/f02cf47a7ab846b79de9c5796e9c2117.txt
+2025-10-10 11:33:00 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/f02cf47a7ab846b79de9c5796e9c2117
+2025-10-10 11:33:00 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/f02cf47a7ab846b79de9c5796e9c2117/f02cf47a7ab846b79de9c5796e9c2117.wav
+2025-10-10 11:33:00 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/f02cf47a7ab846b79de9c5796e9c2117
+2025-10-10 11:33:00 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/f02cf47a7ab846b79de9c5796e9c2117/f02cf47a7ab846b79de9c5796e9c2117.srt
+2025-10-10 11:33:27 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/59cfbeb5bac2406e87f6c82d62286e94
+2025-10-10 11:33:27 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/59cfbeb5bac2406e87f6c82d62286e94
+2025-10-10 11:33:27 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/59cfbeb5bac2406e87f6c82d62286e94/59cfbeb5bac2406e87f6c82d62286e94.txt
+2025-10-10 11:33:29 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/59cfbeb5bac2406e87f6c82d62286e94
+2025-10-10 11:33:29 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/59cfbeb5bac2406e87f6c82d62286e94/59cfbeb5bac2406e87f6c82d62286e94.wav
+2025-10-10 11:33:29 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/59cfbeb5bac2406e87f6c82d62286e94
+2025-10-10 11:33:29 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/59cfbeb5bac2406e87f6c82d62286e94/59cfbeb5bac2406e87f6c82d62286e94.srt
+2025-10-10 11:35:42 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:36:30 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:37:14 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:38:11 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:39:43 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:40:44 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/046f85a8ab564747875cc8423a4d1b95
+2025-10-10 11:40:44 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/046f85a8ab564747875cc8423a4d1b95
+2025-10-10 11:40:44 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/046f85a8ab564747875cc8423a4d1b95/046f85a8ab564747875cc8423a4d1b95.txt
+2025-10-10 11:40:47 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/046f85a8ab564747875cc8423a4d1b95
+2025-10-10 11:40:47 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/046f85a8ab564747875cc8423a4d1b95/046f85a8ab564747875cc8423a4d1b95.wav
+2025-10-10 11:40:47 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/046f85a8ab564747875cc8423a4d1b95
+2025-10-10 11:40:47 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/046f85a8ab564747875cc8423a4d1b95/046f85a8ab564747875cc8423a4d1b95.srt
+2025-10-10 11:45:26 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 11:46:26 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/551440d25072450e895184d0c2b0383a
+2025-10-10 11:46:26 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/551440d25072450e895184d0c2b0383a
+2025-10-10 11:46:26 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/551440d25072450e895184d0c2b0383a/551440d25072450e895184d0c2b0383a.txt
+2025-10-10 11:46:29 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/551440d25072450e895184d0c2b0383a
+2025-10-10 11:46:29 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/551440d25072450e895184d0c2b0383a/551440d25072450e895184d0c2b0383a.wav
+2025-10-10 11:46:29 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/551440d25072450e895184d0c2b0383a
+2025-10-10 11:46:29 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/551440d25072450e895184d0c2b0383a/551440d25072450e895184d0c2b0383a.srt
+2025-10-10 12:22:10 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 12:53:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/fb018b0fbb42406e9cdd67613a6a3211
+2025-10-10 12:53:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/fb018b0fbb42406e9cdd67613a6a3211
+2025-10-10 12:53:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/fb018b0fbb42406e9cdd67613a6a3211/fb018b0fbb42406e9cdd67613a6a3211.txt
+2025-10-10 12:53:04 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/0d979b2bb4a04545b5896bedccbaaedf
+2025-10-10 12:53:04 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/0d979b2bb4a04545b5896bedccbaaedf
+2025-10-10 12:53:04 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/0d979b2bb4a04545b5896bedccbaaedf/0d979b2bb4a04545b5896bedccbaaedf.txt
+2025-10-10 12:53:04 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/0d15ad87c1a044ba901b3f9bb6e7c09a
+2025-10-10 12:53:04 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/0d15ad87c1a044ba901b3f9bb6e7c09a
+2025-10-10 12:53:04 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/0d15ad87c1a044ba901b3f9bb6e7c09a/0d15ad87c1a044ba901b3f9bb6e7c09a.txt
+2025-10-10 13:07:46 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 13:09:08 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/d52f4e01d1294ebe9423dcedcf44762c
+2025-10-10 13:09:08 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/d52f4e01d1294ebe9423dcedcf44762c
+2025-10-10 13:09:08 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/d52f4e01d1294ebe9423dcedcf44762c/d52f4e01d1294ebe9423dcedcf44762c.txt
+2025-10-10 13:11:14 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 13:11:25 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/9d28ae0652cd4a988fe184a2a304285d
+2025-10-10 13:11:25 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/9d28ae0652cd4a988fe184a2a304285d
+2025-10-10 13:11:25 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/9d28ae0652cd4a988fe184a2a304285d/9d28ae0652cd4a988fe184a2a304285d.txt
+2025-10-10 13:11:28 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/9d28ae0652cd4a988fe184a2a304285d
+2025-10-10 13:11:28 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/9d28ae0652cd4a988fe184a2a304285d/9d28ae0652cd4a988fe184a2a304285d.wav
+2025-10-10 13:11:28 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/9d28ae0652cd4a988fe184a2a304285d
+2025-10-10 13:11:28 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/9d28ae0652cd4a988fe184a2a304285d/9d28ae0652cd4a988fe184a2a304285d.srt
+2025-10-10 13:12:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7f685589af244165a16b1398f2d6800c
+2025-10-10 13:12:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7f685589af244165a16b1398f2d6800c
+2025-10-10 13:12:03 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/7f685589af244165a16b1398f2d6800c/7f685589af244165a16b1398f2d6800c.txt
+2025-10-10 13:12:05 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7f685589af244165a16b1398f2d6800c
+2025-10-10 13:12:05 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/7f685589af244165a16b1398f2d6800c/7f685589af244165a16b1398f2d6800c.wav
+2025-10-10 13:12:05 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7f685589af244165a16b1398f2d6800c
+2025-10-10 13:12:05 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/7f685589af244165a16b1398f2d6800c/7f685589af244165a16b1398f2d6800c.srt
+2025-10-10 13:36:45 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 13:38:15 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/8ef17c469d0e4b0e969251342f838c16
+2025-10-10 13:38:15 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/8ef17c469d0e4b0e969251342f838c16
+2025-10-10 13:38:15 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/8ef17c469d0e4b0e969251342f838c16/8ef17c469d0e4b0e969251342f838c16.txt
+2025-10-10 13:38:17 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/8ef17c469d0e4b0e969251342f838c16
+2025-10-10 13:38:17 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/8ef17c469d0e4b0e969251342f838c16/8ef17c469d0e4b0e969251342f838c16.wav
+2025-10-10 13:38:17 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/8ef17c469d0e4b0e969251342f838c16
+2025-10-10 13:38:17 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/8ef17c469d0e4b0e969251342f838c16/8ef17c469d0e4b0e969251342f838c16.srt
+2025-10-10 13:59:57 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 14:00:20 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-10 14:01:51 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7a5186872526488e95de0bc6f8fe69fe
+2025-10-10 14:01:51 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7a5186872526488e95de0bc6f8fe69fe
+2025-10-10 14:01:51 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.txt
+2025-10-10 14:01:52 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7a5186872526488e95de0bc6f8fe69fe
+2025-10-10 14:01:52 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.wav
+2025-10-10 14:01:52 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7a5186872526488e95de0bc6f8fe69fe
+2025-10-10 14:01:52 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.srt
+2025-10-10 14:01:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/29889eb0ed1341d68675290d3167cd1e
+2025-10-10 14:01:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/29889eb0ed1341d68675290d3167cd1e
+2025-10-10 14:01:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:123] - save_text_file() - 已保存文本文件: storage/tasks/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.txt
+2025-10-10 14:01:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7a5186872526488e95de0bc6f8fe69fe
+2025-10-10 14:01:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.wav
+2025-10-10 14:01:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/7a5186872526488e95de0bc6f8fe69fe
+2025-10-10 14:01:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.srt
+2025-10-10 14:01:56 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/29889eb0ed1341d68675290d3167cd1e
+2025-10-10 14:01:56 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.wav
+2025-10-10 14:01:56 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/29889eb0ed1341d68675290d3167cd1e
+2025-10-10 14:01:56 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.srt

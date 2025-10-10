@@ -9,11 +9,11 @@
 """
 
 import os
-import logging
 from pathlib import Path
 from typing import Optional, Dict, Any
 import shutil
-from ..config import config
+from utils.config import config
+from utils.logger import IndexTTSLogger
 
 class TaskFileManager:
     """任务文件管理器"""
@@ -28,14 +28,13 @@ class TaskFileManager:
             storage_root = config.TEXT_STORAGE_DIR
         
         self.storage_root = Path(storage_root)
-        self.logger = logging.getLogger(__name__)
+        self.logger = IndexTTSLogger.get_module_logger(__file__)
         
         # 创建存储根目录
         self.storage_root.mkdir(exist_ok=True)
         
-        # 创建子目录
-        self.tasks_dir = self.storage_root / 'tasks'
-        self.tasks_dir.mkdir(exist_ok=True)
+        # 直接使用存储根目录作为任务目录，不再创建额外的tasks子目录
+        self.tasks_dir = self.storage_root
         
         self.logger.info(f"文件管理器初始化完成，存储根目录: {self.storage_root}")
     

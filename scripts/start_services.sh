@@ -744,7 +744,6 @@ start_supervisord() {
     export PORT="$PORT"
     export GPU_MEMORY_UTILIZATION="${GPU_MEMORY_UTILIZATION:-0.9}"
     export DATABASE_URL="mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOST}:${MYSQL_PORT:-3306}/${MYSQL_DATABASE}"
-    export AUDIO_OUTPUT_DIR="${AUDIO_OUTPUT_DIR:-$PROJECT_ROOT/storage/audio}"
     
     # 设置supervisor进程管理配置
     export SUPERVISOR_AUTOSTART="${SUPERVISOR_AUTOSTART:-true}"

@@ -1,0 +1,44 @@
+2025-10-10 11:10:40 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:27:36 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 11:27:50 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:29:10 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:30:10 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:31:53 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:35:34 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 11:35:42 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:36:30 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:36:34 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 11:37:14 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:37:32 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 11:38:11 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:39:14 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 11:39:43 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 11:45:11 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 11:45:26 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 12:22:10 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 12:53:03 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:69] - push_task_to_queue() - 任务 fb018b0fbb42406e9cdd67613a6a3211 已推送到队列 tts_queue:long_text
+2025-10-10 12:53:04 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:69] - push_task_to_queue() - 任务 0d979b2bb4a04545b5896bedccbaaedf 已推送到队列 tts_queue:long_text
+2025-10-10 12:53:04 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:69] - push_task_to_queue() - 任务 0d15ad87c1a044ba901b3f9bb6e7c09a 已推送到队列 tts_queue:long_text
+2025-10-10 12:54:03 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:105] - get_queue_length() - 获取队列长度失败: No module named 'config'
+2025-10-10 12:54:03 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:105] - get_queue_length() - 获取队列长度失败: No module named 'config'
+2025-10-10 12:54:03 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:105] - get_queue_length() - 获取队列长度失败: No module named 'config'
+2025-10-10 13:06:12 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:105] - get_queue_length() - 获取队列长度失败: No module named 'config'
+2025-10-10 13:07:46 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 13:09:08 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:69] - push_task_to_queue() - 任务 d52f4e01d1294ebe9423dcedcf44762c 已推送到队列 tts_queue:long_text
+2025-10-10 13:09:45 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 13:11:14 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 13:11:25 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:69] - push_task_to_queue() - 任务 9d28ae0652cd4a988fe184a2a304285d 已推送到队列 tts_queue:long_text
+2025-10-10 13:12:03 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:69] - push_task_to_queue() - 任务 7f685589af244165a16b1398f2d6800c 已推送到队列 tts_queue:long_text
+2025-10-10 13:36:28 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 13:36:45 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 13:38:15 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:69] - push_task_to_queue() - 任务 8ef17c469d0e4b0e969251342f838c16 已推送到队列 tts_queue:long_text
+2025-10-10 13:59:57 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 14:00:20 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 14:01:53 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:69] - push_task_to_queue() - 任务 29889eb0ed1341d68675290d3167cd1e 已推送到队列 tts_queue:long_text
+2025-10-10 14:15:44 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
+2025-10-10 14:18:02 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
+2025-10-10 14:18:04 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
+2025-10-10 14:18:06 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
+2025-10-10 14:18:08 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
+2025-10-10 14:18:10 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
+2025-10-10 14:18:12 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).

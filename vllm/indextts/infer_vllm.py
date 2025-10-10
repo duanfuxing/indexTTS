@@ -94,6 +94,10 @@ class IndexTTS:
             print(">> Be patient, it may take a while to run in CPU mode.")
 
         cfg_path = os.path.join(model_dir, "config.yaml")
+        print(f"DEBUG: model_dir = {model_dir}")
+        print(f"DEBUG: cfg_path = {cfg_path}")
+        print(f"DEBUG: absolute cfg_path = {os.path.abspath(cfg_path)}")
+        print(f"DEBUG: config exists = {os.path.exists(cfg_path)}")
         self.cfg = OmegaConf.load(cfg_path)
         self.model_dir = model_dir
         self.dtype = torch.float16 if self.is_fp16 else None
