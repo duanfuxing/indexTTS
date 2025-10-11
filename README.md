@@ -69,6 +69,9 @@ ALTER USER 'root'@'%' IDENTIFIED BY '新密码';
 FLUSH PRIVILEGES;
 exit
 
+# 导入数据库
+mysql -u root -p < ./utils/init.sql
+
 # 注意事项
 - 确保在root用户下执行脚本
 - 脚本会自动配置MySQL和Redis服务，无需手动操作
@@ -78,9 +81,23 @@ exit
 - 安装时会使用.env中的数据库连接参数配置MySQL和Redis服务
 ```
 
+#### 8. 安装Supervisor
+```bash
+# 安装
+bash scripts/supervisor_services.sh install
+
+# 脚本命令
+bash scripts/supervisor_services.sh install   - 安装Supervisor服务
+bash scripts/supervisor_services.sh uninstall - 卸载Supervisor服务
+bash scripts/supervisor_services.sh start     - 启动服务
+bash scripts/supervisor_services.sh stop      - 停止服务
+bash scripts/supervisor_services.sh restart   - 重启服务
+bash scripts/supervisor_services.sh status    - 检查服务状态
+```
+
 ### 服务启动
 
-#### 8. 启动服务
+#### 9. 启动服务
 完成上述配置后，按以下顺序启动服务：
 
 ```bash

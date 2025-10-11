@@ -1,5 +1,6 @@
--- 增强型TTS API数据库架构
--- 支持在线TTS和长文本TTS任务管理
+-- 创建数据库
+CREATE DATABASE IF NOT EXISTS aigc_omni;
+USE aigc_omni;
 
 -- TTS任务表
 -- 存储所有TTS任务的详细信息和处理状态

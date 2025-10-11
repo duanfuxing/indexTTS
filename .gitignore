@@ -3,6 +3,6 @@ __pycache__/
 outputs/
 .env
 checkpoints/*
-./logs/
-./.trae/
+logs/*
+.trae/*
 storage/*
