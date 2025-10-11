@@ -123,3 +123,37 @@ KeyError: 'yunxi'
 2025-10-10 14:19:51 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:385] - stop() - 处理器 worker-96c2aa47 收到停止请求
 2025-10-10 14:19:52 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:380] - run() - 处理器 worker-96c2aa47 已停止
 2025-10-10 14:19:52 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:116] - cleanup() - 处理器 worker-96c2aa47 资源清理完成
+2025-10-11 13:53:21 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:67] - __init__() - TTS任务处理器 worker-83f564c1 初始化完成
+2025-10-11 13:53:51 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:91] - initialize() - 已加载 2 个音色
+2025-10-11 13:53:51 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:104] - initialize() - TOS上传器初始化成功
+2025-10-11 13:53:51 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:109] - initialize() - 处理器 worker-83f564c1 初始化成功
+2025-10-11 13:53:51 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:274] - run() - 处理器 worker-83f564c1 已启动，处理 所有 类型任务
+2025-10-11 13:54:15 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:341] - signal_handler() - 收到信号 15，正在停止处理器...
+2025-10-11 13:54:15 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:318] - stop() - 处理器 worker-83f564c1 收到停止请求
+2025-10-11 13:54:15 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:313] - run() - 处理器 worker-83f564c1 已停止
+2025-10-11 13:54:15 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:121] - cleanup() - 处理器 worker-83f564c1 资源清理完成
+2025-10-11 13:54:25 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:67] - __init__() - TTS任务处理器 worker-dab1ae63 初始化完成
+2025-10-11 13:54:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:91] - initialize() - 已加载 2 个音色
+2025-10-11 13:54:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:104] - initialize() - TOS上传器初始化成功
+2025-10-11 13:54:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:109] - initialize() - 处理器 worker-dab1ae63 初始化成功
+2025-10-11 13:54:54 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:274] - run() - 处理器 worker-dab1ae63 已启动，处理 所有 类型任务
+2025-10-11 13:59:21 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:154] - process_task() - 正在处理任务 a72236ce1c7549e2916dc9e8a103d43c，音色: xiaomeng，文本长度: 991
+2025-10-11 13:59:40 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:190] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/https://aigc-omni.tos-cn-guangzhou.volces.com/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.wav
+2025-10-11 13:59:40 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:197] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/https://aigc-omni.tos-cn-guangzhou.volces.com/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.srt
+2025-10-11 13:59:40 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:229] - process_task() - 任务 a72236ce1c7549e2916dc9e8a103d43c 处理成功，耗时 18.80秒
+2025-10-11 13:59:40 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:298] - run() - 处理器 worker-dab1ae63 完成任务 a72236ce1c7549e2916dc9e8a103d43c
+2025-10-11 13:59:44 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:154] - process_task() - 正在处理任务 a3ff76bdd7b643378bbff22dc099adce，音色: xiaomeng，文本长度: 998
+2025-10-11 14:00:02 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:190] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/https://aigc-omni.tos-cn-guangzhou.volces.com/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.wav
+2025-10-11 14:00:02 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:197] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/https://aigc-omni.tos-cn-guangzhou.volces.com/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.srt
+2025-10-11 14:00:02 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:229] - process_task() - 任务 a3ff76bdd7b643378bbff22dc099adce 处理成功，耗时 17.32秒
+2025-10-11 14:00:02 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:298] - run() - 处理器 worker-dab1ae63 完成任务 a3ff76bdd7b643378bbff22dc099adce
+2025-10-11 14:00:06 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:154] - process_task() - 正在处理任务 e1dbc6ab7dde4a7e95fcc4907e802502，音色: xiaomeng，文本长度: 987
+2025-10-11 14:00:25 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:190] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/https://aigc-omni.tos-cn-guangzhou.volces.com/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.wav
+2025-10-11 14:00:25 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:197] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/https://aigc-omni.tos-cn-guangzhou.volces.com/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.srt
+2025-10-11 14:00:25 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:229] - process_task() - 任务 e1dbc6ab7dde4a7e95fcc4907e802502 处理成功，耗时 17.68秒
+2025-10-11 14:00:25 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:298] - run() - 处理器 worker-dab1ae63 完成任务 e1dbc6ab7dde4a7e95fcc4907e802502
+2025-10-11 14:00:30 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:154] - process_task() - 正在处理任务 ec318ea5c7da41879e655d1f1ccbed18，音色: xiaomeng，文本长度: 404
+2025-10-11 14:00:38 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:190] - process_task() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/https://aigc-omni.tos-cn-guangzhou.volces.com/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.wav
+2025-10-11 14:00:38 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:197] - process_task() - 字幕文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/https://aigc-omni.tos-cn-guangzhou.volces.com/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.srt
+2025-10-11 14:00:38 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:229] - process_task() - 任务 ec318ea5c7da41879e655d1f1ccbed18 处理成功，耗时 6.98秒
+2025-10-11 14:00:38 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:298] - run() - 处理器 worker-dab1ae63 完成任务 ec318ea5c7da41879e655d1f1ccbed18

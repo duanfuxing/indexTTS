@@ -451,3 +451,364 @@
 2025-10-11 11:32:14 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:423] - online_tts() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/fb086a724f314bec9e7a35e35ce3eb4e/fb086a724f314bec9e7a35e35ce3eb4e.wav
 2025-10-11 11:32:14 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:427] - online_tts() - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/fb086a724f314bec9e7a35e35ce3eb4e/fb086a724f314bec9e7a35e35ce3eb4e.srt
 2025-10-11 13:38:33 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:223] - lifespan() - 应用程序关闭完成
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+2025-10-11 13:44:22 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:185] - lifespan() - TOS上传器初始化成功
+2025-10-11 13:44:51 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:214] - lifespan() - 应用程序启动完成
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+
+EnvironmentNameNotFound: Could not find conda environment: indexTTS
+You can list all discoverable environments with `conda info --envs`.
+
+
+INFO 10-11 13:53:18 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO:     Started server process [167757]
+INFO:     Waiting for application startup.
+2025-10-11 13:53:21 - utils.file_manager - INFO - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 13:53:21 - utils.db_manager - INFO - MySQL数据库连接池创建成功
+2025-10-11 13:53:21 - utils.db_manager - INFO - 表存在性检查: tts_tasks=True, voice_configs=True
+Redis连接URL: redis://aigc_omni:x5qnDpTHiMtN4RdqYiQq@127.0.0.1:6379/0
+2025-10-11 13:53:21 - utils.redis_manager - INFO - Redis连接初始化成功
+2025-10-11 13:53:21 - utils.tos_uploader - INFO - TOS上传器初始化成功
+2025-10-11 13:53:21 - api_server - INFO - TOS上传器初始化成功
+2025-10-11 13:53:21 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:185] - lifespan() - TOS上传器初始化成功
+DEBUG: model_dir = checkpoints/Index-TTS-1.5-vLLM
+DEBUG: cfg_path = checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: absolute cfg_path = /root/autodl-tmp/indexTTS/checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: config exists = True
+INFO 10-11 13:53:21 [__init__.py:742] Resolved architecture: GPT2InferenceModel
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 10-11 13:53:21 [__init__.py:1815] Using max model len 803
+INFO 10-11 13:53:22 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=5120.
+WARNING 10-11 13:53:22 [__init__.py:2974] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 10-11 13:53:26 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO 10-11 13:53:29 [core.py:654] Waiting for init message from front-end.
+INFO 10-11 13:53:29 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='checkpoints/Index-TTS-1.5-vLLM/gpt', speculative_config=None, tokenizer='checkpoints/Index-TTS-1.5-vLLM/gpt', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=803, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=checkpoints/Index-TTS-1.5-vLLM/gpt, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":256,"local_cache_dir":null}
+[W1011 13:53:30.548065604 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+INFO 10-11 13:53:30 [parallel_state.py:1165] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+WARNING 10-11 13:53:30 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 10-11 13:53:31 [gpu_model_runner.py:2338] Starting to load model checkpoints/Index-TTS-1.5-vLLM/gpt...
+INFO 10-11 13:53:31 [gpu_model_runner.py:2370] Loading model from scratch...
+INFO 10-11 13:53:31 [cuda.py:362] Using Flash Attention backend on V1 engine.
+(EngineCore_DP0 pid=168199) Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore_DP0 pid=168199) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.35s/it]
+(EngineCore_DP0 pid=168199) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.35s/it]
+(EngineCore_DP0 pid=168199) 
+INFO 10-11 13:53:33 [default_loader.py:268] Loading weights took 1.35 seconds
+INFO 10-11 13:53:33 [gpu_model_runner.py:2392] Model loading took 0.9209 GiB and 1.424266 seconds
+INFO 10-11 13:53:33 [gpu_model_runner.py:3000] Encoder cache will be initialized with a budget of 5120 tokens, and profiled with 5 audio items of the maximum feature size.
+INFO 10-11 13:53:36 [backends.py:539] Using cache directory: /root/.cache/vllm/torch_compile_cache/2dec3f858e/rank_0_0/backbone for vLLM's torch.compile
+INFO 10-11 13:53:36 [backends.py:550] Dynamo bytecode transform time: 2.18 s
+INFO 10-11 13:53:36 [backends.py:161] Directly load the compiled graph(s) for dynamic shape from the cache, took 0.606 s
+INFO 10-11 13:53:37 [monitor.py:34] torch.compile takes 2.18 s in total
+INFO 10-11 13:53:38 [gpu_worker.py:298] Available KV cache memory: 0.36 GiB
+INFO 10-11 13:53:38 [kv_cache_utils.py:864] GPU KV cache size: 3,104 tokens
+INFO 10-11 13:53:38 [kv_cache_utils.py:868] Maximum concurrency for 803 tokens per request: 3.80x
+(EngineCore_DP0 pid=168199) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|█▋        | 6/35 [00:00<00:00, 51.96it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 12/35 [00:00<00:00, 55.15it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████▏    | 18/35 [00:00<00:00, 56.37it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 24/35 [00:00<00:00, 56.75it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▌ | 30/35 [00:00<00:00, 56.07it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:00<00:00, 53.68it/s]
+INFO 10-11 13:53:39 [gpu_model_runner.py:3118] Graph capturing finished in 1 secs, took 0.27 GiB
+INFO 10-11 13:53:39 [gpu_worker.py:391] Free memory on device (22.63/23.53 GiB) on startup. Desired GPU memory utilization is (0.4, 9.41 GiB). Actual usage is 0.92 GiB for weight, 0.13 GiB for peak activation, 8.0 GiB for non-torch memory, and 0.27 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=-60744295` to fit into requested memory, or `--kv-cache-memory=14130054144` to fully utilize gpu memory. Current kv cache memory in use is 381754777 bytes.
+INFO 10-11 13:53:39 [core.py:218] init engine (profile, create kv cache, warmup model) took 6.00 seconds
+INFO 10-11 13:53:40 [loggers.py:142] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 194
+INFO 10-11 13:53:40 [async_llm.py:180] Torch profiler disabled. AsyncLLM CPU traces will not be collected.
+>> GPT weights restored from: checkpoints/Index-TTS-1.5-vLLM/gpt.pth
+W1011 13:53:48.030000 167757 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W1011 13:53:48.030000 167757 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+ninja: no work to do.
+>> Preload custom CUDA kernel for BigVGAN <module 'anti_alias_activation_cuda' from '/root/autodl-tmp/indexTTS/vllm/indextts/BigVGAN/alias_free_activation/cuda/build/anti_alias_activation_cuda.so'>
+Removing weight norm...
+>> bigvgan weights restored from: checkpoints/Index-TTS-1.5-vLLM/bigvgan_generator.pth
+2025-10-11 13:53:50,232 WETEXT INFO found existing fst: /root/autodl-tmp/indexTTS/vllm/indextts/utils/tagger_cache/zh_tn_tagger.fst
+2025-10-11 13:53:50,232 WETEXT INFO                     /root/autodl-tmp/indexTTS/vllm/indextts/utils/tagger_cache/zh_tn_verbalizer.fst
+2025-10-11 13:53:50,232 WETEXT INFO skip building fst for zh_normalizer ...
+2025-10-11 13:53:50,599 WETEXT INFO found existing fst: /root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/tn/en_tn_tagger.fst
+2025-10-11 13:53:50,599 WETEXT INFO                     /root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/tn/en_tn_verbalizer.fst
+2025-10-11 13:53:50,599 WETEXT INFO skip building fst for en_normalizer ...
+>> TextNormalizer loaded
+>> bpe model loaded from: checkpoints/Index-TTS-1.5-vLLM/bpe.model
+speaker_path: /root/autodl-tmp/indexTTS/vllm/assets/speaker.json
+Speaker: xiaomeng registered
+Speaker: yunxi registered
+2025-10-11 13:53:51 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:214] - lifespan() - 应用程序启动完成
+2025-10-11 13:53:51 - api_server - INFO - 应用程序启动完成
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:6006 (Press CTRL+C to quit)
+INFO:     Shutting down
+[rank0]:[W1011 13:54:15.074406777 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+INFO:     Waiting for application shutdown.
+2025-10-11 13:54:15 - utils.db_manager - INFO - MySQL数据库连接池已关闭
+2025-10-11 13:54:15 - utils.redis_manager - INFO - Redis连接已关闭
+2025-10-11 13:54:15 - api_server - INFO - 应用程序关闭完成
+2025-10-11 13:54:15 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:223] - lifespan() - 应用程序关闭完成
+INFO:     Application shutdown complete.
+INFO:     Finished server process [167757]
+INFO 10-11 13:54:22 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO:     Started server process [170023]
+INFO:     Waiting for application startup.
+2025-10-11 13:54:26 - utils.file_manager - INFO - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 13:54:26 - utils.db_manager - INFO - MySQL数据库连接池创建成功
+2025-10-11 13:54:26 - utils.db_manager - INFO - 表存在性检查: tts_tasks=True, voice_configs=True
+Redis连接URL: redis://aigc_omni:x5qnDpTHiMtN4RdqYiQq@127.0.0.1:6379/0
+2025-10-11 13:54:26 - utils.redis_manager - INFO - Redis连接初始化成功
+2025-10-11 13:54:26 - utils.tos_uploader - INFO - TOS上传器初始化成功
+2025-10-11 13:54:26 - api_server - INFO - TOS上传器初始化成功
+2025-10-11 13:54:26 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:185] - lifespan() - TOS上传器初始化成功
+DEBUG: model_dir = checkpoints/Index-TTS-1.5-vLLM
+DEBUG: cfg_path = checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: absolute cfg_path = /root/autodl-tmp/indexTTS/checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: config exists = True
+INFO 10-11 13:54:26 [__init__.py:742] Resolved architecture: GPT2InferenceModel
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 10-11 13:54:26 [__init__.py:1815] Using max model len 803
+INFO 10-11 13:54:26 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=5120.
+WARNING 10-11 13:54:26 [__init__.py:2974] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 10-11 13:54:30 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO 10-11 13:54:34 [core.py:654] Waiting for init message from front-end.
+INFO 10-11 13:54:34 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='checkpoints/Index-TTS-1.5-vLLM/gpt', speculative_config=None, tokenizer='checkpoints/Index-TTS-1.5-vLLM/gpt', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=803, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=checkpoints/Index-TTS-1.5-vLLM/gpt, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":256,"local_cache_dir":null}
+[W1011 13:54:34.533532282 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+INFO 10-11 13:54:34 [parallel_state.py:1165] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+WARNING 10-11 13:54:34 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 10-11 13:54:35 [gpu_model_runner.py:2338] Starting to load model checkpoints/Index-TTS-1.5-vLLM/gpt...
+INFO 10-11 13:54:35 [gpu_model_runner.py:2370] Loading model from scratch...
+INFO 10-11 13:54:35 [cuda.py:362] Using Flash Attention backend on V1 engine.
+(EngineCore_DP0 pid=170285) Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore_DP0 pid=170285) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.39s/it]
+(EngineCore_DP0 pid=170285) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.39s/it]
+(EngineCore_DP0 pid=170285) 
+INFO 10-11 13:54:37 [default_loader.py:268] Loading weights took 1.39 seconds
+INFO 10-11 13:54:37 [gpu_model_runner.py:2392] Model loading took 0.9209 GiB and 1.469274 seconds
+INFO 10-11 13:54:38 [gpu_model_runner.py:3000] Encoder cache will be initialized with a budget of 5120 tokens, and profiled with 5 audio items of the maximum feature size.
+INFO 10-11 13:54:40 [backends.py:539] Using cache directory: /root/.cache/vllm/torch_compile_cache/2dec3f858e/rank_0_0/backbone for vLLM's torch.compile
+INFO 10-11 13:54:40 [backends.py:550] Dynamo bytecode transform time: 2.18 s
+INFO 10-11 13:54:41 [backends.py:161] Directly load the compiled graph(s) for dynamic shape from the cache, took 0.642 s
+INFO 10-11 13:54:41 [monitor.py:34] torch.compile takes 2.18 s in total
+INFO 10-11 13:54:42 [gpu_worker.py:298] Available KV cache memory: 0.54 GiB
+INFO 10-11 13:54:42 [kv_cache_utils.py:864] GPU KV cache size: 4,704 tokens
+INFO 10-11 13:54:42 [kv_cache_utils.py:868] Maximum concurrency for 803 tokens per request: 5.76x
+(EngineCore_DP0 pid=170285) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|█▋        | 6/35 [00:00<00:00, 51.44it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 12/35 [00:00<00:00, 55.29it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████▏    | 18/35 [00:00<00:00, 56.42it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 24/35 [00:00<00:00, 56.62it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▌ | 30/35 [00:00<00:00, 56.20it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:00<00:00, 53.92it/s]
+INFO 10-11 13:54:43 [gpu_model_runner.py:3118] Graph capturing finished in 1 secs, took 0.31 GiB
+INFO 10-11 13:54:43 [gpu_worker.py:391] Free memory on device (22.63/23.53 GiB) on startup. Desired GPU memory utilization is (0.4, 9.41 GiB). Actual usage is 0.92 GiB for weight, 0.13 GiB for peak activation, 7.82 GiB for non-torch memory, and 0.31 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=90250649` to fit into requested memory, or `--kv-cache-memory=14281049088` to fully utilize gpu memory. Current kv cache memory in use is 578887065 bytes.
+INFO 10-11 13:54:43 [core.py:218] init engine (profile, create kv cache, warmup model) took 5.84 seconds
+INFO 10-11 13:54:44 [loggers.py:142] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 294
+INFO 10-11 13:54:44 [async_llm.py:180] Torch profiler disabled. AsyncLLM CPU traces will not be collected.
+>> GPT weights restored from: checkpoints/Index-TTS-1.5-vLLM/gpt.pth
+W1011 13:54:51.678000 170023 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W1011 13:54:51.678000 170023 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+ninja: no work to do.
+>> Preload custom CUDA kernel for BigVGAN <module 'anti_alias_activation_cuda' from '/root/autodl-tmp/indexTTS/vllm/indextts/BigVGAN/alias_free_activation/cuda/build/anti_alias_activation_cuda.so'>
+Removing weight norm...
+>> bigvgan weights restored from: checkpoints/Index-TTS-1.5-vLLM/bigvgan_generator.pth
+2025-10-11 13:54:53,880 WETEXT INFO found existing fst: /root/autodl-tmp/indexTTS/vllm/indextts/utils/tagger_cache/zh_tn_tagger.fst
+2025-10-11 13:54:53,880 WETEXT INFO                     /root/autodl-tmp/indexTTS/vllm/indextts/utils/tagger_cache/zh_tn_verbalizer.fst
+2025-10-11 13:54:53,880 WETEXT INFO skip building fst for zh_normalizer ...
+2025-10-11 13:54:54,210 WETEXT INFO found existing fst: /root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/tn/en_tn_tagger.fst
+2025-10-11 13:54:54,210 WETEXT INFO                     /root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/tn/en_tn_verbalizer.fst
+2025-10-11 13:54:54,210 WETEXT INFO skip building fst for en_normalizer ...
+>> TextNormalizer loaded
+>> bpe model loaded from: checkpoints/Index-TTS-1.5-vLLM/bpe.model
+speaker_path: /root/autodl-tmp/indexTTS/vllm/assets/speaker.json
+Speaker: xiaomeng registered
+Speaker: yunxi registered
+2025-10-11 13:54:55 - api_server - INFO - 应用程序启动完成
+2025-10-11 13:54:55 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:214] - lifespan() - 应用程序启动完成
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:6006 (Press CTRL+C to quit)
+2025-10-11 13:59:20 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/a72236ce1c7549e2916dc9e8a103d43c
+2025-10-11 13:59:20 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/a72236ce1c7549e2916dc9e8a103d43c
+2025-10-11 13:59:20 - utils.file_manager - INFO - 已保存文本文件: storage/tasks/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.txt
+2025-10-11 13:59:20 - utils.db_manager - INFO - 已创建在线TTS任务: a72236ce1c7549e2916dc9e8a103d43c
+2025-10-11 13:59:38 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/a72236ce1c7549e2916dc9e8a103d43c
+2025-10-11 13:59:38 - utils.file_manager - INFO - 已保存音频文件: storage/tasks/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.wav
+2025-10-11 13:59:38 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/a72236ce1c7549e2916dc9e8a103d43c
+2025-10-11 13:59:38 - utils.file_manager - INFO - 已保存字幕文件: storage/tasks/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.srt
+2025-10-11 13:59:38 - utils.tos_uploader - INFO - 开始上传文件到TOS: a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.wav, 文件大小: 6524938 bytes
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 10%, 已上传: 655360/6524938 bytes, 速度: 1.19 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 20%, 已上传: 1310720/6524938 bytes, 速度: 2.18 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 30%, 已上传: 1966080/6524938 bytes, 速度: 3.01 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 40%, 已上传: 2621440/6524938 bytes, 速度: 3.94 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 50%, 已上传: 3276800/6524938 bytes, 速度: 4.87 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 60%, 已上传: 3915776/6524938 bytes, 速度: 5.54 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 70%, 已上传: 4571136/6524938 bytes, 速度: 6.38 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 80%, 已上传: 5226496/6524938 bytes, 速度: 7.21 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 90%, 已上传: 5881856/6524938 bytes, 速度: 8.04 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6524938/6524938 bytes, 速度: 8.58 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6524938/6524938 bytes, 速度: 8.57 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 文件上传成功: a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.wav
+2025-10-11 13:59:39 - api_server - INFO - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.wav
+2025-10-11 13:59:39 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:423] - online_tts() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.wav
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 开始上传文件到TOS: a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.srt, 文件大小: 6844 bytes
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6844/6844 bytes, 速度: 1.25 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6844/6844 bytes, 速度: 1.13 MB/s
+2025-10-11 13:59:39 - utils.tos_uploader - INFO - 文件上传成功: a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.srt
+2025-10-11 13:59:39 - api_server - INFO - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.srt
+2025-10-11 13:59:39 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:427] - online_tts() - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/a72236ce1c7549e2916dc9e8a103d43c/a72236ce1c7549e2916dc9e8a103d43c.srt
+2025-10-11 13:59:39 - utils.db_manager - INFO - 已更新任务 a72236ce1c7549e2916dc9e8a103d43c 的文件路径
+2025-10-11 13:59:39 - utils.db_manager - INFO - 已更新任务 a72236ce1c7549e2916dc9e8a103d43c 状态为 completed
+INFO:     172.29.51.3:0 - "POST /tts/online HTTP/1.1" 200 OK
+2025-10-11 13:59:44 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/a3ff76bdd7b643378bbff22dc099adce
+2025-10-11 13:59:44 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/a3ff76bdd7b643378bbff22dc099adce
+2025-10-11 13:59:44 - utils.file_manager - INFO - 已保存文本文件: storage/tasks/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.txt
+2025-10-11 13:59:44 - utils.db_manager - INFO - 已创建在线TTS任务: a3ff76bdd7b643378bbff22dc099adce
+2025-10-11 14:00:01 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/a3ff76bdd7b643378bbff22dc099adce
+2025-10-11 14:00:01 - utils.file_manager - INFO - 已保存音频文件: storage/tasks/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.wav
+2025-10-11 14:00:01 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/a3ff76bdd7b643378bbff22dc099adce
+2025-10-11 14:00:01 - utils.file_manager - INFO - 已保存字幕文件: storage/tasks/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.srt
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 开始上传文件到TOS: a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.wav, 文件大小: 6200308 bytes
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 普通上传进度: 10%, 已上传: 622592/6200308 bytes, 速度: 136.50 MB/s
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 普通上传进度: 20%, 已上传: 1245184/6200308 bytes, 速度: 180.50 MB/s
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 普通上传进度: 30%, 已上传: 1867776/6200308 bytes, 速度: 202.88 MB/s
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 普通上传进度: 40%, 已上传: 2490368/6200308 bytes, 速度: 216.70 MB/s
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 普通上传进度: 50%, 已上传: 3112960/6200308 bytes, 速度: 11.97 MB/s
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 普通上传进度: 60%, 已上传: 3735552/6200308 bytes, 速度: 10.33 MB/s
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 普通上传进度: 70%, 已上传: 4341760/6200308 bytes, 速度: 11.69 MB/s
+2025-10-11 14:00:01 - utils.tos_uploader - INFO - 普通上传进度: 80%, 已上传: 4964352/6200308 bytes, 速度: 11.83 MB/s
+2025-10-11 14:00:02 - utils.tos_uploader - INFO - 普通上传进度: 90%, 已上传: 5586944/6200308 bytes, 速度: 10.82 MB/s
+2025-10-11 14:00:02 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6200308/6200308 bytes, 速度: 11.78 MB/s
+2025-10-11 14:00:02 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6200308/6200308 bytes, 速度: 11.77 MB/s
+2025-10-11 14:00:02 - utils.tos_uploader - INFO - 文件上传成功: a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.wav
+2025-10-11 14:00:02 - api_server - INFO - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.wav
+2025-10-11 14:00:02 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:423] - online_tts() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.wav
+2025-10-11 14:00:02 - utils.tos_uploader - INFO - 开始上传文件到TOS: a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.srt, 文件大小: 6455 bytes
+2025-10-11 14:00:02 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6455/6455 bytes, 速度: 1.24 MB/s
+2025-10-11 14:00:02 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6455/6455 bytes, 速度: 1.10 MB/s
+2025-10-11 14:00:02 - utils.tos_uploader - INFO - 文件上传成功: a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.srt
+2025-10-11 14:00:02 - api_server - INFO - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.srt
+2025-10-11 14:00:02 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:427] - online_tts() - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/a3ff76bdd7b643378bbff22dc099adce/a3ff76bdd7b643378bbff22dc099adce.srt
+2025-10-11 14:00:02 - utils.db_manager - INFO - 已更新任务 a3ff76bdd7b643378bbff22dc099adce 的文件路径
+2025-10-11 14:00:02 - utils.db_manager - INFO - 已更新任务 a3ff76bdd7b643378bbff22dc099adce 状态为 completed
+INFO:     172.29.51.3:0 - "POST /tts/online HTTP/1.1" 200 OK
+2025-10-11 14:00:06 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/e1dbc6ab7dde4a7e95fcc4907e802502
+2025-10-11 14:00:06 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/e1dbc6ab7dde4a7e95fcc4907e802502
+2025-10-11 14:00:06 - utils.file_manager - INFO - 已保存文本文件: storage/tasks/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.txt
+2025-10-11 14:00:06 - utils.db_manager - INFO - 已创建在线TTS任务: e1dbc6ab7dde4a7e95fcc4907e802502
+2025-10-11 14:00:24 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/e1dbc6ab7dde4a7e95fcc4907e802502
+2025-10-11 14:00:24 - utils.file_manager - INFO - 已保存音频文件: storage/tasks/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.wav
+2025-10-11 14:00:24 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/e1dbc6ab7dde4a7e95fcc4907e802502
+2025-10-11 14:00:24 - utils.file_manager - INFO - 已保存字幕文件: storage/tasks/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.srt
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 开始上传文件到TOS: e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.wav, 文件大小: 6574860 bytes
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 10%, 已上传: 671744/6574860 bytes, 速度: 138.88 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 20%, 已上传: 1327104/6574860 bytes, 速度: 181.65 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 30%, 已上传: 1982464/6574860 bytes, 速度: 204.01 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 40%, 已上传: 2637824/6574860 bytes, 速度: 217.32 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 50%, 已上传: 3293184/6574860 bytes, 速度: 10.63 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 60%, 已上传: 3948544/6574860 bytes, 速度: 10.90 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 70%, 已上传: 4603904/6574860 bytes, 速度: 10.12 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 80%, 已上传: 5275648/6574860 bytes, 速度: 10.45 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 90%, 已上传: 5931008/6574860 bytes, 速度: 11.42 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6574860/6574860 bytes, 速度: 12.33 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6574860/6574860 bytes, 速度: 12.32 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 文件上传成功: e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.wav
+2025-10-11 14:00:24 - api_server - INFO - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.wav
+2025-10-11 14:00:24 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:423] - online_tts() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.wav
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 开始上传文件到TOS: e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.srt, 文件大小: 6880 bytes
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6880/6880 bytes, 速度: 1.09 MB/s
+2025-10-11 14:00:24 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 6880/6880 bytes, 速度: 989.00 KB/s
+2025-10-11 14:00:25 - utils.tos_uploader - INFO - 文件上传成功: e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.srt
+2025-10-11 14:00:25 - api_server - INFO - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.srt
+2025-10-11 14:00:25 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:427] - online_tts() - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/e1dbc6ab7dde4a7e95fcc4907e802502/e1dbc6ab7dde4a7e95fcc4907e802502.srt
+2025-10-11 14:00:25 - utils.db_manager - INFO - 已更新任务 e1dbc6ab7dde4a7e95fcc4907e802502 的文件路径
+2025-10-11 14:00:25 - utils.db_manager - INFO - 已更新任务 e1dbc6ab7dde4a7e95fcc4907e802502 状态为 completed
+INFO:     172.29.51.3:0 - "POST /tts/online HTTP/1.1" 200 OK
+2025-10-11 14:00:29 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18
+2025-10-11 14:00:29 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18
+2025-10-11 14:00:29 - utils.file_manager - INFO - 已保存文本文件: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.txt
+2025-10-11 14:00:29 - utils.db_manager - INFO - 已创建在线TTS任务: ec318ea5c7da41879e655d1f1ccbed18
+2025-10-11 14:00:37 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18
+2025-10-11 14:00:37 - utils.file_manager - INFO - 已保存音频文件: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.wav
+2025-10-11 14:00:37 - utils.file_manager - INFO - 已创建任务目录: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18
+2025-10-11 14:00:37 - utils.file_manager - INFO - 已保存字幕文件: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.srt
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 开始上传文件到TOS: ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.wav, 文件大小: 2610022 bytes
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 10%, 已上传: 262144/2610022 bytes, 速度: 78.21 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 20%, 已上传: 524288/2610022 bytes, 速度: 118.68 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 30%, 已上传: 786432/2610022 bytes, 速度: 144.43 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 40%, 已上传: 1048576/2610022 bytes, 速度: 162.47 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 50%, 已上传: 1310720/2610022 bytes, 速度: 175.77 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 60%, 已上传: 1572864/2610022 bytes, 速度: 186.02 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 70%, 已上传: 1835008/2610022 bytes, 速度: 193.83 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 80%, 已上传: 2097152/2610022 bytes, 速度: 200.26 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 90%, 已上传: 2359296/2610022 bytes, 速度: 205.72 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 2610022/2610022 bytes, 速度: 209.42 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 2610022/2610022 bytes, 速度: 207.89 MB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 文件上传成功: ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.wav
+2025-10-11 14:00:37 - api_server - INFO - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.wav
+2025-10-11 14:00:37 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:423] - online_tts() - 音频文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.wav
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 开始上传文件到TOS: ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.srt, 文件大小: 2672 bytes
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 2672/2672 bytes, 速度: 536.71 KB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 普通上传进度: 100%, 已上传: 2672/2672 bytes, 速度: 482.63 KB/s
+2025-10-11 14:00:37 - utils.tos_uploader - INFO - 文件上传成功: ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.srt
+2025-10-11 14:00:37 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:427] - online_tts() - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.srt
+2025-10-11 14:00:37 - api_server - INFO - SRT文件上传成功: https://aigc-omni.tos-cn-guangzhou.volces.com/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.srt
+2025-10-11 14:00:37 - utils.db_manager - INFO - 已更新任务 ec318ea5c7da41879e655d1f1ccbed18 的文件路径
+2025-10-11 14:00:37 - utils.db_manager - INFO - 已更新任务 ec318ea5c7da41879e655d1f1ccbed18 状态为 completed
+INFO:     172.29.51.3:0 - "POST /tts/online HTTP/1.1" 200 OK
