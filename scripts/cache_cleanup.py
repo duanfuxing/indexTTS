@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
 """
 缓存文件定时清理脚本
-通过查询数据库中的过期任务，删除对应的任务文件夹
+支持两种模式：
+1. 单次执行模式：直接执行清理任务后退出
+2. 调度器模式：作为常驻进程，每日定时执行清理任务
 """
 
 import os
 import sys
 import asyncio
-import shutil
+import traceback
+import argparse
 from datetime import datetime, timedelta
 from pathlib import Path
 import traceback
@@ -170,8 +173,116 @@ class CacheCleanupService:
             self.logger.error(traceback.format_exc())
 
 
-async def main():
-    """主函数"""
+class CacheCleanupScheduler:
+    """缓存清理定时调度器"""
+    
+    def __init__(self):
+        self.logger = IndexTTSLogger.get_module_logger(__file__)
+        self.cleanup_service = None
+        
+        # 从环境变量获取执行时间，默认凌晨2点
+        self.cleanup_hour = int(os.getenv('CACHE_CLEANUP_HOUR', '2'))
+        self.cleanup_minute = int(os.getenv('CACHE_CLEANUP_MINUTE', '0'))
+        
+        self.logger.info(f"缓存清理调度器初始化完成")
+        self.logger.info(f"每日执行时间: {self.cleanup_hour:02d}:{self.cleanup_minute:02d}")
+    
+    def get_next_cleanup_time(self):
+        """计算下次清理时间"""
+        now = datetime.now()
+        
+        # 今天的清理时间
+        today_cleanup = now.replace(
+            hour=self.cleanup_hour, 
+            minute=self.cleanup_minute, 
+            second=0, 
+            microsecond=0
+        )
+        
+        # 如果今天的清理时间已过，则安排明天
+        if now >= today_cleanup:
+            next_cleanup = today_cleanup + timedelta(days=1)
+        else:
+            next_cleanup = today_cleanup
+        
+        return next_cleanup
+    
+    def calculate_sleep_seconds(self):
+        """计算需要睡眠的秒数"""
+        next_cleanup = self.get_next_cleanup_time()
+        now = datetime.now()
+        sleep_seconds = (next_cleanup - now).total_seconds()
+        
+        self.logger.info(f"下次清理时间: {next_cleanup.strftime('%Y-%m-%d %H:%M:%S')}")
+        self.logger.info(f"距离下次清理还有: {sleep_seconds/3600:.1f} 小时")
+        
+        return sleep_seconds
+    
+    async def run_cleanup(self):
+        """执行清理任务"""
+        try:
+            self.logger.info("开始执行缓存清理任务")
+            
+            # 初始化清理服务
+            if not self.cleanup_service:
+                self.cleanup_service = CacheCleanupService()
+                await self.cleanup_service.initialize()
+            
+            # 执行清理
+            await self.cleanup_service.cleanup_expired_tasks()
+            await self.cleanup_service.cleanup_empty_directories()
+            
+            self.logger.info("缓存清理任务执行完成")
+            
+        except Exception as e:
+            self.logger.error(f"执行缓存清理任务时发生错误: {str(e)}")
+            self.logger.error(traceback.format_exc())
+    
+    async def run_scheduler(self):
+        """运行调度器主循环"""
+        self.logger.info("缓存清理调度器启动")
+        
+        while True:
+            try:
+                # 计算睡眠时间
+                sleep_seconds = self.calculate_sleep_seconds()
+                
+                # 如果睡眠时间太长（超过24小时），分段睡眠以便响应停止信号
+                if sleep_seconds > 3600:  # 超过1小时
+                    # 每小时检查一次
+                    check_interval = 3600
+                    remaining_sleep = sleep_seconds
+                    
+                    while remaining_sleep > 0:
+                        current_sleep = min(check_interval, remaining_sleep)
+                        self.logger.debug(f"睡眠 {current_sleep/60:.1f} 分钟...")
+                        await asyncio.sleep(current_sleep)
+                        remaining_sleep -= current_sleep
+                        
+                        # 重新计算剩余时间，防止时间漂移
+                        if remaining_sleep > check_interval:
+                            sleep_seconds = self.calculate_sleep_seconds()
+                            remaining_sleep = sleep_seconds
+                else:
+                    # 睡眠时间较短，直接睡眠
+                    self.logger.info(f"等待 {sleep_seconds/60:.1f} 分钟后执行清理...")
+                    await asyncio.sleep(sleep_seconds)
+                
+                # 执行清理任务
+                await self.run_cleanup()
+                
+            except KeyboardInterrupt:
+                self.logger.info("收到停止信号，调度器正在退出...")
+                break
+            except Exception as e:
+                self.logger.error(f"调度器运行时发生错误: {str(e)}")
+                self.logger.error(traceback.format_exc())
+                # 发生错误时等待5分钟后重试
+                await asyncio.sleep(300)
+
+
+async def run_once():
+    """单次执行模式"""
     cleanup_service = CacheCleanupService()
     
     try:
@@ -189,6 +300,41 @@ async def main():
     except Exception as e:
         print(f"缓存清理任务失败: {str(e)}")
         sys.exit(1)
+
+
+async def run_scheduler():
+    """调度器模式"""
+    scheduler = CacheCleanupScheduler()
+    
+    try:
+        await scheduler.run_scheduler()
+    except KeyboardInterrupt:
+        print("调度器已停止")
+    except Exception as e:
+        print(f"调度器运行失败: {str(e)}")
+        sys.exit(1)
+
+
+async def main():
+    """主函数"""
+    parser = argparse.ArgumentParser(description='缓存清理脚本')
+    parser.add_argument('--scheduler', action='store_true', 
+                       help='以调度器模式运行（每日定时执行）')
+    parser.add_argument('--once', action='store_true', 
+                       help='单次执行模式（立即执行一次清理）')
+    
+    args = parser.parse_args()
+    
+    # 如果没有指定参数，默认为单次执行模式
+    if not args.scheduler and not args.once:
+        args.once = True
+    
+    if args.scheduler:
+        print("启动缓存清理调度器...")
+        await run_scheduler()
+    elif args.once:
+        print("执行单次缓存清理...")
+        await run_once()
 
 
 if __name__ == "__main__":

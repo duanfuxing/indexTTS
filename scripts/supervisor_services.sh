@@ -142,6 +142,12 @@ restart_all() {
     
     # 检查 supervisord 是否已经运行
     if pgrep -f "supervisord.*$config_file" > /dev/null; then
+        # 先重新加载配置文件
+        print_info "重新加载配置文件..."
+        supervisorctl -c "$config_file" reread
+        supervisorctl -c "$config_file" update
+        
+        # 然后重启服务
         supervisorctl -c "$config_file" restart $SERVICE_GROUP:*
     else
         print_info "启动 supervisord..."
@@ -246,6 +252,12 @@ restart_service() {
     
     # 检查 supervisord 是否已经运行
     if pgrep -f "supervisord.*$config_file" > /dev/null; then
+        # 先重新加载配置文件
+        print_info "重新加载配置文件..."
+        supervisorctl -c "$config_file" reread
+        supervisorctl -c "$config_file" update
+        
+        # 然后重启服务
         supervisorctl -c "$config_file" restart $SERVICE_GROUP:$service
     else
         print_info "启动 supervisord..."

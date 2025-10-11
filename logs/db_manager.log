@@ -733,3 +733,25 @@
 2025-10-11 14:27:01 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
 2025-10-11 14:27:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
 2025-10-11 14:27:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:34:01 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:34:01 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:36:43 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:36:43 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:37:31 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-11 14:37:32 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-11 14:37:43 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:37:43 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:38:22 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:38:22 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:38:50 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:38:50 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:40:15 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-11 14:40:16 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:53] - close() - MySQL数据库连接池已关闭
+2025-10-11 14:40:28 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:40:28 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:41:07 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:41:07 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:41:27 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:41:27 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:41:56 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:41:56 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True

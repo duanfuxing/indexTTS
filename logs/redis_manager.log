@@ -76,3 +76,14 @@
 2025-10-11 13:54:15 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
 2025-10-11 13:54:26 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
 2025-10-11 13:54:54 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-11 14:37:31 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-11 14:37:32 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-11 14:37:43 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-11 14:38:22 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-11 14:38:50 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-11 14:40:15 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-11 14:40:16 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-11 14:40:28 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-11 14:41:07 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-11 14:41:27 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-11 14:41:56 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功

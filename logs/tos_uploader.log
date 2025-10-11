@@ -3463,3 +3463,10 @@
 2025-10-11 14:00:38 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 2672/2672 bytes, 速度: 571.63 KB/s
 2025-10-11 14:00:38 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 2672/2672 bytes, 速度: 514.16 KB/s
 2025-10-11 14:00:38 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.srt
+2025-10-11 14:37:43 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-11 14:38:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-11 14:38:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-11 14:40:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-11 14:41:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-11 14:41:27 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-11 14:41:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功

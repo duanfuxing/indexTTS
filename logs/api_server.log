@@ -812,3 +812,495 @@ INFO:     172.29.51.3:0 - "POST /tts/online HTTP/1.1" 200 OK
 2025-10-11 14:00:37 - utils.db_manager - INFO - 已更新任务 ec318ea5c7da41879e655d1f1ccbed18 的文件路径
 2025-10-11 14:00:37 - utils.db_manager - INFO - 已更新任务 ec318ea5c7da41879e655d1f1ccbed18 状态为 completed
 INFO:     172.29.51.3:0 - "POST /tts/online HTTP/1.1" 200 OK
+INFO:     Shutting down
+[rank0]:[W1011 14:37:31.001130912 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+INFO:     Waiting for application shutdown.
+2025-10-11 14:37:31 - utils.db_manager - INFO - MySQL数据库连接池已关闭
+2025-10-11 14:37:31 - utils.redis_manager - INFO - Redis连接已关闭
+2025-10-11 14:37:31 - api_server - INFO - 应用程序关闭完成
+2025-10-11 14:37:31 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:223] - lifespan() - 应用程序关闭完成
+INFO:     Application shutdown complete.
+INFO:     Finished server process [170023]
+INFO 10-11 14:37:39 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO:     Started server process [230585]
+INFO:     Waiting for application startup.
+2025-10-11 14:37:43 - utils.file_manager - INFO - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:37:43 - utils.db_manager - INFO - MySQL数据库连接池创建成功
+2025-10-11 14:37:43 - utils.db_manager - INFO - 表存在性检查: tts_tasks=True, voice_configs=True
+Redis连接URL: redis://aigc_omni:x5qnDpTHiMtN4RdqYiQq@127.0.0.1:6379/0
+2025-10-11 14:37:43 - utils.redis_manager - INFO - Redis连接初始化成功
+2025-10-11 14:37:43 - utils.tos_uploader - INFO - TOS上传器初始化成功
+2025-10-11 14:37:43 - api_server - INFO - TOS上传器初始化成功
+2025-10-11 14:37:43 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:185] - lifespan() - TOS上传器初始化成功
+DEBUG: model_dir = checkpoints/Index-TTS-1.5-vLLM
+DEBUG: cfg_path = checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: absolute cfg_path = /root/autodl-tmp/indexTTS/checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: config exists = True
+INFO 10-11 14:37:43 [__init__.py:742] Resolved architecture: GPT2InferenceModel
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 10-11 14:37:43 [__init__.py:1815] Using max model len 803
+INFO 10-11 14:37:43 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=5120.
+WARNING 10-11 14:37:43 [__init__.py:2974] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 10-11 14:37:47 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO 10-11 14:37:50 [core.py:654] Waiting for init message from front-end.
+INFO 10-11 14:37:50 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='checkpoints/Index-TTS-1.5-vLLM/gpt', speculative_config=None, tokenizer='checkpoints/Index-TTS-1.5-vLLM/gpt', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=803, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=checkpoints/Index-TTS-1.5-vLLM/gpt, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":256,"local_cache_dir":null}
+[W1011 14:37:51.221383205 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+INFO 10-11 14:37:51 [parallel_state.py:1165] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+WARNING 10-11 14:37:51 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 10-11 14:37:52 [gpu_model_runner.py:2338] Starting to load model checkpoints/Index-TTS-1.5-vLLM/gpt...
+INFO 10-11 14:37:52 [gpu_model_runner.py:2370] Loading model from scratch...
+INFO 10-11 14:37:52 [cuda.py:362] Using Flash Attention backend on V1 engine.
+(EngineCore_DP0 pid=230835) Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore_DP0 pid=230835) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.50s/it]
+(EngineCore_DP0 pid=230835) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.50s/it]
+(EngineCore_DP0 pid=230835) 
+INFO 10-11 14:37:54 [default_loader.py:268] Loading weights took 1.50 seconds
+INFO 10-11 14:37:54 [gpu_model_runner.py:2392] Model loading took 0.9209 GiB and 1.579878 seconds
+INFO 10-11 14:37:54 [gpu_model_runner.py:3000] Encoder cache will be initialized with a budget of 5120 tokens, and profiled with 5 audio items of the maximum feature size.
+INFO 10-11 14:37:57 [backends.py:539] Using cache directory: /root/.cache/vllm/torch_compile_cache/2dec3f858e/rank_0_0/backbone for vLLM's torch.compile
+INFO 10-11 14:37:57 [backends.py:550] Dynamo bytecode transform time: 2.22 s
+INFO 10-11 14:37:57 [backends.py:161] Directly load the compiled graph(s) for dynamic shape from the cache, took 0.603 s
+INFO 10-11 14:37:58 [monitor.py:34] torch.compile takes 2.22 s in total
+INFO 10-11 14:37:59 [gpu_worker.py:298] Available KV cache memory: 7.28 GiB
+INFO 10-11 14:37:59 [kv_cache_utils.py:864] GPU KV cache size: 63,584 tokens
+INFO 10-11 14:37:59 [kv_cache_utils.py:868] Maximum concurrency for 803 tokens per request: 77.92x
+(EngineCore_DP0 pid=230835) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|█▋        | 6/35 [00:00<00:00, 53.64it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 12/35 [00:00<00:00, 56.52it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  54%|█████▍    | 19/35 [00:00<00:00, 58.19it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  74%|███████▍  | 26/35 [00:00<00:00, 58.89it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  91%|█████████▏| 32/35 [00:00<00:00, 54.58it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:00<00:00, 53.96it/s]
+INFO 10-11 14:38:00 [gpu_model_runner.py:3118] Graph capturing finished in 1 secs, took 0.45 GiB
+INFO 10-11 14:38:00 [gpu_worker.py:391] Free memory on device (22.63/23.53 GiB) on startup. Desired GPU memory utilization is (0.4, 9.41 GiB). Actual usage is 0.92 GiB for weight, 0.13 GiB for peak activation, 1.08 GiB for non-torch memory, and 0.45 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=7176527257` to fit into requested memory, or `--kv-cache-memory=21367325696` to fully utilize gpu memory. Current kv cache memory in use is 7814061465 bytes.
+INFO 10-11 14:38:00 [core.py:218] init engine (profile, create kv cache, warmup model) took 5.93 seconds
+INFO 10-11 14:38:00 [loggers.py:142] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 3974
+INFO 10-11 14:38:00 [async_llm.py:180] Torch profiler disabled. AsyncLLM CPU traces will not be collected.
+>> GPT weights restored from: checkpoints/Index-TTS-1.5-vLLM/gpt.pth
+>> Preload custom CUDA kernel for BigVGAN <module 'anti_alias_activation_cuda' from '/root/autodl-tmp/indexTTS/vllm/indextts/BigVGAN/alias_free_activation/cuda/build/anti_alias_activation_cuda.so'>
+ERROR:    Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/api_server.py", line 194, in lifespan
+    tts = IndexTTS(model_dir=args.model_dir, gpu_memory_utilization=args.gpu_memory_utilization)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/vllm/indextts/infer_vllm.py", line 145, in __init__
+    self.bigvgan = self.bigvgan.to(self.device)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1369, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
+    module._apply(fn)
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 955, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 54.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 5.50 MiB is free. Including non-PyTorch memory, this process has 2.72 GiB memory in use. Process 230586 has 3.26 GiB memory in use. Process 230822 has 8.45 GiB memory in use. Process 230835 has 9.06 GiB memory in use. Of the allocated memory 2.27 GiB is allocated by PyTorch, and 70.97 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+[rank0]:[W1011 14:38:10.695493709 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ERROR:    Application startup failed. Exiting.
+Exception ignored in: <function Connection.__del__ at 0x7f9209be1580>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/aiomysql/connection.py", line 1129, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function StreamWriter.__del__ at 0x7f92b46639c0>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/asyncio/streams.py", line 413, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function Connection.__del__ at 0x7f9209be1580>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/aiomysql/connection.py", line 1129, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function StreamWriter.__del__ at 0x7f92b46639c0>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/asyncio/streams.py", line 413, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function AbstractConnection.__del__ at 0x7f9271642480>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/redis/asyncio/connection.py", line 232, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function StreamWriter.__del__ at 0x7f92b46639c0>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/asyncio/streams.py", line 413, in __del__
+TypeError: 'NoneType' object is not callable
+INFO 10-11 14:38:19 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO:     Started server process [231887]
+INFO:     Waiting for application startup.
+2025-10-11 14:38:22 - utils.file_manager - INFO - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:38:22 - utils.db_manager - INFO - MySQL数据库连接池创建成功
+2025-10-11 14:38:22 - utils.db_manager - INFO - 表存在性检查: tts_tasks=True, voice_configs=True
+Redis连接URL: redis://aigc_omni:x5qnDpTHiMtN4RdqYiQq@127.0.0.1:6379/0
+2025-10-11 14:38:22 - utils.redis_manager - INFO - Redis连接初始化成功
+2025-10-11 14:38:22 - utils.tos_uploader - INFO - TOS上传器初始化成功
+2025-10-11 14:38:22 - api_server - INFO - TOS上传器初始化成功
+2025-10-11 14:38:22 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:185] - lifespan() - TOS上传器初始化成功
+DEBUG: model_dir = checkpoints/Index-TTS-1.5-vLLM
+DEBUG: cfg_path = checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: absolute cfg_path = /root/autodl-tmp/indexTTS/checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: config exists = True
+INFO 10-11 14:38:22 [__init__.py:742] Resolved architecture: GPT2InferenceModel
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 10-11 14:38:22 [__init__.py:1815] Using max model len 803
+INFO 10-11 14:38:23 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=5120.
+WARNING 10-11 14:38:23 [__init__.py:2974] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 10-11 14:38:27 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO 10-11 14:38:30 [core.py:654] Waiting for init message from front-end.
+INFO 10-11 14:38:30 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='checkpoints/Index-TTS-1.5-vLLM/gpt', speculative_config=None, tokenizer='checkpoints/Index-TTS-1.5-vLLM/gpt', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=803, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=checkpoints/Index-TTS-1.5-vLLM/gpt, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":256,"local_cache_dir":null}
+[W1011 14:38:31.246749243 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+INFO 10-11 14:38:31 [parallel_state.py:1165] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+WARNING 10-11 14:38:31 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 10-11 14:38:32 [gpu_model_runner.py:2338] Starting to load model checkpoints/Index-TTS-1.5-vLLM/gpt...
+INFO 10-11 14:38:32 [gpu_model_runner.py:2370] Loading model from scratch...
+INFO 10-11 14:38:32 [cuda.py:362] Using Flash Attention backend on V1 engine.
+(EngineCore_DP0 pid=232179) Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore_DP0 pid=232179) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.64s/it]
+(EngineCore_DP0 pid=232179) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.64s/it]
+(EngineCore_DP0 pid=232179) 
+INFO 10-11 14:38:34 [default_loader.py:268] Loading weights took 1.64 seconds
+INFO 10-11 14:38:34 [gpu_model_runner.py:2392] Model loading took 0.9209 GiB and 1.757727 seconds
+INFO 10-11 14:38:35 [gpu_model_runner.py:3000] Encoder cache will be initialized with a budget of 5120 tokens, and profiled with 5 audio items of the maximum feature size.
+INFO 10-11 14:38:37 [backends.py:539] Using cache directory: /root/.cache/vllm/torch_compile_cache/2dec3f858e/rank_0_0/backbone for vLLM's torch.compile
+INFO 10-11 14:38:37 [backends.py:550] Dynamo bytecode transform time: 2.23 s
+INFO 10-11 14:38:38 [backends.py:161] Directly load the compiled graph(s) for dynamic shape from the cache, took 0.613 s
+INFO 10-11 14:38:38 [monitor.py:34] torch.compile takes 2.23 s in total
+INFO 10-11 14:38:39 [gpu_worker.py:298] Available KV cache memory: 1.23 GiB
+INFO 10-11 14:38:39 [kv_cache_utils.py:864] GPU KV cache size: 10,768 tokens
+INFO 10-11 14:38:39 [kv_cache_utils.py:868] Maximum concurrency for 803 tokens per request: 13.20x
+(EngineCore_DP0 pid=232179) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|█▍        | 5/35 [00:00<00:00, 40.84it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  29%|██▊       | 10/35 [00:00<00:00, 45.33it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  46%|████▌     | 16/35 [00:00<00:00, 50.28it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  63%|██████▎   | 22/35 [00:00<00:00, 53.10it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  80%|████████  | 28/35 [00:00<00:00, 53.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  97%|█████████▋| 34/35 [00:00<00:00, 55.00it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:00<00:00, 50.52it/s]
+INFO 10-11 14:38:40 [gpu_model_runner.py:3118] Graph capturing finished in 1 secs, took 0.21 GiB
+INFO 10-11 14:38:40 [gpu_worker.py:391] Free memory on device (21.6/23.53 GiB) on startup. Desired GPU memory utilization is (0.4, 9.41 GiB). Actual usage is 0.92 GiB for weight, 0.13 GiB for peak activation, 7.13 GiB for non-torch memory, and 0.21 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=935402905` to fit into requested memory, or `--kv-cache-memory=14018905088` to fully utilize gpu memory. Current kv cache memory in use is 1323376025 bytes.
+INFO 10-11 14:38:40 [core.py:218] init engine (profile, create kv cache, warmup model) took 6.06 seconds
+INFO 10-11 14:38:41 [loggers.py:142] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 673
+INFO 10-11 14:38:41 [async_llm.py:180] Torch profiler disabled. AsyncLLM CPU traces will not be collected.
+>> GPT weights restored from: checkpoints/Index-TTS-1.5-vLLM/gpt.pth
+W1011 14:38:48.657000 231887 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W1011 14:38:48.657000 231887 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+ninja: no work to do.
+>> Preload custom CUDA kernel for BigVGAN <module 'anti_alias_activation_cuda' from '/root/autodl-tmp/indexTTS/vllm/indextts/BigVGAN/alias_free_activation/cuda/build/anti_alias_activation_cuda.so'>
+Removing weight norm...
+>> bigvgan weights restored from: checkpoints/Index-TTS-1.5-vLLM/bigvgan_generator.pth
+2025-10-11 14:38:50,782 WETEXT INFO found existing fst: /root/autodl-tmp/indexTTS/vllm/indextts/utils/tagger_cache/zh_tn_tagger.fst
+2025-10-11 14:38:50,782 WETEXT INFO                     /root/autodl-tmp/indexTTS/vllm/indextts/utils/tagger_cache/zh_tn_verbalizer.fst
+2025-10-11 14:38:50,782 WETEXT INFO skip building fst for zh_normalizer ...
+2025-10-11 14:38:51,109 WETEXT INFO found existing fst: /root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/tn/en_tn_tagger.fst
+2025-10-11 14:38:51,109 WETEXT INFO                     /root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/tn/en_tn_verbalizer.fst
+2025-10-11 14:38:51,109 WETEXT INFO skip building fst for en_normalizer ...
+>> TextNormalizer loaded
+>> bpe model loaded from: checkpoints/Index-TTS-1.5-vLLM/bpe.model
+speaker_path: /root/autodl-tmp/indexTTS/vllm/assets/speaker.json
+Speaker: xiaomeng registered
+Speaker: yunxi registered
+2025-10-11 14:38:52 - api_server - INFO - 应用程序启动完成
+2025-10-11 14:38:52 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:214] - lifespan() - 应用程序启动完成
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:6006 (Press CTRL+C to quit)
+[rank0]:[W1011 14:40:15.430200819 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+2025-10-11 14:40:15 - utils.db_manager - INFO - MySQL数据库连接池已关闭
+2025-10-11 14:40:15 - utils.redis_manager - INFO - Redis连接已关闭
+2025-10-11 14:40:15 - api_server2025-10-11 14:40:15 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:223] - lifespan() - 应用程序关闭完成
+ - INFO - 应用程序关闭完成
+INFO:     Application shutdown complete.
+INFO:     Finished server process [231887]
+INFO 10-11 14:40:24 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO:     Started server process [235304]
+INFO:     Waiting for application startup.
+2025-10-11 14:40:28 - utils.file_manager - INFO - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:40:28 - utils.db_manager - INFO - MySQL数据库连接池创建成功
+2025-10-11 14:40:28 - utils.db_manager - INFO - 表存在性检查: tts_tasks=True, voice_configs=True
+Redis连接URL: redis://aigc_omni:x5qnDpTHiMtN4RdqYiQq@127.0.0.1:6379/0
+2025-10-11 14:40:28 - utils.redis_manager - INFO - Redis连接初始化成功
+2025-10-11 14:40:28 - utils.tos_uploader - INFO - TOS上传器初始化成功
+2025-10-11 14:40:28 - api_server - INFO - TOS上传器初始化成功
+2025-10-11 14:40:28 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:185] - lifespan() - TOS上传器初始化成功
+DEBUG: model_dir = checkpoints/Index-TTS-1.5-vLLM
+DEBUG: cfg_path = checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: absolute cfg_path = /root/autodl-tmp/indexTTS/checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: config exists = True
+INFO 10-11 14:40:28 [__init__.py:742] Resolved architecture: GPT2InferenceModel
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 10-11 14:40:28 [__init__.py:1815] Using max model len 803
+INFO 10-11 14:40:28 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=5120.
+WARNING 10-11 14:40:28 [__init__.py:2974] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 10-11 14:40:32 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO 10-11 14:40:36 [core.py:654] Waiting for init message from front-end.
+INFO 10-11 14:40:36 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='checkpoints/Index-TTS-1.5-vLLM/gpt', speculative_config=None, tokenizer='checkpoints/Index-TTS-1.5-vLLM/gpt', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=803, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=checkpoints/Index-TTS-1.5-vLLM/gpt, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":256,"local_cache_dir":null}
+[W1011 14:40:36.393630032 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+INFO 10-11 14:40:36 [parallel_state.py:1165] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+WARNING 10-11 14:40:36 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 10-11 14:40:37 [gpu_model_runner.py:2338] Starting to load model checkpoints/Index-TTS-1.5-vLLM/gpt...
+INFO 10-11 14:40:37 [gpu_model_runner.py:2370] Loading model from scratch...
+INFO 10-11 14:40:37 [cuda.py:362] Using Flash Attention backend on V1 engine.
+(EngineCore_DP0 pid=235633) Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore_DP0 pid=235633) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.72s/it]
+(EngineCore_DP0 pid=235633) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.72s/it]
+(EngineCore_DP0 pid=235633) 
+INFO 10-11 14:40:39 [default_loader.py:268] Loading weights took 1.72 seconds
+INFO 10-11 14:40:39 [gpu_model_runner.py:2392] Model loading took 0.9209 GiB and 1.799787 seconds
+INFO 10-11 14:40:40 [gpu_model_runner.py:3000] Encoder cache will be initialized with a budget of 5120 tokens, and profiled with 5 audio items of the maximum feature size.
+INFO 10-11 14:40:42 [backends.py:539] Using cache directory: /root/.cache/vllm/torch_compile_cache/2dec3f858e/rank_0_0/backbone for vLLM's torch.compile
+INFO 10-11 14:40:42 [backends.py:550] Dynamo bytecode transform time: 2.18 s
+INFO 10-11 14:40:43 [backends.py:161] Directly load the compiled graph(s) for dynamic shape from the cache, took 0.604 s
+INFO 10-11 14:40:43 [monitor.py:34] torch.compile takes 2.18 s in total
+INFO 10-11 14:40:44 [gpu_worker.py:298] Available KV cache memory: 7.26 GiB
+INFO 10-11 14:40:44 [kv_cache_utils.py:864] GPU KV cache size: 63,440 tokens
+INFO 10-11 14:40:44 [kv_cache_utils.py:868] Maximum concurrency for 803 tokens per request: 77.75x
+(EngineCore_DP0 pid=235633) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  14%|█▍        | 5/35 [00:00<00:00, 48.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  31%|███▏      | 11/35 [00:00<00:00, 53.13it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  49%|████▊     | 17/35 [00:00<00:00, 50.99it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  66%|██████▌   | 23/35 [00:00<00:00, 53.21it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  83%|████████▎ | 29/35 [00:00<00:00, 55.43it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:00<00:00, 52.31it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:00<00:00, 52.58it/s]
+INFO 10-11 14:40:45 [gpu_model_runner.py:3118] Graph capturing finished in 1 secs, took 0.45 GiB
+INFO 10-11 14:40:45 [gpu_worker.py:391] Free memory on device (22.64/23.53 GiB) on startup. Desired GPU memory utilization is (0.4, 9.41 GiB). Actual usage is 0.92 GiB for weight, 0.13 GiB for peak activation, 1.1 GiB for non-torch memory, and 0.45 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=7159750041` to fit into requested memory, or `--kv-cache-memory=21367325696` to fully utilize gpu memory. Current kv cache memory in use is 7797284249 bytes.
+INFO 10-11 14:40:45 [core.py:218] init engine (profile, create kv cache, warmup model) took 5.81 seconds
+INFO 10-11 14:40:46 [loggers.py:142] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 3965
+INFO 10-11 14:40:46 [async_llm.py:180] Torch profiler disabled. AsyncLLM CPU traces will not be collected.
+>> GPT weights restored from: checkpoints/Index-TTS-1.5-vLLM/gpt.pth
+W1011 14:40:53.596000 235304 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W1011 14:40:53.596000 235304 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+ninja: no work to do.
+>> Preload custom CUDA kernel for BigVGAN <module 'anti_alias_activation_cuda' from '/root/autodl-tmp/indexTTS/vllm/indextts/BigVGAN/alias_free_activation/cuda/build/anti_alias_activation_cuda.so'>
+ERROR:    Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/api_server.py", line 194, in lifespan
+    tts = IndexTTS(model_dir=args.model_dir, gpu_memory_utilization=args.gpu_memory_utilization)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/vllm/indextts/infer_vllm.py", line 145, in __init__
+    self.bigvgan = self.bigvgan.to(self.device)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1369, in to
+    return self._apply(convert)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
+    module._apply(fn)
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
+    module._apply(fn)
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 928, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 955, in _apply
+    param_applied = fn(param)
+                    ^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1355, in convert
+    return t.to(
+           ^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 16.00 MiB. GPU 0 has a total capacity of 23.53 GiB of which 13.50 MiB is free. Including non-PyTorch memory, this process has 2.88 GiB memory in use. Process 235305 has 2.72 GiB memory in use. Process 235629 has 8.88 GiB memory in use. Process 235633 has 9.02 GiB memory in use. Of the allocated memory 2.43 GiB is allocated by PyTorch, and 81.24 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+[rank0]:[W1011 14:40:55.700018350 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ERROR:    Application startup failed. Exiting.
+Exception ignored in: <function Connection.__del__ at 0x7f27f3f21580>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/aiomysql/connection.py", line 1129, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function StreamWriter.__del__ at 0x7f289e85f9c0>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/asyncio/streams.py", line 413, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function Connection.__del__ at 0x7f27f3f21580>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/aiomysql/connection.py", line 1129, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function StreamWriter.__del__ at 0x7f289e85f9c0>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/asyncio/streams.py", line 413, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function AbstractConnection.__del__ at 0x7f28398c6480>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/redis/asyncio/connection.py", line 232, in __del__
+TypeError: 'NoneType' object is not callable
+Exception ignored in: <function StreamWriter.__del__ at 0x7f289e85f9c0>
+Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/asyncio/streams.py", line 413, in __del__
+TypeError: 'NoneType' object is not callable
+INFO 10-11 14:41:04 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO:     Started server process [236711]
+INFO:     Waiting for application startup.
+2025-10-11 14:41:07 - utils.file_manager - INFO - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:41:07 - utils.db_manager - INFO - MySQL数据库连接池创建成功
+2025-10-11 14:41:07 - utils.db_manager - INFO - 表存在性检查: tts_tasks=True, voice_configs=True
+Redis连接URL: redis://aigc_omni:x5qnDpTHiMtN4RdqYiQq@127.0.0.1:6379/0
+2025-10-11 14:41:07 - utils.redis_manager - INFO - Redis连接初始化成功
+2025-10-11 14:41:07 - utils.tos_uploader - INFO - TOS上传器初始化成功
+2025-10-11 14:41:07 - api_server - INFO - TOS上传器初始化成功
+2025-10-11 14:41:07 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:185] - lifespan() - TOS上传器初始化成功
+DEBUG: model_dir = checkpoints/Index-TTS-1.5-vLLM
+DEBUG: cfg_path = checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: absolute cfg_path = /root/autodl-tmp/indexTTS/checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: config exists = True
+INFO 10-11 14:41:07 [__init__.py:742] Resolved architecture: GPT2InferenceModel
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 10-11 14:41:07 [__init__.py:1815] Using max model len 803
+INFO 10-11 14:41:07 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=5120.
+WARNING 10-11 14:41:08 [__init__.py:2974] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 10-11 14:41:12 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO 10-11 14:41:15 [core.py:654] Waiting for init message from front-end.
+INFO 10-11 14:41:15 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='checkpoints/Index-TTS-1.5-vLLM/gpt', speculative_config=None, tokenizer='checkpoints/Index-TTS-1.5-vLLM/gpt', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=803, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=checkpoints/Index-TTS-1.5-vLLM/gpt, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":256,"local_cache_dir":null}
+[W1011 14:41:15.709841697 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+(EngineCore_DP0 pid=236994) Exception ignored in: <function ExecutorBase.__del__ at 0x7f6602468a40>
+(EngineCore_DP0 pid=236994) Traceback (most recent call last):
+(EngineCore_DP0 pid=236994)   File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/executor/executor_base.py", line 237, in __del__
+(EngineCore_DP0 pid=236994)     self.shutdown()
+(EngineCore_DP0 pid=236994)   File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/executor/uniproc_executor.py", line 76, in shutdown
+(EngineCore_DP0 pid=236994)     worker.shutdown()
+(EngineCore_DP0 pid=236994)   File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/worker/worker_base.py", line 528, in shutdown
+(EngineCore_DP0 pid=236994)     self.worker.shutdown()
+(EngineCore_DP0 pid=236994)   File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/v1/worker/gpu_worker.py", line 675, in shutdown
+(EngineCore_DP0 pid=236994)     self.model_runner.ensure_kv_transfer_shutdown()
+(EngineCore_DP0 pid=236994)     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+(EngineCore_DP0 pid=236994) AttributeError: 'NoneType' object has no attribute 'ensure_kv_transfer_shutdown'
+[rank0]:[W1011 14:41:16.324144860 ProcessGroupNCCL.cpp:1538] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+ERROR:    Traceback (most recent call last):
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/contextlib.py", line 210, in __aenter__
+    return await anext(self.gen)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/api_server.py", line 194, in lifespan
+    tts = IndexTTS(model_dir=args.model_dir, gpu_memory_utilization=args.gpu_memory_utilization)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/indexTTS/vllm/indextts/infer_vllm.py", line 117, in __init__
+    indextts_vllm = AsyncLLM.from_engine_args(engine_args)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 240, in from_engine_args
+    return cls(
+           ^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/v1/engine/async_llm.py", line 136, in __init__
+    self.engine_core = EngineCoreClient.make_async_mp_client(
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 102, in make_async_mp_client
+    return AsyncMPClient(*client_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 769, in __init__
+    super().__init__(
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/v1/engine/core_client.py", line 448, in __init__
+    with launch_core_engines(vllm_config, executor_class,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 729, in launch_core_engines
+    wait_for_engine_startup(
+  File "/root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/vllm/v1/engine/utils.py", line 782, in wait_for_engine_startup
+    raise RuntimeError("Engine core initialization failed. "
+RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}
+
+ERROR:    Application startup failed. Exiting.
+INFO 10-11 14:41:24 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO:     Started server process [237404]
+INFO:     Waiting for application startup.
+2025-10-11 14:41:27 - utils.file_manager - INFO - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:41:27 - utils.db_manager - INFO - MySQL数据库连接池创建成功
+2025-10-11 14:41:27 - utils.db_manager - INFO - 表存在性检查: tts_tasks=True, voice_configs=True
+Redis连接URL: redis://aigc_omni:x5qnDpTHiMtN4RdqYiQq@127.0.0.1:6379/0
+2025-10-11 14:41:27 - utils.redis_manager - INFO - Redis连接初始化成功
+2025-10-11 14:41:27 - utils.tos_uploader - INFO - TOS上传器初始化成功
+2025-10-11 14:41:27 - api_server - INFO - TOS上传器初始化成功
+2025-10-11 14:41:27 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:185] - lifespan() - TOS上传器初始化成功
+DEBUG: model_dir = checkpoints/Index-TTS-1.5-vLLM
+DEBUG: cfg_path = checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: absolute cfg_path = /root/autodl-tmp/indexTTS/checkpoints/Index-TTS-1.5-vLLM/config.yaml
+DEBUG: config exists = True
+INFO 10-11 14:41:27 [__init__.py:742] Resolved architecture: GPT2InferenceModel
+`torch_dtype` is deprecated! Use `dtype` instead!
+INFO 10-11 14:41:27 [__init__.py:1815] Using max model len 803
+INFO 10-11 14:41:27 [scheduler.py:222] Chunked prefill is enabled with max_num_batched_tokens=5120.
+WARNING 10-11 14:41:28 [__init__.py:2974] We must use the `spawn` multiprocessing start method. Overriding VLLM_WORKER_MULTIPROC_METHOD to 'spawn'. See https://docs.vllm.ai/en/latest/usage/troubleshooting.html#python-multiprocessing for more information. Reasons: CUDA is initialized
+INFO 10-11 14:41:31 [__init__.py:216] Automatically detected platform cuda.
+✅  Registry GPT2TTSModel to vllm
+✅  GPUModelRunner._prepare_inputs Patched
+INFO 10-11 14:41:35 [core.py:654] Waiting for init message from front-end.
+INFO 10-11 14:41:35 [core.py:76] Initializing a V1 LLM engine (v0.10.2) with config: model='checkpoints/Index-TTS-1.5-vLLM/gpt', speculative_config=None, tokenizer='checkpoints/Index-TTS-1.5-vLLM/gpt', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.float16, max_seq_len=803, download_dir=None, load_format=auto, tensor_parallel_size=1, pipeline_parallel_size=1, data_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, device_config=cuda, decoding_config=DecodingConfig(backend='auto', disable_fallback=False, disable_any_whitespace=False, disable_additional_properties=False, reasoning_backend=''), observability_config=ObservabilityConfig(show_hidden_metrics_for_version=None, otlp_traces_endpoint=None, collect_detailed_traces=None), seed=0, served_model_name=checkpoints/Index-TTS-1.5-vLLM/gpt, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, pooler_config=None, compilation_config={"level":3,"debug_dump_path":"","cache_dir":"","backend":"","custom_ops":[],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output","vllm.mamba_mixer2","vllm.mamba_mixer","vllm.short_conv","vllm.linear_attention","vllm.plamo2_mamba_mixer","vllm.gdn_attention"],"use_inductor":true,"compile_sizes":[],"inductor_compile_config":{"enable_auto_functionalized_v2":false},"inductor_passes":{},"cudagraph_mode":1,"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"cudagraph_copy_inputs":false,"full_cuda_graph":false,"pass_config":{},"max_capture_size":256,"local_cache_dir":null}
+[W1011 14:41:35.364494296 ProcessGroupNCCL.cpp:981] Warning: TORCH_NCCL_AVOID_RECORD_STREAMS is the default now, this environment variable is thus deprecated. (function operator())
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+INFO 10-11 14:41:35 [parallel_state.py:1165] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0, EP rank 0
+WARNING 10-11 14:41:35 [topk_topp_sampler.py:69] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+INFO 10-11 14:41:36 [gpu_model_runner.py:2338] Starting to load model checkpoints/Index-TTS-1.5-vLLM/gpt...
+INFO 10-11 14:41:36 [gpu_model_runner.py:2370] Loading model from scratch...
+INFO 10-11 14:41:36 [cuda.py:362] Using Flash Attention backend on V1 engine.
+(EngineCore_DP0 pid=237666) Loading pt checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+(EngineCore_DP0 pid=237666) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.64s/it]
+(EngineCore_DP0 pid=237666) Loading pt checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.64s/it]
+(EngineCore_DP0 pid=237666) 
+INFO 10-11 14:41:38 [default_loader.py:268] Loading weights took 1.64 seconds
+INFO 10-11 14:41:38 [gpu_model_runner.py:2392] Model loading took 0.9209 GiB and 1.717763 seconds
+INFO 10-11 14:41:39 [gpu_model_runner.py:3000] Encoder cache will be initialized with a budget of 5120 tokens, and profiled with 5 audio items of the maximum feature size.
+INFO 10-11 14:41:41 [backends.py:539] Using cache directory: /root/.cache/vllm/torch_compile_cache/2dec3f858e/rank_0_0/backbone for vLLM's torch.compile
+INFO 10-11 14:41:41 [backends.py:550] Dynamo bytecode transform time: 2.16 s
+INFO 10-11 14:41:41 [backends.py:161] Directly load the compiled graph(s) for dynamic shape from the cache, took 0.601 s
+INFO 10-11 14:41:42 [monitor.py:34] torch.compile takes 2.16 s in total
+INFO 10-11 14:41:43 [gpu_worker.py:298] Available KV cache memory: 0.56 GiB
+INFO 10-11 14:41:43 [kv_cache_utils.py:864] GPU KV cache size: 4,880 tokens
+INFO 10-11 14:41:43 [kv_cache_utils.py:868] Maximum concurrency for 803 tokens per request: 5.98x
+(EngineCore_DP0 pid=237666) Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):   0%|          | 0/35 [00:00<?, ?it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  17%|█▋        | 6/35 [00:00<00:00, 51.43it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  34%|███▍      | 12/35 [00:00<00:00, 55.78it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  51%|█████▏    | 18/35 [00:00<00:00, 55.83it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  69%|██████▊   | 24/35 [00:00<00:00, 56.63it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE):  86%|████████▌ | 30/35 [00:00<00:00, 56.69it/s]Capturing CUDA graphs (mixed prefill-decode, PIECEWISE): 100%|██████████| 35/35 [00:00<00:00, 54.03it/s]
+INFO 10-11 14:41:44 [gpu_model_runner.py:3118] Graph capturing finished in 1 secs, took 0.38 GiB
+INFO 10-11 14:41:44 [gpu_worker.py:391] Free memory on device (22.64/23.53 GiB) on startup. Desired GPU memory utilization is (0.4, 9.41 GiB). Actual usage is 0.92 GiB for weight, 0.13 GiB for peak activation, 7.8 GiB for non-torch memory, and 0.38 GiB for CUDAGraph memory. Replace gpu_memory_utilization config with `--kv-cache-memory=33627545` to fit into requested memory, or `--kv-cache-memory=14241203200` to fully utilize gpu memory. Current kv cache memory in use is 599858585 bytes.
+INFO 10-11 14:41:44 [core.py:218] init engine (profile, create kv cache, warmup model) took 5.82 seconds
+INFO 10-11 14:41:44 [loggers.py:142] Engine 000: vllm cache_config_info with initialization after num_gpu_blocks is: 305
+INFO 10-11 14:41:44 [async_llm.py:180] Torch profiler disabled. AsyncLLM CPU traces will not be collected.
+>> GPT weights restored from: checkpoints/Index-TTS-1.5-vLLM/gpt.pth
+W1011 14:41:52.922000 237404 site-packages/torch/utils/cpp_extension.py:2425] TORCH_CUDA_ARCH_LIST is not set, all archs for visible cards are included for compilation. 
+W1011 14:41:52.922000 237404 site-packages/torch/utils/cpp_extension.py:2425] If this is not desired, please set os.environ['TORCH_CUDA_ARCH_LIST'] to specific architectures.
+ninja: no work to do.
+>> Preload custom CUDA kernel for BigVGAN <module 'anti_alias_activation_cuda' from '/root/autodl-tmp/indexTTS/vllm/indextts/BigVGAN/alias_free_activation/cuda/build/anti_alias_activation_cuda.so'>
+Removing weight norm...
+>> bigvgan weights restored from: checkpoints/Index-TTS-1.5-vLLM/bigvgan_generator.pth
+2025-10-11 14:41:55,159 WETEXT INFO found existing fst: /root/autodl-tmp/indexTTS/vllm/indextts/utils/tagger_cache/zh_tn_tagger.fst
+2025-10-11 14:41:55,159 WETEXT INFO                     /root/autodl-tmp/indexTTS/vllm/indextts/utils/tagger_cache/zh_tn_verbalizer.fst
+2025-10-11 14:41:55,159 WETEXT INFO skip building fst for zh_normalizer ...
+2025-10-11 14:41:55,517 WETEXT INFO found existing fst: /root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/tn/en_tn_tagger.fst
+2025-10-11 14:41:55,517 WETEXT INFO                     /root/autodl-tmp/conda_envs/indexTTS/lib/python3.12/site-packages/tn/en_tn_verbalizer.fst
+2025-10-11 14:41:55,517 WETEXT INFO skip building fst for en_normalizer ...
+>> TextNormalizer loaded
+>> bpe model loaded from: checkpoints/Index-TTS-1.5-vLLM/bpe.model
+speaker_path: /root/autodl-tmp/indexTTS/vllm/assets/speaker.json
+Speaker: xiaomeng registered
+Speaker: yunxi registered
+2025-10-11 14:41:56 - [34mapi_server[0m - [32mINFO[0m - [api_server.py:214] - lifespan() - 应用程序启动完成
+2025-10-11 14:41:56 - api_server - INFO - 应用程序启动完成
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:6006 (Press CTRL+C to quit)
