@@ -719,3 +719,17 @@
 2025-10-11 14:00:37 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 ec318ea5c7da41879e655d1f1ccbed18 状态为 completed
 2025-10-11 14:00:38 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:315] - update_task_files() - 已更新任务 ec318ea5c7da41879e655d1f1ccbed18 的文件路径
 2025-10-11 14:00:38 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:270] - update_task_status() - 已更新任务 ec318ea5c7da41879e655d1f1ccbed18 状态为 completed
+2025-10-11 14:10:15 - [34mutils.db_manager[0m - [31mERROR[0m - [db_manager.py:45] - initialize() - MySQL数据库初始化失败: (1045, "Access denied for user 'root'@'localhost' (using password: NO)")
+2025-10-11 14:11:00 - [34mutils.db_manager[0m - [31mERROR[0m - [db_manager.py:45] - initialize() - MySQL数据库初始化失败: (1045, "Access denied for user 'root'@'localhost' (using password: NO)")
+2025-10-11 14:11:41 - [34mutils.db_manager[0m - [31mERROR[0m - [db_manager.py:45] - initialize() - MySQL数据库初始化失败: (1045, "Access denied for user 'root'@'localhost' (using password: NO)")
+2025-10-11 14:21:49 - [34mutils.db_manager[0m - [31mERROR[0m - [db_manager.py:45] - initialize() - MySQL数据库初始化失败: (1045, "Access denied for user 'root'@'localhost' (using password: NO)")
+2025-10-11 14:22:38 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:22:38 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:26:25 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:26:25 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:26:53 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:26:53 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:27:01 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:27:01 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True
+2025-10-11 14:27:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:39] - initialize() - MySQL数据库连接池创建成功
+2025-10-11 14:27:14 - [34mutils.db_manager[0m - [32mINFO[0m - [db_manager.py:79] - check_tables_exist() - 表存在性检查: tts_tasks=True, voice_configs=True

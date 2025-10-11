@@ -1453,3 +1453,16 @@
 2025-10-11 14:00:37 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:174] - save_audio_file() - 已保存音频文件: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.wav
 2025-10-11 14:00:37 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:64] - create_task_directory() - 已创建任务目录: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18
 2025-10-11 14:00:37 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:225] - save_srt_file() - 已保存字幕文件: storage/tasks/ec318ea5c7da41879e655d1f1ccbed18/ec318ea5c7da41879e655d1f1ccbed18.srt
+2025-10-11 14:09:17 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:09:17 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:09:40 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:10:15 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:11:00 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:11:41 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:20:57 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:21:49 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:22:38 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:26:25 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:26:53 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:27:01 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
+2025-10-11 14:27:14 - [34mutils.file_manager[0m - [32mINFO[0m - [file_manager.py:39] - __init__() - 文件管理器初始化完成，存储根目录: storage/tasks
