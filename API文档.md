@@ -15,20 +15,43 @@
 ### 接口信息
 - **路径：** `GET /health`
 - **描述：** 检查TTS服务、数据库和Redis连接的健康状态
-- **认证：** 无需认证
+- **认证：** Authorization Bearer api-key
 
 ### 请求参数
 无
 
 ### 响应参数
+
+#### 成功响应
 ```json
 {
-  "status": "healthy",
-  "timestamp": "2025-10-10T14:00:00",
-  "services": {
-    "tts": "available",
-    "database": "connected", 
-    "redis": "connected"
+  "status": "success",
+  "msg": "服务运行正常",
+  "data": {
+    "healthy": true,
+    "timestamp": "2025-10-10T14:00:00",
+    "services": {
+      "tts": "available",
+      "database": "connected", 
+      "redis": "connected"
+    }
+  }
+}
+```
+
+#### 错误响应
+```json
+{
+  "status": "error",
+  "msg": "健康检查失败: 数据库连接异常",
+  "data": {
+    "healthy": false,
+    "timestamp": "2025-10-10T14:00:00",
+    "services": {
+      "tts": "available",
+      "database": "disconnected", 
+      "redis": "connected"
+    }
   }
 }
 ```
@@ -36,11 +59,14 @@
 ### 响应字段说明
 | 字段 | 类型 | 描述 |
 |------|------|------|
-| status | string | 整体健康状态：healthy/unhealthy |
-| timestamp | string | 检查时间戳 |
-| services.tts | string | TTS服务状态：available/unavailable |
-| services.database | string | 数据库连接状态：connected/disconnected |
-| services.redis | string | Redis连接状态：connected/disconnected |
+| status | string | 请求状态：success/error |
+| msg | string | 响应消息描述 |
+| data | object | 健康检查数据 |
+| data.healthy | boolean | 整体健康状态 |
+| data.timestamp | string | 检查时间戳 |
+| data.services.tts | string | TTS服务状态：available/unavailable |
+| data.services.database | string | 数据库连接状态：connected/disconnected |
+| data.services.redis | string | Redis连接状态：connected/disconnected |
 
 ---
 
@@ -49,38 +75,56 @@
 ### 接口信息
 - **路径：** `GET /voices`
 - **描述：** 获取系统中可用的音色配置列表
-- **认证：** 无需认证
+- **认证：** Authorization Bearer api-key
 
 ### 请求参数
 无
 
 ### 响应参数
+
+#### 成功响应
 ```json
 {
-  "voices": [
-    {
-      "name": "xiaomeng",
-      "description": "小萌音色",
-      "language": "zh-CN"
-    },
-    {
-      "name": "yunxi", 
-      "description": "云希音色",
-      "language": "zh-CN"
-    }
-  ],
-  "total": 2
+  "status": "success",
+  "msg": "获取音色列表成功",
+  "data": {
+    "voices": [
+      {
+        "name": "xiaomeng",
+        "description": "小萌音色",
+        "language": "zh-CN"
+      },
+      {
+        "name": "yunxi", 
+        "description": "云希音色",
+        "language": "zh-CN"
+      }
+    ],
+    "total": 2
+  }
+}
+```
+
+#### 错误响应
+```json
+{
+  "status": "error",
+  "msg": "获取音色列表失败: 服务不可用",
+  "data": null
 }
 ```
 
 ### 响应字段说明
 | 字段 | 类型 | 描述 |
 |------|------|------|
-| voices | array | 音色列表 |
-| voices[].name | string | 音色名称标识符 |
-| voices[].description | string | 音色描述 |
-| voices[].language | string | 支持的语言 |
-| total | integer | 可用音色总数 |
+| status | string | 请求状态：success/error |
+| msg | string | 响应消息描述 |
+| data | object | 音色数据（成功时）或null（失败时） |
+| data.voices | array | 音色列表 |
+| data.voices[].name | string | 音色名称标识符 |
+| data.voices[].description | string | 音色描述 |
+| data.voices[].language | string | 支持的语言 |
+| data.total | integer | 可用音色总数 |
 
 ---
 
@@ -88,8 +132,8 @@
 
 ### 接口信息
 - **路径：** `POST /tts/online`
-- **描述：** 在线TTS合成，限制300字符，直接返回音频文件URL和字幕文件URL
-- **认证：** 无需认证
+- **描述：** 在线TTS合成，限制2000字符，直接返回音频文件URL和字幕文件URL
+- **认证：** Authorization Bearer api-key
 
 ### 请求参数
 ```json
@@ -103,31 +147,58 @@
 ### 请求字段说明
 | 字段 | 类型 | 必填 | 描述 |
 |------|------|------|------|
-| text | string | 是 | 要合成的文本，最多300字符 |
+| text | string | 是 | 要合成的文本，最多2000字符 |
 | voice | string | 是 | 音色名称（如：xiaomeng, yunxi） |
 | seed | integer | 否 | 随机种子，默认为8 |
 
 ### 响应参数
+
+#### 成功响应
 ```json
 {
-  "task_id": "7a5186872526488e95de0bc6f8fe69fe",
-  "sample_rate": 24000,
-  "duration": 3.3635,
-  "processing_time": 1.357893943786621,
-  "audio_url": "https://aigc-omni.tos-cn-guangzhou.volces.com/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.wav",
-  "srt_url": "https://aigc-omni.tos-cn-guangzhou.volces.com/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.srt"
+  "status": "success",
+  "msg": "TTS合成成功",
+  "data": {
+    "task_id": "7a5186872526488e95de0bc6f8fe69fe",
+    "sample_rate": 24000,
+    "duration": 3.3635,
+    "processing_time": 1.357893943786621,
+    "audio_url": "https://aigc-omni.tos-cn-guangzhou.volces.com/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.wav",
+    "srt_url": "https://aigc-omni.tos-cn-guangzhou.volces.com/7a5186872526488e95de0bc6f8fe69fe/7a5186872526488e95de0bc6f8fe69fe.srt"
+  }
+}
+```
+
+#### 参数错误响应
+```json
+{
+  "status": "error",
+  "msg": "请求参数错误: 文本长度超过限制",
+  "data": null
+}
+```
+
+#### 合成失败响应
+```json
+{
+  "status": "error",
+  "msg": "TTS合成失败: 音色不存在",
+  "data": null
 }
 ```
 
 ### 响应字段说明
 | 字段 | 类型 | 描述 |
 |------|------|------|
-| task_id | string | 任务唯一标识符 |
-| sample_rate | integer | 音频采样率 |
-| duration | float | 音频时长（秒） |
-| processing_time | float | 处理耗时（秒） |
-| audio_url | string | 音频文件下载URL |
-| srt_url | string | 字幕文件下载URL |
+| status | string | 请求状态：success/error |
+| msg | string | 响应消息描述 |
+| data | object | 合成结果数据（成功时）或null（失败时） |
+| data.task_id | string | 任务唯一标识符 |
+| data.sample_rate | integer | 音频采样率 |
+| data.duration | float | 音频时长（秒） |
+| data.processing_time | float | 处理耗时（秒） |
+| data.audio_url | string | 音频文件下载URL |
+| data.srt_url | string | 字幕文件下载URL |
 
 ---
 
@@ -136,7 +207,7 @@
 ### 接口信息
 - **路径：** `POST /tts/task/submit`
 - **描述：** 提交长文本TTS合成任务到队列处理
-- **认证：** 无需认证
+- **认证：** Authorization Bearer api-key
 
 ### 请求参数
 ```json
@@ -162,26 +233,53 @@
 | priority | integer | 否 | 任务优先级，数值越大优先级越高，默认为0 |
 
 ### 响应参数
+
+#### 成功响应
 ```json
 {
-  "task_id": "29889eb0ed1341d68675290d3167cd1e",
-  "status": "pending",
-  "message": "长文本合成任务已提交，请使用task_id查询处理状态",
-  "text_length": 1500,
-  "voice": "xiaomeng",
-  "priority": 1
+  "status": "success",
+  "msg": "长文本合成任务已提交成功",
+  "data": {
+    "task_id": "29889eb0ed1341d68675290d3167cd1e",
+    "task_status": "pending",
+    "message": "长文本合成任务已提交，请使用task_id查询处理状态",
+    "text_length": 1500,
+    "voice": "xiaomeng",
+    "priority": 1
+  }
+}
+```
+
+#### 参数错误响应
+```json
+{
+  "status": "error",
+  "msg": "请求参数错误: 文本长度超过限制",
+  "data": null
+}
+```
+
+#### 系统错误响应
+```json
+{
+  "status": "error",
+  "msg": "系统错误: 任务队列服务不可用",
+  "data": null
 }
 ```
 
 ### 响应字段说明
 | 字段 | 类型 | 描述 |
 |------|------|------|
-| task_id | string | 任务唯一标识符 |
-| status | string | 任务状态：pending |
-| message | string | 提示信息 |
-| text_length | integer | 文本长度 |
-| voice | string | 使用的音色 |
-| priority | integer | 任务优先级 |
+| status | string | 请求状态：success/error |
+| msg | string | 响应消息描述 |
+| data | object | 任务数据（成功时）或null（失败时） |
+| data.task_id | string | 任务唯一标识符 |
+| data.task_status | string | 任务状态：pending |
+| data.message | string | 提示信息 |
+| data.text_length | integer | 文本长度 |
+| data.voice | string | 使用的音色 |
+| data.priority | integer | 任务优先级 |
 
 ---
 
@@ -190,7 +288,7 @@
 ### 接口信息
 - **路径：** `GET /tts/task/{task_id}`
 - **描述：** 查询指定任务的处理状态和结果
-- **认证：** 无需认证
+- **认证：** Authorization Bearer api-key
 
 ### 请求参数
 | 参数 | 类型 | 位置 | 必填 | 描述 |
@@ -202,66 +300,99 @@
 #### 任务进行中时
 ```json
 {
-  "task_id": "29889eb0ed1341d68675290d3167cd1e",
-  "task_type": "long_text",
-  "status": "pending",
-  "voice": "xiaomeng",
-  "created_at": "2025-10-10T14:01:53",
-  "started_at": null,
-  "completed_at": null,
-  "text_preview": "要合成的文本内容...",
-  "error_message": null,
-  "queue_position": 3
+  "status": "success",
+  "msg": "任务状态查询成功",
+  "data": {
+    "task_id": "29889eb0ed1341d68675290d3167cd1e",
+    "task_type": "long_text",
+    "task_status": "pending",
+    "voice": "xiaomeng",
+    "created_at": "2025-10-10T14:01:53",
+    "started_at": null,
+    "completed_at": null,
+    "text_preview": "要合成的文本内容...",
+    "error_message": null,
+    "queue_position": 3
+  }
 }
 ```
 
 #### 任务完成时
 ```json
 {
-  "task_id": "29889eb0ed1341d68675290d3167cd1e",
-  "task_type": "long_text", 
-  "status": "completed",
-  "voice": "yunxi",
-  "created_at": "2025-10-10T14:01:53",
-  "started_at": "2025-10-10T14:01:54",
-  "completed_at": "2025-10-10T14:01:56",
-  "text_preview": "这是一个长文本测试，用于验证任务提交和状态查询功能...",
-  "error_message": null,
-  "audio_url": "https://aigc-omni.tos-cn-guangzhou.volces.com/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.wav",
-  "srt_url": "https://aigc-omni.tos-cn-guangzhou.volces.com/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.srt"
+  "status": "success",
+  "msg": "任务状态查询成功",
+  "data": {
+    "task_id": "29889eb0ed1341d68675290d3167cd1e",
+    "task_type": "long_text", 
+    "task_status": "completed",
+    "voice": "yunxi",
+    "created_at": "2025-10-10T14:01:53",
+    "started_at": "2025-10-10T14:01:54",
+    "completed_at": "2025-10-10T14:01:56",
+    "text_preview": "这是一个长文本测试，用于验证任务提交和状态查询功能...",
+    "error_message": null,
+    "audio_url": "https://aigc-omni.tos-cn-guangzhou.volces.com/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.wav",
+    "srt_url": "https://aigc-omni.tos-cn-guangzhou.volces.com/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.srt"
+  }
 }
 ```
 
 #### 任务失败时
 ```json
 {
-  "task_id": "29889eb0ed1341d68675290d3167cd1e",
-  "task_type": "long_text",
-  "status": "failed", 
-  "voice": "xiaomeng",
-  "created_at": "2025-10-10T14:01:53",
-  "started_at": "2025-10-10T14:01:54",
-  "completed_at": "2025-10-10T14:01:56",
-  "text_preview": "要合成的文本内容...",
-  "error_message": "具体的错误信息"
+  "status": "success",
+  "msg": "任务状态查询成功",
+  "data": {
+    "task_id": "29889eb0ed1341d68675290d3167cd1e",
+    "task_type": "long_text",
+    "task_status": "failed", 
+    "voice": "xiaomeng",
+    "created_at": "2025-10-10T14:01:53",
+    "started_at": "2025-10-10T14:01:54",
+    "completed_at": "2025-10-10T14:01:56",
+    "text_preview": "要合成的文本内容...",
+    "error_message": "具体的错误信息"
+  }
+}
+```
+
+#### 任务不存在时
+```json
+{
+  "status": "error",
+  "msg": "任务不存在",
+  "data": null
+}
+```
+
+#### 系统错误时
+```json
+{
+  "status": "error",
+  "msg": "系统错误: 数据库连接失败",
+  "data": null
 }
 ```
 
 ### 响应字段说明
 | 字段 | 类型 | 描述 |
 |------|------|------|
-| task_id | string | 任务唯一标识符 |
-| task_type | string | 任务类型：online/long_text |
-| status | string | 任务状态：pending/processing/completed/failed |
-| voice | string | 使用的音色 |
-| created_at | string | 任务创建时间 |
-| started_at | string | 任务开始处理时间 |
-| completed_at | string | 任务完成时间 |
-| text_preview | string | 文本预览 |
-| error_message | string | 错误信息（仅失败时） |
-| audio_url | string | 音频文件URL（仅完成时） |
-| srt_url | string | 字幕文件URL（仅完成时） |
-| queue_position | integer | 队列位置（仅pending状态的长文本任务） |
+| status | string | 请求状态：success/error |
+| msg | string | 响应消息描述 |
+| data | object | 任务数据（成功时）或null（失败时） |
+| data.task_id | string | 任务唯一标识符 |
+| data.task_type | string | 任务类型：online/long_text |
+| data.task_status | string | 任务状态：pending/processing/completed/failed |
+| data.voice | string | 使用的音色 |
+| data.created_at | string | 任务创建时间 |
+| data.started_at | string | 任务开始处理时间 |
+| data.completed_at | string | 任务完成时间 |
+| data.text_preview | string | 文本预览 |
+| data.error_message | string | 错误信息（仅失败时） |
+| data.audio_url | string | 音频文件URL（仅完成时） |
+| data.srt_url | string | 字幕文件URL（仅完成时） |
+| data.queue_position | integer | 队列位置（仅pending状态的长文本任务） |
 
 ---
 

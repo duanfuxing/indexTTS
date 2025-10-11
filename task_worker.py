@@ -41,6 +41,7 @@ from utils.redis_manager import RedisManager
 from utils.config import config
 from utils.tos_uploader import TOSUploader
 from utils.logger import IndexTTSLogger
+from utils.subtitle_generator import SubtitleGenerator
 
 # 配置日志
 logger = IndexTTSLogger.get_logger("task_worker")
@@ -50,6 +51,7 @@ class TTSTaskWorker:
     
     def __init__(self, worker_id: str, model_dir: str, database_url: str, 
                  gpu_memory_utilization: float = 0.25):
+        """初始化TTS任务处理器"""
         self.worker_id = worker_id
         self.model_dir = model_dir
         self.database_url = database_url
@@ -58,8 +60,11 @@ class TTSTaskWorker:
         self.tts = None
         self.db_manager = None
         self.redis_manager = None
+        self.tos_uploader = None
         self.running = False
         self.current_task = None
+        self.subtitle_generator = SubtitleGenerator()  # 初始化字幕生成器
+        logger.info(f"TTS任务处理器 {worker_id} 初始化完成")
     
     async def initialize(self):
         """初始化TTS模型和数据库连接"""
@@ -117,83 +122,11 @@ class TTSTaskWorker:
     
     def generate_srt_from_text(self, text: str, audio_duration: float) -> str:
         """根据文本和音频时长生成SRT字幕文件，支持智能断句"""
-        # 首先按主要标点符号分割
-        primary_sentences = text.replace('。', '。\n').replace('！', '！\n').replace('？', '？\n').split('\n')
-        primary_sentences = [s.strip() for s in primary_sentences if s.strip()]
-        
-        if not primary_sentences:
-            return ""
-        
-        # 进一步处理长句，按逗号、分号等次要标点分割
-        final_sentences = []
-        max_chars_per_subtitle = 25  # 每个字幕段最大字符数
-        
-        for sentence in primary_sentences:
-            if len(sentence) <= max_chars_per_subtitle:
-                final_sentences.append(sentence)
-            else:
-                # 长句按逗号、分号分割
-                sub_parts = sentence.replace('，', '，\n').replace('；', '；\n').replace('、', '、\n').split('\n')
-                sub_parts = [s.strip() for s in sub_parts if s.strip()]
-                
-                current_part = ""
-                for part in sub_parts:
-                    # 如果当前部分加上新部分不超过限制，则合并
-                    if len(current_part + part) <= max_chars_per_subtitle:
-                        current_part += part
-                    else:
-                        # 否则先保存当前部分，开始新部分
-                        if current_part:
-                            final_sentences.append(current_part)
-                        current_part = part
-                
-                # 添加最后一部分
-                if current_part:
-                    final_sentences.append(current_part)
-        
-        if not final_sentences:
-            return ""
-        
-        srt_content = []
-        
-        # 计算每个字幕段的时长（基于字符数比例分配）
-        total_chars = sum(len(s) for s in final_sentences)
-        current_time = 0.0
-        
-        for i, sentence in enumerate(final_sentences):
-            # 根据字符数比例分配时间，但设置最小和最大时长
-            char_ratio = len(sentence) / total_chars if total_chars > 0 else 1.0 / len(final_sentences)
-            duration = audio_duration * char_ratio
-            
-            # 设置合理的时长范围：最短1.5秒，最长6秒
-            duration = max(1.5, min(6.0, duration))
-            
-            start_time = current_time
-            end_time = current_time + duration
-            
-            # 确保不超过总时长
-            if end_time > audio_duration:
-                end_time = audio_duration
-            
-            start_srt = self.format_srt_time(start_time)
-            end_srt = self.format_srt_time(end_time)
-            
-            srt_content.append(f"{i + 1}")
-            srt_content.append(f"{start_srt} --> {end_srt}")
-            srt_content.append(sentence)
-            srt_content.append("")
-            
-            current_time = end_time
-        
-        return "\n".join(srt_content)
+        return self.subtitle_generator.generate_srt_from_text(text, audio_duration)
     
     def format_srt_time(self, seconds: float) -> str:
         """将秒数转换为SRT时间格式"""
-        hours = int(seconds // 3600)
-        minutes = int((seconds % 3600) // 60)
-        secs = int(seconds % 60)
-        millisecs = int((seconds % 1) * 1000)
-        return f"{hours:02d}:{minutes:02d}:{secs:02d},{millisecs:03d}"
+        return self.subtitle_generator._format_srt_time(seconds)
     
     async def send_callback(self, callback_url: str, task_data: dict):
         """发送任务完成回调"""

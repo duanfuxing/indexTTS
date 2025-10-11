@@ -77,3 +77,71 @@ exit
     - Redis配置文件：/etc/redis/redis.conf
 - 安装时会使用.env中的数据库连接参数配置MySQL和Redis服务
 ```
+
+### 服务启动
+
+#### 8. 启动服务
+完成上述配置后，按以下顺序启动服务：
+
+```bash
+# 1. 激活 conda 环境
+cd /root/autodl-tmp
+conda activate conda_envs/indexTTS
+cd indexTTS
+
+# 2. 启动数据库服务（如果未启动）
+bash scripts/db_services.sh start
+
+# 3. 启动 API 服务器
+python api_server.py
+
+# 4. 启动任务处理器（新开终端）
+# 在新的终端中执行：
+cd /root/autodl-tmp
+conda activate conda_envs/indexTTS
+cd indexTTS
+GPU_MEMORY_UTILIZATION=0.40 python task_worker.py
+```
+
+#### 服务管理命令
+```bash
+# 检查服务状态
+bash scripts/db_services.sh status
+
+# 重启数据库服务
+bash scripts/db_services.sh restart
+
+# 停止数据库服务
+bash scripts/db_services.sh stop
+
+# 查看 API 服务器日志
+tail -f logs/api_server.log
+
+# 查看任务处理器日志
+tail -f logs/task_worker.log
+```
+
+#### 服务验证
+```bash
+# 检查 API 服务器健康状态
+curl http://localhost:6006/health
+
+# 获取可用语音列表
+curl http://localhost:6006/voices
+
+# 测试在线 TTS 合成
+curl -X POST http://localhost:6006/tts/online \
+  -H "Content-Type: application/json" \
+  -d '{
+    "text": "你好，这是一个测试",
+    "voice": "xiaomeng",
+    "speed": 1.0,
+    "pitch": 0.0
+  }'
+```
+
+#### 注意事项
+- API 服务器默认运行在 `http://localhost:6006`
+- 确保 GPU 内存足够，可根据显卡调整 `GPU_MEMORY_UTILIZATION` 参数
+- 长文本任务需要任务处理器运行才能处理
+- 首次启动模型加载需要一些时间，请耐心等待

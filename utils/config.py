@@ -54,34 +54,41 @@ class Config:
     TEXT_STORAGE_DIR: str = os.getenv('TEXT_STORAGE_DIR', './storage/tasks')
     
     # 文本长度限制
-    MAX_ONLINE_TEXT_LENGTH: int = int(os.getenv('MAX_ONLINE_TEXT_LENGTH', '300'))
+    MAX_ONLINE_TEXT_LENGTH: int = int(os.getenv('MAX_ONLINE_TEXT_LENGTH', '1000'))
     MAX_LONG_TEXT_LENGTH: int = int(os.getenv('MAX_LONG_TEXT_LENGTH', '50000'))
-    
-    # 工作器配置
-    WORKER_POLL_INTERVAL: float = float(os.getenv('WORKER_POLL_INTERVAL', '1.0'))
-    MAX_RETRY_COUNT: int = int(os.getenv('MAX_RETRY_COUNT', '3'))
     
     # 日志配置
     LOG_LEVEL: str = os.getenv('LOG_LEVEL', 'INFO')
-    LOG_FILE: Optional[str] = os.getenv('LOG_FILE', None)
-    LOG_MAX_SIZE: int = int(os.getenv('LOG_MAX_SIZE', '10').replace('MB', ''))  # MB
+    LOG_FILE: Optional[str] = os.getenv('LOG_FILE', './logs/tts_service.log')
+    LOG_MAX_SIZE: str = os.getenv('LOG_MAX_SIZE', '10MB')
     LOG_BACKUP_COUNT: int = int(os.getenv('LOG_BACKUP_COUNT', '5'))
+    
+    # 从LOG_FILE中提取日志目录
+    @property
+    def log_dir(self) -> str:
+        if self.LOG_FILE:
+            return os.path.dirname(os.path.abspath(self.LOG_FILE))
+        return os.path.abspath('./logs')
+    
+    # 解析日志文件大小（支持MB单位）
+    @property
+    def log_max_size_bytes(self) -> int:
+        size_str = self.LOG_MAX_SIZE.upper()
+        if size_str.endswith('MB'):
+            return int(size_str.replace('MB', '')) * 1024 * 1024
+        elif size_str.endswith('KB'):
+            return int(size_str.replace('KB', '')) * 1024
+        elif size_str.endswith('GB'):
+            return int(size_str.replace('GB', '')) * 1024 * 1024 * 1024
+        else:
+            # 默认按MB处理
+            return int(size_str) * 1024 * 1024
     
     # API配置
     API_KEY: Optional[str] = os.getenv('API_KEY')
     ALLOWED_ORIGINS: list = os.getenv('ALLOWED_ORIGINS', '*').split(',')
     RATE_LIMIT_PER_MINUTE: int = int(os.getenv('RATE_LIMIT_PER_MINUTE', '60'))
     
-    # 监控配置
-    ENABLE_METRICS: bool = os.getenv('ENABLE_METRICS', 'false').lower() == 'true'
-    METRICS_PORT: int = int(os.getenv('METRICS_PORT', '8000'))
-    HEALTH_CHECK_INTERVAL: int = int(os.getenv('HEALTH_CHECK_INTERVAL', '30'))  # 秒
-    
-    # 清理配置
-    CLEANUP_INTERVAL: int = int(os.getenv('CLEANUP_INTERVAL', '3600'))  # 秒
-    CLEANUP_OLD_TASKS_DAYS: int = int(os.getenv('CLEANUP_OLD_TASKS_DAYS', '7'))
-    CLEANUP_OLD_AUDIO_DAYS: int = int(os.getenv('CLEANUP_OLD_AUDIO_DAYS', '3'))
-
     @classmethod
     def validate(cls):
         """验证配置"""

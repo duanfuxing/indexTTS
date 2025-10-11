@@ -118,9 +118,9 @@ class TOSUploader:
             
             # 生成对象键名：如果有task_id，则使用 remote_path/task_id/file_name 结构
             if task_id:
-                object_key = f"{self.remote_path}/{task_id}/{file_name}"
+                object_key = f"{task_id}/{file_name}"
             else:
-                object_key = f"{self.remote_path}/{file_name}"
+                object_key = f"{file_name}"
             
             # 获取文件大小用于进度显示
             total_size = os.path.getsize(local_path)
@@ -161,7 +161,7 @@ class TOSUploader:
                 raise Exception(f"文件上传失败，状态码: {result.status_code}")
                 
             self.logger.info(f"文件上传成功: {object_key}")
-            return object_key
+            return f"https://{self.remote_path}/{object_key}"
                 
         except tos.exceptions.TosClientError as e:
             self.logger.error(f"TOS客户端错误: {e.message}, 原因: {e.cause}")
@@ -213,9 +213,9 @@ class TOSUploader:
             
             # 生成对象键名：如果有task_id，则使用 remote_path/task_id/file_name 结构
             if task_id:
-                object_key = f"{self.remote_path}/{task_id}/{file_name}"
+                object_key = f"{task_id}/{file_name}"
             else:
-                object_key = f"{self.remote_path}/{file_name}"
+                object_key = f"{file_name}"
                 
             total_size = os.path.getsize(local_path)
             
@@ -314,7 +314,7 @@ class TOSUploader:
             # 完成分片上传任务
             self.client.complete_multipart_upload(self.bucket, object_key, upload_id, parts)
             self.logger.info(f"分片上传完成: {object_key}")
-            return object_key
+            return f"https://{self.remote_path}/{object_key}"
             
         except tos.exceptions.TosClientError as e:
             self.logger.error(f"TOS客户端错误: {e.message}, 原因: {e.cause}")

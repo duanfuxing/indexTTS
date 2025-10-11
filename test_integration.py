@@ -263,11 +263,11 @@ if __name__ == "__main__":
     online_test_passed = test_online_tts_integration()
     
     # 运行长文本TTS集成测试
-    # long_text_test_passed = test_long_text_tts_integration()
+    long_text_test_passed = test_long_text_tts_integration()
     
     print("\n" + "=" * 60)
     print("集成测试结果汇总:")
     print(f"在线TTS集成测试: {'✅ 通过' if online_test_passed else '❌ 失败'}")
-    # print(f"长文本TTS集成测试: {'✅ 通过' if long_text_test_passed else '❌ 失败'}")
+    print(f"长文本TTS集成测试: {'✅ 通过' if long_text_test_passed else '❌ 失败'}")
     
     sys.exit(0)

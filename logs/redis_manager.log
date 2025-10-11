@@ -42,3 +42,28 @@
 2025-10-10 14:18:08 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
 2025-10-10 14:18:10 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
 2025-10-10 14:18:12 - [34mutils.redis_manager[0m - [31mERROR[0m - [redis_manager.py:95] - pop_task_from_queue() - 从队列弹出任务失败: Error 111 connecting to 127.0.0.1:6379. Connect call failed ('127.0.0.1', 6379).
+2025-10-10 14:19:52 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 14:23:13 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 14:37:58 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 14:38:09 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 14:50:45 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 14:50:56 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 15:11:17 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 15:15:02 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 15:28:53 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 15:31:49 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 15:54:09 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 15:54:23 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 16:20:56 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 16:26:22 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 16:50:17 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 16:50:33 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 16:55:25 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 16:55:43 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 17:04:07 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 17:04:21 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 17:22:04 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 17:23:12 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 17:25:48 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功
+2025-10-10 17:26:03 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:41] - close() - Redis连接已关闭
+2025-10-10 17:26:21 - [34mutils.redis_manager[0m - [32mINFO[0m - [redis_manager.py:31] - initialize() - Redis连接初始化成功

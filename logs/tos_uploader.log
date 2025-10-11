@@ -189,3 +189,764 @@
 2025-10-10 14:01:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 321/321 bytes, 速度: 68.77 KB/s
 2025-10-10 14:01:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 321/321 bytes, 速度: 62.24 KB/s
 2025-10-10 14:01:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: aigc-omni.tos-cn-guangzhou.volces.com/29889eb0ed1341d68675290d3167cd1e/29889eb0ed1341d68675290d3167cd1e.srt
+2025-10-10 14:23:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: aigc-omni.tos-cn-guangzhou.volces.com/7bf03597ef774b4dae2b23f1e29b3ebc/7bf03597ef774b4dae2b23f1e29b3ebc.wav, 文件大小: 1512438 bytes
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 434.56 KB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 731.73 KB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 968.23 KB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.24 MB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.57 MB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.74 MB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 2.01 MB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 2.28 MB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.57 MB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.80 MB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.80 MB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: aigc-omni.tos-cn-guangzhou.volces.com/7bf03597ef774b4dae2b23f1e29b3ebc/7bf03597ef774b4dae2b23f1e29b3ebc.wav
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: aigc-omni.tos-cn-guangzhou.volces.com/7bf03597ef774b4dae2b23f1e29b3ebc/7bf03597ef774b4dae2b23f1e29b3ebc.srt, 文件大小: 1245 bytes
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1245/1245 bytes, 速度: 230.77 KB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1245/1245 bytes, 速度: 211.75 KB/s
+2025-10-10 14:31:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: aigc-omni.tos-cn-guangzhou.volces.com/7bf03597ef774b4dae2b23f1e29b3ebc/7bf03597ef774b4dae2b23f1e29b3ebc.srt
+2025-10-10 14:38:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: c6b7e5652a6c4a45a69bb8c8eff186aa/c6b7e5652a6c4a45a69bb8c8eff186aa.wav, 文件大小: 1512438 bytes
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 443.15 KB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 665.36 KB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 889.37 KB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.14 MB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.34 MB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.59 MB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 1.84 MB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 2.09 MB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.21 MB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.42 MB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.42 MB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: c6b7e5652a6c4a45a69bb8c8eff186aa/c6b7e5652a6c4a45a69bb8c8eff186aa.wav
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: c6b7e5652a6c4a45a69bb8c8eff186aa/c6b7e5652a6c4a45a69bb8c8eff186aa.srt, 文件大小: 1245 bytes
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1245/1245 bytes, 速度: 627.17 KB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1245/1245 bytes, 速度: 578.77 KB/s
+2025-10-10 14:39:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: c6b7e5652a6c4a45a69bb8c8eff186aa/c6b7e5652a6c4a45a69bb8c8eff186aa.srt
+2025-10-10 14:50:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 14:52:48 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 492c5db740474090b51ac045faca3fd5/492c5db740474090b51ac045faca3fd5.wav, 文件大小: 1512438 bytes
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 449.55 KB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 668.91 KB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 902.91 KB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.16 MB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.45 MB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.61 MB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 1.85 MB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 2.10 MB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.37 MB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.59 MB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.59 MB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 492c5db740474090b51ac045faca3fd5/492c5db740474090b51ac045faca3fd5.wav
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 492c5db740474090b51ac045faca3fd5/492c5db740474090b51ac045faca3fd5.srt, 文件大小: 1245 bytes
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1245/1245 bytes, 速度: 213.57 KB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1245/1245 bytes, 速度: 198.44 KB/s
+2025-10-10 14:52:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 492c5db740474090b51ac045faca3fd5/492c5db740474090b51ac045faca3fd5.srt
+2025-10-10 15:15:02 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 15:15:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 30798c102a3347098e716e00d71c8c1c/30798c102a3347098e716e00d71c8c1c.wav, 文件大小: 1512438 bytes
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 481.56 KB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 717.97 KB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 1.03 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.22 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.42 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.68 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 1.94 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 2.20 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.48 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.57 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.56 MB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 30798c102a3347098e716e00d71c8c1c/30798c102a3347098e716e00d71c8c1c.wav
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 30798c102a3347098e716e00d71c8c1c/30798c102a3347098e716e00d71c8c1c.srt, 文件大小: 1206 bytes
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1206/1206 bytes, 速度: 207.57 KB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1206/1206 bytes, 速度: 189.74 KB/s
+2025-10-10 15:15:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 30798c102a3347098e716e00d71c8c1c/30798c102a3347098e716e00d71c8c1c.srt
+2025-10-10 15:31:49 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 15:32:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 4a99bfa40d4d47d5bd658d0eae1e82df/4a99bfa40d4d47d5bd658d0eae1e82df.wav, 文件大小: 1512438 bytes
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 406.48 KB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 664.44 KB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 888.21 KB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.04 MB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.32 MB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.56 MB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 1.81 MB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 1.98 MB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.24 MB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.45 MB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.43 MB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 4a99bfa40d4d47d5bd658d0eae1e82df/4a99bfa40d4d47d5bd658d0eae1e82df.wav
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 4a99bfa40d4d47d5bd658d0eae1e82df/4a99bfa40d4d47d5bd658d0eae1e82df.srt, 文件大小: 1455 bytes
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 416.59 KB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 378.87 KB/s
+2025-10-10 15:32:32 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 4a99bfa40d4d47d5bd658d0eae1e82df/4a99bfa40d4d47d5bd658d0eae1e82df.srt
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 43a109d795fa4279986157e00ea555c7/43a109d795fa4279986157e00ea555c7.wav, 文件大小: 984664 bytes
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 114688/984664 bytes, 速度: 12.11 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 212992/984664 bytes, 速度: 18.42 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 311296/984664 bytes, 速度: 23.94 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 41%, 已上传: 409600/984664 bytes, 速度: 28.68 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 51%, 已上传: 507904/984664 bytes, 速度: 32.68 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 61%, 已上传: 606208/984664 bytes, 速度: 36.12 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 71%, 已上传: 704512/984664 bytes, 速度: 39.06 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 81%, 已上传: 802816/984664 bytes, 速度: 41.61 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 91%, 已上传: 901120/984664 bytes, 速度: 43.87 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 984664/984664 bytes, 速度: 45.14 MB/s
+2025-10-10 15:33:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 984664/984664 bytes, 速度: 44.70 MB/s
+2025-10-10 15:33:05 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 43a109d795fa4279986157e00ea555c7/43a109d795fa4279986157e00ea555c7.wav
+2025-10-10 15:33:05 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 43a109d795fa4279986157e00ea555c7/43a109d795fa4279986157e00ea555c7.srt, 文件大小: 885 bytes
+2025-10-10 15:33:05 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 885/885 bytes, 速度: 405.39 KB/s
+2025-10-10 15:33:05 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 885/885 bytes, 速度: 319.92 KB/s
+2025-10-10 15:33:05 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 43a109d795fa4279986157e00ea555c7/43a109d795fa4279986157e00ea555c7.srt
+2025-10-10 15:54:23 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 15:55:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: e3d24165d8154005ab21e6208a0aaf0c/e3d24165d8154005ab21e6208a0aaf0c.wav, 文件大小: 1512438 bytes
+2025-10-10 15:55:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 436.52 KB/s
+2025-10-10 15:55:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 733.26 KB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 981.01 KB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.26 MB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.58 MB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.87 MB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 2.17 MB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 2.47 MB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.57 MB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.82 MB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.82 MB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: e3d24165d8154005ab21e6208a0aaf0c/e3d24165d8154005ab21e6208a0aaf0c.wav
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: e3d24165d8154005ab21e6208a0aaf0c/e3d24165d8154005ab21e6208a0aaf0c.srt, 文件大小: 1455 bytes
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 394.03 KB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 362.11 KB/s
+2025-10-10 15:55:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: e3d24165d8154005ab21e6208a0aaf0c/e3d24165d8154005ab21e6208a0aaf0c.srt
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 61a757aca0364159b2f8d4ccb8346fd2/61a757aca0364159b2f8d4ccb8346fd2.wav, 文件大小: 984664 bytes
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 114688/984664 bytes, 速度: 43.55 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 212992/984664 bytes, 速度: 68.33 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 311296/984664 bytes, 速度: 88.14 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 41%, 已上传: 409600/984664 bytes, 速度: 103.96 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 51%, 已上传: 507904/984664 bytes, 速度: 116.93 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 61%, 已上传: 606208/984664 bytes, 速度: 127.62 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 71%, 已上传: 704512/984664 bytes, 速度: 136.76 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 81%, 已上传: 802816/984664 bytes, 速度: 144.32 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 91%, 已上传: 901120/984664 bytes, 速度: 150.93 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 984664/984664 bytes, 速度: 154.44 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 984664/984664 bytes, 速度: 152.84 MB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 61a757aca0364159b2f8d4ccb8346fd2/61a757aca0364159b2f8d4ccb8346fd2.wav
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 61a757aca0364159b2f8d4ccb8346fd2/61a757aca0364159b2f8d4ccb8346fd2.srt, 文件大小: 885 bytes
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 885/885 bytes, 速度: 272.39 KB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 885/885 bytes, 速度: 249.22 KB/s
+2025-10-10 15:55:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 61a757aca0364159b2f8d4ccb8346fd2/61a757aca0364159b2f8d4ccb8346fd2.srt
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 03a20a912a224808af2d2e76178ad1f9/03a20a912a224808af2d2e76178ad1f9.wav, 文件大小: 779630 bytes
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 81920/779630 bytes, 速度: 41.21 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 163840/779630 bytes, 速度: 68.46 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 245760/779630 bytes, 速度: 89.12 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 42%, 已上传: 327680/779630 bytes, 速度: 105.69 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 52%, 已上传: 409600/779630 bytes, 速度: 118.78 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 63%, 已上传: 491520/779630 bytes, 速度: 129.83 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 73%, 已上传: 573440/779630 bytes, 速度: 138.87 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 84%, 已上传: 655360/779630 bytes, 速度: 146.72 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 94%, 已上传: 737280/779630 bytes, 速度: 152.76 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 779630/779630 bytes, 速度: 154.26 MB/s
+2025-10-10 15:55:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 779630/779630 bytes, 速度: 151.83 MB/s
+2025-10-10 15:55:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 03a20a912a224808af2d2e76178ad1f9/03a20a912a224808af2d2e76178ad1f9.wav
+2025-10-10 15:55:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 03a20a912a224808af2d2e76178ad1f9/03a20a912a224808af2d2e76178ad1f9.srt, 文件大小: 878 bytes
+2025-10-10 15:55:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 878/878 bytes, 速度: 553.87 KB/s
+2025-10-10 15:55:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 878/878 bytes, 速度: 504.88 KB/s
+2025-10-10 15:55:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 03a20a912a224808af2d2e76178ad1f9/03a20a912a224808af2d2e76178ad1f9.srt
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 77993d9ddf6942e699384dfe846ffe4d/77993d9ddf6942e699384dfe846ffe4d.wav, 文件大小: 879504 bytes
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/879504 bytes, 速度: 19.49 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 22%, 已上传: 196608/879504 bytes, 速度: 35.43 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 33%, 已上传: 294912/879504 bytes, 速度: 49.36 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 44%, 已上传: 393216/879504 bytes, 速度: 61.57 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 54%, 已上传: 475136/879504 bytes, 速度: 70.50 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 65%, 已上传: 573440/879504 bytes, 速度: 80.16 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 76%, 已上传: 671744/879504 bytes, 速度: 88.79 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 87%, 已上传: 770048/879504 bytes, 速度: 96.57 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 98%, 已上传: 868352/879504 bytes, 速度: 103.62 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 879504/879504 bytes, 速度: 103.59 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 879504/879504 bytes, 速度: 102.52 MB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 77993d9ddf6942e699384dfe846ffe4d/77993d9ddf6942e699384dfe846ffe4d.wav
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 77993d9ddf6942e699384dfe846ffe4d/77993d9ddf6942e699384dfe846ffe4d.srt, 文件大小: 955 bytes
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 955/955 bytes, 速度: 189.97 KB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 955/955 bytes, 速度: 174.41 KB/s
+2025-10-10 15:55:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 77993d9ddf6942e699384dfe846ffe4d/77993d9ddf6942e699384dfe846ffe4d.srt
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: b2eef59ee9a24b7788bfffc94e58e922/b2eef59ee9a24b7788bfffc94e58e922.wav, 文件大小: 954728 bytes
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/954728 bytes, 速度: 45.68 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 196608/954728 bytes, 速度: 74.84 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 294912/954728 bytes, 速度: 96.88 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 41%, 已上传: 393216/954728 bytes, 速度: 113.84 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 51%, 已上传: 491520/954728 bytes, 速度: 127.24 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 61%, 已上传: 589824/954728 bytes, 速度: 138.16 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 72%, 已上传: 688128/954728 bytes, 速度: 147.18 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 82%, 已上传: 786432/954728 bytes, 速度: 154.88 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 92%, 已上传: 884736/954728 bytes, 速度: 161.21 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 954728/954728 bytes, 速度: 163.54 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 954728/954728 bytes, 速度: 161.46 MB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: b2eef59ee9a24b7788bfffc94e58e922/b2eef59ee9a24b7788bfffc94e58e922.wav
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: b2eef59ee9a24b7788bfffc94e58e922/b2eef59ee9a24b7788bfffc94e58e922.srt, 文件大小: 924 bytes
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 924/924 bytes, 速度: 268.59 KB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 924/924 bytes, 速度: 246.46 KB/s
+2025-10-10 15:55:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: b2eef59ee9a24b7788bfffc94e58e922/b2eef59ee9a24b7788bfffc94e58e922.srt
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: be0e80c1da7248fd9c668e7224c554db/be0e80c1da7248fd9c668e7224c554db.wav, 文件大小: 949344 bytes
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/949344 bytes, 速度: 39.93 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 196608/949344 bytes, 速度: 66.79 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 294912/949344 bytes, 速度: 87.44 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 41%, 已上传: 393216/949344 bytes, 速度: 103.24 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 51%, 已上传: 491520/949344 bytes, 速度: 116.20 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 62%, 已上传: 589824/949344 bytes, 速度: 104.23 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 72%, 已上传: 688128/949344 bytes, 速度: 91.22 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 82%, 已上传: 786432/949344 bytes, 速度: 86.15 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 93%, 已上传: 884736/949344 bytes, 速度: 83.95 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 949344/949344 bytes, 速度: 82.26 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 949344/949344 bytes, 速度: 79.59 MB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: be0e80c1da7248fd9c668e7224c554db/be0e80c1da7248fd9c668e7224c554db.wav
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: be0e80c1da7248fd9c668e7224c554db/be0e80c1da7248fd9c668e7224c554db.srt, 文件大小: 994 bytes
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 994/994 bytes, 速度: 195.17 KB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 994/994 bytes, 速度: 178.93 KB/s
+2025-10-10 15:55:39 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: be0e80c1da7248fd9c668e7224c554db/be0e80c1da7248fd9c668e7224c554db.srt
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 5a8f9298694542c2a3bf3fcb6bbccf54/5a8f9298694542c2a3bf3fcb6bbccf54.wav, 文件大小: 830994 bytes
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/830994 bytes, 速度: 46.71 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 180224/830994 bytes, 速度: 71.15 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 262144/830994 bytes, 速度: 90.40 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 41%, 已上传: 344064/830994 bytes, 速度: 105.48 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 51%, 已上传: 425984/830994 bytes, 速度: 117.79 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 61%, 已上传: 507904/830994 bytes, 速度: 127.75 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 72%, 已上传: 606208/830994 bytes, 速度: 137.88 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 82%, 已上传: 688128/830994 bytes, 速度: 144.73 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 92%, 已上传: 770048/830994 bytes, 速度: 150.55 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 830994/830994 bytes, 速度: 153.55 MB/s
+2025-10-10 15:55:41 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 830994/830994 bytes, 速度: 151.00 MB/s
+2025-10-10 15:55:42 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 5a8f9298694542c2a3bf3fcb6bbccf54/5a8f9298694542c2a3bf3fcb6bbccf54.wav
+2025-10-10 15:55:42 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 5a8f9298694542c2a3bf3fcb6bbccf54/5a8f9298694542c2a3bf3fcb6bbccf54.srt, 文件大小: 827 bytes
+2025-10-10 15:55:42 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 827/827 bytes, 速度: 161.37 KB/s
+2025-10-10 15:55:42 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 827/827 bytes, 速度: 147.97 KB/s
+2025-10-10 15:55:42 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 5a8f9298694542c2a3bf3fcb6bbccf54/5a8f9298694542c2a3bf3fcb6bbccf54.srt
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 195214edcbfb4c8487026a99c52cb664/195214edcbfb4c8487026a99c52cb664.wav, 文件大小: 930696 bytes
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/930696 bytes, 速度: 50.20 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 196608/930696 bytes, 速度: 80.89 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 294912/930696 bytes, 速度: 103.50 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 42%, 已上传: 393216/930696 bytes, 速度: 120.50 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 52%, 已上传: 491520/930696 bytes, 速度: 133.81 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 63%, 已上传: 589824/930696 bytes, 速度: 144.44 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 73%, 已上传: 688128/930696 bytes, 速度: 152.70 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 84%, 已上传: 786432/930696 bytes, 速度: 159.76 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 95%, 已上传: 884736/930696 bytes, 速度: 165.84 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 930696/930696 bytes, 速度: 167.00 MB/s
+2025-10-10 15:55:44 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 930696/930696 bytes, 速度: 164.15 MB/s
+2025-10-10 15:55:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 195214edcbfb4c8487026a99c52cb664/195214edcbfb4c8487026a99c52cb664.wav
+2025-10-10 15:55:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 195214edcbfb4c8487026a99c52cb664/195214edcbfb4c8487026a99c52cb664.srt, 文件大小: 927 bytes
+2025-10-10 15:55:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 927/927 bytes, 速度: 192.03 KB/s
+2025-10-10 15:55:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 927/927 bytes, 速度: 176.01 KB/s
+2025-10-10 15:55:45 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 195214edcbfb4c8487026a99c52cb664/195214edcbfb4c8487026a99c52cb664.srt
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: affd800ca7024e6e9c7e5c09ed222092/affd800ca7024e6e9c7e5c09ed222092.wav, 文件大小: 873768 bytes
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/873768 bytes, 速度: 36.42 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 22%, 已上传: 196608/873768 bytes, 速度: 62.22 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 33%, 已上传: 294912/873768 bytes, 速度: 82.53 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 43%, 已上传: 376832/873768 bytes, 速度: 96.05 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 54%, 已上传: 475136/873768 bytes, 速度: 109.92 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 65%, 已上传: 573440/873768 bytes, 速度: 121.25 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 75%, 已上传: 655360/873768 bytes, 速度: 129.15 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 86%, 已上传: 753664/873768 bytes, 速度: 137.67 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 97%, 已上传: 851968/873768 bytes, 速度: 145.01 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 873768/873768 bytes, 速度: 144.50 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 873768/873768 bytes, 速度: 142.77 MB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: affd800ca7024e6e9c7e5c09ed222092/affd800ca7024e6e9c7e5c09ed222092.wav
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: affd800ca7024e6e9c7e5c09ed222092/affd800ca7024e6e9c7e5c09ed222092.srt, 文件大小: 1028 bytes
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1028/1028 bytes, 速度: 205.24 KB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1028/1028 bytes, 速度: 189.03 KB/s
+2025-10-10 15:55:47 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: affd800ca7024e6e9c7e5c09ed222092/affd800ca7024e6e9c7e5c09ed222092.srt
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: b64bec0a5838473f942d3be780521888/b64bec0a5838473f942d3be780521888.wav, 文件大小: 940942 bytes
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/940942 bytes, 速度: 49.34 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 196608/940942 bytes, 速度: 79.49 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 294912/940942 bytes, 速度: 101.58 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 41%, 已上传: 393216/940942 bytes, 速度: 118.58 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 52%, 已上传: 491520/940942 bytes, 速度: 131.79 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 62%, 已上传: 589824/940942 bytes, 速度: 142.45 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 73%, 已上传: 688128/940942 bytes, 速度: 150.76 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 83%, 已上传: 786432/940942 bytes, 速度: 158.04 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 94%, 已上传: 884736/940942 bytes, 速度: 164.19 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 940942/940942 bytes, 速度: 165.40 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 940942/940942 bytes, 速度: 162.98 MB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: b64bec0a5838473f942d3be780521888/b64bec0a5838473f942d3be780521888.wav
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: b64bec0a5838473f942d3be780521888/b64bec0a5838473f942d3be780521888.srt, 文件大小: 950 bytes
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 950/950 bytes, 速度: 188.56 KB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 950/950 bytes, 速度: 172.44 KB/s
+2025-10-10 15:55:50 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: b64bec0a5838473f942d3be780521888/b64bec0a5838473f942d3be780521888.srt
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 73ef030709024308b0c59d3bd926966c/73ef030709024308b0c59d3bd926966c.wav, 文件大小: 895820 bytes
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/895820 bytes, 速度: 48.01 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 180224/895820 bytes, 速度: 73.23 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 278528/895820 bytes, 速度: 96.74 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 42%, 已上传: 376832/895820 bytes, 速度: 114.50 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 53%, 已上传: 475136/895820 bytes, 速度: 128.16 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 64%, 已上传: 573440/895820 bytes, 速度: 138.91 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 74%, 已上传: 671744/895820 bytes, 速度: 148.07 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 84%, 已上传: 753664/895820 bytes, 速度: 154.23 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 95%, 已上传: 851968/895820 bytes, 速度: 160.89 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 895820/895820 bytes, 速度: 161.86 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 895820/895820 bytes, 速度: 159.33 MB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 73ef030709024308b0c59d3bd926966c/73ef030709024308b0c59d3bd926966c.wav
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 73ef030709024308b0c59d3bd926966c/73ef030709024308b0c59d3bd926966c.srt, 文件大小: 865 bytes
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 865/865 bytes, 速度: 314.02 KB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 865/865 bytes, 速度: 283.38 KB/s
+2025-10-10 15:55:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 73ef030709024308b0c59d3bd926966c/73ef030709024308b0c59d3bd926966c.srt
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 3b45994a768b4ef6843daf23303c1023/3b45994a768b4ef6843daf23303c1023.wav, 文件大小: 855674 bytes
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/855674 bytes, 速度: 33.31 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 180224/855674 bytes, 速度: 52.55 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 32%, 已上传: 278528/855674 bytes, 速度: 71.11 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 42%, 已上传: 360448/855674 bytes, 速度: 82.58 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 53%, 已上传: 458752/855674 bytes, 速度: 93.82 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 63%, 已上传: 540672/855674 bytes, 速度: 101.63 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 74%, 已上传: 638976/855674 bytes, 速度: 109.99 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 84%, 已上传: 720896/855674 bytes, 速度: 115.62 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 95%, 已上传: 819200/855674 bytes, 速度: 121.93 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 855674/855674 bytes, 速度: 122.08 MB/s
+2025-10-10 15:55:55 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 855674/855674 bytes, 速度: 120.29 MB/s
+2025-10-10 15:55:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 3b45994a768b4ef6843daf23303c1023/3b45994a768b4ef6843daf23303c1023.wav
+2025-10-10 15:55:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 3b45994a768b4ef6843daf23303c1023/3b45994a768b4ef6843daf23303c1023.srt, 文件大小: 958 bytes
+2025-10-10 15:55:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 958/958 bytes, 速度: 160.54 KB/s
+2025-10-10 15:55:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 958/958 bytes, 速度: 142.26 KB/s
+2025-10-10 15:55:56 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 3b45994a768b4ef6843daf23303c1023/3b45994a768b4ef6843daf23303c1023.srt
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 064663bcaedf43d697ead69239be2e60/064663bcaedf43d697ead69239be2e60.wav, 文件大小: 967616 bytes
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/967616 bytes, 速度: 39.63 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 196608/967616 bytes, 速度: 66.79 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 294912/967616 bytes, 速度: 85.54 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 393216/967616 bytes, 速度: 98.60 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 491520/967616 bytes, 速度: 109.84 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 589824/967616 bytes, 速度: 117.94 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 71%, 已上传: 688128/967616 bytes, 速度: 119.22 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 81%, 已上传: 786432/967616 bytes, 速度: 117.19 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 91%, 已上传: 884736/967616 bytes, 速度: 115.19 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 967616/967616 bytes, 速度: 110.69 MB/s
+2025-10-10 15:55:58 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 967616/967616 bytes, 速度: 106.23 MB/s
+2025-10-10 15:55:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 064663bcaedf43d697ead69239be2e60/064663bcaedf43d697ead69239be2e60.wav
+2025-10-10 15:55:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 064663bcaedf43d697ead69239be2e60/064663bcaedf43d697ead69239be2e60.srt, 文件大小: 973 bytes
+2025-10-10 15:55:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 973/973 bytes, 速度: 197.12 KB/s
+2025-10-10 15:55:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 973/973 bytes, 速度: 181.16 KB/s
+2025-10-10 15:55:59 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 064663bcaedf43d697ead69239be2e60/064663bcaedf43d697ead69239be2e60.srt
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 2ab0ce4645334c1e873ecbdb560955e3/2ab0ce4645334c1e873ecbdb560955e3.wav, 文件大小: 711800 bytes
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 81920/711800 bytes, 速度: 40.40 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 23%, 已上传: 163840/711800 bytes, 速度: 66.31 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 34%, 已上传: 245760/711800 bytes, 速度: 86.32 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 46%, 已上传: 327680/711800 bytes, 速度: 101.83 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 57%, 已上传: 409600/711800 bytes, 速度: 114.37 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 69%, 已上传: 491520/711800 bytes, 速度: 125.19 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 573440/711800 bytes, 速度: 133.86 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 92%, 已上传: 655360/711800 bytes, 速度: 141.30 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 711800/711800 bytes, 速度: 144.21 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 711800/711800 bytes, 速度: 141.88 MB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 2ab0ce4645334c1e873ecbdb560955e3/2ab0ce4645334c1e873ecbdb560955e3.wav
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 2ab0ce4645334c1e873ecbdb560955e3/2ab0ce4645334c1e873ecbdb560955e3.srt, 文件大小: 879 bytes
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 879/879 bytes, 速度: 213.53 KB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 879/879 bytes, 速度: 191.47 KB/s
+2025-10-10 15:56:01 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 2ab0ce4645334c1e873ecbdb560955e3/2ab0ce4645334c1e873ecbdb560955e3.srt
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 3a60a957c9a549918e88e3533119cb89/3a60a957c9a549918e88e3533119cb89.wav, 文件大小: 919938 bytes
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/919938 bytes, 速度: 44.89 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 196608/919938 bytes, 速度: 73.40 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 32%, 已上传: 294912/919938 bytes, 速度: 94.39 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 42%, 已上传: 393216/919938 bytes, 速度: 110.62 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 53%, 已上传: 491520/919938 bytes, 速度: 123.33 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 64%, 已上传: 589824/919938 bytes, 速度: 133.57 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 74%, 已上传: 688128/919938 bytes, 速度: 142.01 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 85%, 已上传: 786432/919938 bytes, 速度: 149.07 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 96%, 已上传: 884736/919938 bytes, 速度: 155.03 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 919938/919938 bytes, 速度: 154.42 MB/s
+2025-10-10 15:56:03 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 919938/919938 bytes, 速度: 152.55 MB/s
+2025-10-10 15:56:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 3a60a957c9a549918e88e3533119cb89/3a60a957c9a549918e88e3533119cb89.wav
+2025-10-10 15:56:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 3a60a957c9a549918e88e3533119cb89/3a60a957c9a549918e88e3533119cb89.srt, 文件大小: 927 bytes
+2025-10-10 15:56:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 927/927 bytes, 速度: 182.20 KB/s
+2025-10-10 15:56:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 927/927 bytes, 速度: 167.84 KB/s
+2025-10-10 15:56:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 3a60a957c9a549918e88e3533119cb89/3a60a957c9a549918e88e3533119cb89.srt
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 59c0e14104bd4c0fb6ebe2fed70ff233/59c0e14104bd4c0fb6ebe2fed70ff233.wav, 文件大小: 907038 bytes
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/907038 bytes, 速度: 34.27 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 196608/907038 bytes, 速度: 58.64 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 32%, 已上传: 294912/907038 bytes, 速度: 78.04 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 43%, 已上传: 393216/907038 bytes, 速度: 93.95 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 54%, 已上传: 491520/907038 bytes, 速度: 106.87 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 65%, 已上传: 589824/907038 bytes, 速度: 117.88 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 75%, 已上传: 688128/907038 bytes, 速度: 127.19 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 86%, 已上传: 786432/907038 bytes, 速度: 135.28 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 97%, 已上传: 884736/907038 bytes, 速度: 142.29 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 907038/907038 bytes, 速度: 141.94 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 907038/907038 bytes, 速度: 140.35 MB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 59c0e14104bd4c0fb6ebe2fed70ff233/59c0e14104bd4c0fb6ebe2fed70ff233.wav
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 59c0e14104bd4c0fb6ebe2fed70ff233/59c0e14104bd4c0fb6ebe2fed70ff233.srt, 文件大小: 985 bytes
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 985/985 bytes, 速度: 226.88 KB/s
+2025-10-10 15:56:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 985/985 bytes, 速度: 209.84 KB/s
+2025-10-10 15:56:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 59c0e14104bd4c0fb6ebe2fed70ff233/59c0e14104bd4c0fb6ebe2fed70ff233.srt
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: ceb683d02f064a40925ab3f07e3685d2/ceb683d02f064a40925ab3f07e3685d2.wav, 文件大小: 911426 bytes
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/911426 bytes, 速度: 44.56 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 196608/911426 bytes, 速度: 73.72 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 32%, 已上传: 294912/911426 bytes, 速度: 95.65 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 43%, 已上传: 393216/911426 bytes, 速度: 112.60 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 53%, 已上传: 491520/911426 bytes, 速度: 126.22 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 64%, 已上传: 589824/911426 bytes, 速度: 137.03 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 75%, 已上传: 688128/911426 bytes, 速度: 145.97 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 86%, 已上传: 786432/911426 bytes, 速度: 153.69 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 97%, 已上传: 884736/911426 bytes, 速度: 160.44 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 911426/911426 bytes, 速度: 160.22 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 911426/911426 bytes, 速度: 157.86 MB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: ceb683d02f064a40925ab3f07e3685d2/ceb683d02f064a40925ab3f07e3685d2.wav
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: ceb683d02f064a40925ab3f07e3685d2/ceb683d02f064a40925ab3f07e3685d2.srt, 文件大小: 874 bytes
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 874/874 bytes, 速度: 173.57 KB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 874/874 bytes, 速度: 158.87 KB/s
+2025-10-10 15:56:09 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: ceb683d02f064a40925ab3f07e3685d2/ceb683d02f064a40925ab3f07e3685d2.srt
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 9593b883c5884e0d8a705987d9066665/9593b883c5884e0d8a705987d9066665.wav, 文件大小: 873952 bytes
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/873952 bytes, 速度: 32.46 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 22%, 已上传: 196608/873952 bytes, 速度: 56.16 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 33%, 已上传: 294912/873952 bytes, 速度: 75.34 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 43%, 已上传: 376832/873952 bytes, 速度: 88.39 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 54%, 已上传: 475136/873952 bytes, 速度: 101.85 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 65%, 已上传: 573440/873952 bytes, 速度: 112.90 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 76%, 已上传: 671744/873952 bytes, 速度: 122.20 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 86%, 已上传: 753664/873952 bytes, 速度: 128.92 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 97%, 已上传: 851968/873952 bytes, 速度: 136.42 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 873952/873952 bytes, 速度: 136.03 MB/s
+2025-10-10 15:56:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 873952/873952 bytes, 速度: 134.46 MB/s
+2025-10-10 15:56:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 9593b883c5884e0d8a705987d9066665/9593b883c5884e0d8a705987d9066665.wav
+2025-10-10 15:56:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 9593b883c5884e0d8a705987d9066665/9593b883c5884e0d8a705987d9066665.srt, 文件大小: 909 bytes
+2025-10-10 15:56:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 909/909 bytes, 速度: 179.12 KB/s
+2025-10-10 15:56:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 909/909 bytes, 速度: 164.74 KB/s
+2025-10-10 15:56:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 9593b883c5884e0d8a705987d9066665/9593b883c5884e0d8a705987d9066665.srt
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: d66cd0458a914d1a9a0d55dea89930bc/d66cd0458a914d1a9a0d55dea89930bc.wav, 文件大小: 847222 bytes
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/847222 bytes, 速度: 47.66 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 180224/847222 bytes, 速度: 72.21 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 32%, 已上传: 278528/847222 bytes, 速度: 95.18 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 42%, 已上传: 360448/847222 bytes, 速度: 109.44 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 52%, 已上传: 442368/847222 bytes, 速度: 121.06 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 63%, 已上传: 540672/847222 bytes, 速度: 132.88 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 73%, 已上传: 622592/847222 bytes, 速度: 140.29 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 83%, 已上传: 704512/847222 bytes, 速度: 146.53 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 94%, 已上传: 802816/847222 bytes, 速度: 153.59 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 847222/847222 bytes, 速度: 155.10 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 847222/847222 bytes, 速度: 152.52 MB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: d66cd0458a914d1a9a0d55dea89930bc/d66cd0458a914d1a9a0d55dea89930bc.wav
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: d66cd0458a914d1a9a0d55dea89930bc/d66cd0458a914d1a9a0d55dea89930bc.srt, 文件大小: 914 bytes
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 914/914 bytes, 速度: 479.84 KB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 914/914 bytes, 速度: 442.16 KB/s
+2025-10-10 15:56:14 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: d66cd0458a914d1a9a0d55dea89930bc/d66cd0458a914d1a9a0d55dea89930bc.srt
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 5cf7739b6a344e63a7cfcdeb876e7991/5cf7739b6a344e63a7cfcdeb876e7991.wav, 文件大小: 877578 bytes
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/877578 bytes, 速度: 35.55 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 22%, 已上传: 196608/877578 bytes, 速度: 60.45 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 33%, 已上传: 294912/877578 bytes, 速度: 79.81 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 44%, 已上传: 393216/877578 bytes, 速度: 95.12 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 54%, 已上传: 475136/877578 bytes, 速度: 105.36 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 65%, 已上传: 573440/877578 bytes, 速度: 116.08 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 76%, 已上传: 671744/877578 bytes, 速度: 125.37 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 87%, 已上传: 770048/877578 bytes, 速度: 133.26 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 97%, 已上传: 851968/877578 bytes, 速度: 138.58 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 877578/877578 bytes, 速度: 138.67 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 877578/877578 bytes, 速度: 136.82 MB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 5cf7739b6a344e63a7cfcdeb876e7991/5cf7739b6a344e63a7cfcdeb876e7991.wav
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 5cf7739b6a344e63a7cfcdeb876e7991/5cf7739b6a344e63a7cfcdeb876e7991.srt, 文件大小: 813 bytes
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 813/813 bytes, 速度: 159.19 KB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 813/813 bytes, 速度: 145.85 KB/s
+2025-10-10 15:56:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 5cf7739b6a344e63a7cfcdeb876e7991/5cf7739b6a344e63a7cfcdeb876e7991.srt
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 08aabccbf2f143b6843002308ad713bd/08aabccbf2f143b6843002308ad713bd.wav, 文件大小: 869550 bytes
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/869550 bytes, 速度: 45.85 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 22%, 已上传: 196608/869550 bytes, 速度: 75.08 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 32%, 已上传: 278528/869550 bytes, 速度: 93.27 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 43%, 已上传: 376832/869550 bytes, 速度: 110.75 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 54%, 已上传: 475136/869550 bytes, 速度: 124.62 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 64%, 已上传: 557056/869550 bytes, 速度: 133.54 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 75%, 已上传: 655360/869550 bytes, 速度: 142.79 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 86%, 已上传: 753664/869550 bytes, 速度: 150.61 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 96%, 已上传: 835584/869550 bytes, 速度: 155.85 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 869550/869550 bytes, 速度: 155.43 MB/s
+2025-10-10 15:56:19 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 869550/869550 bytes, 速度: 153.74 MB/s
+2025-10-10 15:56:20 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 08aabccbf2f143b6843002308ad713bd/08aabccbf2f143b6843002308ad713bd.wav
+2025-10-10 15:56:20 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 08aabccbf2f143b6843002308ad713bd/08aabccbf2f143b6843002308ad713bd.srt, 文件大小: 871 bytes
+2025-10-10 15:56:20 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 871/871 bytes, 速度: 170.25 KB/s
+2025-10-10 15:56:20 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 871/871 bytes, 速度: 156.64 KB/s
+2025-10-10 15:56:20 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 08aabccbf2f143b6843002308ad713bd/08aabccbf2f143b6843002308ad713bd.srt
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 7747ce1cf59548c9a7e174c2632bc2b1/7747ce1cf59548c9a7e174c2632bc2b1.wav, 文件大小: 904960 bytes
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/904960 bytes, 速度: 30.53 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 196608/904960 bytes, 速度: 52.87 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 32%, 已上传: 294912/904960 bytes, 速度: 71.07 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 43%, 已上传: 393216/904960 bytes, 速度: 85.70 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 54%, 已上传: 491520/904960 bytes, 速度: 97.92 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 65%, 已上传: 589824/904960 bytes, 速度: 108.29 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 76%, 已上传: 688128/904960 bytes, 速度: 117.30 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 86%, 已上传: 786432/904960 bytes, 速度: 125.16 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 97%, 已上传: 884736/904960 bytes, 速度: 132.02 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 904960/904960 bytes, 速度: 131.46 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 904960/904960 bytes, 速度: 130.05 MB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 7747ce1cf59548c9a7e174c2632bc2b1/7747ce1cf59548c9a7e174c2632bc2b1.wav
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 7747ce1cf59548c9a7e174c2632bc2b1/7747ce1cf59548c9a7e174c2632bc2b1.srt, 文件大小: 953 bytes
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 953/953 bytes, 速度: 268.30 KB/s
+2025-10-10 15:56:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 953/953 bytes, 速度: 245.27 KB/s
+2025-10-10 15:56:23 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 7747ce1cf59548c9a7e174c2632bc2b1/7747ce1cf59548c9a7e174c2632bc2b1.srt
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: cbc4134889cf4a7ea4926a5b6291aadf/cbc4134889cf4a7ea4926a5b6291aadf.wav, 文件大小: 833078 bytes
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/833078 bytes, 速度: 47.14 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 180224/833078 bytes, 速度: 71.70 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 262144/833078 bytes, 速度: 91.09 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 41%, 已上传: 344064/833078 bytes, 速度: 106.52 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 51%, 已上传: 425984/833078 bytes, 速度: 119.02 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 62%, 已上传: 524288/833078 bytes, 速度: 131.53 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 72%, 已上传: 606208/833078 bytes, 速度: 139.81 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 82%, 已上传: 688128/833078 bytes, 速度: 147.00 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 92%, 已上传: 770048/833078 bytes, 速度: 153.10 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 833078/833078 bytes, 速度: 156.59 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 833078/833078 bytes, 速度: 153.75 MB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: cbc4134889cf4a7ea4926a5b6291aadf/cbc4134889cf4a7ea4926a5b6291aadf.wav
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: cbc4134889cf4a7ea4926a5b6291aadf/cbc4134889cf4a7ea4926a5b6291aadf.srt, 文件大小: 879 bytes
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 879/879 bytes, 速度: 170.51 KB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 879/879 bytes, 速度: 156.76 KB/s
+2025-10-10 15:56:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: cbc4134889cf4a7ea4926a5b6291aadf/cbc4134889cf4a7ea4926a5b6291aadf.srt
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 8871157905464bb0b52fb43950625837/8871157905464bb0b52fb43950625837.wav, 文件大小: 887774 bytes
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 98304/887774 bytes, 速度: 49.02 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 22%, 已上传: 196608/887774 bytes, 速度: 79.01 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 33%, 已上传: 294912/887774 bytes, 速度: 101.25 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 44%, 已上传: 393216/887774 bytes, 速度: 118.22 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 55%, 已上传: 491520/887774 bytes, 速度: 131.41 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 66%, 已上传: 589824/887774 bytes, 速度: 142.08 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 77%, 已上传: 688128/887774 bytes, 速度: 150.91 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 88%, 已上传: 786432/887774 bytes, 速度: 158.24 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 99%, 已上传: 884736/887774 bytes, 速度: 164.35 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 887774/887774 bytes, 速度: 161.55 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 887774/887774 bytes, 速度: 159.59 MB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 8871157905464bb0b52fb43950625837/8871157905464bb0b52fb43950625837.wav
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 8871157905464bb0b52fb43950625837/8871157905464bb0b52fb43950625837.srt, 文件大小: 781 bytes
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 781/781 bytes, 速度: 505.69 KB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 781/781 bytes, 速度: 465.64 KB/s
+2025-10-10 15:56:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 8871157905464bb0b52fb43950625837/8871157905464bb0b52fb43950625837.srt
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 715292e739254ed8a72ef3e5e5230d49/715292e739254ed8a72ef3e5e5230d49.wav, 文件大小: 959316 bytes
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/959316 bytes, 速度: 45.89 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 196608/959316 bytes, 速度: 74.98 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 294912/959316 bytes, 速度: 96.41 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 393216/959316 bytes, 速度: 112.77 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 51%, 已上传: 491520/959316 bytes, 速度: 125.40 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 61%, 已上传: 589824/959316 bytes, 速度: 135.65 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 71%, 已上传: 688128/959316 bytes, 速度: 144.21 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 81%, 已上传: 786432/959316 bytes, 速度: 151.54 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 92%, 已上传: 884736/959316 bytes, 速度: 157.58 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 959316/959316 bytes, 速度: 160.39 MB/s
+2025-10-10 15:56:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 959316/959316 bytes, 速度: 158.03 MB/s
+2025-10-10 15:56:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 715292e739254ed8a72ef3e5e5230d49/715292e739254ed8a72ef3e5e5230d49.wav
+2025-10-10 15:56:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 715292e739254ed8a72ef3e5e5230d49/715292e739254ed8a72ef3e5e5230d49.srt, 文件大小: 991 bytes
+2025-10-10 15:56:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 991/991 bytes, 速度: 408.57 KB/s
+2025-10-10 15:56:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 991/991 bytes, 速度: 347.83 KB/s
+2025-10-10 15:56:31 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 715292e739254ed8a72ef3e5e5230d49/715292e739254ed8a72ef3e5e5230d49.srt
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 03ca73f6218c4fdfb9c90e8ca769e21a/03ca73f6218c4fdfb9c90e8ca769e21a.wav, 文件大小: 974384 bytes
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 98304/974384 bytes, 速度: 33.03 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 196608/974384 bytes, 速度: 56.96 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 294912/974384 bytes, 速度: 76.22 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 393216/974384 bytes, 速度: 91.97 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 491520/974384 bytes, 速度: 104.99 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 589824/974384 bytes, 速度: 115.92 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 688128/974384 bytes, 速度: 125.30 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 786432/974384 bytes, 速度: 133.42 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 884736/974384 bytes, 速度: 140.34 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 974384/974384 bytes, 速度: 145.14 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 974384/974384 bytes, 速度: 143.34 MB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 03ca73f6218c4fdfb9c90e8ca769e21a/03ca73f6218c4fdfb9c90e8ca769e21a.wav
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 03ca73f6218c4fdfb9c90e8ca769e21a/03ca73f6218c4fdfb9c90e8ca769e21a.srt, 文件大小: 927 bytes
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 927/927 bytes, 速度: 182.90 KB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 927/927 bytes, 速度: 166.51 KB/s
+2025-10-10 15:56:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 03ca73f6218c4fdfb9c90e8ca769e21a/03ca73f6218c4fdfb9c90e8ca769e21a.srt
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: c86a2589a30849fb881d3849db83e45a/c86a2589a30849fb881d3849db83e45a.wav, 文件大小: 685650 bytes
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 11%, 已上传: 81920/685650 bytes, 速度: 42.76 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 21%, 已上传: 147456/685650 bytes, 速度: 64.24 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 31%, 已上传: 212992/685650 bytes, 速度: 81.15 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 43%, 已上传: 294912/685650 bytes, 速度: 97.84 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 54%, 已上传: 376832/685650 bytes, 速度: 110.82 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 64%, 已上传: 442368/685650 bytes, 速度: 118.83 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 74%, 已上传: 507904/685650 bytes, 速度: 125.47 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 86%, 已上传: 589824/685650 bytes, 速度: 132.81 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 97%, 已上传: 671744/685650 bytes, 速度: 139.06 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 685650/685650 bytes, 速度: 138.10 MB/s
+2025-10-10 15:56:35 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 685650/685650 bytes, 速度: 135.14 MB/s
+2025-10-10 15:56:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: c86a2589a30849fb881d3849db83e45a/c86a2589a30849fb881d3849db83e45a.wav
+2025-10-10 15:56:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: c86a2589a30849fb881d3849db83e45a/c86a2589a30849fb881d3849db83e45a.srt, 文件大小: 592 bytes
+2025-10-10 15:56:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 592/592 bytes, 速度: 120.53 KB/s
+2025-10-10 15:56:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 592/592 bytes, 速度: 113.83 KB/s
+2025-10-10 15:56:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: c86a2589a30849fb881d3849db83e45a/c86a2589a30849fb881d3849db83e45a.srt
+2025-10-10 16:26:22 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 16:48:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 68a99784aab64410a260192234c4a237/68a99784aab64410a260192234c4a237.wav, 文件大小: 1512438 bytes
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 436.69 KB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 726.26 KB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 970.35 KB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.24 MB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.57 MB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.72 MB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 1.99 MB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 2.25 MB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.54 MB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.78 MB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.78 MB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 68a99784aab64410a260192234c4a237/68a99784aab64410a260192234c4a237.wav
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 68a99784aab64410a260192234c4a237/68a99784aab64410a260192234c4a237.srt, 文件大小: 1455 bytes
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 268.88 KB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 246.92 KB/s
+2025-10-10 16:48:13 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 68a99784aab64410a260192234c4a237/68a99784aab64410a260192234c4a237.srt
+2025-10-10 16:50:33 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 3a74aa71686b44e59af155cffa01e6c4/3a74aa71686b44e59af155cffa01e6c4.wav, 文件大小: 1512438 bytes
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 475.35 KB/s
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 702.41 KB/s
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 927.71 KB/s
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.10 MB/s
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.39 MB/s
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.63 MB/s
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 1.77 MB/s
+2025-10-10 16:53:25 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 1.98 MB/s
+2025-10-10 16:53:26 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.08 MB/s
+2025-10-10 16:53:26 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.28 MB/s
+2025-10-10 16:53:26 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.28 MB/s
+2025-10-10 16:53:26 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 3a74aa71686b44e59af155cffa01e6c4/3a74aa71686b44e59af155cffa01e6c4.wav
+2025-10-10 16:53:26 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 3a74aa71686b44e59af155cffa01e6c4/3a74aa71686b44e59af155cffa01e6c4.srt, 文件大小: 1455 bytes
+2025-10-10 16:53:26 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 197.62 KB/s
+2025-10-10 16:53:26 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 184.53 KB/s
+2025-10-10 16:53:26 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 3a74aa71686b44e59af155cffa01e6c4/3a74aa71686b44e59af155cffa01e6c4.srt
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 6b4f063604b744168a4eecfc53d4d785/6b4f063604b744168a4eecfc53d4d785.wav, 文件大小: 1580118 bytes
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1580118 bytes, 速度: 53.35 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 327680/1580118 bytes, 速度: 86.93 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 475136/1580118 bytes, 速度: 108.98 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 638976/1580118 bytes, 速度: 127.59 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 802816/1580118 bytes, 速度: 3.85 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 950272/1580118 bytes, 速度: 3.67 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1114112/1580118 bytes, 速度: 3.64 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1277952/1580118 bytes, 速度: 4.13 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1425408/1580118 bytes, 速度: 3.99 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1580118/1580118 bytes, 速度: 4.39 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1580118/1580118 bytes, 速度: 4.38 MB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 6b4f063604b744168a4eecfc53d4d785/6b4f063604b744168a4eecfc53d4d785.wav
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 6b4f063604b744168a4eecfc53d4d785/6b4f063604b744168a4eecfc53d4d785.srt, 文件大小: 1455 bytes
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 383.06 KB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 351.15 KB/s
+2025-10-10 16:54:08 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 6b4f063604b744168a4eecfc53d4d785/6b4f063604b744168a4eecfc53d4d785.srt
+2025-10-10 16:55:43 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 17:04:21 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 17:08:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 2c7609df1bda4db7b81bcdedbfaa8089/2c7609df1bda4db7b81bcdedbfaa8089.wav, 文件大小: 1512438 bytes
+2025-10-10 17:08:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 417.77 KB/s
+2025-10-10 17:08:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 565.82 KB/s
+2025-10-10 17:08:17 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 828.89 KB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 933.62 KB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.08 MB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.20 MB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 1.30 MB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 1.40 MB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 1.49 MB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 1.56 MB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 1.55 MB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 2c7609df1bda4db7b81bcdedbfaa8089/2c7609df1bda4db7b81bcdedbfaa8089.wav
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 2c7609df1bda4db7b81bcdedbfaa8089/2c7609df1bda4db7b81bcdedbfaa8089.srt, 文件大小: 1455 bytes
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 213.46 KB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 198.90 KB/s
+2025-10-10 17:08:18 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 2c7609df1bda4db7b81bcdedbfaa8089/2c7609df1bda4db7b81bcdedbfaa8089.srt
+2025-10-10 17:22:04 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 17:23:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 17:25:48 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 17:26:21 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:33] - __init__() - TOS上传器初始化成功
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: c3c07f5e5ed34bb5a21a2ab4fd184af5/c3c07f5e5ed34bb5a21a2ab4fd184af5.wav, 文件大小: 1512438 bytes
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1512438 bytes, 速度: 440.50 KB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 311296/1512438 bytes, 速度: 610.41 KB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 458752/1512438 bytes, 速度: 892.33 KB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 606208/1512438 bytes, 速度: 1.15 MB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 770048/1512438 bytes, 速度: 1.34 MB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 917504/1512438 bytes, 速度: 1.59 MB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1064960/1512438 bytes, 速度: 1.72 MB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1212416/1512438 bytes, 速度: 1.95 MB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1376256/1512438 bytes, 速度: 2.21 MB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.42 MB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1512438/1512438 bytes, 速度: 2.42 MB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: c3c07f5e5ed34bb5a21a2ab4fd184af5/c3c07f5e5ed34bb5a21a2ab4fd184af5.wav
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: c3c07f5e5ed34bb5a21a2ab4fd184af5/c3c07f5e5ed34bb5a21a2ab4fd184af5.srt, 文件大小: 1455 bytes
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 257.15 KB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 235.57 KB/s
+2025-10-10 17:27:10 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: c3c07f5e5ed34bb5a21a2ab4fd184af5/c3c07f5e5ed34bb5a21a2ab4fd184af5.srt
+2025-10-10 17:28:28 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: a8d2aa1e53a8425c9efe010fcee410a8/a8d2aa1e53a8425c9efe010fcee410a8.wav, 文件大小: 7767374 bytes
+2025-10-10 17:28:29 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 786432/7767374 bytes, 速度: 1.36 MB/s
+2025-10-10 17:28:29 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 1556480/7767374 bytes, 速度: 2.00 MB/s
+2025-10-10 17:28:29 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 2342912/7767374 bytes, 速度: 2.50 MB/s
+2025-10-10 17:28:29 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 3112960/7767374 bytes, 速度: 2.88 MB/s
+2025-10-10 17:28:29 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 3899392/7767374 bytes, 速度: 3.29 MB/s
+2025-10-10 17:28:29 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 4669440/7767374 bytes, 速度: 3.63 MB/s
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 5439488/7767374 bytes, 速度: 3.93 MB/s
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 6225920/7767374 bytes, 速度: 4.21 MB/s
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 6995968/7767374 bytes, 速度: 4.56 MB/s
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 7767374/7767374 bytes, 速度: 4.78 MB/s
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 7767374/7767374 bytes, 速度: 4.78 MB/s
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: a8d2aa1e53a8425c9efe010fcee410a8/a8d2aa1e53a8425c9efe010fcee410a8.wav
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: a8d2aa1e53a8425c9efe010fcee410a8/a8d2aa1e53a8425c9efe010fcee410a8.srt, 文件大小: 7316 bytes
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 7316/7316 bytes, 速度: 2.30 MB/s
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 7316/7316 bytes, 速度: 2.08 MB/s
+2025-10-10 17:28:30 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: a8d2aa1e53a8425c9efe010fcee410a8/a8d2aa1e53a8425c9efe010fcee410a8.srt
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 646cd45db0fd432e9fc41bdb5f6d3c29/646cd45db0fd432e9fc41bdb5f6d3c29.wav, 文件大小: 1571200 bytes
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 163840/1571200 bytes, 速度: 435.60 KB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 327680/1571200 bytes, 速度: 622.73 KB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 475136/1571200 bytes, 速度: 901.16 KB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 638976/1571200 bytes, 速度: 1.18 MB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 786432/1571200 bytes, 速度: 1.33 MB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 950272/1571200 bytes, 速度: 1.60 MB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 1114112/1571200 bytes, 速度: 1.88 MB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 1261568/1571200 bytes, 速度: 1.96 MB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 1425408/1571200 bytes, 速度: 2.22 MB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1571200/1571200 bytes, 速度: 2.44 MB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1571200/1571200 bytes, 速度: 2.44 MB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 646cd45db0fd432e9fc41bdb5f6d3c29/646cd45db0fd432e9fc41bdb5f6d3c29.wav
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 646cd45db0fd432e9fc41bdb5f6d3c29/646cd45db0fd432e9fc41bdb5f6d3c29.srt, 文件大小: 1455 bytes
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 314.15 KB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 1455/1455 bytes, 速度: 291.91 KB/s
+2025-10-10 17:37:40 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 646cd45db0fd432e9fc41bdb5f6d3c29/646cd45db0fd432e9fc41bdb5f6d3c29.srt
+2025-10-10 17:59:53 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 64ce77a7e5c24c9f9ca07bebdfc6bac5/64ce77a7e5c24c9f9ca07bebdfc6bac5.wav, 文件大小: 6298720 bytes
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 638976/6298720 bytes, 速度: 1.30 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 1261568/6298720 bytes, 速度: 2.16 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 1900544/6298720 bytes, 速度: 3.18 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 2523136/6298720 bytes, 速度: 3.98 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 3162112/6298720 bytes, 速度: 4.90 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 3784704/6298720 bytes, 速度: 5.78 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 4423680/6298720 bytes, 速度: 6.48 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 5046272/6298720 bytes, 速度: 7.28 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 5668864/6298720 bytes, 速度: 8.09 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6298720/6298720 bytes, 速度: 8.90 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6298720/6298720 bytes, 速度: 8.90 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 64ce77a7e5c24c9f9ca07bebdfc6bac5/64ce77a7e5c24c9f9ca07bebdfc6bac5.wav
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 64ce77a7e5c24c9f9ca07bebdfc6bac5/64ce77a7e5c24c9f9ca07bebdfc6bac5.srt, 文件大小: 6574 bytes
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6574/6574 bytes, 速度: 1.29 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6574/6574 bytes, 速度: 1.16 MB/s
+2025-10-10 17:59:54 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 64ce77a7e5c24c9f9ca07bebdfc6bac5/64ce77a7e5c24c9f9ca07bebdfc6bac5.srt
+2025-10-10 18:01:36 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 698604e659444cd0ab36cf38393f123f/698604e659444cd0ab36cf38393f123f.wav, 文件大小: 6425524 bytes
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 655360/6425524 bytes, 速度: 1.18 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 1294336/6425524 bytes, 速度: 2.12 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 1933312/6425524 bytes, 速度: 2.93 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 2572288/6425524 bytes, 速度: 3.64 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 3227648/6425524 bytes, 速度: 4.50 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 3866624/6425524 bytes, 速度: 5.33 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 4505600/6425524 bytes, 速度: 6.16 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 5144576/6425524 bytes, 速度: 6.77 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 5783552/6425524 bytes, 速度: 7.53 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6425524/6425524 bytes, 速度: 8.28 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6425524/6425524 bytes, 速度: 8.28 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 698604e659444cd0ab36cf38393f123f/698604e659444cd0ab36cf38393f123f.wav
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 698604e659444cd0ab36cf38393f123f/698604e659444cd0ab36cf38393f123f.srt, 文件大小: 6574 bytes
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6574/6574 bytes, 速度: 1.10 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6574/6574 bytes, 速度: 1.01 MB/s
+2025-10-10 18:01:37 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 698604e659444cd0ab36cf38393f123f/698604e659444cd0ab36cf38393f123f.srt
+2025-10-10 18:03:06 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 8820115c8aab403480c1aaee72da629a/8820115c8aab403480c1aaee72da629a.wav, 文件大小: 6309354 bytes
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 638976/6309354 bytes, 速度: 1.23 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 1277952/6309354 bytes, 速度: 2.24 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 1900544/6309354 bytes, 速度: 3.23 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 2539520/6309354 bytes, 速度: 4.10 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 3162112/6309354 bytes, 速度: 5.00 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 3801088/6309354 bytes, 速度: 5.96 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 4423680/6309354 bytes, 速度: 6.91 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 5062656/6309354 bytes, 速度: 7.40 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 5685248/6309354 bytes, 速度: 7.46 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6309354/6309354 bytes, 速度: 8.06 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6309354/6309354 bytes, 速度: 8.06 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 8820115c8aab403480c1aaee72da629a/8820115c8aab403480c1aaee72da629a.wav
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 8820115c8aab403480c1aaee72da629a/8820115c8aab403480c1aaee72da629a.srt, 文件大小: 6574 bytes
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6574/6574 bytes, 速度: 3.42 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6574/6574 bytes, 速度: 3.12 MB/s
+2025-10-10 18:03:07 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 8820115c8aab403480c1aaee72da629a/8820115c8aab403480c1aaee72da629a.srt
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 61097462955040348911698e93ea0470/61097462955040348911698e93ea0470.wav, 文件大小: 6350786 bytes
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 10%, 已上传: 638976/6350786 bytes, 速度: 86.95 MB/s
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 20%, 已上传: 1277952/6350786 bytes, 速度: 131.34 MB/s
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 30%, 已上传: 1916928/6350786 bytes, 速度: 158.65 MB/s
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 40%, 已上传: 2555904/6350786 bytes, 速度: 177.11 MB/s
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 50%, 已上传: 3178496/6350786 bytes, 速度: 10.67 MB/s
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 60%, 已上传: 3817472/6350786 bytes, 速度: 10.93 MB/s
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 70%, 已上传: 4456448/6350786 bytes, 速度: 11.30 MB/s
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 80%, 已上传: 5095424/6350786 bytes, 速度: 12.64 MB/s
+2025-10-10 18:04:11 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 90%, 已上传: 5718016/6350786 bytes, 速度: 11.54 MB/s
+2025-10-10 18:04:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6350786/6350786 bytes, 速度: 12.66 MB/s
+2025-10-10 18:04:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6350786/6350786 bytes, 速度: 12.66 MB/s
+2025-10-10 18:04:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 61097462955040348911698e93ea0470/61097462955040348911698e93ea0470.wav
+2025-10-10 18:04:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:127] - _do_upload() - 开始上传文件到TOS: 61097462955040348911698e93ea0470/61097462955040348911698e93ea0470.srt, 文件大小: 6574 bytes
+2025-10-10 18:04:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6574/6574 bytes, 速度: 3.35 MB/s
+2025-10-10 18:04:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:148] - progress_callback() - 普通上传进度: 100%, 已上传: 6574/6574 bytes, 速度: 3.06 MB/s
+2025-10-10 18:04:12 - [34mutils.tos_uploader[0m - [32mINFO[0m - [tos_uploader.py:163] - _do_upload() - 文件上传成功: 61097462955040348911698e93ea0470/61097462955040348911698e93ea0470.srt

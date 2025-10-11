@@ -58,10 +58,10 @@ class IndexTTSLogger:
     
     @classmethod
     def setup_logging(cls, 
-                     log_dir: str = "/root/autodl-tmp/indexTTS/logs",
-                     log_level: str = "INFO",
-                     max_file_size: int = 10 * 1024 * 1024,  # 10MB
-                     backup_count: int = 5,
+                     log_dir: Optional[str] = None,
+                     log_level: Optional[str] = None,
+                     max_file_size: Optional[int] = None,
+                     backup_count: Optional[int] = None,
                      console_output: bool = True,
                      file_output: bool = True,
                      use_colors: bool = True):
@@ -69,10 +69,10 @@ class IndexTTSLogger:
         设置全局日志配置
         
         Args:
-            log_dir: 日志文件目录
-            log_level: 日志级别 (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-            max_file_size: 单个日志文件最大大小（字节）
-            backup_count: 保留的日志文件备份数量
+            log_dir: 日志文件目录，如果为None则从config读取
+            log_level: 日志级别，如果为None则从config读取
+            max_file_size: 单个日志文件最大大小（字节），如果为None则从config读取
+            backup_count: 保留的日志文件备份数量，如果为None则从config读取
             console_output: 是否输出到控制台
             file_output: 是否输出到文件
             use_colors: 控制台输出是否使用颜色
@@ -80,15 +80,29 @@ class IndexTTSLogger:
         if cls._initialized:
             return
         
+        # 尝试从config导入配置
+        try:
+            from utils.config import config
+            _log_dir = log_dir or config.log_dir
+            _log_level = log_level or config.LOG_LEVEL
+            _max_file_size = max_file_size or config.log_max_size_bytes
+            _backup_count = backup_count or config.LOG_BACKUP_COUNT
+        except ImportError:
+            # 如果无法导入config，使用默认值
+            _log_dir = log_dir or "/root/autodl-tmp/indexTTS/logs"
+            _log_level = log_level or "INFO"
+            _max_file_size = max_file_size or (10 * 1024 * 1024)  # 10MB
+            _backup_count = backup_count or 5
+        
         # 创建日志目录
-        log_path = Path(log_dir)
+        log_path = Path(_log_dir)
         log_path.mkdir(parents=True, exist_ok=True)
         
         # 设置全局配置
-        cls.log_dir = log_dir
-        cls.log_level = getattr(logging, log_level.upper())
-        cls.max_file_size = max_file_size
-        cls.backup_count = backup_count
+        cls.log_dir = _log_dir
+        cls.log_level = getattr(logging, _log_level.upper())
+        cls.max_file_size = _max_file_size
+        cls.backup_count = _backup_count
         cls.console_output = console_output
         cls.file_output = file_output
         cls.use_colors = use_colors

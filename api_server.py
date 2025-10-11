@@ -10,6 +10,9 @@ if vllm_path not in sys.path:
 from dotenv import load_dotenv
 load_dotenv()
 
+# 导入配置
+from utils.config import config
+
 # 导入patch_vllm模块
 import patch_vllm
 import asyncio
@@ -17,12 +20,13 @@ import io
 import traceback
 import time
 import uuid
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional, Dict, Any
 import numpy as np
 import soundfile as sf
-from fastapi import FastAPI, Request, Response, HTTPException, BackgroundTasks
+from fastapi import FastAPI, Request, Response, HTTPException, BackgroundTasks, Depends, Header
 from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from contextlib import asynccontextmanager
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
@@ -34,24 +38,113 @@ from utils.db_manager import DatabaseManager
 from utils.redis_manager import RedisManager
 from utils.tos_uploader import TOSUploader
 from utils.logger import IndexTTSLogger
+from utils.subtitle_generator import SubtitleGenerator
+
+# 初始化日志系统
+IndexTTSLogger.setup_logging()
 
 # 配置日志
 logger = IndexTTSLogger.get_logger("api_server")
+
+# API密钥验证
+security = HTTPBearer(auto_error=False)
+
+async def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """验证API密钥"""
+    if not config.API_KEY:
+        # 如果没有配置API_KEY，则不进行验证
+        return True
+    
+    if not credentials:
+        raise HTTPException(
+            status_code=401,
+            detail={
+                "status": "error",
+                "msg": "缺少API密钥",
+                "data": None
+            }
+        )
+    
+    if credentials.credentials != config.API_KEY:
+        raise HTTPException(
+            status_code=401,
+            detail={
+                "status": "error", 
+                "msg": "无效的API密钥",
+                "data": None
+            }
+        )
+    
+    return True
+
+# 速率限制功能
+async def check_rate_limit(request: Request):
+    """检查速率限制"""
+    if not redis_manager:
+        # 如果Redis不可用，跳过速率限制
+        return True
+    
+    # 获取客户端IP
+    client_ip = request.client.host
+    if "x-forwarded-for" in request.headers:
+        client_ip = request.headers["x-forwarded-for"].split(",")[0].strip()
+    elif "x-real-ip" in request.headers:
+        client_ip = request.headers["x-real-ip"]
+    
+    # 速率限制键
+    rate_limit_key = f"rate_limit:{client_ip}"
+    
+    try:
+        # 获取当前计数
+        current_count = await redis_manager.get_cache(rate_limit_key)
+        
+        if current_count is None:
+            # 第一次请求，设置计数为1，过期时间为1分钟
+            await redis_manager.set_cache(rate_limit_key, "1", expire=60)
+            return True
+        
+        current_count = int(current_count)
+        
+        if current_count >= config.RATE_LIMIT_PER_MINUTE:
+            raise HTTPException(
+                status_code=429,
+                detail={
+                    "status": "error",
+                    "msg": f"请求过于频繁，每分钟最多{config.RATE_LIMIT_PER_MINUTE}次请求",
+                    "data": {
+                        "rate_limit": config.RATE_LIMIT_PER_MINUTE,
+                        "current_count": current_count,
+                        "reset_time": 60
+                    }
+                }
+            )
+        
+        # 增加计数
+        await redis_manager.increment_counter(rate_limit_key)
+        return True
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.warning(f"速率限制检查失败: {e}")
+        # 如果速率限制检查失败，允许请求通过
+        return True
 
 # 全局变量
 tts = None
 db_manager = None
 redis_manager = None
 tos_uploader = None
+subtitle_generator = None
 
 # 请求和响应的Pydantic模型
 class OnlineTTSRequest(BaseModel):
-    text: str = Field(..., max_length=300, description="要合成的文本（最多300字符）")
+    text: str = Field(..., max_length=config.MAX_ONLINE_TEXT_LENGTH, description=f"要合成的文本（最多{config.MAX_ONLINE_TEXT_LENGTH}字符）")
     voice: str = Field(..., description="音色名称")
     seed: Optional[int] = Field(8, description="随机种子")
 
 class LongTextTTSRequest(BaseModel):
-    text: str = Field(..., max_length=50000, description="要合成的文本（最多50000字符）")
+    text: str = Field(..., max_length=config.MAX_LONG_TEXT_LENGTH, description=f"要合成的文本（最多{config.MAX_LONG_TEXT_LENGTH}字符）")
     voice: str = Field(..., description="音色名称")
     callback_url: Optional[str] = Field(None, description="完成后的回调URL")
     metadata: Optional[Dict[str, Any]] = Field(None, description="额外的元数据")
@@ -73,90 +166,10 @@ class TaskStatusResponse(BaseModel):
     duration: Optional[float] = None
     file_size: Optional[int] = None
 
-def generate_srt_from_text(text: str, audio_duration: float) -> str:
-    """根据文本和音频时长生成SRT字幕文件，支持智能断句"""
-    # 首先按主要标点符号分割
-    primary_sentences = text.replace('。', '。\n').replace('！', '！\n').replace('？', '？\n').split('\n')
-    primary_sentences = [s.strip() for s in primary_sentences if s.strip()]
-    
-    if not primary_sentences:
-        return ""
-    
-    # 进一步处理长句，按逗号、分号等次要标点分割
-    final_sentences = []
-    max_chars_per_subtitle = 25  # 每个字幕段最大字符数
-    
-    for sentence in primary_sentences:
-        if len(sentence) <= max_chars_per_subtitle:
-            final_sentences.append(sentence)
-        else:
-            # 长句按逗号、分号分割
-            sub_parts = sentence.replace('，', '，\n').replace('；', '；\n').replace('、', '、\n').split('\n')
-            sub_parts = [s.strip() for s in sub_parts if s.strip()]
-            
-            current_part = ""
-            for part in sub_parts:
-                # 如果当前部分加上新部分不超过限制，则合并
-                if len(current_part + part) <= max_chars_per_subtitle:
-                    current_part += part
-                else:
-                    # 否则先保存当前部分，开始新部分
-                    if current_part:
-                        final_sentences.append(current_part)
-                    current_part = part
-            
-            # 添加最后一部分
-            if current_part:
-                final_sentences.append(current_part)
-    
-    if not final_sentences:
-        return ""
-    
-    srt_content = []
-    
-    # 计算每个字幕段的时长（基于字符数比例分配）
-    total_chars = sum(len(s) for s in final_sentences)
-    current_time = 0.0
-    
-    for i, sentence in enumerate(final_sentences):
-        # 根据字符数比例分配时间，但设置最小和最大时长
-        char_ratio = len(sentence) / total_chars if total_chars > 0 else 1.0 / len(final_sentences)
-        duration = audio_duration * char_ratio
-        
-        # 设置合理的时长范围：最短1.5秒，最长6秒
-        duration = max(1.5, min(6.0, duration))
-        
-        start_time = current_time
-        end_time = current_time + duration
-        
-        # 确保不超过总时长
-        if end_time > audio_duration:
-            end_time = audio_duration
-        
-        start_srt = format_srt_time(start_time)
-        end_srt = format_srt_time(end_time)
-        
-        srt_content.append(f"{i + 1}")
-        srt_content.append(f"{start_srt} --> {end_srt}")
-        srt_content.append(sentence)
-        srt_content.append("")
-        
-        current_time = end_time
-    
-    return "\n".join(srt_content)
-
-def format_srt_time(seconds: float) -> str:
-    """将秒数转换为SRT时间格式"""
-    hours = int(seconds // 3600)
-    minutes = int((seconds % 3600) // 60)
-    secs = int(seconds % 60)
-    millisecs = int((seconds % 1) * 1000)
-    return f"{hours:02d}:{minutes:02d}:{secs:02d},{millisecs:03d}"
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """应用程序生命周期管理器"""
-    global tts, db_manager, redis_manager, tos_uploader
+    global tts, db_manager, redis_manager, tos_uploader, subtitle_generator
     
     # 初始化数据库
     db_manager = DatabaseManager()
@@ -174,6 +187,9 @@ async def lifespan(app: FastAPI):
         logger.warning(f"TOS上传器初始化失败: {e}")
         tos_uploader = None
 
+    # 初始化字幕生成器
+    subtitle_generator = SubtitleGenerator()
+    
     # 初始化TTS模型
     tts = IndexTTS(model_dir=args.model_dir, gpu_memory_utilization=args.gpu_memory_utilization)
     
@@ -216,7 +232,7 @@ app = FastAPI(
 # 添加CORS中间件
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=config.ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -229,7 +245,7 @@ async def health_check():
         global tts, db_manager, redis_manager
         
         health_status = {
-            "status": "healthy",
+            "healthy": True,
             "timestamp": time.time(),
             "services": {}
         }
@@ -237,7 +253,7 @@ async def health_check():
         # 检查TTS服务
         if tts is None:
             health_status["services"]["tts"] = "unavailable"
-            health_status["status"] = "unhealthy"
+            health_status["healthy"] = False
         else:
             health_status["services"]["tts"] = "available"
         
@@ -249,13 +265,13 @@ async def health_check():
                     health_status["services"]["database"] = "available"
                 else:
                     health_status["services"]["database"] = "unavailable"
-                    health_status["status"] = "unhealthy"
+                    health_status["healthy"] = False
             else:
                 health_status["services"]["database"] = "unavailable"
-                health_status["status"] = "unhealthy"
+                health_status["healthy"] = False
         except Exception as e:
             health_status["services"]["database"] = f"error: {str(e)}"
-            health_status["status"] = "unhealthy"
+            health_status["healthy"] = False
         
         # 检查Redis连接
         try:
@@ -263,13 +279,20 @@ async def health_check():
                 health_status["services"]["redis"] = "available"
             else:
                 health_status["services"]["redis"] = "unavailable"
-                health_status["status"] = "unhealthy"
+                health_status["healthy"] = False
         except Exception as e:
             health_status["services"]["redis"] = f"error: {str(e)}"
-            health_status["status"] = "unhealthy"
+            health_status["healthy"] = False
         
-        status_code = 200 if health_status["status"] == "healthy" else 503
-        return JSONResponse(status_code=status_code, content=health_status)
+        # 构建统一响应格式
+        response_data = {
+            "status": "success" if health_status["healthy"] else "error",
+            "msg": "服务运行正常" if health_status["healthy"] else "部分服务不可用",
+            "data": health_status
+        }
+        
+        status_code = 200 if health_status["healthy"] else 503
+        return JSONResponse(status_code=status_code, content=response_data)
         
     except Exception as ex:
         import traceback
@@ -280,22 +303,32 @@ async def health_check():
         return JSONResponse(
             status_code=503,
             content={
-                "status": "unhealthy",
-                "error": str(ex),
-                "error_details": error_details,
-                "timestamp": time.time()
+                "status": "error",
+                "msg": f"健康检查失败: {str(ex)}",
+                "data": {
+                    "error_details": error_details,
+                    "timestamp": time.time()
+                }
             }
         )
 
 @app.get("/voices")
-async def get_voices():
+async def get_voices(request: Request, auth: bool = Depends(verify_api_key), rate_limit: bool = Depends(check_rate_limit)):
     """获取可用音色列表端点"""
     try:
         # 优先从Redis缓存获取音色配置
         if redis_manager:
             cached_voices = await redis_manager.get_voice_configs()
             if cached_voices:
-                return cached_voices
+                # 如果缓存数据已经是新格式，直接返回
+                if isinstance(cached_voices, dict) and "status" in cached_voices:
+                    return cached_voices
+                # 如果是旧格式，包装成新格式
+                return {
+                    "status": "success",
+                    "msg": "获取音色列表成功",
+                    "data": cached_voices
+                }
         
         current_file_path = os.path.abspath(__file__)
         cur_dir = os.path.dirname(current_file_path)
@@ -322,16 +355,30 @@ async def get_voices():
         if redis_manager and voice_data:
             await redis_manager.set_voice_configs(voice_data, expire=3600*24)
         
-        return voice_data
+        # 构建统一响应格式
+        response_data = {
+            "status": "success",
+            "msg": "获取音色列表成功",
+            "data": voice_data
+        }
+        
+        return response_data
         
     except Exception as ex:
-        raise HTTPException(status_code=500, detail=str(ex))
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "error",
+                "msg": f"获取音色列表失败: {str(ex)}",
+                "data": None
+            }
+        )
 
 @app.post("/tts/online", responses={
     200: {"content": {"application/octet-stream": {}}},
     500: {"content": {"application/json": {}}}
 })
-async def online_tts(request: OnlineTTSRequest):
+async def online_tts(request_data: OnlineTTSRequest, request: Request, auth: bool = Depends(verify_api_key), rate_limit: bool = Depends(check_rate_limit)):
     """在线TTS合成端点 - 限制300字，直接返回音频"""
     try:
         global tts, db_manager
@@ -341,15 +388,15 @@ async def online_tts(request: OnlineTTSRequest):
         
         # 创建数据库任务记录
         task_id = await db_manager.create_online_task(
-            text=request.text,
-            voice=request.voice,
-            payload={"seed": request.seed}
+            text=request_data.text,
+            voice=request_data.voice,
+            payload={"seed": request_data.seed}
         )
         
         start_time = time.time()
         
-        # 执行TTS合成
-        sr, wav_data = await tts.infer_with_ref_audio_embed(request.voice, request.text)
+        # 执行TTS推理
+        sr, wav_data = await tts.infer_with_ref_audio_embed(request_data.voice, request_data.text)
         
         processing_time = time.time() - start_time
         audio_duration = len(wav_data) / sr
@@ -362,8 +409,8 @@ async def online_tts(request: OnlineTTSRequest):
         # 保存音频文件
         audio_file_path = db_manager.file_manager.save_audio_file(task_id, wav_bytes)
         
-        # 生成SRT字幕（必须生成）
-        srt_content = generate_srt_from_text(request.text, audio_duration)
+        # 生成字幕
+        srt_content = subtitle_generator.generate_srt_from_text(request_data.text, audio_duration)
         srt_file_path = db_manager.file_manager.save_srt_file(task_id, srt_content)
         
         # 上传文件到TOS并获取URL
@@ -411,16 +458,27 @@ async def online_tts(request: OnlineTTSRequest):
         
         # 返回JSON响应，不包含音频和字幕内容
         return JSONResponse(content={
-            "task_id": task_id,
-            "sample_rate": sr,
-            "duration": audio_duration,
-            "processing_time": processing_time,
-            "audio_url": audio_url,
-            "srt_url": srt_url
+            "status": "success",
+            "msg": "TTS合成成功",
+            "data": {
+                "task_id": task_id,
+                "sample_rate": sr,
+                "duration": audio_duration,
+                "processing_time": processing_time,
+                "audio_url": audio_url,
+                "srt_url": srt_url
+            }
         })
         
     except ValueError as ve:
-        raise HTTPException(status_code=400, detail=str(ve))
+        return JSONResponse(
+            status_code=400,
+            content={
+                "status": "error",
+                "msg": f"请求参数错误: {str(ve)}",
+                "data": None
+            }
+        )
     except Exception as ex:
         tb_str = ''.join(traceback.format_exception(type(ex), ex, ex.__traceback__))
         logger.error(f"Online TTS error: {tb_str}")
@@ -436,64 +494,96 @@ async def online_tts(request: OnlineTTSRequest):
         except:
             pass
         
-        raise HTTPException(status_code=500, detail=str(ex))
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "error",
+                "msg": f"TTS合成失败: {str(ex)}",
+                "data": None
+            }
+        )
 
 @app.post("/tts/task/submit")
-async def submit_long_text_task(request: LongTextTTSRequest):
+async def submit_long_text_task(request_data: LongTextTTSRequest, request: Request, auth: bool = Depends(verify_api_key), rate_limit: bool = Depends(check_rate_limit)):
     """提交长文本TTS合成任务"""
     try:
         # 创建长文本任务
         task_id = await db_manager.create_long_text_task(
-            text=request.text,
-            voice=request.voice,
+            text=request_data.text,
+            voice=request_data.voice,
             payload={
-                "priority": request.priority,
-                "metadata": request.metadata
+                "priority": request_data.priority,
+                "metadata": request_data.metadata
             },
-            callback_url=request.callback_url
+            callback_url=request_data.callback_url
         )
         
         # 将任务推送到Redis队列
         task_data = {
             "task_id": task_id,
             "task_type": "long_text",
-            "voice": request.voice,
-            "priority": request.priority or 0
+            "voice": request_data.voice,
+            "priority": request_data.priority or 0
         }
         
-        success = await redis_manager.push_task_to_queue("long_text", task_data, request.priority or 0)
+        success = await redis_manager.push_task_to_queue("long_text", task_data, request_data.priority or 0)
         
         if not success:
-            raise HTTPException(status_code=500, detail="任务提交失败")
+            return JSONResponse(
+                status_code=500,
+                content={
+                    "status": "error",
+                    "msg": "任务提交失败",
+                    "data": None
+                }
+            )
         
         logger.info(f"长文本任务 {task_id} 已提交到队列")
         
-        return {
-            "task_id": task_id,
-            "status": "pending",
-            "message": "长文本合成任务已提交，请使用task_id查询处理状态",
-            "text_length": len(request.text),
-            "voice": request.voice,
-            "priority": request.priority or 0
-        }
+        return JSONResponse(content={
+            "status": "success",
+            "msg": "长文本合成任务已提交成功",
+            "data": {
+                "task_id": task_id,
+                "task_status": "pending",
+                "message": "长文本合成任务已提交，请使用task_id查询处理状态",
+                "text_length": len(request_data.text),
+                "voice": request_data.voice,
+                "priority": request_data.priority or 0
+            }
+        })
         
     except Exception as e:
         logger.error(f"提交长文本任务失败: {str(e)}")
         logger.error(traceback.format_exc())
-        raise HTTPException(status_code=500, detail=f"提交任务失败: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "error",
+                "msg": f"提交任务失败: {str(e)}",
+                "data": None
+            }
+        )
 
 @app.get("/tts/task/{task_id}")
-async def get_task_status(task_id: str):
+async def get_task_status(task_id: str, request: Request, auth: bool = Depends(verify_api_key), rate_limit: bool = Depends(check_rate_limit)):
     """查询任务状态"""
     try:
         # 从数据库获取任务信息
         task_data = await db_manager.get_task(task_id)
         
         if not task_data:
-            raise HTTPException(status_code=404, detail="任务不存在")
+            return JSONResponse(
+                status_code=404,
+                content={
+                    "status": "error",
+                    "msg": "任务不存在",
+                    "data": None
+                }
+            )
         
         # 构建响应数据
-        response_data = {
+        task_info = {
             "task_id": task_data["task_id"],
             "task_type": task_data["task_type"],
             "status": task_data["status"],
@@ -507,7 +597,7 @@ async def get_task_status(task_id: str):
         
         # 如果任务已完成，添加结果信息
         if task_data["status"] == "completed":
-            response_data.update({
+            task_info.update({
                 "audio_url": task_data.get("audio_url"),
                 "srt_url": task_data.get("srt_url")
             })
@@ -515,16 +605,45 @@ async def get_task_status(task_id: str):
         # 如果是长文本任务，添加队列信息
         if task_data["task_type"] == "long_text" and task_data["status"] == "pending":
             queue_length = await redis_manager.get_queue_length("long_text")
-            response_data["queue_position"] = queue_length
+            task_info["queue_position"] = queue_length
         
-        return response_data
+        return JSONResponse(content={
+            "status": "success",
+            "msg": "查询任务状态成功",
+            "data": task_info
+        })
         
-    except HTTPException:
-        raise
+    except HTTPException as he:
+        # 如果是已经处理过的HTTPException，直接返回对应的JSONResponse
+        if he.status_code == 404:
+            return JSONResponse(
+                status_code=404,
+                content={
+                    "status": "error",
+                    "msg": "任务不存在",
+                    "data": None
+                }
+            )
+        else:
+            return JSONResponse(
+                status_code=he.status_code,
+                content={
+                    "status": "error",
+                    "msg": he.detail,
+                    "data": None
+                }
+            )
     except Exception as e:
         logger.error(f"查询任务状态失败: {str(e)}")
         logger.error(traceback.format_exc())
-        raise HTTPException(status_code=500, detail=f"查询任务状态失败: {str(e)}")
+        return JSONResponse(
+            status_code=500,
+            content={
+                "status": "error",
+                "msg": f"查询任务状态失败: {str(e)}",
+                "data": None
+            }
+        )
 
 if __name__ == "__main__":
     # 配置参数

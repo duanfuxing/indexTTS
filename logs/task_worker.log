@@ -119,3 +119,7 @@ KeyError: 'yunxi'
 2025-10-10 14:18:06 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")
 2025-10-10 14:18:08 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")
 2025-10-10 14:18:10 - [34mtask_worker[0m - [31mERROR[0m - [task_worker.py:377] - run() - 处理器 worker-96c2aa47 主循环错误: (2003, "Can't connect to MySQL server on '127.0.0.1'")
+2025-10-10 14:19:51 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:408] - signal_handler() - 收到信号 2，正在停止处理器...
+2025-10-10 14:19:51 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:385] - stop() - 处理器 worker-96c2aa47 收到停止请求
+2025-10-10 14:19:52 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:380] - run() - 处理器 worker-96c2aa47 已停止
+2025-10-10 14:19:52 - [34mtask_worker[0m - [32mINFO[0m - [task_worker.py:116] - cleanup() - 处理器 worker-96c2aa47 资源清理完成
