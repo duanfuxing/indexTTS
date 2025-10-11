@@ -6,3 +6,4 @@ checkpoints/*
 logs/*
 .trae/*
 storage/*
+dump.rdb
