@@ -366,10 +366,11 @@ class IndexTTS:
                 
                 # 获取对应的原始文本句子
                 if not use_fallback and i < len(original_sentences):
-                    original_sentence_str = ''.join(original_sentences[i])  # 使用对应的原始文本
+                    # 使用对应的原始文本，正确处理SentencePiece的▁符号
+                    original_sentence_str = self.tokenizer.decode(self.tokenizer.convert_tokens_to_ids(original_sentences[i]))
                 else:
                     # 回退方案：使用TTS处理后的文本，但尝试反转替换
-                    original_sentence_str = ''.join(sent)
+                    original_sentence_str = self.tokenizer.decode(self.tokenizer.convert_tokens_to_ids(sent))
                     # 尝试将TTS替换转换回原始文本
                     original_sentence_str = original_sentence_str.replace("EN4", "嗯")
                     original_sentence_str = original_sentence_str.replace("HEI1", "嘿")

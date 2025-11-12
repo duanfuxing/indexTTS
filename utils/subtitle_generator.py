@@ -216,9 +216,12 @@ class SubtitleGenerator:
         start_srt = self._format_srt_time(timing_info['start_time'])
         end_srt = self._format_srt_time(timing_info['end_time'])
         
+        # 清理SentencePiece特殊符号
+        clean_sentence = self._clean_sentencepiece_symbols(timing_info['sentence'])
+        
         srt_content.append(f"{index}")
         srt_content.append(f"{start_srt} --> {end_srt}")
-        srt_content.append(timing_info['sentence'])
+        srt_content.append(clean_sentence)
         srt_content.append("")
     
     def _generate_srt_with_fallback(self, text: str, sentence_times: List[Dict]) -> str:
@@ -306,9 +309,12 @@ class SubtitleGenerator:
         Returns:
             分割后的句子列表
         """
+        # 首先清理可能的SentencePiece特殊符号
+        clean_text = self._clean_sentencepiece_symbols(text)
+        
         # 首先按主要标点符号分割
         primary_pattern = r'([,.;!?，。；！？、])'
-        parts = re.split(primary_pattern, text)
+        parts = re.split(primary_pattern, clean_text)
         
         # 重新组合分割的部分
         primary_sentences = []
@@ -407,9 +413,12 @@ class SubtitleGenerator:
             start_srt = self._format_srt_time(start_time)
             end_srt = self._format_srt_time(end_time)
             
+            # 清理SentencePiece特殊符号
+            clean_sentence = self._clean_sentencepiece_symbols(sentence)
+            
             srt_content.append(f"{i + 1}")
             srt_content.append(f"{start_srt} --> {end_srt}")
-            srt_content.append(sentence)
+            srt_content.append(clean_sentence)
             srt_content.append("")
             
             current_time = end_time
@@ -431,6 +440,27 @@ class SubtitleGenerator:
         secs = int(seconds % 60)
         millisecs = int((seconds % 1) * 1000)
         return f"{hours:02d}:{minutes:02d}:{secs:02d},{millisecs:03d}"
+    
+    def _clean_sentencepiece_symbols(self, text: str) -> str:
+        """
+        清理SentencePiece分词器的特殊符号（新增方法）
+        
+        Args:
+            text: 输入文本
+            
+        Returns:
+            清理后的文本
+        """
+        # 清理▁符号（SentencePiece的词首标记）
+        # 注意：这里简单移除所有▁符号，因为中文不需要额外的空格处理
+        cleaned_text = text.replace("▁", "")
+        
+        # 清理其他可能的特殊符号
+        # 移除多余的空格（如果存在）
+        cleaned_text = re.sub(r'\s+', ' ', cleaned_text)
+        cleaned_text = cleaned_text.strip()
+        
+        return cleaned_text
 
 
 # 创建默认实例
