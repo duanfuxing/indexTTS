@@ -1,10 +1,11 @@
 """
 字幕生成工具类
 提供统一的SRT字幕生成功能，支持智能断句和时间分配
+新增基于真实时间戳的字幕生成功能
 """
 
 import re
-from typing import List, Tuple
+from typing import List, Tuple, Dict, Optional
 
 
 class SubtitleGenerator:
@@ -45,6 +46,255 @@ class SubtitleGenerator:
         
         # 生成SRT内容
         return self._generate_srt_content(sentences, audio_duration)
+    
+    def _generate_srt_from_exact_timestamps(self, sentence_times: List[Dict]) -> str:
+        """
+        使用精确时间戳生成SRT内容（新增方法）
+        
+        Args:
+            sentence_times: 验证过的时间戳数据
+            
+        Returns:
+            SRT格式字符串
+        """
+        srt_content = []
+        subtitle_index = 1
+        
+        for sent_info in sentence_times:
+            sentence = sent_info['sentence'].strip()
+            if not sentence:
+                continue
+            
+            # 如果句子太长，进行智能分割
+            if len(sentence) > self.max_chars_per_subtitle:
+                sub_sentences = self._split_sentence_with_timing(sentence, sent_info)
+                for sub_sent_info in sub_sentences:
+                    self._add_subtitle_entry(srt_content, subtitle_index, sub_sent_info)
+                    subtitle_index += 1
+            else:
+                self._add_subtitle_entry(srt_content, subtitle_index, sent_info)
+                subtitle_index += 1
+        
+        return "\n".join(srt_content)
+    
+    def _split_sentence_with_timing(self, sentence: str, timing_info: Dict) -> List[Dict]:
+        """
+        根据时间信息智能分割长句子（新增方法）
+        
+        Args:
+            sentence: 长句子
+            timing_info: 原始时间信息
+            
+        Returns:
+            分割后的子句时间信息列表
+        """
+        # 按标点符号分割
+        split_points = self._find_natural_split_points(sentence)
+        
+        if not split_points:
+            # 如果没有合适的分割点，按字符数均匀分割
+            return self._split_evenly_by_chars(sentence, timing_info)
+        
+        # 根据分割点分配时间
+        sub_sentences = []
+        total_chars = len(sentence)
+        start_time = timing_info['start_time']
+        total_duration = timing_info['duration']
+        
+        prev_pos = 0
+        for i, split_pos in enumerate(split_points):
+            sub_sentence = sentence[prev_pos:split_pos].strip()
+            if sub_sentence:
+                # 按比例分配时间
+                char_ratio = len(sub_sentence) / total_chars
+                sub_duration = total_duration * char_ratio
+                
+                sub_info = {
+                    'sentence': sub_sentence,
+                    'start_time': start_time,
+                    'end_time': start_time + sub_duration,
+                    'duration': sub_duration
+                }
+                sub_sentences.append(sub_info)
+                
+                start_time += sub_duration
+            
+            prev_pos = split_pos
+        
+        # 处理最后一部分
+        if prev_pos < total_chars:
+            sub_sentence = sentence[prev_pos:].strip()
+            if sub_sentence:
+                sub_duration = timing_info['end_time'] - start_time
+                sub_info = {
+                    'sentence': sub_sentence,
+                    'start_time': start_time,
+                    'end_time': timing_info['end_time'],
+                    'duration': sub_duration
+                }
+                sub_sentences.append(sub_info)
+        
+        return sub_sentences
+    
+    def _find_natural_split_points(self, sentence: str) -> List[int]:
+        """
+        寻找句子的自然分割点（标点符号）（新增方法）
+        
+        Args:
+            sentence: 句子
+            
+        Returns:
+            分割位置列表
+        """
+        # 主要分割标点：逗号、分号、顿号
+        primary_pattern = r'[,，;；、]'
+        matches = list(re.finditer(primary_pattern, sentence))
+        
+        split_points = []
+        for match in matches:
+            pos = match.end()
+            # 确保分割后每段不超过最大字符数
+            if pos <= len(sentence) // 2 or len(sentence) - pos <= self.max_chars_per_subtitle:
+                split_points.append(pos)
+        
+        return split_points
+    
+    def _split_evenly_by_chars(self, sentence: str, timing_info: Dict) -> List[Dict]:
+        """
+        按字符数均匀分割句子（新增方法）
+        
+        Args:
+            sentence: 句子
+            timing_info: 时间信息
+            
+        Returns:
+            分割后的子句时间信息列表
+        """
+        total_chars = len(sentence)
+        total_duration = timing_info['duration']
+        start_time = timing_info['start_time']
+        
+        # 计算分割段数
+        num_parts = (total_chars + self.max_chars_per_subtitle - 1) // self.max_chars_per_subtitle
+        chars_per_part = total_chars // num_parts
+        
+        sub_sentences = []
+        for i in range(num_parts):
+            start_idx = i * chars_per_part
+            if i == num_parts - 1:
+                # 最后一段包含剩余所有字符
+                end_idx = total_chars
+            else:
+                end_idx = min((i + 1) * chars_per_part, total_chars)
+            
+            sub_sentence = sentence[start_idx:end_idx].strip()
+            if sub_sentence:
+                # 均匀分配时间
+                part_duration = total_duration / num_parts
+                sub_start = start_time + i * part_duration
+                sub_end = sub_start + part_duration if i < num_parts - 1 else timing_info['end_time']
+                
+                sub_info = {
+                    'sentence': sub_sentence,
+                    'start_time': sub_start,
+                    'end_time': sub_end,
+                    'duration': sub_end - sub_start
+                }
+                sub_sentences.append(sub_info)
+        
+        return sub_sentences
+    
+    def _add_subtitle_entry(self, srt_content: List[str], index: int, timing_info: Dict):
+        """
+        添加一个字幕条目（新增方法）
+        
+        Args:
+            srt_content: SRT内容列表
+            index: 字幕序号
+            timing_info: 时间信息
+        """
+        start_srt = self._format_srt_time(timing_info['start_time'])
+        end_srt = self._format_srt_time(timing_info['end_time'])
+        
+        srt_content.append(f"{index}")
+        srt_content.append(f"{start_srt} --> {end_srt}")
+        srt_content.append(timing_info['sentence'])
+        srt_content.append("")
+    
+    def _generate_srt_with_fallback(self, text: str, sentence_times: List[Dict]) -> str:
+        """
+        回退方法：使用原始文本和估算时间生成字幕（新增方法）
+        
+        Args:
+            text: 原始文本
+            sentence_times: 部分时间信息（可能不完整）
+            
+        Returns:
+            SRT格式字符串
+        """
+        if text.strip():
+            # 估算总时长
+            total_duration = sum(sent.get('duration', 0) for sent in sentence_times) if sentence_times else 0
+            return self.generate_srt_from_text(text, total_duration)
+        else:
+            return ""
+    
+    def _validate_sentence_times(self, sentence_times: List[Dict]) -> bool:
+        """
+        验证时间戳数据的有效性（新增方法）
+        
+        Args:
+            sentence_times: 时间戳数据
+            
+        Returns:
+            是否有效
+        """
+        if not sentence_times:
+            return False
+        
+        for i, sent_info in enumerate(sentence_times):
+            # 检查必需字段
+            required_fields = ['sentence', 'start_time', 'end_time', 'duration']
+            if not all(field in sent_info for field in required_fields):
+                return False
+            
+            # 检查时间逻辑
+            if sent_info['start_time'] < 0 or sent_info['end_time'] <= sent_info['start_time']:
+                return False
+            
+            if sent_info['duration'] <= 0:
+                return False
+            
+            # 检查时间连续性（允许小的重叠或间隙）
+            if i > 0:
+                prev_end = sentence_times[i-1]['end_time']
+                curr_start = sent_info['start_time']
+                if abs(curr_start - prev_end) > 1.0:  # 允许1秒的间隙或重叠
+                    return False
+        
+        return True
+    
+    def generate_srt_from_timestamps(self, sentence_times: List[Dict], text: str = "") -> str:
+        """
+        基于真实时间戳生成SRT字幕文件（新增方法）
+        
+        Args:
+            sentence_times: 包含每句话时间信息的列表
+                格式: [{'sentence': '文本', 'start_time': 0.0, 'end_time': 2.5, 'duration': 2.5}, ...]
+            text: 原始文本（可选，用于验证）
+            
+        Returns:
+            SRT格式的字幕内容
+        """
+        if not sentence_times:
+            return ""
+        
+        # 如果时间戳数据有效，直接使用时间戳生成字幕
+        if self._validate_sentence_times(sentence_times):
+            return self._generate_srt_from_exact_timestamps(sentence_times)
+        else:
+            # 回退到基于字符数的智能分割
+            return self._generate_srt_with_fallback(text, sentence_times)
     
     def _split_text_intelligently(self, text: str) -> List[str]:
         """

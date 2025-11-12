@@ -294,6 +294,9 @@ class IndexTTS:
         
     async def infer_with_ref_audio_embed(self, speaker: str, text):
         start_time = time.perf_counter()
+        original_text = text  # 保存原始文本用于字幕生成
+        
+        # TTS处理用的文本替换
         text = text.replace("嗯", "EN4")
         text = text.replace("嘿", "HEI1")
         text = text.replace("嗨", "HAI4")
@@ -302,15 +305,31 @@ class IndexTTS:
 
         auto_conditioning = self.speaker_dict[speaker]["auto_conditioning"]
 
+        # 对TTS处理后的文本进行分词和分句
         text_tokens_list = self.tokenizer.tokenize(text)
         sentences = self.tokenizer.split_sentences(text_tokens_list)
+        
+        # 对原始文本也进行分句，用于字幕生成
+        original_tokens_list = self.tokenizer.tokenize(original_text)
+        original_sentences = self.tokenizer.split_sentences(original_tokens_list)
+        
+        # 确保两个句子列表长度一致，如果不一致则使用原始文本的回退方案
+        if len(sentences) != len(original_sentences):
+            print(f"Warning: TTS sentences ({len(sentences)}) != Original sentences ({len(original_sentences)})")
+            # 使用TTS处理后的句子，但在记录时间戳时尝试映射回原始文本
+            use_fallback = True
+        else:
+            use_fallback = False
         wavs = []
+        sentence_times = []  # 记录每句话的时间信息
         gpt_gen_time = 0
         bigvgan_time = 0
 
         speech_conditioning_latent = self.speaker_dict[speaker]["speech_conditioning_latent"]
 
-        for sent in sentences:
+        current_time = 0.0  # 当前时间戳（秒）
+
+        for i, sent in enumerate(sentences):
             text_tokens = self.tokenizer.convert_tokens_to_ids(sent)
             text_tokens = torch.tensor(text_tokens, dtype=torch.int32, device=self.device).unsqueeze(0)
 
@@ -341,8 +360,34 @@ class IndexTTS:
                 wav = wav.squeeze(1)
 
                 wav = torch.clamp(32767 * wav, -32767.0, 32767.0)
+                
+                # 记录当前句子的起止时间（使用原始文本）
+                sentence_duration = wav.shape[-1] / sampling_rate
+                
+                # 获取对应的原始文本句子
+                if not use_fallback and i < len(original_sentences):
+                    original_sentence_str = ''.join(original_sentences[i])  # 使用对应的原始文本
+                else:
+                    # 回退方案：使用TTS处理后的文本，但尝试反转替换
+                    original_sentence_str = ''.join(sent)
+                    # 尝试将TTS替换转换回原始文本
+                    original_sentence_str = original_sentence_str.replace("EN4", "嗯")
+                    original_sentence_str = original_sentence_str.replace("HEI1", "嘿")
+                    original_sentence_str = original_sentence_str.replace("HAI4", "嗨")
+                    original_sentence_str = original_sentence_str.replace("HA1HA1", "哈哈")
+                
+                sentence_times.append({
+                    'sentence': original_sentence_str,
+                    'start_time': current_time,
+                    'end_time': current_time + sentence_duration,
+                    'duration': sentence_duration
+                })
+                
                 # wavs.append(wav[:, :-512])
                 wavs.append(wav)  # to cpu before saving
+                
+                # 更新时间戳
+                current_time += sentence_duration
         torch.cuda.empty_cache()
         end_time = time.perf_counter()
 
@@ -360,7 +405,9 @@ class IndexTTS:
         wav_data = wav.type(torch.int16)
         wav_data = wav_data.numpy().T
         wav_data = trim_and_pad_silence(wav_data)
-        return (sampling_rate, wav_data)
+        
+        # 返回音频数据和句子时间信息
+        return (sampling_rate, wav_data, sentence_times)
     
     @torch.no_grad()
     def registry_speaker(self, speaker: str, audio_paths: List[str]):

@@ -395,8 +395,8 @@ async def online_tts(request_data: OnlineTTSRequest, request: Request, auth: boo
         
         start_time = time.time()
         
-        # 执行TTS推理
-        sr, wav_data = await tts.infer_with_ref_audio_embed(request_data.voice, request_data.text)
+        # 执行TTS推理（现在返回音频数据和句子时间信息）
+        sr, wav_data, sentence_times = await tts.infer_with_ref_audio_embed(request_data.voice, request_data.text)
         
         processing_time = time.time() - start_time
         audio_duration = len(wav_data) / sr
@@ -410,7 +410,13 @@ async def online_tts(request_data: OnlineTTSRequest, request: Request, auth: boo
         audio_file_path = db_manager.file_manager.save_audio_file(task_id, wav_bytes)
         
         # 生成字幕
-        srt_content = subtitle_generator.generate_srt_from_text(request_data.text, audio_duration)
+        if sentence_times:
+            # 使用推理返回的时间生成字幕
+            srt_content = subtitle_generator.generate_srt_from_timestamps(sentence_times, request_data.text)
+        else:
+            # 使用基于字符比例的方法生成字幕
+            srt_content = subtitle_generator.generate_srt_from_text(request_data.text, audio_duration)
+            
         srt_file_path = db_manager.file_manager.save_srt_file(task_id, srt_content)
         
         # 上传文件到TOS并获取URL
