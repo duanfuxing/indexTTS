@@ -146,10 +146,9 @@ class SubtitleGenerator:
         Returns:
             分割位置列表
         """
-        # 主要分割标点：逗号、分号、顿号
-        primary_pattern = r'[,，;；、]'
+        primary_pattern = r'[，,；;、。\.!?！？…]'
         matches = list(re.finditer(primary_pattern, sentence))
-        
+
         split_points = []
         for match in matches:
             pos = match.end()

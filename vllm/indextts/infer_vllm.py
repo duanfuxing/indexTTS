@@ -309,7 +309,12 @@ class IndexTTS:
         text_tokens_list = self.tokenizer.tokenize(text)
         sentences = self.tokenizer.split_sentences(text_tokens_list)
         
-        # 对原始文本也进行分句，用于字幕生成
+        # 对原始文本进行归一化并建立位置对齐，用于字幕恢复原始标点
+        if hasattr(self.tokenizer.normalizer, "normalize_with_alignment"):
+            normalized_full_text, norm2orig = self.tokenizer.normalizer.normalize_with_alignment(original_text)
+        else:
+            normalized_full_text = self.tokenizer.normalizer.normalize(original_text) if self.tokenizer.normalizer else original_text
+            norm2orig = None
         original_tokens_list = self.tokenizer.tokenize(original_text)
         original_sentences = self.tokenizer.split_sentences(original_tokens_list)
         
@@ -328,6 +333,34 @@ class IndexTTS:
         speech_conditioning_latent = self.speaker_dict[speaker]["speech_conditioning_latent"]
 
         current_time = 0.0  # 当前时间戳（秒）
+
+        search_cursor = 0
+        def map_norm_sentence_to_original(norm_sentence: str):
+            nonlocal search_cursor
+            if norm2orig is None:
+                return norm_sentence
+            idx = normalized_full_text.find(norm_sentence, search_cursor)
+            if idx == -1:
+                return norm_sentence
+            start_norm = idx
+            end_norm = idx + len(norm_sentence)
+            def nearest_mapped(pos, direction):
+                if direction > 0:
+                    for k in range(pos, len(norm2orig)):
+                        if norm2orig[k] != -1:
+                            return norm2orig[k]
+                    return norm2orig[-1] if len(norm2orig) > 0 else 0
+                else:
+                    for k in range(pos, -1, -1):
+                        if norm2orig[k] != -1:
+                            return norm2orig[k]
+                    return 0
+            orig_start = norm2orig[start_norm] if start_norm < len(norm2orig) and norm2orig[start_norm] != -1 else nearest_mapped(start_norm, +1)
+            last_norm_idx = end_norm - 1 if end_norm - 1 < len(norm2orig) else len(norm2orig) - 1
+            orig_last = norm2orig[last_norm_idx] if last_norm_idx >= 0 and norm2orig[last_norm_idx] != -1 else nearest_mapped(last_norm_idx, -1)
+            orig_end = (orig_last + 1) if orig_last is not None else orig_start
+            search_cursor = end_norm
+            return original_text[orig_start:orig_end]
 
         for i, sent in enumerate(sentences):
             text_tokens = self.tokenizer.convert_tokens_to_ids(sent)
@@ -366,19 +399,14 @@ class IndexTTS:
                 
                 # 获取对应的原始文本句子
                 if not use_fallback and i < len(original_sentences):
-                    # 使用对应的原始文本，正确处理SentencePiece的▁符号
                     original_sentence_str = self.tokenizer.decode(self.tokenizer.convert_tokens_to_ids(original_sentences[i]))
                 else:
-                    # 回退方案：使用TTS处理后的文本，但尝试反转替换
                     original_sentence_str = self.tokenizer.decode(self.tokenizer.convert_tokens_to_ids(sent))
-                    # 尝试将TTS替换转换回原始文本
-                    original_sentence_str = original_sentence_str.replace("EN4", "嗯")
-                    original_sentence_str = original_sentence_str.replace("HEI1", "嘿")
-                    original_sentence_str = original_sentence_str.replace("HAI4", "嗨")
-                    original_sentence_str = original_sentence_str.replace("HA1HA1", "哈哈")
+                    original_sentence_str = original_sentence_str.replace("EN4", "嗯").replace("HEI1", "嘿").replace("HAI4", "嗨").replace("HA1HA1", "哈哈")
+                mapped_sentence = map_norm_sentence_to_original(original_sentence_str)
                 
                 sentence_times.append({
-                    'sentence': original_sentence_str,
+                    'sentence': mapped_sentence,
                     'start_time': current_time,
                     'end_time': current_time + sentence_duration,
                     'duration': sentence_duration

@@ -2,6 +2,7 @@
 import os
 import traceback
 import re
+import difflib
 from typing import List, Union, overload
 import warnings
 from indextts.utils.common import tokenize_by_CJK_char, de_tokenized_by_CJK_char
@@ -140,6 +141,31 @@ class TextNormalizer:
             pattern = re.compile("|".join(re.escape(p) for p in self.char_rep_map.keys()))
             result = pattern.sub(lambda x: self.char_rep_map[x.group()], result)
         return result
+
+    def normalize_with_alignment(self, text: str):
+        if self.zh_normalizer is None or self.en_normalizer is None:
+            self.load()
+        norm = self.normalize(text)
+        sm = difflib.SequenceMatcher(a=text, b=norm)
+        mapping = [-1] * len(norm)
+        for tag, i1, i2, j1, j2 in sm.get_opcodes():
+            if tag == "equal":
+                for k in range(j1, j2):
+                    mapping[k] = i1 + (k - j1)
+            elif tag == "replace":
+                length_orig = i2 - i1
+                for k in range(j1, j2):
+                    offset = k - j1
+                    if length_orig <= 0:
+                        mapping[k] = i1
+                    else:
+                        mapping[k] = i1 + min(offset, length_orig - 1)
+            elif tag == "insert":
+                for k in range(j1, j2):
+                    mapping[k] = i1
+            elif tag == "delete":
+                pass
+        return norm, mapping
 
     def correct_pinyin(self, pinyin: str):
         """
@@ -351,7 +377,6 @@ class TextTokenizer:
         # 处理特殊情况
         if len(tokenized_str) == 0:
             return []
-        end_punct_chars = (",", ";", ".", "?", "!", "…")
         sentences: List[List[str]] = []
         current_sentence = []
         current_sentence_tokens_len = 0
@@ -359,7 +384,7 @@ class TextTokenizer:
             token = tokenized_str[i]
             current_sentence.append(token)
             current_sentence_tokens_len += 1
-            if (token in split_tokens or any(token.endswith(p) for p in end_punct_chars)) and current_sentence_tokens_len > 2:
+            if token in split_tokens and current_sentence_tokens_len > 2:
                 if i < len(tokenized_str) - 1:
                     if tokenized_str[i + 1] in ["'", "▁'"]:
                         current_sentence.append(tokenized_str[i + 1])
@@ -408,7 +433,12 @@ class TextTokenizer:
             if len(merged_sentences) == 0:
                 merged_sentences.append(sentence)
             elif len(merged_sentences[-1]) + len(sentence) <= max_tokens_per_sentence:
-                merged_sentences[-1] = merged_sentences[-1] + sentence
+                last_tok = merged_sentences[-1][-1] if len(merged_sentences[-1]) > 0 else ""
+                end_marks = (".", "!", "?", "…", "▁.", "▁!", "▁?", "▁…")
+                if any(last_tok.endswith(m) for m in end_marks):
+                    merged_sentences.append(sentence)
+                else:
+                    merged_sentences[-1] = merged_sentences[-1] + sentence
             else:
                 merged_sentences.append(sentence)
         return merged_sentences
@@ -419,13 +449,11 @@ class TextTokenizer:
         ".",
         "?",
         "!",
-        "…",
         "▁,",
         "▁;",
         "▁.",
         "▁?",
         "▁!",
-        "▁…",
         "▁...",
     ]
     def split_sentences(self, tokenized: List[str], max_tokens_per_sentence=120) -> List[List[str]]:
