@@ -14,6 +14,7 @@ import argparse
 from datetime import datetime, timedelta
 from pathlib import Path
 import traceback
+import shutil
 from dotenv import load_dotenv
 
 # 加载环境变量

@@ -351,6 +351,7 @@ class TextTokenizer:
         # 处理特殊情况
         if len(tokenized_str) == 0:
             return []
+        end_punct_chars = (",", ";", ".", "?", "!", "…")
         sentences: List[List[str]] = []
         current_sentence = []
         current_sentence_tokens_len = 0
@@ -358,7 +359,7 @@ class TextTokenizer:
             token = tokenized_str[i]
             current_sentence.append(token)
             current_sentence_tokens_len += 1
-            if token in split_tokens and current_sentence_tokens_len > 2:
+            if (token in split_tokens or any(token.endswith(p) for p in end_punct_chars)) and current_sentence_tokens_len > 2:
                 if i < len(tokenized_str) - 1:
                     if tokenized_str[i + 1] in ["'", "▁'"]:
                         current_sentence.append(tokenized_str[i + 1])
@@ -418,11 +419,13 @@ class TextTokenizer:
         ".",
         "?",
         "!",
+        "…",
         "▁,",
         "▁;",
         "▁.",
         "▁?",
         "▁!",
+        "▁…",
         "▁...",
     ]
     def split_sentences(self, tokenized: List[str], max_tokens_per_sentence=120) -> List[List[str]]:
