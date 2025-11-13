@@ -358,45 +358,44 @@ class TextTokenizer:
             token = tokenized_str[i]
             current_sentence.append(token)
             current_sentence_tokens_len += 1
-            if current_sentence_tokens_len <= max_tokens_per_sentence:
-                if token in split_tokens and current_sentence_tokens_len > 2:
-                    if i < len(tokenized_str) - 1:
-                        if tokenized_str[i + 1] in ["'", "▁'"]:
-                            # 后续token是'，则不切分
-                            current_sentence.append(tokenized_str[i + 1])
-                            i += 1
-                    sentences.append(current_sentence)
-                    current_sentence = []
-                    current_sentence_tokens_len = 0
+            if token in split_tokens and current_sentence_tokens_len > 2:
+                if i < len(tokenized_str) - 1:
+                    if tokenized_str[i + 1] in ["'", "▁'"]:
+                        current_sentence.append(tokenized_str[i + 1])
+                        i += 1
+                sentences.append(current_sentence)
+                current_sentence = []
+                current_sentence_tokens_len = 0
                 continue
-            # 如果当前tokens的长度超过最大限制
-            if not  ("," in split_tokens or "▁," in split_tokens ) and ("," in current_sentence or "▁," in current_sentence): 
-                # 如果当前tokens中有,，则按,分割
+            if current_sentence_tokens_len > max_tokens_per_sentence:
                 sub_sentences = TextTokenizer.split_sentences_by_token(
-                    current_sentence, [",", "▁,"], max_tokens_per_sentence=max_tokens_per_sentence
+                    current_sentence, split_tokens, max_tokens_per_sentence=max_tokens_per_sentence
                 )
-            elif "-" not in split_tokens and "-" in current_sentence:
-                # 没有,，则按-分割
-                sub_sentences = TextTokenizer.split_sentences_by_token(
-                    current_sentence, ["-"], max_tokens_per_sentence=max_tokens_per_sentence
-                )
-            else:
-                # 按照长度分割
-                sub_sentences = []
-                for j in range(0, len(current_sentence), max_tokens_per_sentence):
-                    if j + max_tokens_per_sentence < len(current_sentence):
-                        sub_sentences.append(current_sentence[j : j + max_tokens_per_sentence])
+                if len(sub_sentences) == 1 and len(sub_sentences[0]) > max_tokens_per_sentence:
+                    if not ("," in split_tokens or "▁," in split_tokens) and ("," in current_sentence or "▁," in current_sentence):
+                        sub_sentences = TextTokenizer.split_sentences_by_token(
+                            current_sentence, [",", "▁,"], max_tokens_per_sentence=max_tokens_per_sentence
+                        )
+                    elif "-" not in split_tokens and "-" in current_sentence:
+                        sub_sentences = TextTokenizer.split_sentences_by_token(
+                            current_sentence, ["-"], max_tokens_per_sentence=max_tokens_per_sentence
+                        )
                     else:
-                        sub_sentences.append(current_sentence[j:])
-                warnings.warn(
-                    f"The tokens length of sentence exceeds limit: {max_tokens_per_sentence}, "
-                    f"Tokens in sentence: {current_sentence}."
-                    "Maybe unexpected behavior",
-                    RuntimeWarning,
-                )
-            sentences.extend(sub_sentences)
-            current_sentence = []
-            current_sentence_tokens_len = 0
+                        sub_sentences = []
+                        for j in range(0, len(current_sentence), max_tokens_per_sentence):
+                            if j + max_tokens_per_sentence < len(current_sentence):
+                                sub_sentences.append(current_sentence[j : j + max_tokens_per_sentence])
+                            else:
+                                sub_sentences.append(current_sentence[j:])
+                        warnings.warn(
+                            f"The tokens length of sentence exceeds limit: {max_tokens_per_sentence}, "
+                            f"Tokens in sentence: {current_sentence}."
+                            "Maybe unexpected behavior",
+                            RuntimeWarning,
+                        )
+                sentences.extend(sub_sentences)
+                current_sentence = []
+                current_sentence_tokens_len = 0
         if current_sentence_tokens_len > 0:
             assert current_sentence_tokens_len <= max_tokens_per_sentence
             sentences.append(current_sentence)
@@ -414,13 +413,17 @@ class TextTokenizer:
         return merged_sentences
 
     punctuation_marks_tokens = [
+        ",",
+        ";",
         ".",
-        "!",
         "?",
+        "!",
+        "▁,",
+        "▁;",
         "▁.",
-        # "▁!", # unk
         "▁?",
-        "▁...", # ellipsis
+        "▁!",
+        "▁...",
     ]
     def split_sentences(self, tokenized: List[str], max_tokens_per_sentence=120) -> List[List[str]]:
         return TextTokenizer.split_sentences_by_token(
@@ -429,6 +432,45 @@ class TextTokenizer:
 
 
 if __name__ == "__main__":
+    import sys
+    text_normalizer = TextNormalizer()
+    tokenizer = TextTokenizer(
+        vocab_file="checkpoints/bpe.model",
+        normalizer=text_normalizer,
+    )
+    sample = """自古以来，中华大地上流传着无数关于生死轮回的传说。
+
+每到清明时节，家家户户都会前往祖坟祭拜先人，烧香焚纸，诉说思念之情。
+
+然而，《净土秘录》中却记载着一个令人深思的问题：若亡者已经轮回转世，那么我们年年祭拜的究竟是谁？
+
+这个困扰了无数人的疑问，直到大慈大悲观世音菩萨显圣之时，才得以揭开真相。
+
+这背后隐藏着怎样的天机？
+
+我们虔诚的祭拜，又会产生什么样的因果？
+
+大唐开元年间，长安城外有一座名为慈云寺的古刹。
+
+寺中住着一位德高望重的老方丈法明，已在此修行四十余载。这日清晨，寺外突然传来阵阵哭声，打破了山林的宁静。
+
+法明循声而去，只见山下一户人家正在举办法事。走近一看，原来是李员外家在为去世三年的老夫人做三周年祭奠。
+
+"老夫人啊，您走了这么久，可曾在那边安好？"李员外跪在灵前，声音哽咽。
+
+"母亲，我们每年都来看您，您能感受到吗？"长子李大郎也是泪流满面。
+
+法明看着这一幕，心中生出疑惑。他走上前去，轻声询问："阿弥陀佛，请问施主，老夫人已经去世三年了吗？
+
+李员外抬起头，见是慈云寺的方丈，连忙起身行礼："见过法师。家母确实已经过世三年，我们每年都会来此祭拜，从未间断。"""
+    tokens = tokenizer.tokenize(sample)
+    sentences = tokenizer.split_sentences(tokens, max_tokens_per_sentence=120)
+    print("原始文本:", sample)
+    print("Tokenzied:", ", ".join([f"`{t}`" for t in tokens]))
+    print("Splitted sentences count:", len(sentences))
+    for j in range(len(sentences)):
+        print(j, ", count:", len(sentences[j]), ", tokens:", "".join(sentences[j]))
+    sys.exit(0)
     # 测试程序
 
     text_normalizer = TextNormalizer()
