@@ -1,5 +1,6 @@
 import os
 import sys
+import re
 
 # 添加vllm路径到sys.path
 vllm_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'vllm')
@@ -77,58 +78,100 @@ async def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(sec
     
     return True
 
+def validate_ip_address(ip_str):
+    """严格的IP地址验证 - 使用正则表达式"""
+    if not ip_str or len(ip_str) < 7 or len(ip_str) > 15:
+        return False
+    # 正则表达式验证IPv4地址
+    pattern = r'^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$'
+    return bool(re.match(pattern, ip_str))
+
 # 速率限制功能
 async def check_rate_limit(request: Request):
-    """检查速率限制"""
+    """检查速率限制 - 使用滑动窗口算法"""
     if not redis_manager:
         # 如果Redis不可用，跳过速率限制
         return True
     
-    # 获取客户端IP
-    client_ip = request.client.host
-    if "x-forwarded-for" in request.headers:
-        client_ip = request.headers["x-forwarded-for"].split(",")[0].strip()
-    elif "x-real-ip" in request.headers:
-        client_ip = request.headers["x-real-ip"]
+    # 获取客户端IP（增强验证）
+    client_ip = request.client.host or "unknown"
     
-    # 速率限制键
-    rate_limit_key = f"rate_limit:{client_ip}"
+    # 优先使用X-Forwarded-For（如果有）
+    forwarded_for = request.headers.get("x-forwarded-for")
+    if forwarded_for:
+        # 验证IP格式，防止注入攻击
+        try:
+            potential_ip = forwarded_for.split(",")[0].strip()
+            if validate_ip_address(potential_ip):
+                client_ip = potential_ip
+        except Exception:
+            pass
+    elif "x-real-ip" in request.headers:
+        real_ip = request.headers["x-real-ip"]
+        if validate_ip_address(real_ip):
+            client_ip = real_ip
+    
+    # 使用滑动窗口算法，更精确的速率限制
+    window_size = 60  # 60秒窗口
+    max_requests = config.RATE_LIMIT_PER_MINUTE
+    
+    # 使用Redis的有序集合存储请求时间戳（毫秒级精度）
+    rate_limit_key = f"rate_limit_sliding:{client_ip}"
+    now_ms = int(time.time() * 1000)  # 统一使用毫秒级时间戳
     
     try:
-        # 获取当前计数
-        current_count = await redis_manager.get_cache(rate_limit_key)
-        
-        if current_count is None:
-            # 第一次请求，设置计数为1，过期时间为1分钟
-            await redis_manager.set_cache(rate_limit_key, "1", expire=60)
-            return True
-        
-        current_count = int(current_count)
-        
-        if current_count >= config.RATE_LIMIT_PER_MINUTE:
-            raise HTTPException(
-                status_code=429,
-                detail={
-                    "status": "error",
-                    "msg": f"请求过于频繁，每分钟最多{config.RATE_LIMIT_PER_MINUTE}次请求",
-                    "data": {
-                        "rate_limit": config.RATE_LIMIT_PER_MINUTE,
-                        "current_count": current_count,
-                        "reset_time": 60
+        # 使用pipeline确保原子性
+        async with redis_manager.redis.pipeline() as pipe:
+            pipe.multi()
+            
+            # 1. 移除过期的时间戳（窗口外的请求）
+            cutoff_time = now_ms - (window_size * 1000)  # 毫秒级截止时间
+            pipe.zremrangebyscore(rate_limit_key, 0, cutoff_time)
+            
+            # 2. 添加当前请求时间戳（毫秒级精度，避免并发合并）
+            pipe.zadd(rate_limit_key, {str(now_ms): now_ms})
+            
+            # 3. 获取添加后的总请求数（包含当前请求）
+            pipe.zcard(rate_limit_key)
+            
+            # 4. 设置key的过期时间（防止内存泄漏）
+            pipe.expire(rate_limit_key, window_size + 10)
+            
+            # 执行pipeline
+            results = await pipe.execute()
+            current_count = results[2]  # zcard的结果（在zadd之后）
+            
+            if current_count > max_requests:
+                # 超过限制，回滚这次添加（使用精确的时间戳）
+                await redis_manager.redis.zrem(rate_limit_key, str(now_ms))
+                raise HTTPException(
+                    status_code=429,
+                    detail={
+                        "status": "error",
+                        "msg": f"请求过于频繁，每分钟最多{max_requests}次请求",
+                        "data": {
+                            "rate_limit": max_requests,
+                            "current_count": current_count - 1,  # 减去当前这次请求
+                            "reset_time": window_size
+                        }
                     }
-                }
-            )
-        
-        # 增加计数
-        await redis_manager.increment_counter(rate_limit_key)
-        return True
-        
+                )
+            
+            return True
+            
     except HTTPException:
         raise
     except Exception as e:
-        logger.warning(f"速率限制检查失败: {e}")
-        # 如果速率限制检查失败，允许请求通过
-        return True
+        logger.error(f"速率限制检查失败: {e}")
+        # 更安全的失败策略：拒绝请求，防止被绕过
+        raise HTTPException(
+            status_code=503,
+            detail={
+                "status": "error",
+                "msg": "服务暂时不可用，请稍后重试",
+                "data": None
+            }
+        )
 
 # 全局变量
 tts = None

@@ -207,6 +207,19 @@ class RedisManager:
             self.logger.error(f"设置计数器过期时间失败: {e}")
             return False
     
+    async def increment_counter_with_expire(self, key: str, expire: int = 3600) -> int:
+        """增加计数器并设置过期时间（原子操作）"""
+        try:
+            async with self.redis.pipeline() as pipe:
+                pipe.multi()
+                pipe.incr(key)
+                pipe.expire(key, expire)
+                results = await pipe.execute()
+                return results[0]  # 返回增加后的计数值
+        except Exception as e:
+            self.logger.error(f"增加计数器并设置过期时间失败: {e}")
+            return 0
+    
     # 分布式锁
     async def acquire_lock(self, lock_key: str, expire: int = 30) -> bool:
         """获取分布式锁"""
