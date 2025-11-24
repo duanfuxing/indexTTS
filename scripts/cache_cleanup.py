@@ -58,15 +58,23 @@ class CacheCleanupService:
             async with self.db_manager.get_connection() as conn:
                 async with conn.cursor() as cursor:
                     # 只查询已完成状态且过期的任务
-                    expire_date = datetime.now() - timedelta(days=self.expire_days)
+                    now = datetime.now()
+                    expire_date = now - timedelta(days=self.expire_days)
+                    
+                    # 获取7天前的整天时间范围（00:00:00到23:59:59）
+                    target_date = now - timedelta(days=self.expire_days)
+                    start_of_day = target_date.replace(hour=0, minute=0, second=0, microsecond=0)
+                    end_of_day = target_date.replace(hour=23, minute=59, second=59, microsecond=999999)
                     
                     await cursor.execute("""
                         SELECT task_id, status, created_at, completed_at
                         FROM tts_tasks 
                         WHERE status = 'completed' 
                         AND completed_at < %s
+                        AND created_at >= %s
+                        AND created_at <= %s
                         ORDER BY created_at ASC
-                    """, (expire_date,))
+                    """, (expire_date, start_of_day, end_of_day))
                     
                     results = await cursor.fetchall()
                     
