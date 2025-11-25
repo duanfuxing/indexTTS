@@ -332,7 +332,7 @@ class IndexTTS:
 
         speech_conditioning_latent = self.speaker_dict[speaker]["speech_conditioning_latent"]
 
-        current_time = 0.0  # 当前时间戳（秒）
+        current_ms = 0
 
         search_cursor = 0
         def map_norm_sentence_to_original(norm_sentence: str):
@@ -394,8 +394,7 @@ class IndexTTS:
 
                 wav = torch.clamp(32767 * wav, -32767.0, 32767.0)
                 
-                # 记录当前句子的起止时间（使用原始文本）
-                sentence_duration = wav.shape[-1] / sampling_rate
+                sentence_ms = int(round(wav.shape[-1] * 1000 / sampling_rate))
                 
                 # 获取对应的原始文本句子
                 if not use_fallback and i < len(original_sentences):
@@ -407,16 +406,18 @@ class IndexTTS:
                 
                 sentence_times.append({
                     'sentence': mapped_sentence,
-                    'start_time': current_time,
-                    'end_time': current_time + sentence_duration,
-                    'duration': sentence_duration
+                    'start_time': current_ms / 1000.0,
+                    'end_time': (current_ms + sentence_ms) / 1000.0,
+                    'duration': sentence_ms / 1000.0,
+                    'start_ms': current_ms,
+                    'end_ms': current_ms + sentence_ms,
+                    'duration_ms': sentence_ms,
                 })
                 
                 # wavs.append(wav[:, :-512])
                 wavs.append(wav)  # to cpu before saving
                 
-                # 更新时间戳
-                current_time += sentence_duration
+                current_ms += sentence_ms
         torch.cuda.empty_cache()
         end_time = time.perf_counter()
 

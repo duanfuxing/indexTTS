@@ -120,10 +120,6 @@ class TTSTaskWorker:
             await self.redis_manager.close()
         logger.info(f"处理器 {self.worker_id} 资源清理完成")
     
-    def generate_srt_from_text(self, text: str, audio_duration: float) -> str:
-        """根据文本和音频时长生成SRT字幕文件，支持智能断句"""
-        return self.subtitle_generator.generate_srt_from_text(text, audio_duration)
-    
     def format_srt_time(self, seconds: float) -> str:
         """将秒数转换为SRT时间格式"""
         return self.subtitle_generator._format_srt_time(seconds)
@@ -157,7 +153,7 @@ class TTSTaskWorker:
             start_time = time.time()
             
             # 执行TTS合成
-            sr, wav_data = await self.tts.infer_with_ref_audio_embed(voice, text)
+            sr, wav_data, sentence_times = await self.tts.infer_with_ref_audio_embed(voice, text)
             
             processing_time = time.time() - start_time
             audio_duration = len(wav_data) / sr
@@ -170,11 +166,13 @@ class TTSTaskWorker:
             # 使用文件管理器保存音频文件
             audio_file_path = self.db_manager.file_manager.save_audio_file(task_id, wav_bytes)
             
-            # 生成SRT字幕文件
-            srt_content = self.generate_srt_from_text(text, audio_duration)
-            
-            # 使用文件管理器保存SRT文件
-            srt_file_path = self.db_manager.file_manager.save_srt_file(task_id, srt_content)
+            # 生成并保存SRT字幕文件（仅基于真实时间戳）
+            srt_file_path = None
+            srt_content = ""
+            if sentence_times:
+                srt_content = self.subtitle_generator.generate_srt_from_timestamps(sentence_times, text)
+                if srt_content:
+                    srt_file_path = self.db_manager.file_manager.save_srt_file(task_id, srt_content)
             
             # 上传文件到TOS并获取URL
             audio_url = None
@@ -189,12 +187,13 @@ class TTSTaskWorker:
                     audio_url = f"https://{self.tos_uploader.bucket}.{self.tos_uploader.client.endpoint.replace('https://', '')}/{audio_object_key}"
                     logger.info(f"音频文件上传成功: {audio_url}")
                     
-                    # 上传字幕文件
-                    srt_object_key = await asyncio.get_event_loop().run_in_executor(
-                        None, self.tos_uploader.upload, srt_file_path, task_id
-                    )
-                    srt_url = f"https://{self.tos_uploader.bucket}.{self.tos_uploader.client.endpoint.replace('https://', '')}/{srt_object_key}"
-                    logger.info(f"字幕文件上传成功: {srt_url}")
+                    # 上传字幕文件（存在时）
+                    if srt_file_path:
+                        srt_object_key = await asyncio.get_event_loop().run_in_executor(
+                            None, self.tos_uploader.upload, srt_file_path, task_id
+                        )
+                        srt_url = f"https://{self.tos_uploader.bucket}.{self.tos_uploader.client.endpoint.replace('https://', '')}/{srt_object_key}"
+                        logger.info(f"字幕文件上传成功: {srt_url}")
                     
                 except Exception as e:
                     logger.error(f"文件上传失败: {e}")

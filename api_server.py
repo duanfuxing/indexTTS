@@ -452,15 +452,12 @@ async def online_tts(request_data: OnlineTTSRequest, request: Request, auth: boo
         # 保存音频文件
         audio_file_path = db_manager.file_manager.save_audio_file(task_id, wav_bytes)
         
-        # 生成字幕
+        srt_content = ""
+        srt_file_path = None
         if sentence_times:
-            # 使用推理返回的时间生成字幕
             srt_content = subtitle_generator.generate_srt_from_timestamps(sentence_times, request_data.text)
-        else:
-            # 使用基于字符比例的方法生成字幕
-            srt_content = subtitle_generator.generate_srt_from_text(request_data.text, audio_duration)
-            
-        srt_file_path = db_manager.file_manager.save_srt_file(task_id, srt_content)
+            if srt_content:
+                srt_file_path = db_manager.file_manager.save_srt_file(task_id, srt_content)
         
         # 上传文件到TOS并获取URL
         audio_url = None
@@ -471,9 +468,9 @@ async def online_tts(request_data: OnlineTTSRequest, request: Request, auth: boo
                 audio_url = tos_uploader.upload(audio_file_path, task_id)
                 logger.info(f"音频文件上传成功: {audio_url}")
                 
-                # 上传SRT文件
-                srt_url = tos_uploader.upload(srt_file_path, task_id)
-                logger.info(f"SRT文件上传成功: {srt_url}")
+                if srt_file_path:
+                    srt_url = tos_uploader.upload(srt_file_path, task_id)
+                    logger.info(f"SRT文件上传成功: {srt_url}")
             except Exception as e:
                 logger.error(f"文件上传失败: {e}")
         

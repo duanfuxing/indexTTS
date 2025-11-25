@@ -24,28 +24,6 @@ class SubtitleGenerator:
         self.min_duration = min_duration
         self.max_duration = max_duration
     
-    def generate_srt_from_text(self, text: str, audio_duration: float) -> str:
-        """
-        根据文本和音频时长生成SRT字幕文件，支持智能断句
-        
-        Args:
-            text: 要生成字幕的文本
-            audio_duration: 音频总时长（秒）
-            
-        Returns:
-            SRT格式的字幕内容
-        """
-        if not text.strip():
-            return ""
-        
-        # 智能分割文本
-        sentences = self._split_text_intelligently(text)
-        
-        if not sentences:
-            return ""
-        
-        # 生成SRT内容
-        return self._generate_srt_content(sentences, audio_duration)
     
     def _generate_srt_from_exact_timestamps(self, sentence_times: List[Dict]) -> str:
         """
@@ -59,22 +37,56 @@ class SubtitleGenerator:
         """
         srt_content = []
         subtitle_index = 1
-        
+        prev_end_ms = None
+
         for sent_info in sentence_times:
             sentence = sent_info['sentence'].strip()
             if not sentence:
                 continue
-            
-            # 如果句子太长，进行智能分割
+
             if len(sentence) > self.max_chars_per_subtitle:
                 sub_sentences = self._split_sentence_with_timing(sentence, sent_info)
                 for sub_sent_info in sub_sentences:
-                    self._add_subtitle_entry(srt_content, subtitle_index, sub_sent_info)
+                    start_ms = sub_sent_info['start_ms'] if 'start_ms' in sub_sent_info else int(round(sub_sent_info['start_time'] * 1000))
+                    end_ms = sub_sent_info['end_ms'] if 'end_ms' in sub_sent_info else int(round(sub_sent_info['end_time'] * 1000))
+                    if prev_end_ms is not None and start_ms < prev_end_ms:
+                        start_ms = prev_end_ms
+                    if end_ms < start_ms:
+                        end_ms = start_ms
+
+                    normalized = {
+                        'sentence': sub_sent_info['sentence'],
+                        'start_ms': start_ms,
+                        'end_ms': end_ms,
+                        'duration_ms': end_ms - start_ms,
+                        'start_time': start_ms / 1000.0,
+                        'end_time': end_ms / 1000.0,
+                        'duration': (end_ms - start_ms) / 1000.0,
+                    }
+                    self._add_subtitle_entry(srt_content, subtitle_index, normalized)
                     subtitle_index += 1
+                    prev_end_ms = end_ms
             else:
-                self._add_subtitle_entry(srt_content, subtitle_index, sent_info)
+                start_ms = sent_info['start_ms'] if 'start_ms' in sent_info else int(round(sent_info['start_time'] * 1000))
+                end_ms = sent_info['end_ms'] if 'end_ms' in sent_info else int(round(sent_info['end_time'] * 1000))
+                if prev_end_ms is not None and start_ms < prev_end_ms:
+                    start_ms = prev_end_ms
+                if end_ms < start_ms:
+                    end_ms = start_ms
+
+                normalized = {
+                    'sentence': sentence,
+                    'start_ms': start_ms,
+                    'end_ms': end_ms,
+                    'duration_ms': end_ms - start_ms,
+                    'start_time': start_ms / 1000.0,
+                    'end_time': end_ms / 1000.0,
+                    'duration': (end_ms - start_ms) / 1000.0,
+                }
+                self._add_subtitle_entry(srt_content, subtitle_index, normalized)
                 subtitle_index += 1
-        
+                prev_end_ms = end_ms
+
         return "\n".join(srt_content)
     
     def _split_sentence_with_timing(self, sentence: str, timing_info: Dict) -> List[Dict]:
@@ -95,45 +107,90 @@ class SubtitleGenerator:
             # 如果没有合适的分割点，按字符数均匀分割
             return self._split_evenly_by_chars(sentence, timing_info)
         
-        # 根据分割点分配时间
-        sub_sentences = []
+        parts = []
         total_chars = len(sentence)
-        start_time = timing_info['start_time']
-        total_duration = timing_info['duration']
-        
+        start_ms = timing_info['start_ms'] if 'start_ms' in timing_info else int(round(timing_info['start_time'] * 1000))
+        total_duration_ms = timing_info['duration_ms'] if 'duration_ms' in timing_info else int(round(timing_info['duration'] * 1000))
+        end_ms_base = timing_info['end_ms'] if 'end_ms' in timing_info else start_ms + total_duration_ms
+
         prev_pos = 0
-        for i, split_pos in enumerate(split_points):
+        for split_pos in split_points:
             sub_sentence = sentence[prev_pos:split_pos].strip()
             if sub_sentence:
-                # 按比例分配时间
-                char_ratio = len(sub_sentence) / total_chars
-                sub_duration = total_duration * char_ratio
-                
-                sub_info = {
-                    'sentence': sub_sentence,
-                    'start_time': start_time,
-                    'end_time': start_time + sub_duration,
-                    'duration': sub_duration
-                }
-                sub_sentences.append(sub_info)
-                
-                start_time += sub_duration
-            
+                parts.append(sub_sentence)
             prev_pos = split_pos
-        
-        # 处理最后一部分
+
         if prev_pos < total_chars:
             sub_sentence = sentence[prev_pos:].strip()
             if sub_sentence:
-                sub_duration = timing_info['end_time'] - start_time
-                sub_info = {
-                    'sentence': sub_sentence,
-                    'start_time': start_time,
-                    'end_time': timing_info['end_time'],
-                    'duration': sub_duration
-                }
-                sub_sentences.append(sub_info)
-        
+                parts.append(sub_sentence)
+
+        if not parts:
+            return []
+
+        n = len(parts)
+        if total_duration_ms < n:
+            return [{
+                'sentence': sentence.strip(),
+                'start_ms': start_ms,
+                'end_ms': end_ms_base,
+                'duration_ms': end_ms_base - start_ms,
+                'start_time': start_ms / 1000.0,
+                'end_time': end_ms_base / 1000.0,
+                'duration': (end_ms_base - start_ms) / 1000.0,
+            }]
+
+        weights = [len(p) for p in parts]
+        total_w = sum(weights)
+        if total_w <= 0:
+            total_w = n
+            weights = [1] * n
+
+        raw = [total_duration_ms * w / total_w for w in weights]
+        floors = [int(x) for x in raw]
+        remainder = total_duration_ms - sum(floors)
+        fracs = [x - f for x, f in zip(raw, floors)]
+        order = sorted(range(n), key=lambda i: fracs[i], reverse=True)
+        durations = floors[:]
+        for i in range(remainder):
+            durations[order[i]] += 1
+
+        zeros = [i for i, d in enumerate(durations) if d <= 0]
+        if zeros:
+            need = len(zeros)
+            if total_duration_ms < need:
+                return [{
+                    'sentence': sentence.strip(),
+                    'start_ms': start_ms,
+                    'end_ms': end_ms_base,
+                    'duration_ms': end_ms_base - start_ms,
+                    'start_time': start_ms / 1000.0,
+                    'end_time': end_ms_base / 1000.0,
+                    'duration': (end_ms_base - start_ms) / 1000.0,
+                }]
+            for z in zeros:
+                durations[z] = 1
+            surplus = total_duration_ms - sum(durations)
+            idx = 0
+            while surplus > 0:
+                durations[idx % n] += 1
+                idx += 1
+
+        sub_sentences = []
+        cur_ms = start_ms
+        for i, (p, d_ms) in enumerate(zip(parts, durations)):
+            end_ms = cur_ms + d_ms if i < n - 1 else end_ms_base
+            sub_sentences.append({
+                'sentence': p,
+                'start_ms': cur_ms,
+                'end_ms': end_ms,
+                'duration_ms': end_ms - cur_ms,
+                'start_time': cur_ms / 1000.0,
+                'end_time': end_ms / 1000.0,
+                'duration': (end_ms - cur_ms) / 1000.0,
+            })
+            cur_ms = end_ms
+
         return sub_sentences
     
     def _find_natural_split_points(self, sentence: str) -> List[int]:
@@ -170,36 +227,40 @@ class SubtitleGenerator:
             分割后的子句时间信息列表
         """
         total_chars = len(sentence)
-        total_duration = timing_info['duration']
-        start_time = timing_info['start_time']
+        total_duration_ms = timing_info['duration_ms'] if 'duration_ms' in timing_info else int(round(timing_info['duration'] * 1000))
+        start_ms = timing_info['start_ms'] if 'start_ms' in timing_info else int(round(timing_info['start_time'] * 1000))
+        end_ms_base = timing_info['end_ms'] if 'end_ms' in timing_info else start_ms + total_duration_ms
         
         # 计算分割段数
         num_parts = (total_chars + self.max_chars_per_subtitle - 1) // self.max_chars_per_subtitle
         chars_per_part = total_chars // num_parts
         
         sub_sentences = []
+        base = total_duration_ms // num_parts
+        rem = total_duration_ms - base * num_parts
+        offset_ms = 0
         for i in range(num_parts):
             start_idx = i * chars_per_part
             if i == num_parts - 1:
-                # 最后一段包含剩余所有字符
                 end_idx = total_chars
             else:
                 end_idx = min((i + 1) * chars_per_part, total_chars)
-            
             sub_sentence = sentence[start_idx:end_idx].strip()
             if sub_sentence:
-                # 均匀分配时间
-                part_duration = total_duration / num_parts
-                sub_start = start_time + i * part_duration
-                sub_end = sub_start + part_duration if i < num_parts - 1 else timing_info['end_time']
-                
+                part_duration_ms = base + (1 if i < rem else 0)
+                sub_start_ms = start_ms + offset_ms
+                sub_end_ms = sub_start_ms + part_duration_ms if i < num_parts - 1 else end_ms_base
                 sub_info = {
                     'sentence': sub_sentence,
-                    'start_time': sub_start,
-                    'end_time': sub_end,
-                    'duration': sub_end - sub_start
+                    'start_ms': sub_start_ms,
+                    'end_ms': sub_end_ms,
+                    'duration_ms': sub_end_ms - sub_start_ms,
+                    'start_time': sub_start_ms / 1000.0,
+                    'end_time': sub_end_ms / 1000.0,
+                    'duration': (sub_end_ms - sub_start_ms) / 1000.0,
                 }
                 sub_sentences.append(sub_info)
+                offset_ms += part_duration_ms
         
         return sub_sentences
     
@@ -212,8 +273,10 @@ class SubtitleGenerator:
             index: 字幕序号
             timing_info: 时间信息
         """
-        start_srt = self._format_srt_time(timing_info['start_time'])
-        end_srt = self._format_srt_time(timing_info['end_time'])
+        start_seconds = timing_info['start_ms'] / 1000.0 if 'start_ms' in timing_info else timing_info['start_time']
+        end_seconds = timing_info['end_ms'] / 1000.0 if 'end_ms' in timing_info else timing_info['end_time']
+        start_srt = self._format_srt_time(start_seconds)
+        end_srt = self._format_srt_time(end_seconds)
         
         # 清理SentencePiece特殊符号
         clean_sentence = self._clean_sentencepiece_symbols(timing_info['sentence'])
@@ -223,23 +286,6 @@ class SubtitleGenerator:
         srt_content.append(clean_sentence)
         srt_content.append("")
     
-    def _generate_srt_with_fallback(self, text: str, sentence_times: List[Dict]) -> str:
-        """
-        回退方法：使用原始文本和估算时间生成字幕（新增方法）
-        
-        Args:
-            text: 原始文本
-            sentence_times: 部分时间信息（可能不完整）
-            
-        Returns:
-            SRT格式字符串
-        """
-        if text.strip():
-            # 估算总时长
-            total_duration = sum(sent.get('duration', 0) for sent in sentence_times) if sentence_times else 0
-            return self.generate_srt_from_text(text, total_duration)
-        else:
-            return ""
     
     def _validate_sentence_times(self, sentence_times: List[Dict]) -> bool:
         """
@@ -255,23 +301,23 @@ class SubtitleGenerator:
             return False
         
         for i, sent_info in enumerate(sentence_times):
-            # 检查必需字段
-            required_fields = ['sentence', 'start_time', 'end_time', 'duration']
-            if not all(field in sent_info for field in required_fields):
+            if 'sentence' not in sent_info:
                 return False
-            
-            # 检查时间逻辑
-            if sent_info['start_time'] < 0 or sent_info['end_time'] <= sent_info['start_time']:
+            has_ms = all(k in sent_info for k in ['start_ms', 'end_ms', 'duration_ms'])
+            has_s = all(k in sent_info for k in ['start_time', 'end_time', 'duration'])
+            if not (has_ms or has_s):
                 return False
-            
-            if sent_info['duration'] <= 0:
+            start_s = (sent_info['start_ms'] / 1000.0) if has_ms else sent_info['start_time']
+            end_s = (sent_info['end_ms'] / 1000.0) if has_ms else sent_info['end_time']
+            dur_s = (sent_info['duration_ms'] / 1000.0) if has_ms else sent_info['duration']
+            if start_s < 0 or end_s <= start_s:
                 return False
-            
-            # 检查时间连续性（允许小的重叠或间隙）
+            if dur_s <= 0:
+                return False
             if i > 0:
-                prev_end = sentence_times[i-1]['end_time']
-                curr_start = sent_info['start_time']
-                if abs(curr_start - prev_end) > 1.0:  # 允许1秒的间隙或重叠
+                prev = sentence_times[i-1]
+                prev_end_s = (prev['end_ms'] / 1000.0) if 'end_ms' in prev else prev['end_time']
+                if abs(start_s - prev_end_s) > 1.0:
                     return False
         
         return True
@@ -291,138 +337,11 @@ class SubtitleGenerator:
         if not sentence_times:
             return ""
         
-        # 如果时间戳数据有效，直接使用时间戳生成字幕
         if self._validate_sentence_times(sentence_times):
             return self._generate_srt_from_exact_timestamps(sentence_times)
         else:
-            # 回退到基于字符数的智能分割
-            return self._generate_srt_with_fallback(text, sentence_times)
+            return ""
     
-    def _split_text_intelligently(self, text: str) -> List[str]:
-        """
-        智能分割文本，避免连续标点符号被分开
-        
-        Args:
-            text: 原始文本
-            
-        Returns:
-            分割后的句子列表
-        """
-        # 首先清理可能的SentencePiece特殊符号
-        clean_text = self._clean_sentencepiece_symbols(text)
-        
-        # 首先按主要标点符号分割
-        primary_pattern = r'([,.;!?，。；！？、])'
-        parts = re.split(primary_pattern, clean_text)
-        
-        # 重新组合分割的部分
-        primary_sentences = []
-        current_sentence = ""
-        
-        for part in parts:
-            if part.strip():
-                current_sentence += part
-                # 如果这部分包含结束标点，则结束当前句子
-                if re.search(primary_pattern, part):
-                    primary_sentences.append(current_sentence.strip())
-                    current_sentence = ""
-        
-        # 添加剩余的部分
-        if current_sentence.strip():
-            primary_sentences.append(current_sentence.strip())
-        
-        # 进一步处理长句
-        final_sentences = []
-        for sentence in primary_sentences:
-            if len(sentence) <= self.max_chars_per_subtitle:
-                final_sentences.append(sentence)
-            else:
-                # 长句按次要标点分割
-                sub_sentences = self._split_long_sentence(sentence)
-                final_sentences.extend(sub_sentences)
-        
-        return [s for s in final_sentences if s.strip()]
-    
-    def _split_long_sentence(self, sentence: str) -> List[str]:
-        """
-        分割长句子
-        
-        Args:
-            sentence: 长句子
-            
-        Returns:
-            分割后的句子列表
-        """
-        # 按次要标点符号分割
-        secondary_pattern = r'([,.;!?，。；！？、])'
-        parts = re.split(secondary_pattern, sentence)
-        
-        result = []
-        current_part = ""
-        
-        for part in parts:
-            if part.strip():
-                # 如果当前部分加上新部分不超过限制，则合并
-                if len(current_part + part) <= self.max_chars_per_subtitle:
-                    current_part += part
-                else:
-                    # 否则先保存当前部分，开始新部分
-                    if current_part.strip():
-                        result.append(current_part.strip())
-                    current_part = part
-        
-        # 添加最后一部分
-        if current_part.strip():
-            result.append(current_part.strip())
-        
-        return result
-    
-    def _generate_srt_content(self, sentences: List[str], audio_duration: float) -> str:
-        """
-        生成SRT格式内容
-        
-        Args:
-            sentences: 句子列表
-            audio_duration: 音频总时长
-            
-        Returns:
-            SRT格式字符串
-        """
-        srt_content = []
-        
-        # 计算每个字幕段的时长（基于字符数比例分配）
-        total_chars = sum(len(s) for s in sentences)
-        current_time = 0.0
-        
-        for i, sentence in enumerate(sentences):
-            # 根据字符数比例分配时间
-            char_ratio = len(sentence) / total_chars if total_chars > 0 else 1.0 / len(sentences)
-            duration = audio_duration * char_ratio
-            
-            # 设置合理的时长范围
-            duration = max(self.min_duration, min(self.max_duration, duration))
-            
-            start_time = current_time
-            end_time = current_time + duration
-            
-            # 确保不超过总时长
-            if end_time > audio_duration:
-                end_time = audio_duration
-            
-            start_srt = self._format_srt_time(start_time)
-            end_srt = self._format_srt_time(end_time)
-            
-            # 清理SentencePiece特殊符号
-            clean_sentence = self._clean_sentencepiece_symbols(sentence)
-            
-            srt_content.append(f"{i + 1}")
-            srt_content.append(f"{start_srt} --> {end_srt}")
-            srt_content.append(clean_sentence)
-            srt_content.append("")
-            
-            current_time = end_time
-        
-        return "\n".join(srt_content)
     
     def _format_srt_time(self, seconds: float) -> str:
         """
@@ -434,10 +353,11 @@ class SubtitleGenerator:
         Returns:
             SRT时间格式字符串 (HH:MM:SS,mmm)
         """
-        hours = int(seconds // 3600)
-        minutes = int((seconds % 3600) // 60)
-        secs = int(seconds % 60)
-        millisecs = int((seconds % 1) * 1000)
+        total_ms = int(round(seconds * 1000))
+        hours = total_ms // (3600 * 1000)
+        minutes = (total_ms % (3600 * 1000)) // (60 * 1000)
+        secs = (total_ms % (60 * 1000)) // 1000
+        millisecs = total_ms % 1000
         return f"{hours:02d}:{minutes:02d}:{secs:02d},{millisecs:03d}"
     
     def _clean_sentencepiece_symbols(self, text: str) -> str:
@@ -464,24 +384,3 @@ class SubtitleGenerator:
 
 # 创建默认实例
 default_subtitle_generator = SubtitleGenerator()
-
-# 提供便捷函数
-def generate_srt_from_text(text: str, audio_duration: float, 
-                          max_chars_per_subtitle: int = 30,
-                          min_duration: float = 1.5,
-                          max_duration: float = 6.0) -> str:
-    """
-    便捷函数：生成SRT字幕
-    
-    Args:
-        text: 文本内容
-        audio_duration: 音频时长
-        max_chars_per_subtitle: 每个字幕段最大字符数
-        min_duration: 最小时长
-        max_duration: 最大时长
-        
-    Returns:
-        SRT格式字幕内容
-    """
-    generator = SubtitleGenerator(max_chars_per_subtitle, min_duration, max_duration)
-    return generator.generate_srt_from_text(text, audio_duration)
