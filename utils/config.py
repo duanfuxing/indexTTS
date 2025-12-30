@@ -86,6 +86,9 @@ class Config:
     
     # API配置
     API_KEY: Optional[str] = os.getenv('API_KEY')
+    API_KEYS: list = [k.strip() for k in os.getenv('API_KEYS', '').split(',') if k.strip()] or (
+        [API_KEY] if API_KEY else []
+    )
     ALLOWED_ORIGINS: list = os.getenv('ALLOWED_ORIGINS', '*').split(',')
     RATE_LIMIT_PER_MINUTE: int = int(os.getenv('RATE_LIMIT_PER_MINUTE', '60'))
     

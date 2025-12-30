@@ -52,9 +52,12 @@ security = HTTPBearer(auto_error=False)
 
 async def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(security)):
     """验证API密钥"""
-    if not config.API_KEY:
-        # 如果没有配置API_KEY，则不进行验证
-        return True
+    api_keys = getattr(config, "API_KEYS", None)
+    if not api_keys:
+        if not getattr(config, "API_KEY", None):
+            # 如果没有配置任何API_KEY，则不进行验证
+            return True
+        api_keys = [config.API_KEY]
     
     if not credentials:
         raise HTTPException(
@@ -66,7 +69,7 @@ async def verify_api_key(credentials: HTTPAuthorizationCredentials = Depends(sec
             }
         )
     
-    if credentials.credentials != config.API_KEY:
+    if credentials.credentials not in api_keys:
         raise HTTPException(
             status_code=401,
             detail={
